@@ -18,15 +18,15 @@
 <meta name="dc.title" content="몬테카를로 시뮬레이션 — 복잡한 문제의 해법"><meta name="dc.creator" content="안상선"><meta name="dc.date" content="2026-11-10"><meta name="dc.language" content="ko">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
 <style>
-/* 밤의 연구실 + 형광 현미경 (ai-lab-explainer 디자인 시스템, 어두운 단일 테마). 주제 강조색: 시퀀스 #9ab8ff */
+/* 흰 연구실(밝은 테마) (ai-lab-explainer 디자인 시스템, 어두운 단일 테마). 주제 강조색: 시퀀스 #3f5fa8 */
 :root{
-  --bg:#13141f; --panel:#1c1e2d; --panel2:#25283a; --rule:#363a52;
-  --text:#eceaf3; --muted:#9d9bb8;
-  --stain:#d672d6; --gfp:#5ee39c; --eye:#f0604d; --amber:#f1b646; --info:#82b8ff; --seq:#9ab8ff;
-  --c-doc:#b07cff; --c-asst:#ff86b8; --c-fly:#ef5b5b; --c-robo:#57d0dc;
-  --a0:#f0604d; --a1:#82b8ff; --a2:#5ee39c; --a3:#d672d6;
+  --bg:#ffffff; --panel:#f6f7fb; --panel2:#eceef5; --rule:#dde1ec;
+  --text:#1d2030; --muted:#5d6278;
+  --stain:#a8329f; --gfp:#138a52; --eye:#d23f2c; --amber:#b77800; --info:#2563c9; --seq:#3f5fa8;
+  --c-doc:#7a45d6; --c-asst:#d0457f; --c-fly:#cc3434; --c-robo:#14899a;
+  --a0:#d23f2c; --a1:#2563c9; --a2:#138a52; --a3:#a8329f;
   --font:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,sans-serif;
-  color-scheme:dark;
+  color-scheme:light;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -49,7 +49,7 @@ a{color:var(--info)}
 
 /* 진행 막대, 내비 */
 #prog{position:fixed;left:0;top:env(safe-area-inset-top,0px);height:3px;background:var(--gfp);width:0;z-index:70}
-nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;height:54px;background:rgba(19,20,31,.86);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;height:54px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
 nav.top .wrap{display:flex;align-items:center;gap:16px;height:54px}
 nav.top .logo{font-weight:700;white-space:nowrap;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:8px}
 nav.top .logo i{display:inline-block;width:14px;height:14px;background:var(--seq);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
@@ -61,7 +61,7 @@ nav.top .links a:hover{color:var(--text);background:var(--panel)}
 /* 히어로 */
 header.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--rule)}
 header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
-  background-image:radial-gradient(circle at 1px 1px,rgba(154,184,255,.16) 1.2px,transparent 1.4px);background-size:14px 12px;
+  background-image:radial-gradient(circle at 1px 1px,rgba(63,95,168,.16) 1.2px,transparent 1.4px);background-size:14px 12px;
   -webkit-mask-image:radial-gradient(circle at 90% 0%,#000 0,transparent 55%);mask-image:radial-gradient(circle at 90% 0%,#000 0,transparent 55%)}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:32px;align-items:center;padding-block:48px 36px;position:relative}
 .hero-text{display:flex;flex-direction:column;gap:16px;min-width:0}
@@ -95,7 +95,7 @@ section.level{padding-block:56px;border-bottom:1px solid var(--rule)}
 .hexno small{font-size:10px;color:var(--muted);font-weight:500;margin-top:3px}
 .sub{display:flex;flex-wrap:wrap;gap:8px}
 .lvtag{font-size:13px;border:1px solid var(--rule);border-radius:99px;padding:2px 10px;color:var(--muted)}
-.lvtag.g{color:var(--gfp);border-color:rgba(94,227,156,.4)}
+.lvtag.g{color:var(--gfp);border-color:rgba(19,138,82,.4)}
 .lead{color:var(--muted);max-width:68ch}
 
 .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
@@ -121,8 +121,8 @@ section.level{padding-block:56px;border-bottom:1px solid var(--rule)}
 .glabel{font-size:13px;color:var(--muted);margin-right:4px}
 .bt{font:inherit;font-size:14px;background:var(--panel2);color:var(--text);border:1px solid var(--rule);border-radius:7px;padding:6px 12px;cursor:pointer}
 .bt:hover{border-color:var(--muted)}
-.bt[aria-pressed="true"],.bt.on{background:rgba(94,227,156,.16);border-color:var(--gfp);color:var(--gfp)}
-.bt.primary{background:var(--gfp);color:#10241a;border-color:var(--gfp);font-weight:700}
+.bt[aria-pressed="true"],.bt.on{background:rgba(19,138,82,.16);border-color:var(--gfp);color:var(--gfp)}
+.bt.primary{background:var(--gfp);color:#ffffff;border-color:var(--gfp);font-weight:700}
 .val{font-variant-numeric:tabular-nums;color:var(--amber);font-weight:700;min-width:4ch}
 input[type=range]{accent-color:var(--gfp);width:200px;max-width:100%}
 .eq{font-variant-numeric:tabular-nums;background:var(--bg);border:1px dashed var(--rule);border-radius:8px;padding:10px 12px;overflow-x:auto;white-space:nowrap}
@@ -131,7 +131,7 @@ input[type=range]{accent-color:var(--gfp);width:200px;max-width:100%}
 .insight p{padding-left:12px;border-left:3px solid var(--rule)}
 .insight p.g{border-color:var(--gfp)}.insight p.m{border-color:var(--stain)}.insight p.r{border-color:var(--eye)}.insight p.a{border-color:var(--amber)}
 
-.explain{background:rgba(241,182,70,.08);border:1px solid rgba(241,182,70,.35);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.explain{background:rgba(183,120,0,.08);border:1px solid rgba(183,120,0,.35);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:8px}
 .explain h4{margin:0;color:var(--amber);font-size:16px}
 .explain ol,.explain ul{margin:0;padding-left:20px}
 .explain .limit{color:var(--eye)}
@@ -140,8 +140,8 @@ details.math summary{cursor:pointer;color:var(--info);font-weight:500}
 details.math>div{margin-top:10px;display:flex;flex-direction:column;gap:8px}
 .bridge{border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;border:1px solid}
 .bridge h4{margin:0;font-size:15px}
-.bridge.gen{background:rgba(130,184,255,.07);border-color:rgba(130,184,255,.4)}.bridge.gen h4{color:var(--info)}
-.bridge.field{background:rgba(240,96,77,.07);border-color:rgba(240,96,77,.4)}.bridge.field h4{color:var(--eye)}
+.bridge.gen{background:rgba(37,99,201,.07);border-color:rgba(37,99,201,.4)}.bridge.gen h4{color:var(--info)}
+.bridge.field{background:rgba(210,63,44,.07);border-color:rgba(210,63,44,.4)}.bridge.field h4{color:var(--eye)}
 .bridge .lim{font-size:14px;color:var(--muted)}
 .bridges{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media (max-width:760px){.bridges{grid-template-columns:1fr}}
@@ -163,7 +163,7 @@ details.math>div{margin-top:10px;display:flex;flex-direction:column;gap:8px}
 @media (max-width:860px){.cast{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* 행동 칩 */
-.chip{display:inline-flex;align-items:center;gap:4px;font-size:13px;border-radius:6px;padding:1px 8px;font-weight:700;color:#11121a}
+.chip{display:inline-flex;align-items:center;gap:4px;font-size:13px;border-radius:6px;padding:1px 8px;font-weight:700;color:#ffffff}
 .chip.a0{background:var(--a0)}.chip.a1{background:var(--a1)}.chip.a2{background:var(--a2)}.chip.a3{background:var(--a3)}
 
 /* 표 */
@@ -195,7 +195,7 @@ table.tb{border-collapse:collapse;width:100%;min-width:520px;font-size:15px}
 
 /* 퀴즈 */
 .quiz{display:flex;flex-direction:column;gap:12px}
-.qi{background:rgba(130,184,255,.06);border:1px solid rgba(130,184,255,.35);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.qi{background:rgba(37,99,201,.06);border:1px solid rgba(37,99,201,.35);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px}
 .qi .qh{color:var(--info);font-size:13px;font-weight:700}
 .qi .opts{display:flex;flex-wrap:wrap;gap:6px}
 .qi .fb{font-size:14px}
@@ -203,7 +203,7 @@ table.tb{border-collapse:collapse;width:100%;min-width:520px;font-size:15px}
 
 /* 용어 */
 .jt{border-bottom:1px dashed var(--amber);cursor:help}
-#tip{position:fixed;z-index:80;max-width:300px;background:var(--panel2);border:1px solid var(--amber);border-radius:8px;padding:10px 12px;font-size:14px;display:none;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+#tip{position:fixed;z-index:80;max-width:300px;background:var(--panel2);border:1px solid var(--amber);border-radius:8px;padding:10px 12px;font-size:14px;display:none;box-shadow:0 8px 24px rgba(30,35,60,.14)}
 #tip b{color:var(--amber)}#tip small{color:var(--muted);margin-left:6px}
 #study{position:fixed;right:calc(14px + env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:55;background:var(--panel2);border:1px solid var(--rule);border-radius:99px;padding:6px 8px 6px 14px;display:flex;gap:10px;align-items:center;font-size:13px}
 #study .bt{padding:3px 10px;font-size:12px}
@@ -223,32 +223,32 @@ input.search{font:inherit;background:var(--bg);color:var(--text);border:1px soli
 .flowchips i{color:var(--muted);font-style:normal}
 pre.out{background:var(--bg);border:1px solid var(--rule);border-radius:8px;padding:12px;max-height:280px;overflow:auto;font-size:12px;white-space:pre;margin:0}
 .badge{font-size:11px;border-radius:4px;padding:1px 6px;margin-left:4px}
-.badge.ok{background:rgba(94,227,156,.18);color:var(--gfp)}.badge.no{background:rgba(241,182,70,.18);color:var(--amber)}
+.badge.ok{background:rgba(19,138,82,.18);color:var(--gfp)}.badge.no{background:rgba(183,120,0,.18);color:var(--amber)}
 .reflist{display:flex;flex-direction:column;gap:10px;padding-left:20px;margin:0}
 .reflist li{font-size:15px}
-.stampnote{display:inline-block;font-size:12px;color:var(--amber);border:1px solid rgba(241,182,70,.6);background:rgba(241,182,70,.12);border-radius:99px;padding:1px 10px}
+.stampnote{display:inline-block;font-size:12px;color:var(--amber);border:1px solid rgba(183,120,0,.6);background:rgba(183,120,0,.12);border-radius:99px;padding:1px 10px}
 footer{padding-block:40px 120px;color:var(--muted);font-size:14px}
 footer h3{color:var(--text);font-size:16px;margin-bottom:8px}
 footer .stack{gap:28px}
 
 /* ai-lab-explainer-plain 추가 규격: 3줄 상자, 왜/조수 수식, 칸 대화, 코드 접기, 표지, 화면 밀도 */
-:root{--stat:#9ab0d0;--seq:#9ab0d0}
+:root{--stat:#3f5fa8;--seq:#3f5fa8}
 body{line-height:1.8}
 section.level{padding-block:88px}
 @media (max-width:760px){section.level{padding-block:64px}}
 .stack{gap:24px}
 .explain ol li+li,.explain ul li+li{margin-top:10px}
 .panel,.explain,.pair>div,.steps>div{padding:20px}
-.cover{position:relative;margin:0;background:linear-gradient(160deg,#1b1533,#13141f);overflow:hidden;border-bottom:1px solid var(--rule)}
+.cover{position:relative;margin:0;background:linear-gradient(160deg,#eef2fb,#ffffff);overflow:hidden;border-bottom:1px solid var(--rule)}
 .cover img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
 .cover.fallback{max-height:48vh;min-height:220px;display:flex;align-items:flex-end;justify-content:center}
-.cover.fallback::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(154,176,208,.18) 1.2px,transparent 1.4px);background-size:14px 12px;-webkit-mask-image:radial-gradient(circle at 70% 20%,#000 0,transparent 70%);mask-image:radial-gradient(circle at 70% 20%,#000 0,transparent 70%)}
+.cover.fallback::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(63,95,168,.18) 1.2px,transparent 1.4px);background-size:14px 12px;-webkit-mask-image:radial-gradient(circle at 70% 20%,#000 0,transparent 70%);mask-image:radial-gradient(circle at 70% 20%,#000 0,transparent 70%)}
 .cover .line{position:relative;display:flex;gap:clamp(8px,3vw,36px);align-items:flex-end;padding:28px 16px 34px}
-.cover .line img{width:clamp(64px,13vw,132px);height:auto;object-fit:contain;filter:drop-shadow(0 6px 14px rgba(0,0,0,.5))}
+.cover .line img{width:clamp(64px,13vw,132px);height:auto;object-fit:contain;filter:drop-shadow(0 6px 14px rgba(30,35,60,.18))}
 .cover .line img.fly{width:clamp(44px,8vw,84px)}
-.cover .glow{position:absolute;left:50%;top:18%;width:min(560px,80vw);height:180px;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(154,176,208,.22),transparent 70%)}
-.cover-chip{position:absolute;left:16px;bottom:14px;padding:4px 10px;border-radius:999px;background:rgba(19,20,31,.72);color:var(--text);font-size:13px}
-.three{background:linear-gradient(180deg,rgba(94,227,156,.07),rgba(94,227,156,.02));border:1px solid rgba(94,227,156,.4);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:14px}
+.cover .glow{position:absolute;left:50%;top:18%;width:min(560px,80vw);height:180px;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(63,95,168,.22),transparent 70%)}
+.cover-chip{position:absolute;left:16px;bottom:14px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.85);color:var(--text);font-size:13px}
+.three{background:linear-gradient(180deg,rgba(19,138,82,.07),rgba(19,138,82,.02));border:1px solid rgba(19,138,82,.4);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:14px}
 .three h2{font-size:clamp(20px,2.4vw,26px)}
 .three ol{margin:0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:12px}
 .three li{display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:start}
@@ -262,12 +262,12 @@ details.abbr dt{color:var(--amber);font-weight:700}details.abbr dd{margin:0;colo
 .whymath{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
 @media (max-width:860px){.whymath{grid-template-columns:1fr}}
 .whybox,.mathbox{border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:10px;min-width:0}
-.whybox{background:rgba(214,114,214,.07);border:1px solid rgba(214,114,214,.4)}
+.whybox{background:rgba(168,50,159,.07);border:1px solid rgba(168,50,159,.4)}
 .whybox h4{margin:0;color:var(--stain);font-size:16px}
 .whybox .row{display:grid;grid-template-columns:76px 1fr;gap:10px}
 .whybox .row b{font-size:13px;color:var(--muted);padding-top:3px}
 .whybox .easy{background:var(--bg);border-radius:8px;padding:10px 12px;border-left:3px solid var(--stain)}
-.mathbox{background:rgba(255,134,184,.06);border:1px solid rgba(255,134,184,.45)}
+.mathbox{background:rgba(208,69,127,.06);border:1px solid rgba(208,69,127,.45)}
 .mathbox h4{margin:0;color:var(--c-asst);font-size:16px}
 .mathbox .who{display:flex;gap:10px;align-items:flex-start}
 .mathbox .who img{width:52px;height:52px;flex:none;border-radius:10px;border:2px solid var(--c-asst);background:var(--panel2);object-fit:contain}
@@ -286,7 +286,7 @@ details.code summary{cursor:pointer;color:var(--muted);font-size:14px}
 details.code table{border-collapse:collapse;width:100%;margin-top:10px;font-size:14px}
 details.code td{border-bottom:1px solid var(--rule);padding:8px;vertical-align:top}
 details.code code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;color:var(--gfp);white-space:pre-wrap;word-break:break-all}
-.changes{background:rgba(240,96,77,.06);border:1px solid rgba(240,96,77,.35);border-radius:10px;padding:16px 18px}
+.changes{background:rgba(210,63,44,.06);border:1px solid rgba(210,63,44,.35);border-radius:10px;padding:16px 18px}
 .changes h4{margin:0 0 8px;color:var(--eye);font-size:15px}
 .changes li+li{margin-top:6px}
 .notice{font-size:14px;color:var(--amber)}
@@ -295,7 +295,7 @@ details.code code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospa
 .series a:hover{border-color:var(--stat)}
 .series a small{color:var(--muted)}
 .series a b{color:var(--stat);font-size:13px}
-.series a.review{border-color:rgba(241,182,70,.55);background:rgba(241,182,70,.06)}
+.series a.review{border-color:rgba(183,120,0,.55);background:rgba(183,120,0,.06)}
 .series a.review b{color:var(--amber)}
 @media (max-width:860px){.series{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.series{grid-template-columns:1fr}}
@@ -321,13 +321,27 @@ details.code code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospa
 .sliderow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 canvas.sim{display:block;width:100%}
 
+/* 동적 대시보드 */
+.dash{display:flex;flex-direction:column;gap:16px;border-top:3px solid var(--seq)}
+.dhead{display:flex;flex-wrap:wrap;gap:12px 20px;justify-content:space-between;align-items:flex-start}
+.dhead h3{font-size:21px;margin-top:4px}
+.dbtns{display:flex;flex-wrap:wrap;gap:8px}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dgrid .cwrap{background:#fff;border:1px solid var(--rule);border-radius:8px;padding:6px;min-width:0}
+.dash .kpis.k4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.dash .ctrl .group{min-width:min(100%,230px);flex:1 1 230px}
+.dash .ctrl input[type=range]{flex:1 1 120px;min-width:0}
+.dtabs{display:flex;flex-wrap:wrap;gap:6px}
+.dtabs .bt[aria-pressed=true]{background:var(--seq);border-color:var(--seq);color:#fff}
+@media (max-width:760px){.dash .kpi b{font-size:18px;overflow-wrap:anywhere}.dgrid{grid-template-columns:1fr}.dash .kpis.k4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
 </style>
 </head>
 <body>
 <div id="prog"></div>
 <div id="tip" role="tooltip"></div>
-<nav class="top" aria-label="섹션 바로가기"><div class="wrap"><a class="logo" href="index.html"><i></i>베이지안 통계 연구실 08</a><div class="links"><a href="#three">3줄 요약</a><a href="#cast">등장인물</a><a href="#lv1">1 가치 분포</a><a href="#lv2">2 공급망 위험</a><a href="#lv3">3 π와 MCMC</a><a href="#duel">대결</a><a href="#sum">정리</a><a href="#kg">색인</a><a href="#export">꾸러미</a></div></div></nav>
-<header class="cover fallback" id="cover" data-img="cover_08" role="img" aria-label="표지 그림 자리: 박사, 조수, 초파리 연구원, 주판봇이 나란히 선 대체 표지"><div class="glow"></div><div class="line"><img class="fly" data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><img class="" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><img class="" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><img class="" data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"></div><span class="cover-chip">베이지안 통계 연구실 · 08</span></header><header class="hero" id="hero"><div class="wrap hero-grid"><div class="hero-text"><span class="eyebrow">8회차 · 가치 분포, 공급망 위험, π와 MCMC</span><h1>몬테카를로 시뮬레이션 — 복잡한 문제의 해법</h1><p class="q">공식으로 풀 수 없는 불확실성은, 수만 번 굴려 보면 알 수 있을까?</p><p>몬테카를로는 "불확실한 값은 분포로 두고, 컴퓨터로 수만 번 뽑아 결과의 분포를 본다"는 방법이에요. 하나의 숫자 대신 범위와 확률로 말하게 해 줍니다.</p><section class="kpis k4"><div class="kpi g"><b>P10·P50·P90</b><span>하위 10%·중앙값·상위 10%</span></div><div class="kpi r"><b>59%</b><span>정시 확률 0.9인 부품 5개가 모두 제때 올 확률</span></div><div class="kpi a"><b>±0.016</b><span>점 10,000개로 잰 π의 오차(1표준편차)</span></div><div class="kpi i"><b>1,000번</b><span>교안이 버리라고 한 MCMC 앞부분</span></div></section></div><div class="dialog"><div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>공식이 막히면 굴려 봅니다. 오늘은 "많이 던져 비율로 잰다"의 힘이에요.</p></div></div><div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수(하루)</b><p>가치 분포, 부품 공급망, π, MCMC 실험을 준비했어요. 모두 시드 고정이에요.</p></div></div><div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>100번 굴린 결과를 믿어도 될까? 몇 번 굴려야 하는지부터 묻자.</p></div></div><div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>많이 굴릴수록 좋지! 난 무조건 1만 번이야.</p></div></div></div></div></header><section class="level" id="three"><div class="wrap"><div class="three"><h2>처음 오신 분께 — 이 페이지를 3줄로</h2><ol><li><b>무엇을</b><span>불확실한 입력(성장률·비용·점유율)을 분포로 두고 수만 번 뽑아 결과의 분포를 봅니다. 같은 원리로 π를 재고, 복잡한 사후분포에서 표본을 뽑는 MCMC까지 갑니다.</span></li><li><b>왜 중요한가</b><span>"5년 뒤 가치 50억"처럼 한 숫자로 말하면 틀릴 위험을 숨겨요. P10·P50·P90으로 말하면 최악과 최선을 함께 볼 수 있어요.</span></li><li><b>업무에서는</b><span>투자·사업 계획의 시나리오, 공급망·재고 위험, 일정·예산 위험, 베이지안 모형의 사후분포 계산에 씁니다. 교육용이며 투자 자문이 아닙니다.</span></li></ol><p class="ok">코드·수식을 몰라도 됩니다. 수식은 조수가 대신 묻고, 코드는 접어 두었어요.</p><details class='abbr'><summary>영어 약어 풀이</summary><dl><dt>P10 · P50 · P90</dt><dd>결과를 작은 순서로 줄 세웠을 때 10%·50%·90% 위치의 값</dd><dt>MCMC</dt><dd>Markov Chain Monte Carlo. 마르코프 체인으로 사후분포에서 표본을 뽑는 방법</dd><dt>CAC</dt><dd>Customer Acquisition Cost, 고객 한 명을 데려오는 비용</dd><dt>DCF</dt><dd>Discounted Cash Flow, 미래 현금흐름을 할인해 가치를 구하는 방법</dd></dl></details></div></div></section><section class="level" id="cast"><div class="wrap stack"><div class="lvhead"><h2>등장인물과 이 페이지 사용법</h2></div><div class="cast"><div><img class="" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><b style="color:var(--c-doc)">박사</b><p class="muted" style="font-size:14px">해설과 판정. 판단은 데이터대로 해요.</p></div><div><img class="" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><b style="color:var(--c-asst)">조수(하루)</b><p class="muted" style="font-size:14px">실험 진행과 숫자 발표. 수식을 대신 물어봐요.</p></div><div><img class="" data-who="fly" data-mood="clip" data-img="fly_clip" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원</b><p class="muted" style="font-size:14px">의심하는 쪽. "그 숫자, 진짜야?"를 달고 살아요.</p></div><div><img class="" data-who="robo" data-mood="smile" data-img="robo_smile" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇</b><p class="muted" style="font-size:14px">확신하는 쪽. 크고 높은 숫자를 좋아해요.</p></div></div><p class="muted">노란 점선 밑줄을 누르거나 손가락으로 대면 뜻이 나옵니다. 오른쪽 아래 도우미에서 밑줄을 핵심 → 전체 → 끄기로 바꿀 수 있어요. 모든 실험은 시드를 고정한 설명용 모형입니다. 앞 회차: <a href="07m_midterm_review.html">중간 요약정리 및 퀴즈</a></p></div></section><section class="level" id="why"><div class="wrap stack"><div class="lvhead"><h2>왜 이 주제인가</h2></div><div class="steps"><div><b>한 숫자의 함정</b><p>같은 스타트업을 한 투자자는 100억, 다른 투자자는 30억으로 본다고 교안은 말해요. 미래 매출을 하나로 맞히기는 거의 불가능합니다.</p></div><div><b>위험은 곱해진다</b><p>부품 하나가 90% 믿음직해도, 다섯 개가 모두 제때 와야 하면 59%로 떨어져요.</p></div><div><b>계산이 막힐 때</b><p>7회차의 마르코프 체인을 이용하면 공식으로 못 구하는 사후분포에서도 표본을 뽑을 수 있어요(MCMC).</p></div></div></div></section><section class="level" id="big"><div class="wrap stack"><div class="lvhead"><h2>큰 그림</h2><p class="lead">입력을 분포로 → 수만 번 뽑기 → 결과 분포 → 범위와 확률로 결정.</p></div><div class="steps four"><div><b>① 입력 분포</b><p>성장률 정규, 비용 삼각, 점유율 베타</p></div><div><b>② 뽑기</b><p>난수로 입력 한 벌을 뽑아 결과를 계산, 1만 번 반복</p></div><div><b>③ 결과 분포</b><p>히스토그램, P10·P50·P90, "50억 이상일 확률"</p></div><div><b>④ 결정</b><p>최악에서도 버티는가? 병목은 어디인가?</p></div></div></div></section><section class="level" id="lv1"><div class="wrap stack">
+<nav class="top" aria-label="섹션 바로가기"><div class="wrap"><a class="logo" href="index.html"><i></i>베이지안 통계 연구실 08</a><div class="links"><a href="#three">3줄 요약</a><a href="#cast">등장인물</a><a href="#dash">대시보드</a><a href="#lv1">1 가치 분포</a><a href="#lv2">2 공급망 위험</a><a href="#lv3">3 π와 MCMC</a><a href="#duel">대결</a><a href="#sum">정리</a><a href="#kg">색인</a><a href="#export">꾸러미</a></div></div></nav>
+<header class="cover fallback" id="cover" data-img="cover_08" role="img" aria-label="표지 그림 자리: 박사, 조수, 초파리 연구원, 주판봇이 나란히 선 대체 표지"><div class="glow"></div><div class="line"><img class="fly" data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><img class="" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><img class="" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><img class="" data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"></div><span class="cover-chip">베이지안 통계 연구실 · 08</span></header><header class="hero" id="hero"><div class="wrap hero-grid"><div class="hero-text"><span class="eyebrow">8회차 · 가치 분포, 공급망 위험, π와 MCMC</span><h1>몬테카를로 시뮬레이션 — 복잡한 문제의 해법</h1><p class="q">공식으로 풀 수 없는 불확실성은, 수만 번 굴려 보면 알 수 있을까?</p><p>몬테카를로는 "불확실한 값은 분포로 두고, 컴퓨터로 수만 번 뽑아 결과의 분포를 본다"는 방법이에요. 하나의 숫자 대신 범위와 확률로 말하게 해 줍니다.</p><section class="kpis k4"><div class="kpi g"><b>P10·P50·P90</b><span>하위 10%·중앙값·상위 10%</span></div><div class="kpi r"><b>59%</b><span>정시 확률 0.9인 부품 5개가 모두 제때 올 확률</span></div><div class="kpi a"><b>±0.016</b><span>점 10,000개로 잰 π의 오차(1표준편차)</span></div><div class="kpi i"><b>1,000번</b><span>교안이 버리라고 한 MCMC 앞부분</span></div></section></div><div class="dialog"><div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>공식이 막히면 굴려 봅니다. 오늘은 "많이 던져 비율로 잰다"의 힘이에요.</p></div></div><div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수(하루)</b><p>가치 분포, 부품 공급망, π, MCMC 실험을 준비했어요. 모두 시드 고정이에요.</p></div></div><div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>100번 굴린 결과를 믿어도 될까? 몇 번 굴려야 하는지부터 묻자.</p></div></div><div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>많이 굴릴수록 좋지! 난 무조건 1만 번이야.</p></div></div></div></div></header><section class="level" id="three"><div class="wrap"><div class="three"><h2>처음 오신 분께 — 이 페이지를 3줄로</h2><ol><li><b>무엇을</b><span>불확실한 입력(성장률·비용·점유율)을 분포로 두고 수만 번 뽑아 결과의 분포를 봅니다. 같은 원리로 π를 재고, 복잡한 사후분포에서 표본을 뽑는 MCMC까지 갑니다.</span></li><li><b>왜 중요한가</b><span>"5년 뒤 가치 50억"처럼 한 숫자로 말하면 틀릴 위험을 숨겨요. P10·P50·P90으로 말하면 최악과 최선을 함께 볼 수 있어요.</span></li><li><b>업무에서는</b><span>투자·사업 계획의 시나리오, 공급망·재고 위험, 일정·예산 위험, 베이지안 모형의 사후분포 계산에 씁니다. 교육용이며 투자 자문이 아닙니다.</span></li></ol><p class="ok">코드·수식을 몰라도 됩니다. 수식은 조수가 대신 묻고, 코드는 접어 두었어요.</p><details class='abbr'><summary>영어 약어 풀이</summary><dl><dt>P10 · P50 · P90</dt><dd>결과를 작은 순서로 줄 세웠을 때 10%·50%·90% 위치의 값</dd><dt>MCMC</dt><dd>Markov Chain Monte Carlo. 마르코프 체인으로 사후분포에서 표본을 뽑는 방법</dd><dt>CAC</dt><dd>Customer Acquisition Cost, 고객 한 명을 데려오는 비용</dd><dt>DCF</dt><dd>Discounted Cash Flow, 미래 현금흐름을 할인해 가치를 구하는 방법</dd></dl></details></div></div></section><section class="level" id="cast"><div class="wrap stack"><div class="lvhead"><h2>등장인물과 이 페이지 사용법</h2></div><div class="cast"><div><img class="" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><b style="color:var(--c-doc)">박사</b><p class="muted" style="font-size:14px">해설과 판정. 판단은 데이터대로 해요.</p></div><div><img class="" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><b style="color:var(--c-asst)">조수(하루)</b><p class="muted" style="font-size:14px">실험 진행과 숫자 발표. 수식을 대신 물어봐요.</p></div><div><img class="" data-who="fly" data-mood="clip" data-img="fly_clip" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원</b><p class="muted" style="font-size:14px">의심하는 쪽. "그 숫자, 진짜야?"를 달고 살아요.</p></div><div><img class="" data-who="robo" data-mood="smile" data-img="robo_smile" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇</b><p class="muted" style="font-size:14px">확신하는 쪽. 크고 높은 숫자를 좋아해요.</p></div></div><p class="muted">노란 점선 밑줄을 누르거나 손가락으로 대면 뜻이 나옵니다. 오른쪽 아래 도우미에서 밑줄을 핵심 → 전체 → 끄기로 바꿀 수 있어요. 모든 실험은 시드를 고정한 설명용 모형입니다. 앞 회차: <a href="07m_midterm_review.html">중간 요약정리 및 퀴즈</a></p></div></section><section class="level" id="why"><div class="wrap stack"><div class="lvhead"><h2>왜 이 주제인가</h2></div><div class="steps"><div><b>한 숫자의 함정</b><p>같은 스타트업을 한 투자자는 100억, 다른 투자자는 30억으로 본다고 교안은 말해요. 미래 매출을 하나로 맞히기는 거의 불가능합니다.</p></div><div><b>위험은 곱해진다</b><p>부품 하나가 90% 믿음직해도, 다섯 개가 모두 제때 와야 하면 59%로 떨어져요.</p></div><div><b>계산이 막힐 때</b><p>7회차의 마르코프 체인을 이용하면 공식으로 못 구하는 사후분포에서도 표본을 뽑을 수 있어요(MCMC).</p></div></div></div></section><section class="level" id="big"><div class="wrap stack"><div class="lvhead"><h2>큰 그림</h2><p class="lead">입력을 분포로 → 수만 번 뽑기 → 결과 분포 → 범위와 확률로 결정.</p></div><div class="steps four"><div><b>① 입력 분포</b><p>성장률 정규, 비용 삼각, 점유율 베타</p></div><div><b>② 뽑기</b><p>난수로 입력 한 벌을 뽑아 결과를 계산, 1만 번 반복</p></div><div><b>③ 결과 분포</b><p>히스토그램, P10·P50·P90, "50억 이상일 확률"</p></div><div><b>④ 결정</b><p>최악에서도 버티는가? 병목은 어디인가?</p></div></div></div></section><section class="level" id="dash"><div class="wrap stack"><div class="lvhead"><h2>한눈에 보는 대시보드</h2><p class="lead">이 회차의 핵심 모형을 한 화면에 모았어요. 슬라이더를 움직이거나 ▶ 재생을 눌러 숫자 카드와 그림이 함께 바뀌는 것을 보세요. 아래 칸 ①②③에서 하나씩 풀어 설명합니다.</p></div><div class="dash panel" data-dash="08"></div></div></section><section class="level" id="lv1"><div class="wrap stack">
 <div class="lvhead"><div class="hexrow"><div class="hexno">1<small>가치 분포</small></div><h2>5년 뒤 가치를 하나로 말하지 않기 — P10·P50·P90</h2></div><p class="sub"><span class="lvtag g">방법: 몬테카를로 시뮬레이션 · 백분위수</span><span class="lvtag">일상: 스타트업 기업가치</span></p><p class="lead">교안은 같은 스타트업을 두고 투자자마다 100억과 30억으로 평가가 갈리는 예를 들어요. 불확실한 세 입력을 분포로 두고 1만 번 굴려 봅니다.</p></div>
 <div class="whymath">
 <div class="whybox"><h4>왜 이 방법을 쓰나</h4><div class="row"><b>문제 상황</b><p>5년 뒤 기업가치를 정해야 하는데, 성장률·고객획득비용·점유율이 모두 불확실해요.</p></div><div class="row"><b>앞 방법의 한계</b><p>7회차의 CLV처럼 전이 확률이 정해진 공식은 입력이 확실할 때 좋아요. 입력 자체가 흔들리면 공식 하나로는 위험을 보여 주지 못합니다.</p></div><div class="row"><b>해법</b><p>각 입력을 분포로 두고(성장률 정규, 비용 삼각, 점유율 베타), 한 벌씩 뽑아 가치를 계산하기를 1만 번 되풀이해요.</p></div><p class="easy"><b>쉽게 말하면</b> 날씨 예보가 "내일 기온 22도" 대신 "20~24도, 비 올 확률 30%"라고 말하는 것과 같아요.</p></div>
@@ -363,7 +377,7 @@ canvas.sim{display:block;width:100%}
 <section class="panel" aria-label="메트로폴리스 알고리즘으로 전환율 사후분포 훑기"><h3>실험 2 — 메트로폴리스 알고리즘으로 전환율 사후분포 훑기</h3><div class="sim" data-sim="mcmc" data-cfg="{&quot;k&quot;: 36, &quot;n&quot;: 1000, &quot;start&quot;: 0.5}"></div></section>
 <div class="explain"><h4>풀이 — 몬테카를로에서 MCMC까지</h4><ol><li>π 추정: 정사각형 안 점 중 사분원 안 비율 × 4. 교안 코드는 x, y를 0~1 균등분포로 1,000개 뽑아요.</li><li>정확도: 오차는 시행 수의 제곱근에 반비례해요. 시행 수와 계산 비용의 균형을 생각합니다.</li><li>MCMC가 필요한 때: 광고비와 매출처럼 변수들이 서로 얽혀 사후분포를 직접 뽑을 수 없을 때.</li><li>메트로폴리스: 후보 제안 → 받아들일지 결정 → 반복. 받아들인 비율이 너무 낮거나 높으면 걸음 크기를 조정하고, 앞부분은 버려요.</li></ol><p class="limit"><b>이 칸의 한계</b> · MCMC 표본은 바로 앞 표본과 이어져 있어 독립 표본보다 정보가 적어요. 수렴했는지 궤적을 꼭 확인해야 하고, 원인과 결과가 얽힌 구조 자체를 그리는 일은 다음 회차의 베이지안 네트워크가 맡습니다.</p></div>
 <div class="bridges"><div class="bridge gen"><h4>데이터 분석으로 치면</h4><p>교안의 매출 시뮬레이션(객단가 정규, 방문객 포아송, 365일 × 1만 번)처럼 "날마다 독립"으로 두면 연간 결과의 범위가 매우 좁게 나와요. 날씨·경기처럼 모든 날에 함께 작용하는 요인을 넣어야 현실적인 범위가 됩니다.</p><p class="lim">교안의 연 매출 평균 $1.6M, 90% 구간 $1.4~1.8M은 이 계산과 맞지 않아 아래 "원자료와 다르게 쓴 곳"에 적었어요.</p></div></div>
-<details class="code"><summary>교안의 파이썬 코드로 보면 (몰라도 됩니다)</summary><table><tr><td><code>x = np.random.uniform(0, 1, n); y = np.random.uniform(0, 1, n)</code></td><td>정사각형 안에 점 n개를 고르게 뿌려요.</td></tr><tr><td><code>inside = (x**2 + y**2) &lt;= 1</code></td><td>원점에서 거리 1 이내(사분원 안)인지 확인해요.</td></tr><tr><td><code>pi_estimate = 4 * inside.mean()</code></td><td>원 안 비율에 4를 곱해 π를 어림해요.</td></tr><tr><td><code>trace = pm.sample(2000)</code></td><td>PyMC에서 MCMC로 사후분포 표본 2,000개를 뽑아요(4회차 코드와 같은 함수).</td></tr></table></details>
+<details class="code"><summary>교안의 파이썬 코드와 예시 코드 (몰라도 됩니다)</summary><table><tr><td><code>x = np.random.uniform(0, 1, n); y = np.random.uniform(0, 1, n)</code></td><td>정사각형 안에 점 n개를 고르게 뿌려요.</td></tr><tr><td><code>inside = (x**2 + y**2) &lt;= 1</code></td><td>원점에서 거리 1 이내(사분원 안)인지 확인해요.</td></tr><tr><td><code>pi_estimate = 4 * inside.mean()</code></td><td>원 안 비율에 4를 곱해 π를 어림해요.</td></tr><tr><td><code>trace = pm.sample(2000)</code></td><td>PyMC에서 MCMC로 사후분포 표본 2,000개를 뽑아요(4회차 코드와 같은 함수).</td></tr></table></details>
 <div class="quiz" data-quiz="lv3"></div>
 </div></section><section class="level" id="duel"><div class="wrap stack">
 <div class="lvhead"><h2>대결 — 100번 굴린 결과 vs 1만 번 굴린 결과</h2><p class="lead">π를 추정하는 실험을 200번 되풀이해 평균 오차를 비교합니다. 한쪽은 매번 점 100개, 한쪽은 점 10,000개를 던져요.</p></div>
@@ -433,10 +447,10 @@ function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAl
 function h(tag,attrs,html){var e=document.createElement(tag);if(attrs)for(var k in attrs){if(k==='class')e.className=attrs[k];else e.setAttribute(k,attrs[k])}if(html!=null)e.innerHTML=html;return e}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function fit(c,hgt){var d=window.devicePixelRatio||1,w=c.clientWidth||c.parentElement.clientWidth||600;if(c.width!==Math.round(w*d)||c.height!==Math.round(hgt*d)){c.width=Math.round(w*d);c.height=Math.round(hgt*d);c.style.height=hgt+'px'}var x=c.getContext('2d');x.setTransform(d,0,0,d,0,0);return w}
-function stamp(ctx,W,txt){ctx.save();ctx.font='700 11px "IBM Plex Sans KR",system-ui,sans-serif';var tw=ctx.measureText(txt).width+16,x=W-tw-8,y=8;ctx.fillStyle='rgba(241,182,70,.14)';ctx.strokeStyle='rgba(241,182,70,.7)';ctx.beginPath();if(ctx.roundRect)ctx.roundRect(x,y,tw,20,10);else ctx.rect(x,y,tw,20);ctx.fill();ctx.stroke();ctx.fillStyle='#f1b646';ctx.textAlign='left';ctx.fillText(txt,x+8,y+14);ctx.restore()}
-function grid(ctx,W,H){ctx.save();ctx.strokeStyle='rgba(157,155,184,.06)';ctx.lineWidth=1;for(var x=0;x<W;x+=24){ctx.beginPath();ctx.moveTo(x+.5,0);ctx.lineTo(x+.5,H);ctx.stroke()}for(var y=0;y<H;y+=24){ctx.beginPath();ctx.moveTo(0,y+.5);ctx.lineTo(W,y+.5);ctx.stroke()}ctx.restore()}
-function txt(ctx,s,x,y,col,size,align,bold){ctx.save();ctx.fillStyle=col||'#eceaf3';ctx.font=(bold?'700 ':'400 ')+(size||12)+'px "IBM Plex Sans KR",system-ui,sans-serif';ctx.textAlign=align||'left';ctx.fillText(s,x,y);ctx.restore()}
-var COL={bg:'#13141f',panel:'#1c1e2d',rule:'#363a52',text:'#eceaf3',muted:'#9d9bb8',g:'#5ee39c',m:'#d672d6',r:'#f0604d',a:'#f1b646',i:'#82b8ff',s:'#9ab0d0',doc:'#b07cff',asst:'#ff86b8',fly:'#ef5b5b',robo:'#57d0dc'};
+function stamp(ctx,W,txt){ctx.save();ctx.font='700 11px "IBM Plex Sans KR",system-ui,sans-serif';var tw=ctx.measureText(txt).width+16,x=W-tw-8,y=8;ctx.fillStyle='rgba(183,120,0,.14)';ctx.strokeStyle='rgba(183,120,0,.7)';ctx.beginPath();if(ctx.roundRect)ctx.roundRect(x,y,tw,20,10);else ctx.rect(x,y,tw,20);ctx.fill();ctx.stroke();ctx.fillStyle='#b77800';ctx.textAlign='left';ctx.fillText(txt,x+8,y+14);ctx.restore()}
+function grid(ctx,W,H){ctx.save();ctx.strokeStyle='rgba(93,98,120,.06)';ctx.lineWidth=1;for(var x=0;x<W;x+=24){ctx.beginPath();ctx.moveTo(x+.5,0);ctx.lineTo(x+.5,H);ctx.stroke()}for(var y=0;y<H;y+=24){ctx.beginPath();ctx.moveTo(0,y+.5);ctx.lineTo(W,y+.5);ctx.stroke()}ctx.restore()}
+function txt(ctx,s,x,y,col,size,align,bold){ctx.save();ctx.fillStyle=col||'#1d2030';ctx.font=(bold?'700 ':'400 ')+(size||12)+'px "IBM Plex Sans KR",system-ui,sans-serif';ctx.textAlign=align||'left';ctx.fillText(s,x,y);ctx.restore()}
+var COL={bg:'#ffffff',panel:'#f6f7fb',rule:'#dde1ec',text:'#1d2030',muted:'#5d6278',g:'#138a52',m:'#a8329f',r:'#d23f2c',a:'#b77800',i:'#2563c9',s:'#3f5fa8',doc:'#7a45d6',asst:'#d0457f',fly:'#cc3434',robo:'#14899a'};
 
 /* 애니메이션: 보이는 캔버스만 */
 var mods=[],vis=new Set(),io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?vis.add(e.target):vis.delete(e.target)})},{rootMargin:'100px'}):null;
@@ -450,7 +464,7 @@ var Cast=(function(){
     robo:[".......Q........",".......K........","..KKKKKKKKKKKK..","..KEEEEEEEEEEK..","..KEDDDDDDDDEK..","..KEDMDDDDMDEK..","..KEDDDDDDDDEK..","..KEDMDDDDMDEK..","..KEDDMMMMDDEK..",".HKEEEEEEEEEEKH.","HHAAAAAAAAAAAAHH","HHAEQEQEEQEQEAHH","..AAAAAAAAAAAA..","..AEQEQEEQEQEA..","..AAAAAAAAAAAA..",".KKKK......KKKK."],
     doc:["....KKKKKKK.....","...KKKWKKKKK....","..KKKWWKKKKKK...","..KFFFFFFFFFK...","..FGGFFFFGGFF...","..FGKFFFFGKFF...","..FFFFFFFFFFF...","...FFFRRRFFF....","....FFFFFFF.....","...WWWKKKWWW....","..WWWWKRKWWWW...","..WWWWKRKWWWW...","..WFWWKKKWWFW...","..WWWWKKKWWWW...","...LL.....LL....","...KK.....KK...."],
     asst:[".PP..........PP.",".PP..PPPPPP..PP.","PPPPPPPPPPNPPPPP",".PPPPFFFFFFPPPP.","..PPFFFFFFFFPP..","..PFFBFFFFBFFP..","..PFFBFFFFBFFP..","..PFFFFFFFFFFP..","...FFFFRRFFFF...","....FFFFFFFF....","...WWVVVVVVWW...","..WWWVVVVVVWWW..","..WWWVVVVVVWWW..","..WFWVVVVVVWFW..","...NN......NN...","...NN......NN..."]};
-  var PAL={K:'#1d1a22',W:'#eceaf3',R:'#e04a3a',r:'#a8281c',U:'#3a6fd8',Y:'#f1c84a',L:'#5a4636',B:'#4aa3ff',F:'#f2c9a0',G:'#9fb4d0',P:'#ff86b8',N:'#2b3a7a',V:'#b9a6e8',E:'#eadfc6',D:'#17352c',M:'#5befa5',A:'#8b5a2b',Q:'#d2603c',H:'#9c978c'};
+  var PAL={K:'#1d1a22',W:'#1d2030',R:'#e04a3a',r:'#a8281c',U:'#3a6fd8',Y:'#f1c84a',L:'#5a4636',B:'#4aa3ff',F:'#f2c9a0',G:'#9fb4d0',P:'#d0457f',N:'#2b3a7a',V:'#b9a6e8',E:'#eadfc6',D:'#17352c',M:'#5befa5',A:'#8b5a2b',Q:'#d2603c',H:'#9c978c'};
   var cache={};
   function pix(who){if(cache[who])return cache[who];var rows=MAPS[who],cv=document.createElement('canvas');cv.width=64;cv.height=64;var c=cv.getContext('2d');rows.forEach(function(r,y){r.split('').forEach(function(ch,x){if(ch==='.')return;c.fillStyle=PAL[ch];c.fillRect(x*4,y*4,4,4)})});return cache[who]=cv.toDataURL()}
   function key(who,mood){var k=who+'_'+mood;var a=(window.SPRITE_ALIAS||{})[k]||k;return a}
@@ -489,7 +503,7 @@ var Quiz=(function(){var total=0,done={};
   return {render:render,total:function(){return total},done:function(){return Object.keys(done).length}};
 })();
 var Study=(function(){var bar=$('#prog'),rd=$('#stRead'),qz=$('#stQuiz'),gb=$('#stGloss');
-  function upd(){var H=document.documentElement,p=H.scrollTop/(H.scrollHeight-H.clientHeight||1);if(bar)bar.style.width=(p*100)+'%';if(rd)rd.textContent='읽은 곳 '+Math.round(p*100)+'%';if(qz){qz.textContent='퀴즈 '+Quiz.done()+'/'+Quiz.total();qz.hidden=!Quiz.total()}}
+  function upd(){var H=document.documentElement,p=H.scrollTop/(H.scrollHeight-H.clientHeight||1);if(bar)bar.style.width=(p*100)+'%';if(rd)rd.textContent='읽은 곳 '+Math.round(p*100)+'%';if(qz){if(window.practiceUpd){window.practiceUpd()}else{qz.textContent='퀴즈 '+Quiz.done()+'/'+Quiz.total();qz.hidden=!Quiz.total()}}}
   window.addEventListener('scroll',upd,{passive:true});
   if(gb)gb.addEventListener('click',function(){var m=Gloss.cycle();gb.textContent='밑줄: '+({core:'핵심',all:'전체',off:'끄기'})[m]});
   return {upd:upd};
@@ -526,7 +540,7 @@ function action(row,label,on,primary){var b=h('button',{class:'bt'+(primary?' pr
 function kpis(parent,n){var s=h('section',{class:'kpis k'+n});parent.appendChild(s);return function(items){s.innerHTML=items.map(function(k){return '<div class="kpi '+(k[2]||'')+'"><b>'+k[0]+'</b><span>'+k[1]+'</span></div>'}).join('')}}
 function insight(parent){var d=h('div',{class:'insight','aria-live':'polite'});parent.appendChild(d);return function(lines){d.innerHTML=lines.map(function(l){return '<p class="'+(l[0]||'')+'">'+l[1]+'</p>'}).join('')}}
 function eqline(parent){var d=h('div',{class:'eq'});parent.appendChild(d);return function(s){d.innerHTML=s}}
-function hist(ctx,x0,y0,w,hgt,vals,bins,lo,hi,col,maxc){var c=new Array(bins).fill(0);vals.forEach(function(v){var k=Math.floor((v-lo)/(hi-lo)*bins);if(k>=0&&k<bins)c[k]++});var m=maxc||Math.max.apply(null,c)||1;ctx.save();ctx.fillStyle=col;ctx.strokeStyle='#9ab0d0';c.forEach(function(n,i){var bh=n/m*hgt,bx=x0+i*w/bins;ctx.fillRect(bx+1,y0-bh,w/bins-2,bh)});ctx.restore();return c}
+function hist(ctx,x0,y0,w,hgt,vals,bins,lo,hi,col,maxc){var c=new Array(bins).fill(0);vals.forEach(function(v){var k=Math.floor((v-lo)/(hi-lo)*bins);if(k>=0&&k<bins)c[k]++});var m=maxc||Math.max.apply(null,c)||1;ctx.save();ctx.fillStyle=col;ctx.strokeStyle='#3f5fa8';c.forEach(function(n,i){var bh=n/m*hgt,bx=x0+i*w/bins;ctx.fillRect(bx+1,y0-bh,w/bins-2,bh)});ctx.restore();return c}
 function bars(ctx,x0,y0,w,hgt,items,max){var n=items.length,bw=w/n;items.forEach(function(it,i){var bh=clamp(it.v/(max||1),0,1)*hgt;ctx.fillStyle=it.c;ctx.fillRect(x0+i*bw+bw*.18,y0-bh,bw*.64,bh);txt(ctx,it.l,x0+i*bw+bw/2,y0+16,COL.muted,11,'center');txt(ctx,it.t!=null?it.t:'',x0+i*bw+bw/2,y0-bh-6,COL.text,12,'center',true)})}
 
 /* 지식 색인 */
@@ -551,7 +565,7 @@ var KG=(function(){var G=null;
     for(var it=0;it<200;it++){for(var i=0;i<P.length;i++)for(var j=i+1;j<P.length;j++){var dx=P[i].x-P[j].x,dy=P[i].y-P[j].y,d2=dx*dx+dy*dy+.01,f=900/d2;P[i].vx+=dx*f*.01;P[i].vy+=dy*f*.01;P[j].vx-=dx*f*.01;P[j].vy-=dy*f*.01}
       E.forEach(function(e){var a=P[idx[e.s]],b=P[idx[e.o]],dx=b.x-a.x,dy=b.y-a.y,d=Math.sqrt(dx*dx+dy*dy)+.01,f=(d-60)*.01;a.vx+=dx/d*f*d*.05;a.vy+=dy/d*f*d*.05;b.vx-=dx/d*f*d*.05;b.vy-=dy/d*f*d*.05});
       P.forEach(function(p){p.vx+=(W/2-p.x)*.002;p.vy+=(H/2-p.y)*.002;p.x=clamp(p.x+p.vx*.5,14,W-14);p.y=clamp(p.y+p.vy*.5,14,H-14);p.vx*=.6;p.vy*=.6})}
-    function paint(){var ctx=c.getContext('2d');ctx.clearRect(0,0,W,H);ctx.strokeStyle='rgba(157,155,184,.25)';E.forEach(function(e){var a=P[idx[e.s]],b=P[idx[e.o]];ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()});N.forEach(function(n,i){ctx.fillStyle=TC[n.type]||COL.muted;ctx.beginPath();ctx.arc(P[i].x,P[i].y,n.type==='Method'||n.type==='Concept'?6:4,0,7);ctx.fill()});N.forEach(function(n,i){if(n.type==='Method'||n.type==='Concept'||n.type==='Question')txt(ctx,n.label.ko.slice(0,12),P[i].x+8,P[i].y+4,COL.text,11)})}
+    function paint(){var ctx=c.getContext('2d');ctx.clearRect(0,0,W,H);ctx.strokeStyle='rgba(93,98,120,.25)';E.forEach(function(e){var a=P[idx[e.s]],b=P[idx[e.o]];ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()});N.forEach(function(n,i){ctx.fillStyle=TC[n.type]||COL.muted;ctx.beginPath();ctx.arc(P[i].x,P[i].y,n.type==='Method'||n.type==='Concept'?6:4,0,7);ctx.fill()});N.forEach(function(n,i){if(n.type==='Method'||n.type==='Concept'||n.type==='Question')txt(ctx,n.label.ko.slice(0,12),P[i].x+8,P[i].y+4,COL.text,11)})}
     paint();c.addEventListener('click',function(ev){var rc=c.getBoundingClientRect(),x=ev.clientX-rc.left,y=ev.clientY-rc.top,best=-1,bd=400;P.forEach(function(p,i){var d=(p.x-x)*(p.x-x)+(p.y-y)*(p.y-y);if(d<bd){bd=d;best=i}});if(best>=0){var el=$('#kgn-'+N[best].id.replace(/[^a-z0-9]/gi,'_'));if(el){el.open=true;el.scrollIntoView({block:'nearest',behavior:reduce?'auto':'smooth'})}}})}
   return {init:init,get:function(){return G}};
 })();
@@ -597,20 +611,24 @@ var Pkg=(function(){
 })();
 
 /* 연습 페이지: 입력 채점 */
-function initPractice(){var score={};function upd(){$$('.scoreboard [data-wk]').forEach(function(d){var s=score[d.dataset.wk]||{ok:0,n:+d.dataset.n};var p=s.ok/(+d.dataset.n||1);d.querySelector('b').textContent=s.ok+'/'+d.dataset.n;d.className=s.ok?(p>=.7?'good':'low'):'';var g=d.querySelector('small');if(g)g.textContent=s.ok&&p<.7?'70% 미만 — 해설을 다시 보세요':''})}
-  $$('.quiz[data-quiz]').forEach(function(box){box.addEventListener('click',function(e){var b=e.target.closest('.bt');if(!b)return;setTimeout(function(){var wk=box.dataset.wk;if(!wk)return;var ok=$$('.fb.ok',box).length;score[wk]=score[wk]||{ok:0};score[wk].okq=ok;score[wk].ok=(score[wk].okq||0)+(score[wk].okp||0);upd()},0)})});
-  $$('.prac').forEach(function(p){var inp=$('input',p),btn=$('.chk',p),fb=$('.pfb',p),ans=+p.dataset.ans,tol=+p.dataset.tol,wk=p.dataset.wk,got=false;
-    btn.addEventListener('click',function(){var v=parseFloat(String(inp.value).replace(/,/g,''));if(isNaN(v)){fb.textContent='숫자를 넣어 주세요.';return}var ok=Math.abs(v-ans)<=tol;fb.className='pfb '+(ok?'ok':'no');fb.style.color=ok?COL.g:COL.a;fb.textContent=ok?'맞아요. 아래 풀이와 같은 값이에요.':'다시 계산해 보세요. 허용 오차 ±'+tol+' 안이면 정답입니다.';if(ok&&!got){got=true;score[wk]=score[wk]||{ok:0};score[wk].okp=(score[wk].okp||0)+1;score[wk].ok=(score[wk].okq||0)+score[wk].okp;upd()}});
+function initPractice(){
+  function upd(){var tok=0,tn=0;$$('.scoreboard [data-wk]').forEach(function(d){var wk=d.dataset.wk,n=+d.dataset.n,box=$('.quiz[data-wk="'+wk+'"]'),ok=0,tried=0;if(box)$$('.qi',box).forEach(function(q){var f=$('.fb',q);if(f.classList.contains('ok'))ok++;if(f.classList.contains('ok')||f.classList.contains('no'))tried++});$$('.prac[data-wk="'+wk+'"]').forEach(function(p){if(p.dataset.got)ok++;if(p.dataset.tried)tried++});
+    var r=ok/(n||1);d.querySelector('b').textContent=ok+'/'+n;d.className=tried<n?'':(r>=.7?'good':'low');var g=d.querySelector('small');if(g)g.textContent=tried<n?(tried?'푼 문항 '+tried+'/'+n:''):(r>=.7?'통과':'70% 미만 — 해설을 다시 보세요');tok+=ok;tn+=n});
+    var qz=$('#stQuiz');if(qz)qz.textContent='문항 '+tok+'/'+tn}
+  window.practiceUpd=upd;
+  $$('.quiz[data-quiz]').forEach(function(box){box.addEventListener('click',function(e){if(e.target.closest('.bt'))setTimeout(upd,0)})});
+  $$('.prac').forEach(function(p){var inp=$('input',p),btn=$('.chk',p),fb=$('.pfb',p),ans=+p.dataset.ans,tol=+p.dataset.tol;
+    btn.addEventListener('click',function(){var v=parseFloat(String(inp.value).replace(/,/g,''));if(isNaN(v)){fb.textContent='숫자를 넣어 주세요.';return}var ok=Math.abs(v-ans)<=tol;p.dataset.tried='1';if(ok)p.dataset.got='1';else delete p.dataset.got;fb.className='pfb '+(ok?'ok':'no');fb.style.color=ok?COL.g:COL.a;fb.textContent=ok?'맞아요. 아래 풀이와 같은 값이에요.':'다시 계산해 보세요. 허용 오차 ±'+tol+' 안이면 정답입니다.';upd()});
     $('.show',p).addEventListener('click',function(){p.classList.toggle('open')})});upd()}
 
 /* 시작 */
 function boot(){Cast.fill();Quiz.render();Gloss.apply();try{initSims()}catch(e){console.error(e)}
-  (PD.duels||[]).forEach(function(d){Duel(d)});KG.init();Pkg.init();if($('.prac'))initPractice();
+  (PD.duels||[]).forEach(function(d){Duel(d)});KG.init();Pkg.init();if($('.prac'))initPractice();try{initDash()}catch(e){console.error(e)}
   Study.upd();window.addEventListener('resize',function(){mods.forEach(function(m){m.fn(0)})});mods.forEach(function(m){m.fn(0)});requestAnimationFrame(loop)}
 
 /* 통계 팩 실험 모듈 (시드 고정, 설명용 모형) */
 function S0(el,cfg,hgt,label){var c=mkCanvas(el,hgt,label,cfg.wide);return c}
-function axes(ctx,x0,y0,w,hh,lo,hi,fmtf,n){ctx.save();ctx.strokeStyle=COL.rule;ctx.beginPath();ctx.moveTo(x0,y0-hh);ctx.lineTo(x0,y0);ctx.lineTo(x0+w,y0);ctx.stroke();n=n||4;for(var i=0;i<=n;i++){var v=lo+(hi-lo)*i/n,y=y0-hh*i/n;txt(ctx,fmtf?fmtf(v):v.toFixed(2),x0-6,y+4,COL.muted,10,'right');ctx.strokeStyle='rgba(157,155,184,.08)';ctx.beginPath();ctx.moveTo(x0,y);ctx.lineTo(x0+w,y);ctx.stroke()}ctx.restore()}
+function axes(ctx,x0,y0,w,hh,lo,hi,fmtf,n){ctx.save();ctx.strokeStyle=COL.rule;ctx.beginPath();ctx.moveTo(x0,y0-hh);ctx.lineTo(x0,y0);ctx.lineTo(x0+w,y0);ctx.stroke();n=n||4;for(var i=0;i<=n;i++){var v=lo+(hi-lo)*i/n,y=y0-hh*i/n;txt(ctx,fmtf?fmtf(v):v.toFixed(2),x0-6,y+4,COL.muted,10,'right');ctx.strokeStyle='rgba(93,98,120,.08)';ctx.beginPath();ctx.moveTo(x0,y);ctx.lineTo(x0+w,y);ctx.stroke()}ctx.restore()}
 function quant(a,q){var s=a.slice().sort(function(x,y){return x-y});var k=(s.length-1)*q,f=Math.floor(k);return s[f]+(s[Math.min(s.length-1,f+1)]-s[f])*(k-f)}
 function mean(a){return a.reduce(function(s,v){return s+v},0)/a.length}
 function sd(a,pop){var m=mean(a);return Math.sqrt(a.reduce(function(s,v){return s+(v-m)*(v-m)},0)/(a.length-(pop?0:1)))}
@@ -639,7 +657,7 @@ SIMS.poll=function(el,cfg){var c=S0(el,cfg,260,'여론조사 100번의 결과 �
   function run(){var r=rng(seed),q=bias?p+cfg.bias:p;res=[];for(var t=0;t<100;t++){var k=0;if(n>1500){k=Math.round(n*q+Math.sqrt(n*q*(1-q))*gauss(r))}else for(var i=0;i<n;i++)if(r()<q)k++;res.push(k/n)}draw()}
   function draw(){var W=fit(c,260),ctx=c.getContext('2d');ctx.clearRect(0,0,W,260);grid(ctx,W,260);var x0=50,w=W-70,lo=p-.12,hi=p+.12,y0=230,hh=200,moe=1.96*Math.sqrt(p*(1-p)/n);axes(ctx,x0,y0,w,hh,lo,hi,function(v){return pct(v,0)});
     var yT=y0-hh*(p-lo)/(hi-lo);ctx.strokeStyle=COL.g;ctx.setLineDash([5,4]);ctx.beginPath();ctx.moveTo(x0,yT);ctx.lineTo(x0+w,yT);ctx.stroke();ctx.setLineDash([]);txt(ctx,'실제 지지율 '+pct(p,0),x0+w-4,yT-6,COL.g,11,'right');
-    var hit=0;res.forEach(function(v,i){var x=x0+w*(i+.5)/100,y=y0-hh*(clamp(v,lo,hi)-lo)/(hi-lo),m=hh*moe/(hi-lo),ok=Math.abs(v-p)<=moe;if(ok)hit++;ctx.strokeStyle=ok?'rgba(154,176,208,.55)':'rgba(240,96,77,.8)';ctx.beginPath();ctx.moveTo(x,y-m);ctx.lineTo(x,y+m);ctx.stroke();ctx.fillStyle=ok?COL.s:COL.r;ctx.beginPath();ctx.arc(x,y,2.4,0,7);ctx.fill()});stamp(ctx,W,'설명용 모형 · 실제 데이터 아님');
+    var hit=0;res.forEach(function(v,i){var x=x0+w*(i+.5)/100,y=y0-hh*(clamp(v,lo,hi)-lo)/(hi-lo),m=hh*moe/(hi-lo),ok=Math.abs(v-p)<=moe;if(ok)hit++;ctx.strokeStyle=ok?'rgba(63,95,168,.55)':'rgba(210,63,44,.8)';ctx.beginPath();ctx.moveTo(x,y-m);ctx.lineTo(x,y+m);ctx.stroke();ctx.fillStyle=ok?COL.s:COL.r;ctx.beginPath();ctx.arc(x,y,2.4,0,7);ctx.fill()});stamp(ctx,W,'설명용 모형 · 실제 데이터 아님');
     var s=sd(res);K([['±'+pct(moe,1),'이론 오차범위(95%)','g'],[pct(s,1),'100번 결과의 표준편차','m'],[hit+'/100','참값을 포함한 막대','a'],[pct(mean(res)-p,1),'평균 치우침','r']]);
     E('오차범위 ≈ 1.96 × √(<em>p</em>(1−<em>p</em>) ÷ <b>n</b>) = 1.96 × √('+p+'×'+(1-p).toFixed(2)+' ÷ '+nf(n)+') = <i>±'+pct(moe,1)+'</i>');
     I(bias?[['r','자발적 응답은 지지자가 더 많이 답하는 상황을 넣었어요. 표본을 '+nf(n)+'명으로 늘려도 점들이 참값 위로 한꺼번에 밀려 있습니다.'],['a','표본을 키우면 흩어짐(무작위 오차)은 줄지만 치우침(편향)은 줄지 않아요.']]:[['g','무작위로 뽑으면 100번 중 대체로 95번 안팎이 참값을 품어요. 빨간 막대는 우연히 빗나간 조사입니다.'],['a','n을 4배로 늘리면 오차범위는 절반이 됩니다. 1,000명 ±3.1%, 4,000명 ±1.5%예요.']])}
@@ -666,7 +684,7 @@ SIMS.lln=function(el,cfg){var mode=cfg.mode||'coin',c=S0(el,cfg,250,mode==='coin
 /* 4 카드 표: 조건부 확률 */
 SIMS.cards=function(el,cfg){var wrap=h('div',{class:'tw'}),row=ctrlRow(el),E=eqline(el),I=insight(el),ev='t2',cond='none';el.insertBefore(wrap,row);
   buttons(row,'구할 사건',[['t2','두 번째가 4']],'t2',function(){});buttons(row,'조건',[['none','조건 없음'],['t1','첫 번째가 2']],'none',function(v){cond=v;draw()});
-  function draw(){var t='<table class="tb" style="min-width:360px;text-align:center"><tr><th>첫째 \\ 둘째</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>',num=0,den=0;for(var a=1;a<=4;a++){t+='<tr><th>'+a+'</th>';for(var b=1;b<=4;b++){var poss=a!==b,inC=cond==='none'||a===2,inE=b===4;if(poss&&inC){den++;if(inE)num++}var bg=!poss?'background:#25283a;color:#555':(inC&&inE?'background:rgba(94,227,156,.28)':inC?'background:rgba(130,184,255,.12)':'');t+='<td style="'+bg+'">'+(poss?'('+a+','+b+')':'×')+'</td>'}t+='</tr>'}wrap.innerHTML=t+'</table>';
+  function draw(){var t='<table class="tb" style="min-width:360px;text-align:center"><tr><th>첫째 \\ 둘째</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>',num=0,den=0;for(var a=1;a<=4;a++){t+='<tr><th>'+a+'</th>';for(var b=1;b<=4;b++){var poss=a!==b,inC=cond==='none'||a===2,inE=b===4;if(poss&&inC){den++;if(inE)num++}var bg=!poss?'background:#eceef5;color:#555':(inC&&inE?'background:rgba(19,138,82,.28)':inC?'background:rgba(37,99,201,.12)':'');t+='<td style="'+bg+'">'+(poss?'('+a+','+b+')':'×')+'</td>'}t+='</tr>'}wrap.innerHTML=t+'</table>';
     E(cond==='none'?'P(둘째=4) = <b>'+num+'</b> ÷ <em>'+den+'</em> = <i>'+(num/den).toFixed(3)+'</i> (= 1/4)':'P(둘째=4 | 첫째=2) = P(둘 다) ÷ P(첫째=2) = (1/12) ÷ (3/12) = <b>'+num+'</b> ÷ <em>'+den+'</em> = <i>'+(num/den).toFixed(3)+'</i> (= 1/3)');
     I([['a','× 칸은 같은 카드를 두 번 뽑는 경우라 일어날 수 없어요. 그래서 전체는 16칸이 아니라 12칸입니다.'],[cond==='none'?'g':'m',cond==='none'?'초록 칸 3개가 "둘째가 4"인 경우예요. 12칸 중 3칸이라 1/4입니다.':'조건을 걸면 볼 칸이 첫째=2인 한 줄(3칸)로 줄어요. 그중 둘째가 4인 칸은 1칸이라 1/3로 올라갑니다.']])}
   draw()};
@@ -676,8 +694,8 @@ SIMS.portfolio=function(el,cfg){var c=S0(el,cfg,260,'두 자산 수익률 점과
   slider(row,'상관계수 ρ',-1,1,0.1,rho,function(v){return v.toFixed(1)},function(v){rho=v;draw()});slider(row,'첫 자산 비중',0,1,0.1,w,function(v){return pct(v,0)},function(v){w=v;draw()});
   function draw(){var r=rng(9),pts=[],pr=[];for(var i=0;i<300;i++){var z1=gauss(r),z2=rho*z1+Math.sqrt(Math.max(0,1-rho*rho))*gauss(r),a=mu+s1*z1,b=mu+s2*z2;pts.push([a,b]);pr.push(w*a+(1-w)*b)}
     var sp=Math.sqrt(w*w*s1*s1+(1-w)*(1-w)*s2*s2+2*w*(1-w)*rho*s1*s2),W=fit(c,260),ctx=c.getContext('2d');ctx.clearRect(0,0,W,260);grid(ctx,W,260);var half=Math.min(W*.48,260),cx=half/2+10,cy=130,sc=(half-30)/1.0;
-    ctx.strokeStyle=COL.rule;ctx.strokeRect(10,10,half-20,240);pts.forEach(function(p){ctx.fillStyle='rgba(154,176,208,.6)';ctx.fillRect(cx+(p[0]-mu)*sc*1.6-1.5,cy-(p[1]-mu)*sc*1.6-1.5,3,3)});txt(ctx,'가로: 자산1 · 세로: 자산2',16,26,COL.muted,11);
-    var x0=half+30,ww=W-x0-16;hist(ctx,x0,220,ww,170,pr,24,mu-.5,mu+.5,'rgba(214,114,214,.55)');hist(ctx,x0,220,ww,170,pts.map(function(p){return p[0]}),24,mu-.5,mu+.5,'rgba(240,96,77,.25)');txt(ctx,'분홍: 포트폴리오 · 빨강: 자산1 하나만',x0,236,COL.muted,11);txt(ctx,'-50%',x0,250,COL.muted,10);txt(ctx,'+50%',x0+ww,250,COL.muted,10,'right');stamp(ctx,W,'설명용 모형 · 실제 데이터 아님');
+    ctx.strokeStyle=COL.rule;ctx.strokeRect(10,10,half-20,240);pts.forEach(function(p){ctx.fillStyle='rgba(63,95,168,.6)';ctx.fillRect(cx+(p[0]-mu)*sc*1.6-1.5,cy-(p[1]-mu)*sc*1.6-1.5,3,3)});txt(ctx,'가로: 자산1 · 세로: 자산2',16,26,COL.muted,11);
+    var x0=half+30,ww=W-x0-16;hist(ctx,x0,220,ww,170,pr,24,mu-.5,mu+.5,'rgba(168,50,159,.55)');hist(ctx,x0,220,ww,170,pts.map(function(p){return p[0]}),24,mu-.5,mu+.5,'rgba(210,63,44,.25)');txt(ctx,'분홍: 포트폴리오 · 빨강: 자산1 하나만',x0,236,COL.muted,11);txt(ctx,'-50%',x0,250,COL.muted,10);txt(ctx,'+50%',x0+ww,250,COL.muted,10,'right');stamp(ctx,W,'설명용 모형 · 실제 데이터 아님');
     var p10=quant(pr,.1),p10a=quant(pts.map(function(p){return p[0]}),.1);K([[pct(sp,1),'포트폴리오 위험(표준편차)','m'],[pct(s1,0),'자산1 하나의 위험','r'],[pct(p10,1),'최악 10% 해 (포트폴리오)','a'],[pct(p10a,1),'최악 10% 해 (자산1만)','r']]);
     E('위험 = √(<b>w</b>²σ₁² + (1−w)²σ₂² + 2w(1−w)<em>ρ</em>σ₁σ₂) = <i>'+pct(sp,1)+'</i>');
     I([[rho<0?'g':rho>.8?'r':'a',rho>=.99?'ρ = +1이면 두 자산이 똑같이 움직여 섞어도 위험이 줄지 않아요.':rho<=-.99&&Math.abs(w-.5)<.01?'ρ = −1이고 반반이면 서로의 흔들림을 완전히 지워 이론상 위험이 0이 됩니다.':'ρ가 '+rho.toFixed(1)+'일 때 반반으로 섞으면 위험이 '+pct(s1,0)+'에서 '+pct(sp,1)+'로 줄어요. 상관이 낮을수록 더 많이 줄어듭니다.'],['a','평균 수익률은 섞어도 그대로('+pct(mu,0)+')예요. 줄어드는 것은 흔들림입니다. 교육용이며 투자 자문이 아닙니다.']])}
@@ -689,7 +707,7 @@ SIMS.grid=function(el,cfg){var c=S0(el,cfg,300,'사람 1,000명 점 격자: 진�
   slider(row,'민감도',.5,1,.01,se,function(v){return pct(v,0)},function(v){se=v;draw()});slider(row,'특이도',.5,1,.01,sp,function(v){return pct(v,0)},function(v){sp=v;draw()});
   function draw(){var TP=N*pv*se,FN=N*pv*(1-se),FP=N*(1-pv)*(1-sp),TN=N*(1-pv)*sp,ppv=TP/(TP+FP);var W=fit(c,300),ctx=c.getContext('2d');ctx.clearRect(0,0,W,300);var cols=50,rows=20,cw=Math.min((W-20)/cols,13),x0=(W-cw*cols)/2;
     var k=1000,tp=Math.round(TP/N*k),fn=Math.round(FN/N*k),fp=Math.round(FP/N*k);if(TP>0&&tp===0)tp=1;var seq=[];for(var i=0;i<k;i++)seq.push(i<tp?'tp':i<tp+fn?'fn':i<tp+fn+fp?'fp':'tn');
-    var cmap={tp:COL.g,fn:COL.a,fp:COL.r,tn:'rgba(157,155,184,.28)'};seq.forEach(function(s,i){var x=x0+(i%cols)*cw+cw/2,y=14+Math.floor(i/cols)*cw+cw/2;ctx.fillStyle=cmap[s];ctx.beginPath();ctx.arc(x,y,cw*.36,0,7);ctx.fill()});
+    var cmap={tp:COL.g,fn:COL.a,fp:COL.r,tn:'rgba(93,98,120,.28)'};seq.forEach(function(s,i){var x=x0+(i%cols)*cw+cw/2,y=14+Math.floor(i/cols)*cw+cw/2;ctx.fillStyle=cmap[s];ctx.beginPath();ctx.arc(x,y,cw*.36,0,7);ctx.fill()});
     var ly=14+rows*cw+18;[['● 진짜 양성',COL.g],['● 놓친 환자',COL.a],['● 잘못 양성',COL.r],['● 바르게 음성',COL.muted]].forEach(function(l,i){txt(ctx,l[0],x0+i*Math.max(80,cw*cols/4),ly,l[1],12)});txt(ctx,'점 하나 = '+nf(N/1000)+'명',x0+cw*cols,ly+16,COL.muted,11,'right');stamp(ctx,W,'설명용 모형 · 예시값');
     K([[pct(ppv,1),'양성일 때 실제 환자일 확률','g'],[nf(Math.round(TP+FP)),'양성 판정 수 ('+nf(N)+'명 중)','i'],[nf(Math.round(TP)),'그중 실제 환자','g'],[nf(Math.round(FP)),'잘못 양성','r']]);
     E('P(환자 | 양성) = <b>민감도×유병률</b> ÷ (민감도×유병률 + <em>(1−특이도)×(1−유병률)</em>) = '+(TP/N).toFixed(5)+' ÷ '+((TP+FP)/N).toFixed(5)+' = <i>'+pct(ppv,1)+'</i>');
@@ -732,7 +750,7 @@ SIMS.beta=function(el,cfg){var c=S0(el,cfg,250,'사후분포 곡선'),row=ctrlRo
       E('A ~ Beta(<b>'+aA+'</b>, <em>'+bA+'</em>), B ~ Beta(<b>'+aB+'</b>, <em>'+bB+'</em>) · Beta(전환+1, 비전환+1) → 두 분포에서 20,000번 뽑아 B>A인 비율 = <i>'+pct(pw,1)+'</i>');
       I([[pw>.95?'g':pw>.8?'a':'r',pw>.95?'두 곡선이 거의 겹치지 않아요. 이 데이터라면 B가 낫다고 말할 근거가 충분합니다.':'표본이 적으면 곡선이 넓어져 서로 겹쳐요. 이때 B가 나을 확률은 '+pct(pw,0)+'에 그칩니다.'],['a','"신용구간"은 베이지안 구간이에요. 이 모형과 데이터 아래에서 차이가 이 범위에 있을 확률이 95%라고 읽을 수 있습니다.']])}
     else{var n=Math.max(5,Math.round(cfg.n*sc)),k=Math.round(cfg.k/cfg.n*n),a=k+1,b=n-k+1,m=k/n,s=Math.sqrt(m*(1-m)/n),lo=Math.max(0,m-5*s-.01),hi=Math.min(1,m+5*s+.01),pk=0,r=rng(6),xs=[];for(var j=0;j<=200;j++)pk=Math.max(pk,bpdf(lo+(hi-lo)*j/200,a,b));for(var i=0;i<8000;i++)xs.push(betaR(r,a,b));var q1=quant(xs,.025),q2=quant(xs,.975);
-      ctx.fillStyle='rgba(94,227,156,.15)';ctx.fillRect(x0+w*(q1-lo)/(hi-lo),y0-hh,w*(q2-q1)/(hi-lo),hh);ctx.strokeStyle=COL.s;ctx.lineWidth=2.5;ctx.beginPath();for(var j=0;j<=200;j++){var x=lo+(hi-lo)*j/200,y=y0-hh*bpdf(x,a,b)/pk;j?ctx.lineTo(x0+w*j/200,y):ctx.moveTo(x0+w*j/200,y)}ctx.stroke();for(var t=0;t<=4;t++)txt(ctx,pct(lo+(hi-lo)*t/4,0),x0+w*t/4,y0+16,COL.muted,10,'center');stamp(ctx,W,'설명용 모형 · 예시값');
+      ctx.fillStyle='rgba(19,138,82,.15)';ctx.fillRect(x0+w*(q1-lo)/(hi-lo),y0-hh,w*(q2-q1)/(hi-lo),hh);ctx.strokeStyle=COL.s;ctx.lineWidth=2.5;ctx.beginPath();for(var j=0;j<=200;j++){var x=lo+(hi-lo)*j/200,y=y0-hh*bpdf(x,a,b)/pk;j?ctx.lineTo(x0+w*j/200,y):ctx.moveTo(x0+w*j/200,y)}ctx.stroke();for(var t=0;t<=4;t++)txt(ctx,pct(lo+(hi-lo)*t/4,0),x0+w*t/4,y0+16,COL.muted,10,'center');stamp(ctx,W,'설명용 모형 · 예시값');
       K([[nf(n),'모은 '+(cfg.unit||'건수'),'i'],[pct(m,1),(cfg.what||'비율')+' 추정','g'],['['+pct(q1,1)+', '+pct(q2,1)+']','95% 신용구간','m'],['±'+pct((q2-q1)/2,1),'구간 반폭','a']]);
       E('Beta(<b>'+a+'</b>, <em>'+b+'</em>) = Beta(해당+1, 나머지+1) · 구간 폭은 대략 √n에 반비례');I([[n<200?'r':'g',n<200?'모은 글이 적으면 구간이 넓어요. "긍정 '+pct(m,0)+'"라고 단정하기 어렵습니다.':'모은 글이 많아지면 구간이 좁아져 비율을 자신 있게 말할 수 있어요.'],['a','표본이 특정 사람들(많이 쓰는 사람)에 치우치면 구간이 좁아도 틀릴 수 있어요. 구간은 무작위 오차만 담습니다.']])}}
   addMod(c,function(dt){if(!dt)draw()});draw()};
@@ -745,7 +763,7 @@ SIMS.cf=function(el,cfg){var tw=h('div',{class:'tw'}),row=ctrlRow(el),K=kpis(el,
   function draw(){var vu=vec(u),sims=R.map(function(_,i){return i===u?null:cos(vu,vec(i))}),preds=[];
     R[u].forEach(function(x,j){if(x>0)return;var num=0,den=0;sims.forEach(function(s,i){if(s==null||R[i][j]===0||s<=0)return;num+=s*R[i][j];den+=s});preds.push({j:j,v:den?num/den:0})});preds.sort(function(a,b){return b.v-a.v});
     var t='<table class="tb" style="min-width:520px"><tr><th>사람 \\ '+(cfg.itemLabel||'영화')+'</th>'+cfg.items.map(function(n){return '<th>'+esc(n)+'</th>'}).join('')+'<th>나와 닮은 정도</th></tr>';
-    R.forEach(function(r,i){t+='<tr'+(i===u?' style="background:rgba(94,227,156,.08)"':'')+'><th>'+esc(cfg.users[i])+'</th>'+r.map(function(x,j){var pr=i===u&&x===0?preds.filter(function(p){return p.j===j})[0]:null;return '<td class="n"'+(pr?' style="color:#5ee39c"':'')+'>'+(x>0?x:(pr?'≈'+pr.v.toFixed(1):'·'))+'</td>'}).join('')+'<td class="n">'+(i===u?'나':sims[i].toFixed(2))+'</td></tr>'});tw.innerHTML=t+'</table>';
+    R.forEach(function(r,i){t+='<tr'+(i===u?' style="background:rgba(19,138,82,.08)"':'')+'><th>'+esc(cfg.users[i])+'</th>'+r.map(function(x,j){var pr=i===u&&x===0?preds.filter(function(p){return p.j===j})[0]:null;return '<td class="n"'+(pr?' style="color:#138a52"':'')+'>'+(x>0?x:(pr?'≈'+pr.v.toFixed(1):'·'))+'</td>'}).join('')+'<td class="n">'+(i===u?'나':sims[i].toFixed(2))+'</td></tr>'});tw.innerHTML=t+'</table>';
     var best=sims.reduce(function(b,s,i){return s!=null&&(b<0||s>sims[b])?i:b},-1);K([[esc(cfg.users[best]),'가장 닮은 사람','g'],[sims[best].toFixed(2),'코사인 유사도','m'],[preds.length?esc(cfg.items[preds[0].j]):'없음','첫 번째 추천','a']]);
     E('코사인 유사도 = <b>A·B</b> ÷ (<em>|A| × |B|</em>) — 1이면 같은 방향(취향 같음), 0이면 관련 없음 · 빈칸 점수 = 닮은 사람들 점수의 유사도 가중평균');
     I([['g','초록 숫자가 아직 안 본 '+(cfg.itemLabel||'영화')+'의 예상 점수예요. 나와 닮은 사람이 높게 준 것일수록 높게 나옵니다.'],[center?'a':'m',center?'사람별 평균을 빼면 "후하게 주는 사람"과 "짜게 주는 사람"의 습관이 지워지고 취향의 방향만 남아요.':'보정을 켜 보세요. 점수를 후하게 주는 습관 때문에 닮아 보이던 사람이 걸러집니다.']])}
@@ -791,8 +809,8 @@ SIMS.pagerank=function(el,cfg){var c=S0(el,cfg,280,'다섯 페이지 링크 그�
   slider(row,'감쇠 계수 d',0,0.99,0.01,d,function(v){return v.toFixed(2)},function(v){d=v;draw()});
   function pr(){var r=new Array(n).fill(1/n),out=N.map(function(_,i){return L.filter(function(l){return l[0]===i}).length});for(var it=0;it<100;it++){var nr=new Array(n).fill((1-d)/n);L.forEach(function(l){nr[l[1]]+=d*r[l[0]]/out[l[0]]});N.forEach(function(_,i){if(!out[i])for(var j=0;j<n;j++)nr[j]+=d*r[i]/n});r=nr}return r}
   function draw(){var r=pr(),indeg=N.map(function(_,i){return L.filter(function(l){return l[1]===i}).length}),W=fit(c,280),ctx=c.getContext('2d');ctx.clearRect(0,0,W,280);grid(ctx,W,280);var pos=cfg.pos.map(function(p){return [p[0]*W,p[1]*280]});
-    L.forEach(function(l){var a=pos[l[0]],b=pos[l[1]],dx=b[0]-a[0],dy=b[1]-a[1],dd=Math.sqrt(dx*dx+dy*dy),ux=dx/dd,uy=dy/dd,rb=14+60*r[l[1]];ctx.strokeStyle='rgba(157,155,184,.5)';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(a[0]+ux*16,a[1]+uy*16);var ex=b[0]-ux*rb,ey=b[1]-uy*rb;ctx.lineTo(ex,ey);ctx.stroke();ctx.fillStyle='rgba(157,155,184,.8)';ctx.beginPath();ctx.moveTo(ex,ey);ctx.lineTo(ex-ux*8-uy*4,ey-uy*8+ux*4);ctx.lineTo(ex-ux*8+uy*4,ey-uy*8-ux*4);ctx.fill()});
-    N.forEach(function(nm,i){var rr=14+60*r[i];ctx.fillStyle='rgba(154,176,208,.25)';ctx.strokeStyle=COL.s;ctx.lineWidth=2;ctx.beginPath();ctx.arc(pos[i][0],pos[i][1],rr,0,7);ctx.fill();ctx.stroke();txt(ctx,nm,pos[i][0],pos[i][1]+4,COL.text,12,'center',true);txt(ctx,pct(r[i],0),pos[i][0],pos[i][1]+rr+14,COL.a,11,'center')});stamp(ctx,W,'예시 링크 구조');
+    L.forEach(function(l){var a=pos[l[0]],b=pos[l[1]],dx=b[0]-a[0],dy=b[1]-a[1],dd=Math.sqrt(dx*dx+dy*dy),ux=dx/dd,uy=dy/dd,rb=14+60*r[l[1]];ctx.strokeStyle='rgba(93,98,120,.5)';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(a[0]+ux*16,a[1]+uy*16);var ex=b[0]-ux*rb,ey=b[1]-uy*rb;ctx.lineTo(ex,ey);ctx.stroke();ctx.fillStyle='rgba(93,98,120,.8)';ctx.beginPath();ctx.moveTo(ex,ey);ctx.lineTo(ex-ux*8-uy*4,ey-uy*8+ux*4);ctx.lineTo(ex-ux*8+uy*4,ey-uy*8-ux*4);ctx.fill()});
+    N.forEach(function(nm,i){var rr=14+60*r[i];ctx.fillStyle='rgba(63,95,168,.25)';ctx.strokeStyle=COL.s;ctx.lineWidth=2;ctx.beginPath();ctx.arc(pos[i][0],pos[i][1],rr,0,7);ctx.fill();ctx.stroke();txt(ctx,nm,pos[i][0],pos[i][1]+4,COL.text,12,'center',true);txt(ctx,pct(r[i],0),pos[i][0],pos[i][1]+rr+14,COL.a,11,'center')});stamp(ctx,W,'예시 링크 구조');
     var b=r.indexOf(Math.max.apply(null,r)),bi=indeg.indexOf(Math.max.apply(null,indeg));K([[N[b],'페이지랭크 1위','g'],[N[bi]+' ('+indeg[bi]+'개)','받은 링크 수 1위','a'],[pct(r[b],1),'1위의 중요도','m']]);
     E('PR(A) = <em>(1−d)/N</em> + <b>d</b> × Σ PR(T) ÷ C(T) · T: A로 링크하는 페이지, C(T): T의 나가는 링크 수');
     I([[b!==bi?'g':'a',b!==bi?'받은 링크 수는 '+N[bi]+'가 가장 많지만, 중요한 페이지가 몰아준 링크 덕분에 '+N[b]+'가 1위예요. 누가 가리켰는지가 중요합니다.':'링크를 많이 받은 페이지가 1위예요. 감쇠 계수를 바꿔 순위가 어떻게 흔들리는지 보세요.'],['a','d는 "링크를 따라갈 확률"이에요. 나머지 1−d는 아무 페이지로 순간이동합니다. d = 0이면 모두 똑같은 중요도가 됩니다.']])}
@@ -812,7 +830,7 @@ SIMS.clv=function(el,cfg){var tw=h('div',{class:'tw'}),row=ctrlRow(el),K=kpis(el
 SIMS.mcpi=function(el,cfg){var c=S0(el,cfg,300,'정사각형 안 무작위 점과 사분원'),row=ctrlRow(el),K=kpis(el,3),E=eqline(el),I=insight(el),n=1000,seed=3;
   buttons(row,'점 개수',[[100,'100'],[1000,'1,000'],[10000,'10,000'],[100000,'100,000']],1000,function(v){n=v;draw()});action(row,'다른 시드',function(){seed++;draw()});
   function draw(){var r=rng(seed),ins=0,W=fit(c,300),ctx=c.getContext('2d');ctx.clearRect(0,0,W,300);var S=270,x0=(Math.min(W,560)-S)/2+10,y0=15;ctx.strokeStyle=COL.rule;ctx.strokeRect(x0,y0,S,S);ctx.strokeStyle=COL.g;ctx.beginPath();ctx.arc(x0,y0+S,S,-Math.PI/2,0);ctx.stroke();
-    for(var i=0;i<n;i++){var x=r(),y=r(),k=x*x+y*y<=1;if(k)ins++;if(i<6000){ctx.fillStyle=k?'rgba(94,227,156,.7)':'rgba(240,96,77,.6)';ctx.fillRect(x0+x*S-1,y0+S-y*S-1,2,2)}}var est=4*ins/n,se=4*Math.sqrt(Math.PI/4*(1-Math.PI/4)/n);
+    for(var i=0;i<n;i++){var x=r(),y=r(),k=x*x+y*y<=1;if(k)ins++;if(i<6000){ctx.fillStyle=k?'rgba(19,138,82,.7)':'rgba(210,63,44,.6)';ctx.fillRect(x0+x*S-1,y0+S-y*S-1,2,2)}}var est=4*ins/n,se=4*Math.sqrt(Math.PI/4*(1-Math.PI/4)/n);
     if(W>620){txt(ctx,'π 추정 = 4 × '+nf(ins)+' ÷ '+nf(n),x0+S+30,80,COL.text,14,'left',true);txt(ctx,'= '+est.toFixed(4),x0+S+30,104,COL.a,18,'left',true);txt(ctx,'참값 3.1416',x0+S+30,130,COL.muted,12)}stamp(ctx,W,'시드 '+seed+(n>6000?' · 점은 6,000개만 그림':''));
     K([[est.toFixed(4),'π 추정값','a'],[Math.abs(est-Math.PI).toFixed(4),'참값과의 차이','r'],['±'+(1.96*se).toFixed(3),'예상 오차(95%)','g']]);E('π ≈ 4 × <b>원 안의 점</b> ÷ <em>전체 점</em> · 오차는 √n에 반비례 → 점을 100배 늘리면 오차는 1/10');
     I([[n<1000?'r':'g',n<1000?'점이 100개면 추정이 3.0~3.3 사이에서 흔들려요.':'점이 늘수록 추정값이 3.14 근처에 모입니다. 몬테카를로는 "많이 던져 비율로 잰다"가 전부예요.'],['a','정확도를 한 자리 더 얻으려면 시행을 100배 늘려야 해요. 시뮬레이션 횟수와 계산 비용의 균형을 생각해야 합니다.']])}
@@ -824,7 +842,7 @@ SIMS.mcval=function(el,cfg){var c=S0(el,cfg,260,'시뮬레이션 기업가치 �
   function tri(r,a,m,b){var u=r(),F=(m-a)/(b-a);return u<F?a+Math.sqrt(u*(b-a)*(m-a)):b-Math.sqrt((1-u)*(b-a)*(b-m))}
   function draw(){var r=rng(21),V=[];for(var i=0;i<n;i++){var g=cfg.gmu+gsd*gauss(r),cac=tri(r,50,100,200),sh=betaR(r,2,5);V.push(cfg.K*Math.pow(1+g,5)*sh*(100/cac))}
     var p10=quant(V,.1),p50=quant(V,.5),p90=quant(V,.9),m=mean(V),over=V.filter(function(v){return v>=cfg.th}).length/n,W=fit(c,260),ctx=c.getContext('2d');ctx.clearRect(0,0,W,260);grid(ctx,W,260);var x0=30,w=W-50,hi=cfg.hi||200;
-    hist(ctx,x0,220,w,180,V,40,0,hi,'rgba(154,176,208,.55)');[[p10,'P10',COL.r],[p50,'P50',COL.a],[p90,'P90',COL.g],[m,'평균',COL.m]].forEach(function(q,k){var x=x0+w*q[0]/hi;ctx.strokeStyle=q[2];ctx.setLineDash(k===3?[2,3]:[5,4]);ctx.beginPath();ctx.moveTo(x,30);ctx.lineTo(x,220);ctx.stroke();ctx.setLineDash([]);txt(ctx,q[1],x,26-(k%2)*0,q[2],11,'center',true)});
+    hist(ctx,x0,220,w,180,V,40,0,hi,'rgba(63,95,168,.55)');[[p10,'P10',COL.r],[p50,'P50',COL.a],[p90,'P90',COL.g],[m,'평균',COL.m]].forEach(function(q,k){var x=x0+w*q[0]/hi;ctx.strokeStyle=q[2];ctx.setLineDash(k===3?[2,3]:[5,4]);ctx.beginPath();ctx.moveTo(x,30);ctx.lineTo(x,220);ctx.stroke();ctx.setLineDash([]);txt(ctx,q[1],x,26-(k%2)*0,q[2],11,'center',true)});
     for(var t=0;t<=4;t++)txt(ctx,nf(hi*t/4)+'억',x0+w*t/4,238,COL.muted,10,'center');stamp(ctx,W,'설명용 모형 · 실제 데이터 아님');
     K([[nf(p10)+'억','P10 (하위 10%)','r'],[nf(p50)+'억','P50 (중앙값)','a'],[nf(p90)+'억','P90 (상위 10%)','g'],[pct(over,0),cfg.th+'억 이상일 확률','i']]);
     E('가치 = 기준값 × (1+<b>성장률</b>)<sup>5</sup> × <em>점유율</em> × (100 ÷ <i>고객획득비용</i>) · 성장률~정규('+pct(cfg.gmu,0)+', '+pct(gsd,0)+'), 비용~삼각(50,100,200달러), 점유율~베타(2,5)');
@@ -845,8 +863,8 @@ SIMS.mcmc=function(el,cfg){var c=S0(el,cfg,250,'MCMC 표본 궤적과 히스토�
   slider(row,'걸음 크기',0.001,0.2,0.001,step,function(v){return v.toFixed(3)},function(v){step=v;draw()});slider(row,'버리는 앞부분',0,3000,100,burn,function(v){return nf(v)+'번'},function(v){burn=v;draw()});
   function lp(t){return t<=0||t>=1?-Infinity:k*Math.log(t)+(n-k)*Math.log(1-t)}
   function draw(){var r=rng(13),t=cfg.start||.5,ch=[],acc=0;for(var i=0;i<N;i++){var q=t+step*gauss(r);if(Math.log(r())<lp(q)-lp(t)){t=q;acc++}ch.push(t)}var kept=ch.slice(burn),m=mean(kept),W=fit(c,250),ctx=c.getContext('2d');ctx.clearRect(0,0,W,250);grid(ctx,W,250);var half=W*.58,lo=0,hi=Math.max(.12,m*2.2);
-    ctx.fillStyle='rgba(240,96,77,.08)';ctx.fillRect(10,10,(half-20)*burn/N,210);ctx.strokeStyle=COL.s;ctx.lineWidth=1;ctx.beginPath();ch.forEach(function(v,i){var x=10+(half-20)*i/N,y=220-210*clamp((v-lo)/(hi-lo),0,1);i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.stroke();txt(ctx,'표본 궤적 (빨간 칸: 버리는 앞부분)',14,236,COL.muted,11);
-    var x0=half+10,w=W-x0-14,hc=hist(ctx,x0,220,w,190,kept,30,lo,hi,'rgba(154,176,208,.5)'),mx=Math.max.apply(null,hc),a=k+1,b=n-k+1,pk=0;for(var j=0;j<=100;j++)pk=Math.max(pk,bpdf(lo+(hi-lo)*j/100,a,b));ctx.strokeStyle=COL.g;ctx.lineWidth=2;ctx.beginPath();for(var j=0;j<=100;j++){var xx=lo+(hi-lo)*j/100,yy=220-190*bpdf(xx,a,b)/pk;j?ctx.lineTo(x0+w*j/100,yy):ctx.moveTo(x0+w*j/100,yy)}ctx.stroke();txt(ctx,'초록: 정답 분포',x0,236,COL.muted,11);stamp(ctx,W,'시드 고정');
+    ctx.fillStyle='rgba(210,63,44,.08)';ctx.fillRect(10,10,(half-20)*burn/N,210);ctx.strokeStyle=COL.s;ctx.lineWidth=1;ctx.beginPath();ch.forEach(function(v,i){var x=10+(half-20)*i/N,y=220-210*clamp((v-lo)/(hi-lo),0,1);i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.stroke();txt(ctx,'표본 궤적 (빨간 칸: 버리는 앞부분)',14,236,COL.muted,11);
+    var x0=half+10,w=W-x0-14,hc=hist(ctx,x0,220,w,190,kept,30,lo,hi,'rgba(63,95,168,.5)'),mx=Math.max.apply(null,hc),a=k+1,b=n-k+1,pk=0;for(var j=0;j<=100;j++)pk=Math.max(pk,bpdf(lo+(hi-lo)*j/100,a,b));ctx.strokeStyle=COL.g;ctx.lineWidth=2;ctx.beginPath();for(var j=0;j<=100;j++){var xx=lo+(hi-lo)*j/100,yy=220-190*bpdf(xx,a,b)/pk;j?ctx.lineTo(x0+w*j/100,yy):ctx.moveTo(x0+w*j/100,yy)}ctx.stroke();txt(ctx,'초록: 정답 분포',x0,236,COL.muted,11);stamp(ctx,W,'시드 고정');
     K([[pct(m,2),'표본 평균','g'],[pct((k+1)/(n+2),2),'정답 사후평균','a'],[pct(acc/N,0),'받아들인 비율','i'],[nf(kept.length),'남긴 표본','m']]);E('제안 θ\' = θ + 걸음×잡음 → 받아들일 확률 = min(1, <b>사후(θ\')</b> ÷ <em>사후(θ)</em>) · 데이터: '+n+'명 중 '+k+'명 전환');
     I([[acc/N<.15?'r':acc/N>.8?'a':'g',acc/N<.15?'걸음이 너무 크면 제안이 대부분 거절돼 궤적이 계단처럼 멈춰 있어요.':acc/N>.8?'걸음이 너무 작으면 거의 다 받아들여지지만 조금씩만 움직여 분포를 다 훑는 데 오래 걸려요.':'받아들인 비율이 적당해요. 궤적이 정답 분포 주변을 고르게 오갑니다.'],['a','처음 시작점('+pct(cfg.start||.5,0)+')은 정답과 멀어요. 그 근처를 지나는 앞부분은 버리고(burn-in) 나머지만 씁니다.']])}
   addMod(c,function(dt){if(!dt)draw()});draw()};
@@ -867,8 +885,8 @@ SIMS.bn=function(el,cfg){var c=S0(el,cfg,250,'베이지안 네트워크 노드�
   function pjoint(a){var p=1;N.forEach(function(nd){var key=(nd.par||[]).map(function(q){return a[q]}).join(''),pt=nd.cpt[key===''?'_':key];p*=a[nd.id]?pt:1-pt});return p}
   function infer(){var ids=N.map(function(n){return n.id}),m=ids.length,post={},Z=0;ids.forEach(function(i){post[i]=0});for(var mask=0;mask<(1<<m);mask++){var a={},ok=true;ids.forEach(function(id,i){a[id]=(mask>>i)&1;if(ev[id]!=null&&ev[id]!==a[id])ok=false});if(!ok)continue;var p=pjoint(a);Z+=p;ids.forEach(function(id){if(a[id])post[id]+=p})}ids.forEach(function(id){post[id]/=Z});return post}
   function draw(){var P=infer(),W=fit(c,250),ctx=c.getContext('2d');ctx.clearRect(0,0,W,250);grid(ctx,W,250);var pos={};N.forEach(function(nd){pos[nd.id]=[nd.x*W,nd.y*250]});
-    N.forEach(function(nd){(nd.par||[]).forEach(function(q){var a=pos[q],b=pos[nd.id],dx=b[0]-a[0],dy=b[1]-a[1],d=Math.sqrt(dx*dx+dy*dy),ux=dx/d,uy=dy/d,kk=Math.min(66/Math.max(1e-6,Math.abs(ux)),28/Math.max(1e-6,Math.abs(uy))),ex=b[0]-ux*kk,ey=b[1]-uy*kk;ctx.strokeStyle='rgba(157,155,184,.6)';ctx.lineWidth=1.6;ctx.beginPath();ctx.moveTo(a[0]+ux*kk,a[1]+uy*kk);ctx.lineTo(ex,ey);ctx.stroke();ctx.fillStyle='rgba(157,155,184,.9)';ctx.beginPath();ctx.moveTo(ex,ey);ctx.lineTo(ex-ux*8-uy*4,ey-uy*8+ux*4);ctx.lineTo(ex-ux*8+uy*4,ey-uy*8-ux*4);ctx.fill()})});
-    N.forEach(function(nd){var p=pos[nd.id],o=ev[nd.id]!=null;ctx.fillStyle=o?'rgba(241,182,70,.18)':'rgba(28,30,45,.95)';ctx.strokeStyle=o?COL.a:COL.s;ctx.lineWidth=2;ctx.beginPath();if(ctx.roundRect)ctx.roundRect(p[0]-62,p[1]-24,124,48,10);else ctx.rect(p[0]-62,p[1]-24,124,48);ctx.fill();ctx.stroke();txt(ctx,nd.name,p[0],p[1]-5,COL.text,12,'center',true);ctx.fillStyle=COL.panel;ctx.fillRect(p[0]-50,p[1]+6,100,8);ctx.fillStyle=COL.g;ctx.fillRect(p[0]-50,p[1]+6,100*P[nd.id],8);txt(ctx,pct(P[nd.id],0),p[0]+56,p[1]+14,COL.a,11)});stamp(ctx,W,'예시 조건부 확률표');
+    N.forEach(function(nd){(nd.par||[]).forEach(function(q){var a=pos[q],b=pos[nd.id],dx=b[0]-a[0],dy=b[1]-a[1],d=Math.sqrt(dx*dx+dy*dy),ux=dx/d,uy=dy/d,kk=Math.min(66/Math.max(1e-6,Math.abs(ux)),28/Math.max(1e-6,Math.abs(uy))),ex=b[0]-ux*kk,ey=b[1]-uy*kk;ctx.strokeStyle='rgba(93,98,120,.6)';ctx.lineWidth=1.6;ctx.beginPath();ctx.moveTo(a[0]+ux*kk,a[1]+uy*kk);ctx.lineTo(ex,ey);ctx.stroke();ctx.fillStyle='rgba(93,98,120,.9)';ctx.beginPath();ctx.moveTo(ex,ey);ctx.lineTo(ex-ux*8-uy*4,ey-uy*8+ux*4);ctx.lineTo(ex-ux*8+uy*4,ey-uy*8-ux*4);ctx.fill()})});
+    N.forEach(function(nd){var p=pos[nd.id],o=ev[nd.id]!=null;ctx.fillStyle=o?'rgba(183,120,0,.18)':'rgba(255,255,255,.97)';ctx.strokeStyle=o?COL.a:COL.s;ctx.lineWidth=2;ctx.beginPath();if(ctx.roundRect)ctx.roundRect(p[0]-62,p[1]-24,124,48,10);else ctx.rect(p[0]-62,p[1]-24,124,48);ctx.fill();ctx.stroke();txt(ctx,nd.name,p[0],p[1]-5,COL.text,12,'center',true);ctx.fillStyle=COL.panel;ctx.fillRect(p[0]-50,p[1]+6,100,8);ctx.fillStyle=COL.g;ctx.fillRect(p[0]-50,p[1]+6,100*P[nd.id],8);txt(ctx,pct(P[nd.id],0),p[0]+56,p[1]+14,COL.a,11)});stamp(ctx,W,'예시 조건부 확률표');
     var tg=N.filter(function(n){return n.target})[0]||N[N.length-1];K([[pct(P[tg.id],1),tg.name+' 확률','g'],[Object.keys(ev).length+'개','관찰한 노드','a'],[cfg.base!=null?pct(cfg.base,1):'-','아무것도 모를 때','i']]);
     E('P(전체) = Π P(노드 | 부모) — 관찰과 맞지 않는 경우를 지우고 남은 경우의 확률을 더해 나눔 (열거 추론)');I([['g',cfg.msg||'노란 테두리가 관찰한 값이에요. 관찰을 바꾸면 화살표를 거슬러 원인 쪽 확률도 함께 바뀝니다.'],['a','화살표는 "이렇게 영향을 준다"는 가정이에요. 데이터만으로 화살표 방향(인과)이 증명되지는 않습니다.']])}
   addMod(c,function(dt){if(!dt)draw()});draw()};
@@ -877,7 +895,7 @@ SIMS.bn=function(el,cfg){var c=S0(el,cfg,250,'베이지안 네트워크 노드�
 SIMS.dropout=function(el,cfg){var c=S0(el,cfg,240,'여러 번 예측한 확률 점과 평균·표준편차'),row=ctrlRow(el),K=kpis(el,4),E=eqline(el),I=insight(el),kind='known',T=50,th=.08;
   buttons(row,'보여 준 사진',[['known','배운 적 있는 보행자'],['new','처음 보는 마네킹']],'known',function(v){kind=v;draw()});slider(row,'반복 예측 횟수',1,100,1,T,function(v){return v+'번'},function(v){T=v;draw()});
   function draw(){var r=rng(kind==='known'?31:32),mu=kind==='known'?.93:.82,s=kind==='known'?.025:.13,ps=[];for(var i=0;i<T;i++)ps.push(clamp(mu+s*gauss(r),.02,.995));var m=mean(ps),sdv=T>1?sd(ps):0,W=fit(c,240),ctx=c.getContext('2d');ctx.clearRect(0,0,W,240);grid(ctx,W,240);var x0=44,y0=210,w=W-60,hh=180;axes(ctx,x0,y0,w,hh,0,1,function(v){return pct(v,0)});
-    ctx.fillStyle='rgba(94,227,156,.12)';ctx.fillRect(x0,y0-hh*(m+2*sdv),w,hh*4*sdv);ps.forEach(function(p,i){ctx.fillStyle=COL.s;ctx.beginPath();ctx.arc(x0+w*(i+.5)/T,y0-hh*p,3,0,7);ctx.fill()});ctx.strokeStyle=COL.g;ctx.beginPath();ctx.moveTo(x0,y0-hh*m);ctx.lineTo(x0+w,y0-hh*m);ctx.stroke();stamp(ctx,W,'설명용 모형 · 실제 데이터 아님');
+    ctx.fillStyle='rgba(19,138,82,.12)';ctx.fillRect(x0,y0-hh*(m+2*sdv),w,hh*4*sdv);ps.forEach(function(p,i){ctx.fillStyle=COL.s;ctx.beginPath();ctx.arc(x0+w*(i+.5)/T,y0-hh*p,3,0,7);ctx.fill()});ctx.strokeStyle=COL.g;ctx.beginPath();ctx.moveTo(x0,y0-hh*m);ctx.lineTo(x0+w,y0-hh*m);ctx.stroke();stamp(ctx,W,'설명용 모형 · 실제 데이터 아님');
     var unsure=sdv>th;K([[pct(m,0),'평균 "보행자" 확률','g'],['±'+pct(sdv,1),'표준편차(흔들림)','m'],['['+pct(clamp(m-1.96*sdv,0,1),0)+', '+pct(clamp(m+1.96*sdv,0,1),0)+']','대략 95% 범위','a'],[T<2?'-':unsure?'확신 낮음 → 감속':'확신 높음','판단 (기준 '+pct(th,0)+')',unsure?'r':'g']]);
     E('드롭아웃을 켠 채 <b>'+T+'번</b> 예측 → 평균 = 예측값, <em>표준편차</em> = 모델이 모르는 정도 (평균±1.96×표준편차 ≈ 95% 범위)');
     I([[unsure?'r':'g',unsure?'처음 보는 대상이라 예측이 '+pct(Math.min.apply(null,ps),0)+'~'+pct(Math.max.apply(null,ps),0)+'로 들쭉날쭉해요. 평균만 보면 '+pct(m,0)+'로 그럴듯하지만, 흔들림이 "모른다"는 신호입니다.':'배운 대상이라 매번 비슷하게 답해요. 이럴 때는 한 번의 예측도 믿을 만합니다.'],['a','한 번만 예측하면(1번) 흔들림을 볼 수 없어요. 횟수를 1로 내려 보세요.']])}
@@ -888,17 +906,29 @@ SIMS.shrink=function(el,cfg){var c=S0(el,cfg,260,'매장별 원래 평균에서 
   slider(row,'매장 사이 차이 τ',1,40,1,tau,function(v){return v+(cfg.unit||'')},function(v){tau=v;draw()});
   function draw(){var tot=0,nn=0;S.forEach(function(s){tot+=s.m*s.n;nn+=s.n});var mu=tot/nn,W=fit(c,260),ctx=c.getContext('2d');ctx.clearRect(0,0,W,260);grid(ctx,W,260);var lo=cfg.lo,hi=cfg.hi,x0=110,w=W-140;
     var xm=x0+w*(mu-lo)/(hi-lo);ctx.strokeStyle=COL.g;ctx.setLineDash([5,4]);ctx.beginPath();ctx.moveTo(xm,10);ctx.lineTo(xm,230);ctx.stroke();ctx.setLineDash([]);txt(ctx,'전체 평균 '+mu.toFixed(1),xm,250,COL.g,11,'center');
-    var ws=[];S.forEach(function(s,i){var wgt=(s.n/(sig*sig))/(s.n/(sig*sig)+1/(tau*tau)),est=wgt*s.m+(1-wgt)*mu;ws.push(wgt);var y=24+i*(210/S.length),xa=x0+w*(s.m-lo)/(hi-lo),xb=x0+w*(est-lo)/(hi-lo);txt(ctx,s.name+' (n='+s.n+')',x0-8,y+4,COL.text,12,'right');ctx.strokeStyle='rgba(157,155,184,.5)';ctx.beginPath();ctx.moveTo(xa,y);ctx.lineTo(xb,y);ctx.stroke();ctx.fillStyle=COL.r;ctx.beginPath();ctx.arc(xa,y,4,0,7);ctx.fill();ctx.fillStyle=COL.s;ctx.beginPath();ctx.arc(xb,y,5,0,7);ctx.fill()});
+    var ws=[];S.forEach(function(s,i){var wgt=(s.n/(sig*sig))/(s.n/(sig*sig)+1/(tau*tau)),est=wgt*s.m+(1-wgt)*mu;ws.push(wgt);var y=24+i*(210/S.length),xa=x0+w*(s.m-lo)/(hi-lo),xb=x0+w*(est-lo)/(hi-lo);txt(ctx,s.name+' (n='+s.n+')',x0-8,y+4,COL.text,12,'right');ctx.strokeStyle='rgba(93,98,120,.5)';ctx.beginPath();ctx.moveTo(xa,y);ctx.lineTo(xb,y);ctx.stroke();ctx.fillStyle=COL.r;ctx.beginPath();ctx.arc(xa,y,4,0,7);ctx.fill();ctx.fillStyle=COL.s;ctx.beginPath();ctx.arc(xb,y,5,0,7);ctx.fill()});
     txt(ctx,'● 매장 평균 그대로',x0,12,COL.r,11);txt(ctx,'● 계층 추정',x0+130,12,COL.s,11);stamp(ctx,W,'예시값');
     var small=S.reduce(function(a,s,i){return s.n<S[a].n?i:a},0),big=S.reduce(function(a,s,i){return s.n>S[a].n?i:a},0);K([[pct(ws[small],0),S[small].name+'의 자기 평균 무게','r'],[pct(ws[big],0),S[big].name+'의 자기 평균 무게','g'],[mu.toFixed(1)+(cfg.unit||''),'전체 평균','a']]);
     E('계층 추정 = <b>w</b> × 매장 평균 + (1−<b>w</b>) × 전체 평균, w = (n/σ²) ÷ (n/σ² + 1/<em>τ</em>²), σ = 매장 안 흩어짐 '+sig);
     I([['g','기록이 적은 매장일수록 화살표가 길어요. 우연히 튄 평균을 전체 평균 쪽으로 당겨 "수축"시킵니다.'],['a','τ(매장 사이 차이)를 키우면 매장들이 원래 많이 다르다고 보는 셈이라 덜 당겨져요. τ가 작으면 모두 전체 평균에 가까워집니다.']])}
   addMod(c,function(dt){if(!dt)draw()});draw()};
 
+/* 23b 베타 수축: 클릭률처럼 이항 데이터 (사전 평균 p0, 사전의 무게 m) */
+SIMS.betashrink=function(el,cfg){var c=S0(el,cfg,260,'항목별 원래 클릭률에서 베이지안 평균으로 당겨지는 화살표'),row=ctrlRow(el),K=kpis(el,3),E=eqline(el),I=insight(el),m=cfg.m,p0=cfg.p0,S=cfg.items;
+  slider(row,'사전의 무게 m (노출 수)',10,1000,10,m,function(v){return nf(v)+'번'},function(v){m=v;draw()});
+  function draw(){var W=fit(c,260),ctx=c.getContext('2d');ctx.clearRect(0,0,W,260);grid(ctx,W,260);var lo=cfg.lo,hi=cfg.hi,x0=Math.min(200,W*.45),w=W-x0-30,xm=x0+w*(p0-lo)/(hi-lo);
+    ctx.strokeStyle=COL.g;ctx.setLineDash([5,4]);ctx.beginPath();ctx.moveTo(xm,10);ctx.lineTo(xm,230);ctx.stroke();ctx.setLineDash([]);txt(ctx,'사전 평균 '+p0+'%',xm,250,COL.g,11,'center');
+    var ws=[],es=[];S.forEach(function(s,i){var raw=s.k/s.n*100,wgt=s.n/(s.n+m),est=(s.k+m*p0/100)/(s.n+m)*100;ws.push(wgt);es.push(est);var y=34+i*(196/S.length),xa=x0+w*(raw-lo)/(hi-lo),xb=x0+w*(est-lo)/(hi-lo);txt(ctx,s.name+' ('+s.k+'/'+nf(s.n)+')',x0-8,y+4,COL.text,12,'right');ctx.strokeStyle='rgba(93,98,120,.5)';ctx.beginPath();ctx.moveTo(xa,y);ctx.lineTo(xb,y);ctx.stroke();ctx.fillStyle=COL.r;ctx.beginPath();ctx.arc(xa,y,4,0,7);ctx.fill();ctx.fillStyle=COL.s;ctx.beginPath();ctx.arc(xb,y,5,0,7);ctx.fill()});
+    txt(ctx,'● 원래 클릭률',x0,14,COL.r,11);txt(ctx,'● 베이지안 평균',x0+110,14,COL.s,11);stamp(ctx,W,'예시값');
+    K([[pct(ws[0],0),S[0].name+'의 자기 클릭률 무게 w','r'],[es[0].toFixed(1)+'%',S[0].name+'의 베이지안 평균','m'],[p0+'%','사전 평균(전체 이모티콘)','a']]);
+    E('베이지안 평균 = (클릭 + m × '+p0+'%) ÷ (노출 + m) = Beta(클릭 + '+(m*p0/100).toFixed(0)+', 미클릭 + '+(m*(1-p0/100)).toFixed(0)+')의 평균 · w = 노출 ÷ (노출 + m)');
+    I([['g','노출이 적은 항목일수록 화살표가 길어요. 우연히 튄 클릭률을 사전 평균 쪽으로 당깁니다.'],['a','사전의 무게 m은 "평균이 '+p0+'% 근처"라는 믿음이 노출 몇 번만큼 강한가예요. m을 키우면 모두 '+p0+'% 쪽으로, 줄이면 원래 클릭률 쪽으로 갑니다.']])}
+  addMod(c,function(dt){if(!dt)draw()});draw()};
+
 /* 24 포아송 */
 SIMS.poisson=function(el,cfg){var c=S0(el,cfg,220,'포아송 분포 막대'),row=ctrlRow(el),K=kpis(el,3),E=eqline(el),I=insight(el),l=cfg.lambda||10;
   slider(row,'평균 λ (시간당 손님)',1,40,1,l,null,function(v){l=v;draw()});
-  function draw(){var mx=Math.max(20,Math.ceil(l+4*Math.sqrt(l))),ps=[],p=Math.exp(-l);for(var k=0;k<=mx;k++){if(k>0)p*=l/k;ps.push(p)}var W=fit(c,220),ctx=c.getContext('2d');ctx.clearRect(0,0,W,220);grid(ctx,W,220);var pm=Math.max.apply(null,ps),x0=30,w=W-50;ps.forEach(function(v,k){var bw=w/ps.length,bh=170*v/pm;ctx.fillStyle=Math.abs(k-l)<=Math.sqrt(l)?COL.s:'rgba(154,176,208,.4)';ctx.fillRect(x0+k*bw+1,190-bh,bw-2,bh);if(k%Math.ceil(ps.length/12)===0)txt(ctx,k,x0+k*bw+bw/2,206,COL.muted,10,'center')});stamp(ctx,W,'이론 분포');
+  function draw(){var mx=Math.max(20,Math.ceil(l+4*Math.sqrt(l))),ps=[],p=Math.exp(-l);for(var k=0;k<=mx;k++){if(k>0)p*=l/k;ps.push(p)}var W=fit(c,220),ctx=c.getContext('2d');ctx.clearRect(0,0,W,220);grid(ctx,W,220);var pm=Math.max.apply(null,ps),x0=30,w=W-50;ps.forEach(function(v,k){var bw=w/ps.length,bh=170*v/pm;ctx.fillStyle=Math.abs(k-l)<=Math.sqrt(l)?COL.s:'rgba(63,95,168,.4)';ctx.fillRect(x0+k*bw+1,190-bh,bw-2,bh);if(k%Math.ceil(ps.length/12)===0)txt(ctx,k,x0+k*bw+bw/2,206,COL.muted,10,'center')});stamp(ctx,W,'이론 분포');
     var r=rng(2),xs=[];for(var i=0;i<2000;i++)xs.push(poisR(r,l));K([[l,'평균 λ','g'],[l,'분산 (= λ)','m'],[mean(xs).toFixed(2)+' / '+Math.pow(sd(xs),2).toFixed(2),'모의 2,000시간 평균 / 분산','i']]);E('P(손님 k명) = λ<sup>k</sup> e<sup>−λ</sup> ÷ k! · 평균 = 분산 = λ');
     I([['g','진한 막대가 평균 ± 표준편차(√λ) 범위예요. 평균 '+l+'명이어도 실제로는 '+Math.max(0,Math.round(l-Math.sqrt(l)))+'~'+Math.round(l+Math.sqrt(l))+'명 사이를 오가는 것이 자연스럽습니다.'],['a','λ가 작으면 오른쪽으로 꼬리가 긴 모양, 크면 종 모양에 가까워져요.']])}
   addMod(c,function(dt){if(!dt)draw()});draw()};
@@ -938,12 +968,180 @@ SIMS.rater=function(el,cfg){var tw=h('div',{class:'tw'}),row=ctrlRow(el),K=kpis(
   buttons(row,'평가자 효과',[[false,'보정 안 함'],[true,'평가자 평균 차이 보정']],false,function(v){adj=v;draw()});
   function draw(){var all=mean(E0.map(function(x){return x.s})),rm={};cfg.raters.forEach(function(r){var xs=E0.filter(function(x){return x.r===r}).map(function(x){return x.s});rm[r]=mean(xs)});
     var L=E0.map(function(x){var off=rm[x.r]-all;return {n:x.name,r:x.r,raw:x.s,adj:x.s-(cfg.k==null?1:cfg.k)*off}}),key=adj?'adj':'raw';L.sort(function(a,b){return b[key]-a[key]});
-    tw.innerHTML='<table class="tb" style="min-width:460px"><tr><th>순위</th><th>직원</th><th>평가자</th><th>받은 점수</th><th>보정 점수</th></tr>'+L.map(function(x,i){return '<tr'+(i<3?' style="background:rgba(94,227,156,.08)"':'')+'><td>'+(i+1)+'</td><td>'+esc(x.n)+'</td><td>'+esc(x.r)+' (평균 '+rm[x.r].toFixed(1)+')</td><td class="n">'+x.raw.toFixed(1)+'</td><td class="n">'+x.adj.toFixed(1)+'</td></tr>'}).join('')+'</table>';
+    tw.innerHTML='<table class="tb" style="min-width:460px"><tr><th>순위</th><th>직원</th><th>평가자</th><th>받은 점수</th><th>보정 점수</th></tr>'+L.map(function(x,i){return '<tr'+(i<3?' style="background:rgba(19,138,82,.08)"':'')+'><td>'+(i+1)+'</td><td>'+esc(x.n)+'</td><td>'+esc(x.r)+' (평균 '+rm[x.r].toFixed(1)+')</td><td class="n">'+x.raw.toFixed(1)+'</td><td class="n">'+x.adj.toFixed(1)+'</td></tr>'}).join('')+'</table>';
     var top=L.slice(0,3).map(function(x){return x.r}),cnt={};top.forEach(function(r){cnt[r]=(cnt[r]||0)+1});var mx=Object.keys(cnt).sort(function(a,b){return cnt[b]-cnt[a]})[0];
     K([[esc(L[0].n),adj?'보정 후 1위':'받은 점수 1위','g'],[mx+' '+cnt[mx]+'명','상위 3명 중 가장 많은 평가자','a'],[all.toFixed(1)+'점','전체 평균','i']]);
     E('보정 점수 = 받은 점수 − (그 평가자의 평균 − 전체 평균) · 평가자 평균: '+cfg.raters.map(function(r){return esc(r)+' '+rm[r].toFixed(1)}).join(', '));
     I([[adj?'g':'r',adj?'평가자마다의 "후함·엄격함"을 빼니 상위권이 여러 평가자에게서 고르게 나와요.':'후한 평가자에게 받은 직원이 상위권을 차지해요. 실력 차이인지 평가자 차이인지 섞여 있습니다.'],['a','평가자 평균에는 그 팀의 실제 실력 차이도 섞여 있을 수 있어요. 실제 계층 모형은 이 둘을 함께 추정하고, 평가를 적게 받은 사람은 수축으로 보완합니다.']])}
   draw()};
+
+
+/* 동적 대시보드: 회차마다 한 화면(조절기 · 숫자 카드 4개 · 그림 2개 · 해석), 목차에서는 탭으로 13개 */
+var DASHES={};
+function niceTicks(lo,hi,n){var span=hi-lo||1,step=Math.pow(10,Math.floor(Math.log10(span/n))),e=span/n/step;step*=e>=5?10:e>=2?5:e>=1?2:1;var t=[],s=Math.ceil(lo/step)*step;for(var v=s;v<=hi+step*1e-6;v+=step)t.push(+v.toFixed(10));return t}
+function dChart(c,spec,H){var W=fit(c,H),ctx=c.getContext('2d');ctx.clearRect(0,0,W,H);
+  var L=52,R=14,T=30,B=40,pw=W-L-R,ph=H-T-B;txt(ctx,spec.title,L,18,COL.text,13,'left',true);
+  if(spec.t==='bar'){var n=spec.vals.length,mx=spec.ymax||Math.max.apply(null,spec.vals.concat([1e-9]))*1.18,bw=pw/n;ctx.strokeStyle=COL.rule;ctx.beginPath();ctx.moveTo(L,T+ph+.5);ctx.lineTo(L+pw,T+ph+.5);ctx.stroke();
+    if(spec.hline!=null){var hy=T+ph-spec.hline/mx*ph;ctx.save();ctx.setLineDash([5,4]);ctx.strokeStyle=COL.a;ctx.beginPath();ctx.moveTo(L,hy);ctx.lineTo(L+pw,hy);ctx.stroke();ctx.restore();txt(ctx,spec.hlabel||'',L+2,hy-5,COL.a,11,'left',true)}
+    spec.vals.forEach(function(v,i){var bh=Math.max(0,v)/mx*ph,x=L+i*bw+bw*.2;ctx.fillStyle=(spec.cols&&spec.cols[i])||COL.s;ctx.fillRect(x,T+ph-bh,bw*.6,bh);txt(ctx,(spec.fy||String)(v),x+bw*.3,T+ph-bh-6,COL.text,bw<44?10:12,'center',true);txt(ctx,spec.labels[i],x+(spec.pair?bw*.8:bw*.3),T+ph+16,COL.muted,11,'center')});return}
+  if(spec.t==='hist'){var bins=spec.bins||30,cnt=new Array(bins).fill(0),lo=spec.lo,hi=spec.hi;spec.vals.forEach(function(v){var k=Math.floor((v-lo)/(hi-lo)*bins);if(k>=0&&k<bins)cnt[k]++});var m=Math.max.apply(null,cnt)||1;
+    ctx.fillStyle=spec.c||'rgba(63,95,168,.55)';cnt.forEach(function(k,i){var bh=k/m*ph;ctx.fillRect(L+i*pw/bins+1,T+ph-bh,pw/bins-2,bh)});
+    ctx.strokeStyle=COL.rule;ctx.beginPath();ctx.moveTo(L,T+ph+.5);ctx.lineTo(L+pw,T+ph+.5);ctx.stroke();niceTicks(lo,hi,5).forEach(function(t){var x=L+(t-lo)/(hi-lo)*pw;txt(ctx,(spec.fx||String)(t),x,T+ph+16,COL.muted,11,'center')});
+    (spec.marks||[]).forEach(function(mk,i){var x=L+(mk.x-lo)/(hi-lo)*pw;if(x<L||x>L+pw)return;ctx.save();ctx.strokeStyle=mk.c||COL.r;ctx.setLineDash([4,3]);ctx.beginPath();ctx.moveTo(x,T);ctx.lineTo(x,T+ph);ctx.stroke();ctx.restore();txt(ctx,mk.l,x+(i%2?-4:4),T+10+(i%3)*13,mk.c||COL.r,11,i%2?'right':'left',true)});
+    if(spec.xl)txt(ctx,spec.xl,L+pw,H-6,COL.muted,11,'right');return}
+  /* line */
+  var xs=spec.xs,x0=xs[0],x1=xs[xs.length-1],ylo=spec.ymin,yhi=spec.ymax;if(ylo==null||yhi==null){var all=[];spec.ys.forEach(function(s){s.d.forEach(function(v){if(isFinite(v))all.push(v)})});if(ylo==null)ylo=Math.min.apply(null,all);if(yhi==null)yhi=Math.max.apply(null,all);if(yhi===ylo)yhi=ylo+1;var pad=(yhi-ylo)*.08;if(spec.ymin==null)ylo-=pad;if(spec.ymax==null)yhi+=pad}
+  function X(v){return spec.logx?L+(Math.log(v)-Math.log(x0))/(Math.log(x1)-Math.log(x0))*pw:L+(v-x0)/(x1-x0)*pw}function Y(v){return T+ph-(v-ylo)/(yhi-ylo)*ph}
+  ctx.strokeStyle=COL.rule;ctx.lineWidth=1;niceTicks(ylo,yhi,4).forEach(function(t){var y=Y(t);ctx.beginPath();ctx.moveTo(L,y+.5);ctx.lineTo(L+pw,y+.5);ctx.stroke();txt(ctx,(spec.fy||String)(t),L-6,y+4,COL.muted,11,'right')});
+  var xt=spec.logx?[1,3,10,30,100,300,1000,3000,10000,30000,100000].filter(function(v){return v>=x0&&v<=x1}):niceTicks(x0,x1,5);xt.forEach(function(t){txt(ctx,(spec.fx||String)(t),X(t),T+ph+16,COL.muted,11,'center')});
+  if(spec.band){ctx.fillStyle='rgba(19,138,82,.08)';var b=spec.band,b0=clamp(X(b[0]),L,L+pw),b1=clamp(X(b[1]),L,L+pw);if(b1>b0)ctx.fillRect(b0,T,b1-b0,ph)}
+  if(spec.hline!=null){ctx.save();ctx.setLineDash([5,4]);ctx.strokeStyle=COL.a;ctx.beginPath();ctx.moveTo(L,Y(spec.hline));ctx.lineTo(L+pw,Y(spec.hline));ctx.stroke();ctx.restore();txt(ctx,spec.hlabel||'',L+pw-2,Y(spec.hline)<T+16?Y(spec.hline)+14:Y(spec.hline)-5,COL.a,11,'right',true)}
+  var lx=L+pw;spec.ys.forEach(function(s,si){ctx.save();ctx.strokeStyle=s.c;ctx.lineWidth=s.w||2.2;if(s.dash)ctx.setLineDash(s.dash);ctx.beginPath();var st=false;s.d.forEach(function(v,i){if(!isFinite(v)){st=false;return}var px=X(xs[i]),py=Y(clamp(v,ylo,yhi));if(!st){ctx.moveTo(px,py);st=true}else ctx.lineTo(px,py)});ctx.stroke();if(s.fill){ctx.lineTo(X(x1),Y(ylo));ctx.lineTo(X(x0),Y(ylo));ctx.closePath();ctx.globalAlpha=.12;ctx.fillStyle=s.c;ctx.fill()}ctx.restore();
+    if(s.n&&spec.ys.length>1){ctx.save();ctx.font='700 11px "IBM Plex Sans KR",system-ui,sans-serif';var tw=ctx.measureText('● '+s.n).width;ctx.restore();lx-=tw+12;txt(ctx,'● '+s.n,lx+12,18,s.c,11,'left',true)}});
+  if(spec.mark&&X(spec.mark.x)>=L-1&&X(spec.mark.x)<=L+pw+1){var mx_=X(spec.mark.x);ctx.save();ctx.strokeStyle=COL.r;ctx.setLineDash([4,3]);ctx.beginPath();ctx.moveTo(mx_,T);ctx.lineTo(mx_,T+ph);ctx.stroke();ctx.restore();if(spec.mark.y!=null){ctx.fillStyle=COL.r;ctx.beginPath();ctx.arc(mx_,Y(clamp(spec.mark.y,ylo,yhi)),5,0,7);ctx.fill()}if(spec.mark.l)txt(ctx,spec.mark.l,mx_+(mx_>L+pw*.7?-6:6),T+ph-8,COL.r,11,mx_>L+pw*.7?'right':'left',true)}
+  if(spec.xl)txt(ctx,spec.xl,L+pw,H-4,COL.muted,11,'right');if(spec.yl)txt(ctx,spec.yl,4,T-10+0,COL.muted,11,'left')}
+
+function Dash(el,key){var D=DASHES[key];if(!D){el.innerHTML='';return}el.innerHTML='';var p={},seed=1,ctl={},playing=false;
+  var head=h('div',{class:'dhead'});head.innerHTML='<div><span class="eyebrow">동적 대시보드 · '+esc(D.tag||'')+'</span><h3>'+D.title+'</h3><p class="muted" style="font-size:14px">'+(D.sub||'')+'</p></div>';var hb=h('div',{class:'dbtns'});head.appendChild(hb);el.appendChild(head);
+  var row=ctrlRow(el);var K=kpis(el,4);var g=h('div',{class:'dgrid'});el.appendChild(g);var c1=mkCanvas(g,240,D.title+' 그림 1'),c2=mkCanvas(g,240,D.title+' 그림 2');var I=insight(el);
+  D.params.forEach(function(q){p[q[0]]=q[5];ctl[q[0]]=slider(row,q[1],q[2],q[3],q[4],q[5],q[6],function(v){p[q[0]]=v;draw()})});
+  var pb=action(hb,'▶ 재생: '+(D.playLabel||'천천히 바꿔 보기'),function(){if(playing){playing=false;return}var q=D.params.filter(function(x){return x[0]===D.play})[0];if(!q)return;if(reduce){ctl[q[0]].set(q[3]);return}playing=true;pb.textContent='■ 멈춤';var t0=null,from=q[2],to=q[3];function step(ts){if(!playing){pb.textContent='▶ 재생: '+(D.playLabel||'천천히 바꿔 보기');return}if(!t0)t0=ts;var u=Math.min(1,(ts-t0)/4500),v=from+(to-from)*(D.playLog?(Math.pow(to/from,u)*from-from)/(to-from):u);v=Math.round(v/q[4])*q[4];ctl[q[0]].set(+v.toFixed(6));if(u<1)requestAnimationFrame(step);else{playing=false;pb.textContent='▶ 재생: '+(D.playLabel||'천천히 바꿔 보기')}}requestAnimationFrame(step)},true);
+  if(D.random)action(hb,'↻ 다시 뽑기',function(){seed++;draw()});
+  action(hb,'처음 값',function(){playing=false;D.params.forEach(function(q){ctl[q[0]].set(q[5])})});
+  function draw(){var o=D.f(p,rng(seed*7919+13));K(o.k);dChart(c1,o.c[0],240);dChart(c2,o.c[1],240);I(o.note);c1._spec=o.c[0];c2._spec=o.c[1]}
+  addMod(c1,function(dt){if(!dt&&c1._spec){dChart(c1,c1._spec,240);dChart(c2,c2._spec,240)}});draw();return {stop:function(){playing=false}}}
+function initDash(){var el=$('.dash[data-dash]');if(el)Dash(el,el.dataset.dash);var tabs=$('.dtabs');if(tabs){var box=$('#dashbox'),cur=null;$$('button',tabs).forEach(function(b){b.addEventListener('click',function(){$$('button',tabs).forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');if(cur)cur.stop();cur=Dash(box,b.dataset.k);var a=$('#dashlink');if(a){a.href=b.dataset.f+'#dash';a.textContent=(+b.dataset.k)+'회차 해설 페이지에서 자세히 보기 →'}})});var f=$('button',tabs);if(f)f.click()}}
+
+function rng0(){return 0}
+function seqv(a,b,n){var o=[];for(var i=0;i<n;i++)o.push(a+(b-a)*i/(n-1));return o}
+function logseq(a,b,n){var o=[];for(var i=0;i<n;i++)o.push(a*Math.pow(b/a,i/(n-1)));return o}
+function lgam(x){var c=[76.18009172947146,-86.50532032941677,24.01409824083091,-1.231739572450155,.1208650973866179e-2,-.5395239384953e-5],y=x,t=x+5.5;t-=(x+.5)*Math.log(t);var s=1.000000000190015;for(var j=0;j<6;j++)s+=c[j]/++y;return -t+Math.log(2.5066282746310005*s/x)}
+function betaPdf(x,a,b){if(x<=0||x>=1)return 0;return Math.exp((a-1)*Math.log(x)+(b-1)*Math.log(1-x)+lgam(a+b)-lgam(a)-lgam(b))}
+function normCdf(z){var t=1/(1+.2316419*Math.abs(z)),d=.3989423*Math.exp(-z*z/2),p=d*t*(.3193815+t*(-.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));return z>0?1-p:p}
+function P1(v){return (v*100).toFixed(1)+'%'}function P0(v){return Math.round(v*100)+'%'}
+function won(v){return Math.abs(v)>=1e8?(v/1e8).toFixed(1)+'억':Math.abs(v)>=1e4?nf(Math.round(v/1e4))+'만':nf(Math.round(v))}
+
+/* 1회차 — 표본 크기와 오차범위 */
+DASHES['01']={tag:'1회차',title:'여론조사 표본 크기 대시보드',sub:'몇 명에게 물어야 믿을 만한가 — 표본 크기와 오차범위',play:'n',playLog:true,playLabel:'표본을 100명→5,000명으로',random:true,
+  params:[['n','표본 크기 n',100,5000,50,1000,function(v){return nf(v)+'명'}],['p','실제 지지율',10,90,1,40,function(v){return v+'%'}]],
+  f:function(q,r){var p=q.p/100,se=Math.sqrt(p*(1-p)/q.n),moe=1.96*se,vals=[];for(var i=0;i<400;i++){var s=p+se*gauss(r);vals.push(s*100)}var inside=vals.filter(function(v){return Math.abs(v/100-p)<=moe}).length/400,ns=logseq(100,5000,60);
+    return {k:[['±'+(moe*100).toFixed(1)+'%p','95% 오차범위','i'],[nf(q.n)+'명','표본 크기','a'],[P0(inside),'400번 조사 중 오차범위 안','g'],[nf(Math.ceil(q.n*4))+'명','오차범위를 절반으로 줄이려면','r']],
+      c:[{t:'hist',title:'같은 조사를 400번 했을 때 나온 지지율',vals:vals,lo:q.p-12,hi:q.p+12,bins:36,fx:function(v){return v+'%'},marks:[{x:q.p,l:'실제 '+q.p+'%',c:COL.g},{x:q.p-moe*100,l:'−오차',c:COL.r},{x:q.p+moe*100,l:'+오차',c:COL.r}]},
+        {t:'line',title:'표본 크기에 따른 오차범위',xs:ns,logx:true,ys:[{n:'오차범위',c:COL.s,d:ns.map(function(n){return 1.96*Math.sqrt(p*(1-p)/n)*100})}],ymin:0,fy:function(v){return '±'+v.toFixed(0)+'%p'},fx:function(v){return nf(v)},mark:{x:q.n,y:moe*100,l:'지금 '+nf(q.n)+'명'},xl:'표본 크기(로그 눈금)'}],
+      note:[['g','표본을 4배로 늘려야 오차범위가 절반이 됩니다. 오차는 √n에 반비례하기 때문이에요.'],['a','단, 무작위로 뽑았을 때 이야기예요. 자발적으로 응답한 2만 명은 이 공식이 통하지 않습니다(1회차 대결).']]}}};
+
+/* 2회차 — 두 자산 포트폴리오 */
+DASHES['02']={tag:'2회차',title:'두 자산 포트폴리오 대시보드',sub:'상관계수가 위험을 얼마나 줄이나 (주식 σ 20%, 채권 σ 10% 예시)',play:'rho',playLabel:'상관계수를 −1→+1로',
+  params:[['w','주식 비중',0,100,5,50,function(v){return v+'%'}],['rho','상관계수 ρ',-1,1,.1,-.5,function(v){return v.toFixed(1)}]],
+  f:function(q){var s1=.2,s2=.1,m1=.08,m2=.03;function risk(w,rho){return Math.sqrt(w*w*s1*s1+(1-w)*(1-w)*s2*s2+2*w*(1-w)*rho*s1*s2)}var w=q.w/100,rk=risk(w,q.rho),ws=seqv(0,1,51),mn=Math.min.apply(null,ws.map(function(x){return risk(x,q.rho)})),wmin=ws.filter(function(x){return risk(x,q.rho)===mn})[0];
+    return {k:[[P1(rk),'포트폴리오 위험(σ)','r'],[P1(w*m1+(1-w)*m2),'기대수익률(예시)','g'],[P1(w*s1+(1-w)*s2-rk),'분산으로 줄어든 위험','i'],[P0(wmin),'위험이 가장 작은 주식 비중','a']],
+      c:[{t:'line',title:'주식 비중별 위험 — 지금 ρ와 ρ=+1 비교',xs:ws.map(function(x){return x*100}),ys:[{n:'ρ = '+q.rho.toFixed(1),c:COL.s,d:ws.map(function(x){return risk(x,q.rho)*100})},{n:'ρ = +1 (분산 효과 없음)',c:COL.muted,dash:[5,4],w:1.5,d:ws.map(function(x){return risk(x,1)*100})}],ymin:0,fy:function(v){return v+'%'},fx:function(v){return v+'%'},mark:{x:q.w,y:rk*100,l:'지금'},xl:'주식 비중'},
+        {t:'bar',title:'같은 비중에서 상관계수별 위험',labels:['ρ=−1','ρ=−0.5','ρ=0','ρ=+0.5','ρ=+1'],vals:[-1,-.5,0,.5,1].map(function(x){return risk(w,x)*100}),cols:[-1,-.5,0,.5,1].map(function(x){return Math.abs(x-q.rho)<.05?COL.r:'rgba(63,95,168,.55)'}),fy:function(v){return v.toFixed(1)+'%'}}],
+      note:[['g','상관계수가 낮을수록 같은 비중에서도 위험이 줄어요. 함께 오르내리지 않으면 서로를 받쳐 주기 때문입니다.'],['a','ρ = −1이면 위험을 0으로 만들 수도 있지만, 현실에서 완전한 반대 자산은 드물어요. 교육용 예시이며 투자 자문이 아닙니다.']]}}};
+
+/* 3회차 — 기저율과 사후확률 */
+DASHES['03']={tag:'3회차',title:'기저율 대시보드',sub:'검사에서 양성이 나왔을 때 정말 그럴 확률(사후확률)',play:'base',playLog:true,playLabel:'기저율을 0.1%→30%로',
+  params:[['base','기저율(원래 비율)',.1,30,.1,1,function(v){return v+'%'}],['sens','민감도(있을 때 양성)',50,99.9,.1,99,function(v){return v+'%'}],['spec','특이도(없을 때 음성)',50,99.9,.1,95,function(v){return v+'%'}]],
+  f:function(q){var b=q.base/100,se=q.sens/100,sp=q.spec/100;function post(b,k){var o=b/(1-b)*Math.pow(se/(1-sp),k);return o/(1+o)}var pp=post(b,1),bs=logseq(.001,.5,60),tp=b*10000*se,fp=(1-b)*10000*(1-sp);
+    return {k:[[P1(pp),'양성일 때 진짜일 확률','r'],[nf(Math.round(tp)),'1만 명 중 진짜 양성','g'],[nf(Math.round(fp)),'1만 명 중 가짜 양성','a'],[P1(post(b,2)),'두 번 연속 양성이면','i']],
+      c:[{t:'line',title:'기저율에 따른 사후확률(양성 1번)',xs:bs.map(function(x){return x*100}),logx:true,ys:[{n:'사후확률',c:COL.s,d:bs.map(function(x){return post(x,1)*100})}],ymin:0,ymax:100,fy:function(v){return v+'%'},fx:function(v){return v<1?v.toFixed(1)+'%':v+'%'},mark:{x:q.base,y:pp*100,l:'지금'},xl:'기저율(로그 눈금)'},
+        {t:'bar',title:'양성이 연달아 나올 때마다 업데이트',labels:['사전','양성 1번','2번','3번'],vals:[0,1,2,3].map(function(k){return post(b,k)*100}),cols:[COL.muted,COL.s,COL.s,COL.g],ymax:110,fy:function(v){return v.toFixed(1)+'%'},hline:50,hlabel:'50%'}],
+      note:[['g','기저율이 낮으면 정확한 검사라도 양성의 상당수가 가짜예요. 가짜 양성 수가 진짜 양성 수를 앞지르기 때문입니다.'],['a','증거가 쌓이면 어제의 사후확률이 오늘의 사전확률이 됩니다. 이것이 베이지안 업데이트예요.']]}}};
+
+/* 4회차 — A/B 테스트 P(B>A) */
+DASHES['04']={tag:'4회차',title:'A/B 테스트 대시보드',sub:'버튼 A·B 구매 전환율과 "B가 A보다 나을 확률"',play:'n',playLog:true,playLabel:'방문자를 200명→2만 명으로',
+  params:[['n','버튼별 방문자 수',200,20000,100,5000,function(v){return nf(v)+'명'}],['pa','A 전환율',1,10,.1,3,function(v){return v.toFixed(1)+'%'}],['pb','B 전환율',1,10,.1,3.6,function(v){return v.toFixed(1)+'%'}]],
+  f:function(q){var n=q.n,ka=Math.round(n*q.pa/100),kb=Math.round(n*q.pb/100);function pBA(n){var ka=n*q.pa/100,kb=n*q.pb/100,a1=ka+1,b1=n-ka+1,a2=kb+1,b2=n-kb+1,m1=a1/(a1+b1),m2=a2/(a2+b2),v1=a1*b1/((a1+b1)*(a1+b1)*(a1+b1+1)),v2=a2*b2/((a2+b2)*(a2+b2)*(a2+b2+1));return normCdf((m2-m1)/Math.sqrt(v1+v2))}
+    var pr=pBA(n),lo=Math.max(0,Math.min(q.pa,q.pb)/100-.025),hi=Math.max(q.pa,q.pb)/100+.025,xs=seqv(lo,hi,160),ns=logseq(200,20000,50);
+    return {k:[[P1(pr),'B가 A보다 나을 확률','g'],[ka+' / '+kb,'구매 수 A / B','i'],[(q.pa?((q.pb-q.pa)/q.pa*100):0).toFixed(0)+'%','상대 개선','a'],[pr>=.95?'B 적용':pr<=.05?'A 유지':'더 모으기','95% 기준 결정','r']],
+      c:[{t:'line',title:'두 버튼 전환율의 사후분포 Beta(구매+1, 미구매+1)',xs:xs.map(function(x){return x*100}),ys:[{n:'A',c:COL.muted,fill:1,d:xs.map(function(x){return betaPdf(x,ka+1,n-ka+1)})},{n:'B',c:COL.s,fill:1,d:xs.map(function(x){return betaPdf(x,kb+1,n-kb+1)})}],ymin:0,fy:function(){return ''},fx:function(v){return v.toFixed(1)+'%'},xl:'전환율'},
+        {t:'line',title:'방문자가 쌓일수록 P(B>A)',xs:ns,logx:true,ys:[{n:'P(B>A)',c:COL.g,d:ns.map(function(x){return pBA(x)*100})}],ymin:0,ymax:100,hline:95,hlabel:'결정 기준 95%',fy:function(v){return v+'%'},fx:function(v){return nf(v)},mark:{x:n,y:pr*100,l:'지금'},xl:'버튼별 방문자(로그 눈금)'}],
+      note:[['g','방문자가 늘면 두 분포가 좁아지고 겹침이 줄어 P(B>A)가 커져요. 같은 차이라도 표본이 작으면 결정을 미룹니다.'],['a','"B가 나을 확률 99%"처럼 바로 쓸 수 있는 문장이 베이지안 A/B 테스트의 장점이에요. 첫날 숫자만 보고 정하면 안 됩니다(4회차 대결).']]}}};
+
+/* 5회차 — 연관 규칙 */
+DASHES['05']={tag:'5회차',title:'연관 규칙 대시보드',sub:'"A를 산 사람은 B도 산다"가 진짜 연관인가 — 지지도 · 신뢰도 · 향상도',play:'ab',playLabel:'함께 산 비율을 0→최대로',
+  params:[['a','A(라면) 구매 비율',5,60,1,30,function(v){return v+'%'}],['b','B(김치) 구매 비율',5,60,1,20,function(v){return v+'%'}],['ab','둘 다 산 비율',0,30,.5,9,function(v){return v+'%'}]],
+  f:function(q){var a=q.a/100,b=q.b/100,ab=Math.min(q.ab/100,a,b),conf=ab/a,lift=conf/b,abs=seqv(0,Math.min(a,b),40);
+    return {k:[[P1(ab),'지지도 P(A∩B)','i'],[P1(conf),'신뢰도 P(B | A)','g'],[lift.toFixed(2)+'배','향상도 = 신뢰도 ÷ P(B)',lift>1.05?'g':lift<.95?'r':'a'],[lift>1.05?'함께 추천':lift<.95?'따로 추천':'관계 약함','판정','a']],
+      c:[{t:'bar',title:'장바구니 100개 중',labels:['A만','둘 다','B만','둘 다 아님'],vals:[(a-ab)*100,ab*100,(b-ab)*100,Math.max(0,1-a-b+ab)*100],cols:['rgba(63,95,168,.55)',COL.g,'rgba(168,50,159,.55)','rgba(93,98,120,.35)'],fy:function(v){return v.toFixed(1)}},
+        {t:'line',title:'둘 다 산 비율에 따른 향상도',xs:abs.map(function(x){return x*100}),ys:[{n:'향상도',c:COL.s,d:abs.map(function(x){return x/a/b})}],ymin:0,hline:1,hlabel:'1 = 우연과 같음',fy:function(v){return v.toFixed(1)},fx:function(v){return v.toFixed(0)+'%'},mark:{x:ab*100,y:lift,l:'지금'},xl:'둘 다 산 비율'}],
+      note:[['g','신뢰도만 보면 속기 쉬워요. B가 원래 잘 팔리는 상품이면 신뢰도가 높아도 향상도는 1 근처입니다.'],['a','향상도가 1보다 크면 "A를 산 사람은 B를 평소보다 더 산다", 1보다 작으면 오히려 덜 산다는 뜻이에요.']]}}};
+
+/* 6회차 — 대출 심사 */
+DASHES['06']={tag:'6회차',title:'대출 심사 대시보드',sub:'사전 연체율에 신호(우도비)를 곱해 사후 연체 확률을 구하고 기준과 비교',play:'k',playLabel:'위험 신호를 0→5개로',
+  params:[['p0','사전 연체율',.5,10,.1,2,function(v){return v.toFixed(1)+'%'}],['lr','신호 하나의 우도비',1,5,.1,1.5,function(v){return v.toFixed(1)+'배'}],['k','관측된 위험 신호 수',0,5,1,1,function(v){return v+'개'}],['cut','추가 심사 기준',1,10,.5,2,function(v){return v.toFixed(1)+'%'}]],
+  f:function(q){function post(k){var o=q.p0/100/(1-q.p0/100)*Math.pow(q.lr,k);return o/(1+o)}var ps=post(q.k),ks=[0,1,2,3,4,5];
+    return {k:[[P1(ps),'사후 연체 확률','r'],[P1(q.p0/100),'사전 연체율','i'],[Math.pow(q.lr,q.k).toFixed(2)+'배','오즈에 곱한 값','a'],[ps*100>q.cut?'추가 심사':'승인','기준 '+q.cut.toFixed(1)+'% 대비 판정',ps*100>q.cut?'r':'g']],
+      c:[{t:'bar',title:'위험 신호 수별 사후 연체 확률',labels:ks.map(function(k){return k+'개'}),vals:ks.map(function(k){return post(k)*100}),cols:ks.map(function(k){return k===q.k?COL.r:'rgba(63,95,168,.55)'}),hline:q.cut,hlabel:'기준',fy:function(v){return v.toFixed(1)+'%'}},
+        {t:'line',title:'사전 연체율에 따른 사후 연체 확률(지금 신호 수)',xs:seqv(.5,10,40),ys:[{n:'사후',c:COL.r,d:seqv(.5,10,40).map(function(p){var o=p/100/(1-p/100)*Math.pow(q.lr,q.k);return o/(1+o)*100})},{n:'사전',c:COL.muted,dash:[5,4],w:1.5,d:seqv(.5,10,40)}],ymin:0,hline:q.cut,hlabel:'기준',fy:function(v){return v.toFixed(0)+'%'},fx:function(v){return v+'%'},mark:{x:q.p0,y:ps*100,l:'지금'},xl:'사전 연체율'}],
+      note:[['g','우도비 1.5배짜리 신호 하나가 확률을 1.5배로 만들지는 않아요. 곱해지는 건 오즈(되다 ÷ 안 되다)입니다.'],['a','교육용 예시이며 실제 신용평가 기준이 아닙니다.']]}}};
+
+/* 7회차 — 고객 유지와 생애가치 */
+DASHES['07']={tag:'7회차',title:'고객 생애가치(CLV) 대시보드',sub:'활성 ↔ 휴면 두 상태 마르코프 체인 (분기 단위, 예시값)',play:'r',playLabel:'유지율을 50%→95%로',
+  params:[['r','활성 유지율(다음 분기도 활성)',50,95,1,80,function(v){return v+'%'}],['q','휴면 복귀율',0,50,1,10,function(v){return v+'%'}],['v','활성 고객 분기 매출',1,10,.5,5,function(v){return v.toFixed(1)+'만 원'}]],
+  f:function(q){var r=q.r/100,b=q.q/100,d=.97;function clv(r){var a=1,s=0;for(var t=0;t<40;t++){s+=a*q.v*1e4*Math.pow(d,t);a=a*r+(1-a)*b}return s}var st=b/(1-r+b||1),ts=seqv(0,20,21),a=1,path=[];ts.forEach(function(){path.push(a*100);a=a*r+(1-a)*b});var rs=seqv(.5,.95,46);
+    return {k:[[won(clv(r))+'원','고객 1명 생애가치(10년, 할인 3%)','g'],[P1(st),'장기적으로 활성인 비율(정상분포)','i'],[(1/(1-r)).toFixed(1)+'분기','평균 연속 활성 기간','a'],[won(clv(Math.min(.99,r+.05))-clv(r))+'원','유지율 5%p 올리면 더 버는 돈','r']],
+      c:[{t:'line',title:'신규 고객이 분기마다 활성일 확률',xs:ts,ys:[{n:'활성 확률',c:COL.s,fill:1,d:path},{n:'정상분포',c:COL.a,dash:[5,4],w:1.5,d:ts.map(function(){return st*100})}],ymin:0,ymax:100,fy:function(v){return v+'%'},fx:function(v){return v+'분기'},xl:'분기'},
+        {t:'line',title:'유지율에 따른 생애가치',xs:rs.map(function(x){return x*100}),ys:[{n:'CLV',c:COL.g,d:rs.map(function(x){return clv(x)/1e4})}],ymin:0,fy:function(v){return nf(v)+'만'},fx:function(v){return v+'%'},mark:{x:q.r,y:clv(r)/1e4,l:'지금'},xl:'활성 유지율'}],
+      note:[['g','유지율이 높을수록 CLV 곡선이 가파르게 올라가요. 지금 매출보다 유지율이 더 큰 돈이 되는 이유입니다(7회차 대결).'],['a','전이 확률이 바뀌지 않는다는 가정(정상성)이 깨지면 이 숫자도 바뀝니다.']]}}};
+
+/* 8회차 — 몬테카를로 */
+DASHES['08']={tag:'8회차',title:'몬테카를로 사업 가치 대시보드',sub:'불확실한 수요·가격을 수천 번 뽑아 연 이익의 분포를 봅니다 (예시값)',play:'n',playLog:true,playLabel:'시뮬레이션을 100번→2만 번으로',random:true,
+  params:[['n','시뮬레이션 횟수',100,20000,100,2000,function(v){return nf(v)+'번'}],['mu','평균 판매량(만 개)',5,30,1,15,function(v){return v+'만 개'}],['cv','판매량 불확실성',5,60,1,30,function(v){return v+'%'}],['fix','고정비(억 원)',1,20,.5,8,function(v){return v+'억'}]],
+  f:function(q,r){var vals=[],run=[],sum=0;for(var i=0;i<q.n;i++){var s=Math.max(0,q.mu*(1+q.cv/100*gauss(r))),pr=1.2*(1+.1*gauss(r)),prof=s*1e4*pr*1e4/1e8-q.fix-s*1e4*0.5e4/1e8;vals.push(prof);sum+=prof;if(i%Math.max(1,Math.floor(q.n/80))===0)run.push([i+1,sum/(i+1)])}
+    var so=vals.slice().sort(function(a,b){return a-b}),Q=function(p){return so[Math.floor(p*(so.length-1))]},loss=vals.filter(function(v){return v<0}).length/vals.length,lo=Q(.005),hi=Q(.995);
+    return {k:[[Q(.1).toFixed(1)+'억','P10 (나쁜 경우)','r'],[Q(.5).toFixed(1)+'억','P50 (중간)','i'],[Q(.9).toFixed(1)+'억','P90 (좋은 경우)','g'],[P1(loss),'손실 날 확률','a']],
+      c:[{t:'hist',title:nf(q.n)+'번 뽑은 연 이익의 분포',vals:vals,lo:lo,hi:hi,bins:40,fx:function(v){return v.toFixed(0)+'억'},marks:[{x:Q(.1),l:'P10',c:COL.r},{x:Q(.5),l:'P50',c:COL.s},{x:Q(.9),l:'P90',c:COL.g},{x:0,l:'손익 0',c:COL.a}]},
+        {t:'line',title:'뽑을수록 평균이 안정된다',xs:run.map(function(x){return x[0]}),ys:[{n:'누적 평균',c:COL.s,d:run.map(function(x){return x[1]})}],fy:function(v){return v.toFixed(1)+'억'},fx:function(v){return nf(v)},xl:'시뮬레이션 횟수'}],
+      note:[['g','한 숫자(평균) 대신 P10·P50·P90 세 숫자로 말하면 "최악이면 얼마"까지 함께 보고할 수 있어요.'],['a','"↻ 다시 뽑기"를 눌러 보세요. 100번이면 숫자가 크게 흔들리고, 1만 번이면 거의 같습니다(8회차 대결).']]}}};
+
+/* 9회차 — 교란 요인 */
+DASHES['09']={tag:'9회차',title:'교란 요인 대시보드',sub:'계절이 광고비와 매출을 함께 움직이면, 광고 효과를 얼마나 잘못 읽게 될까',play:'g',playLabel:'계절 영향을 0→3으로',random:true,
+  params:[['beta','광고의 진짜 효과',0,2,.1,.5,function(v){return v.toFixed(1)}],['d','계절 → 광고비 강도',0,2,.1,1,function(v){return v.toFixed(1)}],['g','계절 → 매출 강도',0,3,.1,1.5,function(v){return v.toFixed(1)}]],
+  f:function(q,r){var N=400,X=[],Y=[],S=[],sx=0,sy=0,sxx=0,sxy=0;for(var i=0;i<N;i++){var s=gauss(r),x=q.d*s+gauss(r),y=q.beta*x+q.g*s+gauss(r)*.8;X.push(x);Y.push(y);S.push(s)}
+    function ols(X,Y){var mx=0,my=0;X.forEach(function(v,i){mx+=v;my+=Y[i]});mx/=X.length;my/=Y.length;var a=0,b=0;X.forEach(function(v,i){a+=(v-mx)*(Y[i]-my);b+=(v-mx)*(v-mx)});return a/b}
+    var naive=ols(X,Y),theory=q.beta+q.g*q.d/(q.d*q.d+1),R=X.map(function(x,i){return x-q.d*S[i]}),Yr=Y.map(function(y,i){return y-q.g*S[i]}),adj=ols(R,Yr),gs=seqv(0,3,31);
+    return {k:[[naive.toFixed(2),'계절을 무시한 추정','r'],[adj.toFixed(2),'계절을 보정한 추정','g'],[q.beta.toFixed(2),'진짜 효과(설정값)','i'],[(naive-q.beta>=0?'+':'')+(naive-q.beta).toFixed(2),'잘못 읽은 크기','a']],
+      c:[{t:'bar',title:'광고 효과, 어떻게 읽느냐에 따라',labels:['진짜','무시','보정'],vals:[q.beta,naive,adj],cols:[COL.s,COL.r,COL.g],fy:function(v){return v.toFixed(2)}},
+        {t:'line',title:'계절 영향이 클수록 커지는 착시',xs:gs,ys:[{n:'무시한 추정(이론)',c:COL.r,d:gs.map(function(g){return q.beta+g*q.d/(q.d*q.d+1)})},{n:'진짜',c:COL.g,dash:[5,4],d:gs.map(function(){return q.beta})}],ymin:0,fy:function(v){return v.toFixed(1)},fx:function(v){return v.toFixed(1)},mark:{x:q.g,y:theory,l:'지금'},xl:'계절 → 매출 강도'}],
+      note:[['g','계절(교란 요인)을 그물에 넣고 보정하면 진짜 효과에 가까워져요. 베이지안 네트워크로 화살표를 그려 두는 이유입니다.'],['a','"광고비를 늘렸더니 매출이 늘었다"는 상관이에요. 둘 다 계절 탓일 수 있습니다.']]}}};
+
+/* 10회차 — 나이브 베이즈 감성 */
+DASHES['10']={tag:'10회차',title:'리뷰 감성 판정 대시보드',sub:'단어 하나하나가 증거 — 로그 오즈를 더해 긍정 확률을 구합니다 (우도비는 예시값)',play:'pos',playLabel:'"최고"를 0→6번으로',
+  params:[['prior','긍정 리뷰 사전 비율',10,90,1,60,function(v){return v+'%'}],['pos','"최고" 등장 횟수 (우도비 4)',0,6,1,1,function(v){return v+'번'}],['neg','"별로" 등장 횟수 (우도비 1/5)',0,6,1,1,function(v){return v+'번'}],['mid','"배송" 등장 횟수 (우도비 1)',0,6,1,2,function(v){return v+'번'}]],
+  f:function(q){var lp=Math.log(q.prior/(100-q.prior)),a=q.pos*Math.log(4),b=q.neg*Math.log(.2),tot=lp+a+b,pp=1/(1+Math.exp(-tot)),ks=[0,1,2,3,4,5,6];
+    return {k:[[P1(pp),'긍정일 확률','g'],[tot.toFixed(2),'로그 오즈 합','i'],[pp>.5?'긍정':'부정','판정',pp>.5?'g':'r'],['0','"배송"이 더한 증거(우도비 1)','a']],
+      c:[{t:'bar',title:'로그 오즈에 더해지는 증거',labels:['사전','"최고"','"별로"','"배송"','합계'],vals:[lp,a,b,0,tot].map(function(v){return v+6}),cols:[COL.muted,COL.g,COL.r,'rgba(93,98,120,.35)',COL.s],ymax:14,hline:6,hlabel:'0 (반반)',fy:function(v){return (v-6).toFixed(1)}},
+        {t:'line',title:'"최고" 횟수에 따른 긍정 확률 ("별로" '+q.neg+'번일 때)',xs:ks,ys:[{n:'긍정 확률',c:COL.g,d:ks.map(function(k){return 100/(1+Math.exp(-(lp+k*Math.log(4)+b)))})}],ymin:0,ymax:100,hline:50,hlabel:'50%',fy:function(v){return v+'%'},fx:function(v){return v+'번'},mark:{x:q.pos,y:pp*100,l:'지금'},xl:'"최고" 등장 횟수'}],
+      note:[['g','나이브 베이즈는 단어마다 로그 우도비를 더합니다. "배송"처럼 긍정·부정에 똑같이 나오는 단어는 증거가 0이에요.'],['a','단어들이 서로 독립이라는 가정은 거칠지만, 한 단어 규칙보다 훨씬 덜 틀립니다(10회차 대결).']]}}};
+
+/* 11회차 — MC 드롭아웃 */
+DASHES['11']={tag:'11회차',title:'예측 불확실성(MC 드롭아웃) 대시보드',sub:'같은 사진을 드롭아웃을 켠 채 여러 번 예측해 흔들림을 봅니다 (설명용 모형)',play:'ood',playLabel:'사진을 익숙함→낯섦으로',random:true,
+  params:[['ood','사진이 얼마나 낯선가',0,1,.05,.2,function(v){return P0(v)}],['p','드롭아웃 비율',.05,.5,.05,.2,function(v){return P0(v)}],['T','반복 예측 횟수',5,200,5,50,function(v){return v+'번'}]],
+  f:function(q,r){var sd=(.25+2.4*q.ood)*Math.sqrt(q.p/(1-q.p))*2,mu=2.2-1.8*q.ood,vals=[];for(var i=0;i<q.T;i++)vals.push(100/(1+Math.exp(-(mu+sd*gauss(r)))));var m=vals.reduce(function(a,b){return a+b},0)/q.T,s=Math.sqrt(vals.reduce(function(a,b){return a+(b-m)*(b-m)},0)/q.T),so=vals.slice().sort(function(a,b){return a-b}),os=seqv(0,1,21);
+    function sdAt(o){var s_=(.25+2.4*o)*Math.sqrt(q.p/(1-q.p))*2,m_=2.2-1.8*o,rr=rng(99),v=[];for(var i=0;i<200;i++)v.push(100/(1+Math.exp(-(m_+s_*gauss(rr)))));var mm=v.reduce(function(a,b){return a+b},0)/200;return Math.sqrt(v.reduce(function(a,b){return a+(b-mm)*(b-mm)},0)/200)}
+    return {k:[[m.toFixed(0)+'%','평균 "고양이" 확률','i'],['±'+s.toFixed(0)+'%p','흔들림(표준편차)','a'],[so[Math.floor(.05*(q.T-1))].toFixed(0)+'~'+so[Math.floor(.95*(q.T-1))].toFixed(0)+'%','90% 범위','g'],[s>15?'사람 확인':'자동 처리','판정 (흔들림 15%p 기준)',s>15?'r':'g']],
+      c:[{t:'hist',title:q.T+'번 예측한 결과',vals:vals,lo:0,hi:100,bins:25,fx:function(v){return v+'%'},marks:[{x:m,l:'평균',c:COL.s}]},
+        {t:'line',title:'사진이 낯설수록 커지는 흔들림',xs:os.map(function(x){return x*100}),ys:[{n:'표준편차',c:COL.a,d:os.map(sdAt)}],ymin:0,hline:15,hlabel:'사람 확인 기준',fy:function(v){return v.toFixed(0)+'%p'},fx:function(v){return v+'%'},mark:{x:q.ood*100,y:sdAt(q.ood),l:'지금'},xl:'낯선 정도'}],
+      note:[['g','한 번 예측하면 "고양이 80%"라는 숫자만 나오지만, 여러 번 흔들어 보면 그 숫자를 얼마나 믿을지도 함께 나옵니다.'],['a','흔들림이 큰 사진만 사람에게 넘기면, 사람의 일은 줄고 실수는 덜 놓칩니다(11회차 대결).']]}}};
+
+/* 12회차 — 계층 모형 수축 */
+DASHES['12']={tag:'12회차',title:'매장 매출 계층 모형 대시보드',sub:'기록이 적은 매장은 전체 평균 쪽으로 당겨 읽습니다 (단위: 일 매출 백만 원, 예시값)',play:'tau',playLabel:'매장 사이 차이 τ를 0.2→6으로',
+  params:[['tau','매장 사이 차이 τ',.2,6,.1,1.5,function(v){return v.toFixed(1)}],['sig','매장 안 하루 흔들림 σ',1,10,.5,5,function(v){return v.toFixed(1)}],['n1','신규 매장 영업일 수',1,60,1,5,function(v){return v+'일'}]],
+  f:function(q){var st=[{l:'신규',n:q.n1,m:16},{l:'A',n:30,m:12},{l:'B',n:90,m:9},{l:'C',n:200,m:10.5},{l:'D',n:365,m:11}],tot=0,nn=0;st.forEach(function(s){tot+=s.m*s.n;nn+=s.n});var mu=tot/nn;function w(n){return (n/(q.sig*q.sig))/(n/(q.sig*q.sig)+1/(q.tau*q.tau))}st.forEach(function(s){s.w=w(s.n);s.e=s.w*s.m+(1-s.w)*mu});var ns=seqv(1,120,60);
+    return {k:[[st[0].e.toFixed(1)+'백만','신규 매장 계층 추정','g'],[st[0].m.toFixed(1)+'백만','신규 매장 원래 평균','r'],[P0(st[0].w),'신규 매장 자기 평균의 무게','a'],[mu.toFixed(1)+'백만','전체 평균','i']],
+      c:[{t:'bar',title:'원래 평균(옅은 색) vs 계층 추정(진한 색)',pair:1,labels:st.map(function(s){return s.l}).reduce(function(a,l){return a.concat([l,''])},[]),vals:st.reduce(function(a,s){return a.concat([s.m,s.e])},[]),cols:st.reduce(function(a){return a.concat(['rgba(210,63,44,.35)',COL.s])},[]),fy:function(v){return v.toFixed(1)}},
+        {t:'line',title:'영업일 수에 따른 자기 평균의 무게 w',xs:ns,ys:[{n:'w',c:COL.g,d:ns.map(function(n){return w(n)*100})}],ymin:0,ymax:100,fy:function(v){return v+'%'},fx:function(v){return v+'일'},mark:{x:q.n1,y:st[0].w*100,l:'신규 매장'},xl:'영업일 수'}],
+      note:[['g','기록이 적은 매장일수록 전체 평균 쪽으로 많이 당겨져요. 우연히 좋은 첫 주에 속지 않게 해 줍니다.'],['a','τ가 크면 "매장마다 원래 많이 다르다"고 보는 셈이라 덜 당겨지고, τ가 작으면 모두 전체 평균에 가까워집니다.']]}}};
+
+/* 13회차 — 출시 의사결정 */
+DASHES['13']={tag:'13회차',title:'앱 개편 출시 의사결정 대시보드',sub:'개선폭의 사후분포로 P(B>A)와 기대 이익을 함께 봅니다 (예시값)',play:'n',playLog:true,playLabel:'실험 기간 사용자를 500→5만 명으로',
+  params:[['n','그룹별 실험 사용자',500,50000,500,8000,function(v){return nf(v)+'명'}],['base','기존 전환율',2,20,.5,10,function(v){return v.toFixed(1)+'%'}],['lift','관측된 개선폭',-1,3,.1,.8,function(v){return (v>=0?'+':'')+v.toFixed(1)+'%p'}],['users','연간 대상 사용자(만 명)',10,500,10,100,function(v){return v+'만'}]],
+  f:function(q){var p=q.base/100,se=function(n){return Math.sqrt(2*p*(1-p)/n)*100},s=se(q.n),pr=normCdf(q.lift/s),val=5000,eg=q.users*1e4*val*(q.lift/100),xs=seqv(q.lift-4*s,q.lift+4*s,120),ns=logseq(500,50000,50);
+    return {k:[[P1(pr),'B가 A보다 나을 확률','g'],[(q.lift-1.96*s).toFixed(2)+'~'+(q.lift+1.96*s).toFixed(2)+'%p','개선폭 95% 신용구간','i'],[won(eg)+'원','기대 연 추가 매출(전환 1건 5천 원)','a'],[pr>=.95?'전면 적용':pr>=.8?'단계적 적용':'보류','판정',pr>=.95?'g':pr>=.8?'a':'r']],
+      c:[{t:'line',title:'개선폭의 사후분포 (0보다 큰 쪽이 B 우세)',xs:xs,ys:[{n:'사후분포',c:COL.s,fill:1,d:xs.map(function(x){return Math.exp(-.5*Math.pow((x-q.lift)/s,2))})}],ymin:0,band:[0,xs[xs.length-1]>0?xs[xs.length-1]:0],fy:function(){return ''},fx:function(v){return v.toFixed(1)+'%p'},mark:{x:0,l:'0 (차이 없음)'},xl:'개선폭(%p)'},
+        {t:'line',title:'사용자가 쌓일수록 P(B>A)',xs:ns,logx:true,ys:[{n:'P(B>A)',c:COL.g,d:ns.map(function(n){return normCdf(q.lift/se(n))*100})}],ymin:0,ymax:100,hline:95,hlabel:'전면 적용 95%',fy:function(v){return v+'%'},fx:function(v){return nf(v)},mark:{x:q.n,y:pr*100,l:'지금'},xl:'그룹별 사용자(로그 눈금)'}],
+      note:[['g','P(B>A) 하나만 보지 말고 개선폭의 범위와 돈으로 환산한 크기를 같이 보세요. 확실하지만 작은 개선도 있습니다.'],['a','80~95% 구간에서는 일부 사용자에게만 먼저 적용하는 단계적 출시가 안전해요(13회차 대결).']]}}};
 
 boot();
 </script>

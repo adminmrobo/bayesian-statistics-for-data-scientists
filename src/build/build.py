@@ -11,7 +11,7 @@ AUTHOR = '안상선'; AFFIL = '(주)M-Robo 대표'; WHO = 'https://adminmrobo.gi
 TODAY = '2026-11-10'; VER = '1.0'
 SP = json.load(open(os.path.join(B, 'sprites.json'), encoding='utf-8'))
 CSS = open(os.path.join(B, 'base.css'), encoding='utf-8').read() + '\n' + open(os.path.join(B, 'plain.css'), encoding='utf-8').read()
-JS = open(os.path.join(B, 'lab.js'), encoding='utf-8').read() + '\n' + open(os.path.join(B, 'sims.js'), encoding='utf-8').read()
+JS = open(os.path.join(B, 'lab.js'), encoding='utf-8').read() + '\n' + open(os.path.join(B, 'sims.js'), encoding='utf-8').read() + '\n' + open(os.path.join(B, 'dash.js'), encoding='utf-8').read()
 NAMES = {'doc': '박사', 'asst': '조수(하루)', 'fly': '초파리 연구원', 'robo': '주판봇'}
 DEFM = {'doc': 'front', 'asst': 'smile', 'fly': 'clip', 'robo': 'smile'}
 e = html.escape
@@ -240,7 +240,8 @@ def level_html(l, i, M, P):
         b = l['bridge']; o.append('<div class="bridges">' + (f'<div class="bridge gen"><h4>데이터 분석으로 치면</h4><p>{b["gen"]}</p><p class="lim">{b.get("gen_lim","")}</p></div>' if b.get('gen') else '') + (f'<div class="bridge field"><h4>현장에 옮기면</h4><p>{b["field"]}</p><p class="lim">{b.get("field_lim","")}</p></div>' if b.get('field') else '') + '</div>')
     if l.get('code'):
         rows = ''.join(f'<tr><td><code>{e(c)}</code></td><td>{t}</td></tr>' for c, t in l['code'])
-        o.append(f'<details class="code"><summary>교안의 파이썬 코드로 보면 (몰라도 됩니다)</summary><table>{rows}</table></details>')
+        ct = {'orig': '교안의 파이썬 코드로 보면 (몰라도 됩니다)', 'example': '같은 방법을 보여 주는 예시 코드 — 교안 코드 아님 (몰라도 됩니다)', 'mixed': '교안의 파이썬 코드와 예시 코드 (몰라도 됩니다)'}[l.get('code_src', 'orig')]
+        o.append(f'<details class="code"><summary>{ct}</summary><table>{rows}</table></details>')
     if l.get('say'):
         o.append(say(*l['say'], M))
     o.append(f'<div class="quiz" data-quiz="{l["id"]}"></div>\n</div></section>')
@@ -271,7 +272,7 @@ def page(P):
     P['duels_js'] = [{'el': '#duelBox', 'fn': P['duel']['fn'], 'cfg': P['duel'].get('cfg', {}), 'metric': P['duel']['metric'], 'lesson': P['duel']['lesson'], 'condLesson': P['duel'].get('cond_lesson', ''), 'higherIsBetter': P['duel']['hib'], 'drawMargin': P['duel'].get('margin', 0), 'fmt': P['duel'].get('fmt', ''), 'unit': P['duel'].get('unit', ''), 'dec': P['duel'].get('dec', 1)}]
     P['flow'] = []
     for l in L: P['flow'] += [[l['node'][2], 0], [l['limit_short'], 1]]
-    links = [('three', '3줄 요약'), ('cast', '등장인물')] + [(l['id'], f'{i+1} {l["short"]}') for i, l in enumerate(L)] + [('duel', '대결'), ('sum', '정리'), ('kg', '색인'), ('export', '꾸러미')]
+    links = [('three', '3줄 요약'), ('cast', '등장인물'), ('dash', '대시보드')] + [(l['id'], f'{i+1} {l["short"]}') for i, l in enumerate(L)] + [('duel', '대결'), ('sum', '정리'), ('kg', '색인'), ('export', '꾸러미')]
     o = [head(P, P['title'], P['desc'], P['file']), nav(links, f'{SERIES_SHORT} {num}'), cover(P, M, f'cover_{num}')]
     kp = ''.join(f'<div class="kpi {c}"><b>{v}</b><span>{t}</span></div>' for v, t, c in P['kpis'])
     hero_talk = ''.join(say(*t, M) for t in P['hero_talk'])
@@ -283,6 +284,7 @@ def page(P):
     o.append(f'''<section class="level" id="cast"><div class="wrap stack"><div class="lvhead"><h2>등장인물과 이 페이지 사용법</h2></div><div class="cast">{cast}</div><p class="muted">노란 점선 밑줄을 누르거나 손가락으로 대면 뜻이 나옵니다. 오른쪽 아래 도우미에서 밑줄을 핵심 → 전체 → 끄기로 바꿀 수 있어요. 모든 실험은 시드를 고정한 설명용 모형입니다. {prevtxt}</p></div></section>''')
     W = P['why_steps']; o.append('<section class="level" id="why"><div class="wrap stack"><div class="lvhead"><h2>왜 이 주제인가</h2></div><div class="steps">' + ''.join(f'<div><b>{a}</b><p>{b}</p></div>' for a, b in W) + '</div></div></section>')
     Bg = P['big']; o.append('<section class="level" id="big"><div class="wrap stack"><div class="lvhead"><h2>큰 그림</h2><p class="lead">' + P.get('big_lead', '') + '</p></div><div class="steps four">' + ''.join(f'<div><b>{a}</b><p>{b}</p></div>' for a, b in Bg) + '</div></div></section>')
+    o.append(f'<section class="level" id="dash"><div class="wrap stack"><div class="lvhead"><h2>한눈에 보는 대시보드</h2><p class="lead">이 회차의 핵심 모형을 한 화면에 모았어요. 슬라이더를 움직이거나 ▶ 재생을 눌러 숫자 카드와 그림이 함께 바뀌는 것을 보세요. 아래 칸 ①②③에서 하나씩 풀어 설명합니다.</p></div><div class="dash panel" data-dash="{num}"></div></div></section>')
     for i, l in enumerate(L): o.append(level_html(l, i, M, P))
     o.append(duel_html(P, M))
     S = P['summary']

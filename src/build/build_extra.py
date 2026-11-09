@@ -87,7 +87,7 @@ def review(P, B):
 def index(P, B):
     M = B.Moods(); L = lessons(B)
     for k, v in B.DEFM.items(): M.add(k, v)
-    links = [('three', '3줄 요약'), ('map', '회차 지도'), ('path', '개념 사다리'), ('how', '사용법'), ('about', '자료와 원칙')]
+    links = [('three', '3줄 요약'), ('map', '회차 지도'), ('dash', '종합 대시보드'), ('path', '개념 사다리'), ('how', '사용법'), ('about', '자료와 원칙')]
     o = [B.head(P, P['title'], P['desc'], P['file']), B.nav(links, B.SERIES_SHORT), B.cover(P, M, 'cover_index')]
     kp = ''.join(f'<div class="kpi {c}"><b>{v}</b><span>{t}</span></div>' for v, t, c in P['kpis'])
     o.append(f'<header class="hero" id="hero"><div class="wrap hero-grid"><div class="hero-text"><span class="eyebrow">{e(P["eyebrow"])}</span><h1>{P["title"]}</h1><p class="q">{P["question"]}</p><p>{P["intro"]}</p><section class="kpis k4">{kp}</section></div><div class="dialog">{"".join(B.say(*t, M) for t in P["hero_talk"])}</div></div></header>')
@@ -100,6 +100,8 @@ def index(P, B):
     part1 = ''.join(card(f'{i:02d}') for i in range(1, 8)) + rv('07m_midterm_review.html', '중간 요약정리 및 퀴즈', '1~7회차 요약, 교안 연습문제, 업무 계산 문제 7개')
     part2 = ''.join(card(f'{i:02d}') for i in range(8, 14)) + rv('13f_final_review.html', '기말 요약정리 및 퀴즈', '8~13회차 요약, 교안 연습문제, 업무 계산 문제 6개')
     o.append(f'<section class="level" id="map"><div class="wrap stack"><div class="lvhead"><h2>회차 지도</h2><p class="lead">13회차와 요약·퀴즈 두 쪽, 모두 열다섯 쪽입니다. 1부는 확률과 베이지안의 기초, 2부는 시뮬레이션과 실전 응용이에요.</p></div><h3>1부 · 확률에서 상태 변화까지 (1~7회차)</h3><div class="series">{part1}</div><h3>2부 · 시뮬레이션에서 종합 프로젝트까지 (8~13회차)</h3><div class="series">{part2}</div></div></section>')
+    tabs = ''.join(f'<button class="bt" type="button" aria-pressed="false" data-k="{n:02d}" data-f="{L[f"{n:02d}"]["file"]}">{n}회차</button>' for n in range(1, 14))
+    o.append(f'<section class="level" id="dash"><div class="wrap stack"><div class="lvhead"><h2>종합 대시보드 — 13회차를 한 화면에서</h2><p class="lead">회차 버튼을 누르면 그 회차의 핵심 모형이 열립니다. 슬라이더를 움직이거나 ▶ 재생을 눌러 보세요. 같은 대시보드가 각 회차 페이지에도 들어 있어요.</p></div><div class="dtabs" role="group" aria-label="회차 고르기">{tabs}</div><div class="dash panel" id="dashbox"></div><p><a id="dashlink" href="01_what_is_statistics.html#dash">1회차 해설 페이지에서 자세히 보기 →</a></p></div></section>')
     chips = ' <i>→</i> '.join(f'<span>{e(x)}</span>' for x in P['ladder'])
     o.append(f'<section class="level" id="path"><div class="wrap stack"><div class="lvhead"><h2>개념 사다리</h2><p class="lead">앞 회차의 한계가 다음 회차의 이유가 되도록 이어 두었어요.</p></div><div class="flowchips">{chips}</div><div class="tw"><table class="tb"><tr><th>회차</th><th>핵심 질문</th><th>이 회차가 남긴 한계 → 다음 회차</th></tr>' + ''.join(f'<tr><td>{n}</td><td>{e(strip(L[n]["question"]))}</td><td>{e(strip(L[n]["next_q"]))}</td></tr>' for n in sorted(L)) + '</table></div></div></section>')
     cast = ''.join(f'<div>{B.img(w_, B.DEFM[w_], M, "")}<b style="color:var(--c-{w_})">{B.NAMES[w_]}</b><p class="muted" style="font-size:14px">{t}</p></div>' for w_, t in [('doc', '해설과 판정. 판단은 데이터대로.'), ('asst', '실험과 숫자 발표, 수식을 대신 물어봄.'), ('fly', '의심하는 쪽. 기준선·검증·반칙 찾기.'), ('robo', '확신하는 쪽. 크고 높은 숫자를 좋아함.')])

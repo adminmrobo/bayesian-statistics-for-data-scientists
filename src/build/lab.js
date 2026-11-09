@@ -14,10 +14,10 @@ function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAl
 function h(tag,attrs,html){var e=document.createElement(tag);if(attrs)for(var k in attrs){if(k==='class')e.className=attrs[k];else e.setAttribute(k,attrs[k])}if(html!=null)e.innerHTML=html;return e}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function fit(c,hgt){var d=window.devicePixelRatio||1,w=c.clientWidth||c.parentElement.clientWidth||600;if(c.width!==Math.round(w*d)||c.height!==Math.round(hgt*d)){c.width=Math.round(w*d);c.height=Math.round(hgt*d);c.style.height=hgt+'px'}var x=c.getContext('2d');x.setTransform(d,0,0,d,0,0);return w}
-function stamp(ctx,W,txt){ctx.save();ctx.font='700 11px "IBM Plex Sans KR",system-ui,sans-serif';var tw=ctx.measureText(txt).width+16,x=W-tw-8,y=8;ctx.fillStyle='rgba(241,182,70,.14)';ctx.strokeStyle='rgba(241,182,70,.7)';ctx.beginPath();if(ctx.roundRect)ctx.roundRect(x,y,tw,20,10);else ctx.rect(x,y,tw,20);ctx.fill();ctx.stroke();ctx.fillStyle='#f1b646';ctx.textAlign='left';ctx.fillText(txt,x+8,y+14);ctx.restore()}
-function grid(ctx,W,H){ctx.save();ctx.strokeStyle='rgba(157,155,184,.06)';ctx.lineWidth=1;for(var x=0;x<W;x+=24){ctx.beginPath();ctx.moveTo(x+.5,0);ctx.lineTo(x+.5,H);ctx.stroke()}for(var y=0;y<H;y+=24){ctx.beginPath();ctx.moveTo(0,y+.5);ctx.lineTo(W,y+.5);ctx.stroke()}ctx.restore()}
-function txt(ctx,s,x,y,col,size,align,bold){ctx.save();ctx.fillStyle=col||'#eceaf3';ctx.font=(bold?'700 ':'400 ')+(size||12)+'px "IBM Plex Sans KR",system-ui,sans-serif';ctx.textAlign=align||'left';ctx.fillText(s,x,y);ctx.restore()}
-var COL={bg:'#13141f',panel:'#1c1e2d',rule:'#363a52',text:'#eceaf3',muted:'#9d9bb8',g:'#5ee39c',m:'#d672d6',r:'#f0604d',a:'#f1b646',i:'#82b8ff',s:'#9ab0d0',doc:'#b07cff',asst:'#ff86b8',fly:'#ef5b5b',robo:'#57d0dc'};
+function stamp(ctx,W,txt){ctx.save();ctx.font='700 11px "IBM Plex Sans KR",system-ui,sans-serif';var tw=ctx.measureText(txt).width+16,x=W-tw-8,y=8;ctx.fillStyle='rgba(183,120,0,.14)';ctx.strokeStyle='rgba(183,120,0,.7)';ctx.beginPath();if(ctx.roundRect)ctx.roundRect(x,y,tw,20,10);else ctx.rect(x,y,tw,20);ctx.fill();ctx.stroke();ctx.fillStyle='#b77800';ctx.textAlign='left';ctx.fillText(txt,x+8,y+14);ctx.restore()}
+function grid(ctx,W,H){ctx.save();ctx.strokeStyle='rgba(93,98,120,.06)';ctx.lineWidth=1;for(var x=0;x<W;x+=24){ctx.beginPath();ctx.moveTo(x+.5,0);ctx.lineTo(x+.5,H);ctx.stroke()}for(var y=0;y<H;y+=24){ctx.beginPath();ctx.moveTo(0,y+.5);ctx.lineTo(W,y+.5);ctx.stroke()}ctx.restore()}
+function txt(ctx,s,x,y,col,size,align,bold){ctx.save();ctx.fillStyle=col||'#1d2030';ctx.font=(bold?'700 ':'400 ')+(size||12)+'px "IBM Plex Sans KR",system-ui,sans-serif';ctx.textAlign=align||'left';ctx.fillText(s,x,y);ctx.restore()}
+var COL={bg:'#ffffff',panel:'#f6f7fb',rule:'#dde1ec',text:'#1d2030',muted:'#5d6278',g:'#138a52',m:'#a8329f',r:'#d23f2c',a:'#b77800',i:'#2563c9',s:'#3f5fa8',doc:'#7a45d6',asst:'#d0457f',fly:'#cc3434',robo:'#14899a'};
 
 /* 애니메이션: 보이는 캔버스만 */
 var mods=[],vis=new Set(),io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?vis.add(e.target):vis.delete(e.target)})},{rootMargin:'100px'}):null;
@@ -31,7 +31,7 @@ var Cast=(function(){
     robo:[".......Q........",".......K........","..KKKKKKKKKKKK..","..KEEEEEEEEEEK..","..KEDDDDDDDDEK..","..KEDMDDDDMDEK..","..KEDDDDDDDDEK..","..KEDMDDDDMDEK..","..KEDDMMMMDDEK..",".HKEEEEEEEEEEKH.","HHAAAAAAAAAAAAHH","HHAEQEQEEQEQEAHH","..AAAAAAAAAAAA..","..AEQEQEEQEQEA..","..AAAAAAAAAAAA..",".KKKK......KKKK."],
     doc:["....KKKKKKK.....","...KKKWKKKKK....","..KKKWWKKKKKK...","..KFFFFFFFFFK...","..FGGFFFFGGFF...","..FGKFFFFGKFF...","..FFFFFFFFFFF...","...FFFRRRFFF....","....FFFFFFF.....","...WWWKKKWWW....","..WWWWKRKWWWW...","..WWWWKRKWWWW...","..WFWWKKKWWFW...","..WWWWKKKWWWW...","...LL.....LL....","...KK.....KK...."],
     asst:[".PP..........PP.",".PP..PPPPPP..PP.","PPPPPPPPPPNPPPPP",".PPPPFFFFFFPPPP.","..PPFFFFFFFFPP..","..PFFBFFFFBFFP..","..PFFBFFFFBFFP..","..PFFFFFFFFFFP..","...FFFFRRFFFF...","....FFFFFFFF....","...WWVVVVVVWW...","..WWWVVVVVVWWW..","..WWWVVVVVVWWW..","..WFWVVVVVVWFW..","...NN......NN...","...NN......NN..."]};
-  var PAL={K:'#1d1a22',W:'#eceaf3',R:'#e04a3a',r:'#a8281c',U:'#3a6fd8',Y:'#f1c84a',L:'#5a4636',B:'#4aa3ff',F:'#f2c9a0',G:'#9fb4d0',P:'#ff86b8',N:'#2b3a7a',V:'#b9a6e8',E:'#eadfc6',D:'#17352c',M:'#5befa5',A:'#8b5a2b',Q:'#d2603c',H:'#9c978c'};
+  var PAL={K:'#1d1a22',W:'#1d2030',R:'#e04a3a',r:'#a8281c',U:'#3a6fd8',Y:'#f1c84a',L:'#5a4636',B:'#4aa3ff',F:'#f2c9a0',G:'#9fb4d0',P:'#d0457f',N:'#2b3a7a',V:'#b9a6e8',E:'#eadfc6',D:'#17352c',M:'#5befa5',A:'#8b5a2b',Q:'#d2603c',H:'#9c978c'};
   var cache={};
   function pix(who){if(cache[who])return cache[who];var rows=MAPS[who],cv=document.createElement('canvas');cv.width=64;cv.height=64;var c=cv.getContext('2d');rows.forEach(function(r,y){r.split('').forEach(function(ch,x){if(ch==='.')return;c.fillStyle=PAL[ch];c.fillRect(x*4,y*4,4,4)})});return cache[who]=cv.toDataURL()}
   function key(who,mood){var k=who+'_'+mood;var a=(window.SPRITE_ALIAS||{})[k]||k;return a}
@@ -70,7 +70,7 @@ var Quiz=(function(){var total=0,done={};
   return {render:render,total:function(){return total},done:function(){return Object.keys(done).length}};
 })();
 var Study=(function(){var bar=$('#prog'),rd=$('#stRead'),qz=$('#stQuiz'),gb=$('#stGloss');
-  function upd(){var H=document.documentElement,p=H.scrollTop/(H.scrollHeight-H.clientHeight||1);if(bar)bar.style.width=(p*100)+'%';if(rd)rd.textContent='읽은 곳 '+Math.round(p*100)+'%';if(qz){qz.textContent='퀴즈 '+Quiz.done()+'/'+Quiz.total();qz.hidden=!Quiz.total()}}
+  function upd(){var H=document.documentElement,p=H.scrollTop/(H.scrollHeight-H.clientHeight||1);if(bar)bar.style.width=(p*100)+'%';if(rd)rd.textContent='읽은 곳 '+Math.round(p*100)+'%';if(qz){if(window.practiceUpd){window.practiceUpd()}else{qz.textContent='퀴즈 '+Quiz.done()+'/'+Quiz.total();qz.hidden=!Quiz.total()}}}
   window.addEventListener('scroll',upd,{passive:true});
   if(gb)gb.addEventListener('click',function(){var m=Gloss.cycle();gb.textContent='밑줄: '+({core:'핵심',all:'전체',off:'끄기'})[m]});
   return {upd:upd};
@@ -107,7 +107,7 @@ function action(row,label,on,primary){var b=h('button',{class:'bt'+(primary?' pr
 function kpis(parent,n){var s=h('section',{class:'kpis k'+n});parent.appendChild(s);return function(items){s.innerHTML=items.map(function(k){return '<div class="kpi '+(k[2]||'')+'"><b>'+k[0]+'</b><span>'+k[1]+'</span></div>'}).join('')}}
 function insight(parent){var d=h('div',{class:'insight','aria-live':'polite'});parent.appendChild(d);return function(lines){d.innerHTML=lines.map(function(l){return '<p class="'+(l[0]||'')+'">'+l[1]+'</p>'}).join('')}}
 function eqline(parent){var d=h('div',{class:'eq'});parent.appendChild(d);return function(s){d.innerHTML=s}}
-function hist(ctx,x0,y0,w,hgt,vals,bins,lo,hi,col,maxc){var c=new Array(bins).fill(0);vals.forEach(function(v){var k=Math.floor((v-lo)/(hi-lo)*bins);if(k>=0&&k<bins)c[k]++});var m=maxc||Math.max.apply(null,c)||1;ctx.save();ctx.fillStyle=col;ctx.strokeStyle='#9ab0d0';c.forEach(function(n,i){var bh=n/m*hgt,bx=x0+i*w/bins;ctx.fillRect(bx+1,y0-bh,w/bins-2,bh)});ctx.restore();return c}
+function hist(ctx,x0,y0,w,hgt,vals,bins,lo,hi,col,maxc){var c=new Array(bins).fill(0);vals.forEach(function(v){var k=Math.floor((v-lo)/(hi-lo)*bins);if(k>=0&&k<bins)c[k]++});var m=maxc||Math.max.apply(null,c)||1;ctx.save();ctx.fillStyle=col;ctx.strokeStyle='#3f5fa8';c.forEach(function(n,i){var bh=n/m*hgt,bx=x0+i*w/bins;ctx.fillRect(bx+1,y0-bh,w/bins-2,bh)});ctx.restore();return c}
 function bars(ctx,x0,y0,w,hgt,items,max){var n=items.length,bw=w/n;items.forEach(function(it,i){var bh=clamp(it.v/(max||1),0,1)*hgt;ctx.fillStyle=it.c;ctx.fillRect(x0+i*bw+bw*.18,y0-bh,bw*.64,bh);txt(ctx,it.l,x0+i*bw+bw/2,y0+16,COL.muted,11,'center');txt(ctx,it.t!=null?it.t:'',x0+i*bw+bw/2,y0-bh-6,COL.text,12,'center',true)})}
 
 /* 지식 색인 */
@@ -132,7 +132,7 @@ var KG=(function(){var G=null;
     for(var it=0;it<200;it++){for(var i=0;i<P.length;i++)for(var j=i+1;j<P.length;j++){var dx=P[i].x-P[j].x,dy=P[i].y-P[j].y,d2=dx*dx+dy*dy+.01,f=900/d2;P[i].vx+=dx*f*.01;P[i].vy+=dy*f*.01;P[j].vx-=dx*f*.01;P[j].vy-=dy*f*.01}
       E.forEach(function(e){var a=P[idx[e.s]],b=P[idx[e.o]],dx=b.x-a.x,dy=b.y-a.y,d=Math.sqrt(dx*dx+dy*dy)+.01,f=(d-60)*.01;a.vx+=dx/d*f*d*.05;a.vy+=dy/d*f*d*.05;b.vx-=dx/d*f*d*.05;b.vy-=dy/d*f*d*.05});
       P.forEach(function(p){p.vx+=(W/2-p.x)*.002;p.vy+=(H/2-p.y)*.002;p.x=clamp(p.x+p.vx*.5,14,W-14);p.y=clamp(p.y+p.vy*.5,14,H-14);p.vx*=.6;p.vy*=.6})}
-    function paint(){var ctx=c.getContext('2d');ctx.clearRect(0,0,W,H);ctx.strokeStyle='rgba(157,155,184,.25)';E.forEach(function(e){var a=P[idx[e.s]],b=P[idx[e.o]];ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()});N.forEach(function(n,i){ctx.fillStyle=TC[n.type]||COL.muted;ctx.beginPath();ctx.arc(P[i].x,P[i].y,n.type==='Method'||n.type==='Concept'?6:4,0,7);ctx.fill()});N.forEach(function(n,i){if(n.type==='Method'||n.type==='Concept'||n.type==='Question')txt(ctx,n.label.ko.slice(0,12),P[i].x+8,P[i].y+4,COL.text,11)})}
+    function paint(){var ctx=c.getContext('2d');ctx.clearRect(0,0,W,H);ctx.strokeStyle='rgba(93,98,120,.25)';E.forEach(function(e){var a=P[idx[e.s]],b=P[idx[e.o]];ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()});N.forEach(function(n,i){ctx.fillStyle=TC[n.type]||COL.muted;ctx.beginPath();ctx.arc(P[i].x,P[i].y,n.type==='Method'||n.type==='Concept'?6:4,0,7);ctx.fill()});N.forEach(function(n,i){if(n.type==='Method'||n.type==='Concept'||n.type==='Question')txt(ctx,n.label.ko.slice(0,12),P[i].x+8,P[i].y+4,COL.text,11)})}
     paint();c.addEventListener('click',function(ev){var rc=c.getBoundingClientRect(),x=ev.clientX-rc.left,y=ev.clientY-rc.top,best=-1,bd=400;P.forEach(function(p,i){var d=(p.x-x)*(p.x-x)+(p.y-y)*(p.y-y);if(d<bd){bd=d;best=i}});if(best>=0){var el=$('#kgn-'+N[best].id.replace(/[^a-z0-9]/gi,'_'));if(el){el.open=true;el.scrollIntoView({block:'nearest',behavior:reduce?'auto':'smooth'})}}})}
   return {init:init,get:function(){return G}};
 })();
@@ -178,13 +178,17 @@ var Pkg=(function(){
 })();
 
 /* 연습 페이지: 입력 채점 */
-function initPractice(){var score={};function upd(){$$('.scoreboard [data-wk]').forEach(function(d){var s=score[d.dataset.wk]||{ok:0,n:+d.dataset.n};var p=s.ok/(+d.dataset.n||1);d.querySelector('b').textContent=s.ok+'/'+d.dataset.n;d.className=s.ok?(p>=.7?'good':'low'):'';var g=d.querySelector('small');if(g)g.textContent=s.ok&&p<.7?'70% 미만 — 해설을 다시 보세요':''})}
-  $$('.quiz[data-quiz]').forEach(function(box){box.addEventListener('click',function(e){var b=e.target.closest('.bt');if(!b)return;setTimeout(function(){var wk=box.dataset.wk;if(!wk)return;var ok=$$('.fb.ok',box).length;score[wk]=score[wk]||{ok:0};score[wk].okq=ok;score[wk].ok=(score[wk].okq||0)+(score[wk].okp||0);upd()},0)})});
-  $$('.prac').forEach(function(p){var inp=$('input',p),btn=$('.chk',p),fb=$('.pfb',p),ans=+p.dataset.ans,tol=+p.dataset.tol,wk=p.dataset.wk,got=false;
-    btn.addEventListener('click',function(){var v=parseFloat(String(inp.value).replace(/,/g,''));if(isNaN(v)){fb.textContent='숫자를 넣어 주세요.';return}var ok=Math.abs(v-ans)<=tol;fb.className='pfb '+(ok?'ok':'no');fb.style.color=ok?COL.g:COL.a;fb.textContent=ok?'맞아요. 아래 풀이와 같은 값이에요.':'다시 계산해 보세요. 허용 오차 ±'+tol+' 안이면 정답입니다.';if(ok&&!got){got=true;score[wk]=score[wk]||{ok:0};score[wk].okp=(score[wk].okp||0)+1;score[wk].ok=(score[wk].okq||0)+score[wk].okp;upd()}});
+function initPractice(){
+  function upd(){var tok=0,tn=0;$$('.scoreboard [data-wk]').forEach(function(d){var wk=d.dataset.wk,n=+d.dataset.n,box=$('.quiz[data-wk="'+wk+'"]'),ok=0,tried=0;if(box)$$('.qi',box).forEach(function(q){var f=$('.fb',q);if(f.classList.contains('ok'))ok++;if(f.classList.contains('ok')||f.classList.contains('no'))tried++});$$('.prac[data-wk="'+wk+'"]').forEach(function(p){if(p.dataset.got)ok++;if(p.dataset.tried)tried++});
+    var r=ok/(n||1);d.querySelector('b').textContent=ok+'/'+n;d.className=tried<n?'':(r>=.7?'good':'low');var g=d.querySelector('small');if(g)g.textContent=tried<n?(tried?'푼 문항 '+tried+'/'+n:''):(r>=.7?'통과':'70% 미만 — 해설을 다시 보세요');tok+=ok;tn+=n});
+    var qz=$('#stQuiz');if(qz)qz.textContent='문항 '+tok+'/'+tn}
+  window.practiceUpd=upd;
+  $$('.quiz[data-quiz]').forEach(function(box){box.addEventListener('click',function(e){if(e.target.closest('.bt'))setTimeout(upd,0)})});
+  $$('.prac').forEach(function(p){var inp=$('input',p),btn=$('.chk',p),fb=$('.pfb',p),ans=+p.dataset.ans,tol=+p.dataset.tol;
+    btn.addEventListener('click',function(){var v=parseFloat(String(inp.value).replace(/,/g,''));if(isNaN(v)){fb.textContent='숫자를 넣어 주세요.';return}var ok=Math.abs(v-ans)<=tol;p.dataset.tried='1';if(ok)p.dataset.got='1';else delete p.dataset.got;fb.className='pfb '+(ok?'ok':'no');fb.style.color=ok?COL.g:COL.a;fb.textContent=ok?'맞아요. 아래 풀이와 같은 값이에요.':'다시 계산해 보세요. 허용 오차 ±'+tol+' 안이면 정답입니다.';upd()});
     $('.show',p).addEventListener('click',function(){p.classList.toggle('open')})});upd()}
 
 /* 시작 */
 function boot(){Cast.fill();Quiz.render();Gloss.apply();try{initSims()}catch(e){console.error(e)}
-  (PD.duels||[]).forEach(function(d){Duel(d)});KG.init();Pkg.init();if($('.prac'))initPractice();
+  (PD.duels||[]).forEach(function(d){Duel(d)});KG.init();Pkg.init();if($('.prac'))initPractice();try{initDash()}catch(e){console.error(e)}
   Study.upd();window.addEventListener('resize',function(){mods.forEach(function(m){m.fn(0)})});mods.forEach(function(m){m.fn(0)});requestAnimationFrame(loop)}
