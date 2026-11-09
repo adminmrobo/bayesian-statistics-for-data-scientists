@@ -46,8 +46,7 @@ Composition: keep every face and hand inside the central safe area (12% margin l
   keep the bottom-left corner light and simple (plain white wall); let the bottom edge fade to near-white so the image melts into a white page; the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.'''
-    L += [f'## cover_{key} — {P["title"]}', '', '| 항목 | 내용 |', '|---|---|', f'| 키 · 판 | cover_{key} · L (16:9, 1920 이상) |', f'| 페이지 | `{P["file"]}` |', f'| 장소 | {place} |', f'| 주제 은유 | {meta} |', f'| 대체 글(alt) | {alt} |', '', '**Genspark에 붙여 넣기 ↓**', '```', '웹페이지 맨 위에 거는 표지 그림 1장을 만들어 줘.', '- 비율 16:9, 가로 1920px 이상', '- 첨부한 참고 이미지의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 그림체·같은 외형으로, 넷 모두 등장', '- 그림 안에 글자·숫자·로고를 넣지 말 것', '- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
-- 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면', '아래 영어 프롬프트를 그대로 써 줘.', '', prompt, '```', '', '고칠 때: `Same four characters, same art style and composition. Change only: {고칠 점}. Still no text.`', '']
+    L += [f'## cover_{key} — {P["title"]}', '', '| 항목 | 내용 |', '|---|---|', f'| 키 · 판 | cover_{key} · L (16:9, 1920 이상) |', f'| 페이지 | `{P["file"]}` |', f'| 장소 | {place} |', f'| 주제 은유 | {meta} |', f'| 대체 글(alt) | {alt} |', '', '**Genspark에 붙여 넣기 ↓**', '```', '웹페이지 맨 위에 거는 표지 그림 1장을 만들어 줘.', '- 비율 16:9, 가로 1920px 이상', '- 첨부한 참고 이미지의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 그림체·같은 외형으로, 넷 모두 등장', '- 그림 안에 글자·숫자·로고를 넣지 말 것', '- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게', '- 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면', '아래 영어 프롬프트를 그대로 써 줘.', '', prompt, '```', '', '고칠 때: `Same four characters, same art style and composition. Change only: {고칠 점}. Still no text.`', '']
 open('out/docs/COVER_PROMPTS_series.md', 'w').write('\n'.join(L))
 # 이미지 명세서(시리즈 공용)
 man = []

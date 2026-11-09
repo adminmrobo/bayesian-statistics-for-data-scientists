@@ -71,7 +71,8 @@ index.html                      목차
 13f_final_review.html           기말 요약정리 및 퀴즈
 KG_00_registry.json             시리즈 지식 그래프 등록부 (개념 ID · 한영 이름)
 assets/og_series.jpg            공유 미리보기 그림(임시)
-docs/COVER_PROMPTS_series.md    표지 16장 생성 지시문 (Genspark용)
+docs/IMG_PROMPTS_all.md         그림 지시문 전체 70장 (시리즈 대표 표지 · 개별 표지 16 · 칸 그림 39 · 대결 그림 13, Genspark용)
+docs/COVER_PROMPTS_series.md    표지 16장만 따로 모은 지시문
 docs/IMG_00_index.md            이미지 제작 명세서와 매니페스트
 src/                            페이지 데이터(pages/*.py)와 빌드 도구(build/, 대시보드는 build/dash.js)
 ```

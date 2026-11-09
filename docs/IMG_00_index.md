@@ -15,7 +15,12 @@
 | P1 | cover_01 ~ cover_13 | L | 회차 표지 13장 |
 | P2 | cover_07m, cover_13f | L | 중간·기말 요약 표지 |
 | P2 | thumb_01 ~ thumb_13 | I | 목차 카드 썸네일(표지를 3:2로 자르기) |
-| P3 | og_series | K | 목차 표지를 1200×630으로 잘라 교체 |
+| P1 | series_key | K | 시리즈 대표 그림 21:9 (README 맨 위) |
+| P3 | og_series | K | series_key를 1200×630으로 잘라 교체 |
+| P2 | fig_01_lv1 ~ fig_13_lv3 | M | 칸 그림 39장, 4:3, 흰 배경 |
+| P2 | duel_01 ~ duel_13 | L | 대결 그림 13장, 16:9, 흰 배경 |
+
+전체 지시문은 `IMG_PROMPTS_all.md`에 있습니다.
 
 ## 4. 넘겨받은 뒤 처리
 1. 16:9·글자 없음·네 캐릭터 외형 확인 → 2. WebP 1600×900(220 KB 이하) → 3. `<header class="cover" data-img="cover_{N}">` 자리에 넣기(빌드의 cover 함수) → 4. 390·768·1280 폭에서 얼굴 잘림 확인 → 5. 아래 매니페스트 status를 done으로.
