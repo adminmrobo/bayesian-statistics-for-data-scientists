@@ -1,6 +1,6 @@
 # 표지 지시문 모음 — 데이터 사이언티스트를 위한 베이지안 통계학
 
-각 페이지 맨 위 `data-img="cover_{N}"` 자리에 넣을 16:9 표지 그림 지시문입니다(ai-lab-explainer 18-14). 지금 페이지에는 네 캐릭터를 나란히 세운 대체 표지가 들어 있어요. 그림을 받으면 WebP 1600×900(220 KB 이하)으로 바꿔 넣습니다.
+각 페이지 맨 위 `data-img="cover_{N}"` 자리에 넣을 16:9 표지 그림 지시문입니다(ai-lab-explainer 18-14). **흰 배경판(2026-11-10 개정):** 페이지가 흰 배경으로 바뀌어 모든 장면을 밝은 낮 연구실로 바꿨습니다. 예전 밤 장면 그림을 이미 받았다면 이 지시문으로 다시 받아 주세요. 지금 페이지에는 네 캐릭터를 나란히 세운 대체 표지가 들어 있어요. 그림을 받으면 WebP 1600×900(220 KB 이하)으로 바꿔 넣습니다.
 
 **참고 이미지(함께 올리기):** 네 캐릭터 기본 그림 4장 — GitHub `adminmrobo/fruitfly-lab-expressions`. 첫 표지(목차)를 먼저 받아 그림체를 확인한 뒤 나머지에 참고 그림으로 함께 올리세요.
 
@@ -10,9 +10,9 @@
 |---|---|
 | 키 · 판 | cover_00 · L (16:9, 1920 이상) |
 | 페이지 | `index.html` |
-| 장소 | 밤의 연구실 전경 |
+| 장소 | 밝은 연구실 전경 |
 | 주제 은유 | a wall-sized concept map made of glowing circles and connecting lines (no text), like a constellation of ideas |
-| 대체 글(alt) | 데이터 사이언티스트를 위한 베이지안 통계학의 표지: 박사, 조수, 초파리 연구원, 주판봇이 밤의 연구실 전경에서 주제 소품을 바라보는 장면 |
+| 대체 글(alt) | 데이터 사이언티스트를 위한 베이지안 통계학의 표지: 박사, 조수, 초파리 연구원, 주판봇이 밝은 연구실 전경에서 주제 소품을 바라보는 장면 |
 
 **Genspark에 붙여 넣기 ↓**
 ```
@@ -20,13 +20,14 @@
 - 비율 16:9, 가로 1920px 이상
 - 첨부한 참고 이미지의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
-- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 어둡고 단순하게
+- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
+- 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
 Website top cover illustration, wide 16:9.
 Match the art style, proportions and colors of the attached reference images exactly
   (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2-3 tone shading, small highlights).
-Scene: a cozy night research lab in deep indigo (#1b1533 to #13141f), purple lighting, teal monitor glow, small accents of fluorescent pink (#d672d6) and green (#5ee39c).
+Scene: a bright, airy research lab in soft daylight, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), gentle shadows, pale blue monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
   chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, center-back pointing at the map;
   girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, at one side holding a blank clipboard;
@@ -34,7 +35,7 @@ All four characters together:
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, looking up at the map.
 Visual metaphor of the topic: a wall-sized concept map made of glowing circles and connecting lines (no text), like a constellation of ideas.
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
-  keep the bottom-left corner dark and simple; the light falls on the topic prop.
+  keep the bottom-left corner light and simple (plain white wall); let the bottom edge fade to near-white so the image melts into a white page; the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
@@ -57,13 +58,14 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 - 비율 16:9, 가로 1920px 이상
 - 첨부한 참고 이미지의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
-- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 어둡고 단순하게
+- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
+- 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
 Website top cover illustration, wide 16:9.
 Match the art style, proportions and colors of the attached reference images exactly
   (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2-3 tone shading, small highlights).
-Scene: a cozy night research lab in deep indigo (#1b1533 to #13141f), purple lighting, teal monitor glow, small accents of fluorescent pink (#d672d6) and green (#5ee39c).
+Scene: a bright, airy research lab in soft daylight, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), gentle shadows, pale blue monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
   chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, holding the ladle up;
   girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, tasting from a small spoon;
@@ -71,7 +73,7 @@ All four characters together:
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, holding a huge bowl.
 Visual metaphor of the topic: a big soup pot with a ladle lifting one spoonful of glowing liquid, beside two line charts made of light (no numbers).
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
-  keep the bottom-left corner dark and simple; the light falls on the topic prop.
+  keep the bottom-left corner light and simple (plain white wall); let the bottom edge fade to near-white so the image melts into a white page; the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
@@ -94,13 +96,14 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 - 비율 16:9, 가로 1920px 이상
 - 첨부한 참고 이미지의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
-- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 어둡고 단순하게
+- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
+- 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
 Website top cover illustration, wide 16:9.
 Match the art style, proportions and colors of the attached reference images exactly
   (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2-3 tone shading, small highlights).
-Scene: a cozy night research lab in deep indigo (#1b1533 to #13141f), purple lighting, teal monitor glow, small accents of fluorescent pink (#d672d6) and green (#5ee39c).
+Scene: a bright, airy research lab in soft daylight, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), gentle shadows, pale blue monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
   chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, spinning the wheel;
   girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, catching coins in a tray;
@@ -108,7 +111,7 @@ All four characters together:
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, pushing a stack of abacus beads forward.
 Visual metaphor of the topic: a roulette wheel and a stream of flipping coins frozen in the air.
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
-  keep the bottom-left corner dark and simple; the light falls on the topic prop.
+  keep the bottom-left corner light and simple (plain white wall); let the bottom edge fade to near-white so the image melts into a white page; the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
@@ -121,9 +124,9 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 |---|---|
 | 키 · 판 | cover_03 · L (16:9, 1920 이상) |
 | 페이지 | `03_bayesian_thinking.html` |
-| 장소 | 밤의 연구실 |
+| 장소 | 밝은 연구실 |
 | 주제 은유 | a giant magnifying glass over a grid of tiny glowing dots, a few green and many red, and a stack of sealed envelopes |
-| 대체 글(alt) | 베이지안 사고방식 — 업데이트하는 지혜의 표지: 박사, 조수, 초파리 연구원, 주판봇이 밤의 연구실에서 주제 소품을 바라보는 장면 |
+| 대체 글(alt) | 베이지안 사고방식 — 업데이트하는 지혜의 표지: 박사, 조수, 초파리 연구원, 주판봇이 밝은 연구실에서 주제 소품을 바라보는 장면 |
 
 **Genspark에 붙여 넣기 ↓**
 ```
@@ -131,13 +134,14 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 - 비율 16:9, 가로 1920px 이상
 - 첨부한 참고 이미지의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
-- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 어둡고 단순하게
+- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
+- 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
 Website top cover illustration, wide 16:9.
 Match the art style, proportions and colors of the attached reference images exactly
   (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2-3 tone shading, small highlights).
-Scene: a cozy night research lab in deep indigo (#1b1533 to #13141f), purple lighting, teal monitor glow, small accents of fluorescent pink (#d672d6) and green (#5ee39c).
+Scene: a bright, airy research lab in soft daylight, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), gentle shadows, pale blue monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
   chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, holding the magnifying glass;
   girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, sorting envelopes;
@@ -145,7 +149,7 @@ All four characters together:
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, excited about the green dots.
 Visual metaphor of the topic: a giant magnifying glass over a grid of tiny glowing dots, a few green and many red, and a stack of sealed envelopes.
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
-  keep the bottom-left corner dark and simple; the light falls on the topic prop.
+  keep the bottom-left corner light and simple (plain white wall); let the bottom edge fade to near-white so the image melts into a white page; the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
@@ -168,13 +172,14 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 - 비율 16:9, 가로 1920px 이상
 - 첨부한 참고 이미지의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
-- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 어둡고 단순하게
+- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
+- 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
 Website top cover illustration, wide 16:9.
 Match the art style, proportions and colors of the attached reference images exactly
   (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2-3 tone shading, small highlights).
-Scene: a cozy night research lab in deep indigo (#1b1533 to #13141f), purple lighting, teal monitor glow, small accents of fluorescent pink (#d672d6) and green (#5ee39c).
+Scene: a bright, airy research lab in soft daylight, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), gentle shadows, pale blue monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
   chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, between the buttons as referee;
   girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, checking a stopwatch;
@@ -182,7 +187,7 @@ All four characters together:
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, reaching for the red button.
 Visual metaphor of the topic: two large glowing push buttons (one red, one blue) on pedestals with two overlapping bell-shaped light curves above them.
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
-  keep the bottom-left corner dark and simple; the light falls on the topic prop.
+  keep the bottom-left corner light and simple (plain white wall); let the bottom edge fade to near-white so the image melts into a white page; the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
@@ -205,13 +210,14 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 - 비율 16:9, 가로 1920px 이상
 - 첨부한 참고 이미지의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
-- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 어둡고 단순하게
+- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
+- 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
 Website top cover illustration, wide 16:9.
 Match the art style, proportions and colors of the attached reference images exactly
   (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2-3 tone shading, small highlights).
-Scene: a cozy night research lab in deep indigo (#1b1533 to #13141f), purple lighting, teal monitor glow, small accents of fluorescent pink (#d672d6) and green (#5ee39c).
+Scene: a bright, airy research lab in soft daylight, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), gentle shadows, pale blue monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
   chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, pointing at a thread between two products;
   girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, arranging tiles;
@@ -219,7 +225,7 @@ All four characters together:
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, connecting many threads.
 Visual metaphor of the topic: shelves of small products linked by glowing threads, and a wall of blank video tiles.
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
-  keep the bottom-left corner dark and simple; the light falls on the topic prop.
+  keep the bottom-left corner light and simple (plain white wall); let the bottom edge fade to near-white so the image melts into a white page; the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
@@ -242,13 +248,14 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 - 비율 16:9, 가로 1920px 이상
 - 첨부한 참고 이미지의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
-- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 어둡고 단순하게
+- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
+- 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
 Website top cover illustration, wide 16:9.
 Match the art style, proportions and colors of the attached reference images exactly
   (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2-3 tone shading, small highlights).
-Scene: a cozy night research lab in deep indigo (#1b1533 to #13141f), purple lighting, teal monitor glow, small accents of fluorescent pink (#d672d6) and green (#5ee39c).
+Scene: a bright, airy research lab in soft daylight, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), gentle shadows, pale blue monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
   chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, adjusting the scale;
   girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, placing eggs in separate baskets;
@@ -256,7 +263,7 @@ All four characters together:
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, stacking all eggs in one basket.
 Visual metaphor of the topic: a brass balance scale with paper folders on one side, and several baskets of eggs spread apart.
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
-  keep the bottom-left corner dark and simple; the light falls on the topic prop.
+  keep the bottom-left corner light and simple (plain white wall); let the bottom edge fade to near-white so the image melts into a white page; the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
@@ -279,13 +286,14 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 - 비율 16:9, 가로 1920px 이상
 - 첨부한 참고 이미지의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
-- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 어둡고 단순하게
+- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
+- 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
 Website top cover illustration, wide 16:9.
 Match the art style, proportions and colors of the attached reference images exactly
   (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2-3 tone shading, small highlights).
-Scene: a cozy night research lab in deep indigo (#1b1533 to #13141f), purple lighting, teal monitor glow, small accents of fluorescent pink (#d672d6) and green (#5ee39c).
+Scene: a bright, airy research lab in soft daylight, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), gentle shadows, pale blue monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
   chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, standing in one circle;
   girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, tracing an arrow;
@@ -293,7 +301,7 @@ All four characters together:
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, carrying a stack of coins toward a door.
 Visual metaphor of the topic: three glowing circles (sun, cloud, rain icons without letters) connected by curved arrows on the floor, and a ring of doors.
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
-  keep the bottom-left corner dark and simple; the light falls on the topic prop.
+  keep the bottom-left corner light and simple (plain white wall); let the bottom edge fade to near-white so the image melts into a white page; the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
@@ -316,13 +324,14 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 - 비율 16:9, 가로 1920px 이상
 - 첨부한 참고 이미지의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
-- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 어둡고 단순하게
+- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
+- 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
 Website top cover illustration, wide 16:9.
 Match the art style, proportions and colors of the attached reference images exactly
   (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2-3 tone shading, small highlights).
-Scene: a cozy night research lab in deep indigo (#1b1533 to #13141f), purple lighting, teal monitor glow, small accents of fluorescent pink (#d672d6) and green (#5ee39c).
+Scene: a bright, airy research lab in soft daylight, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), gentle shadows, pale blue monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
   chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, tapping the board;
   girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, handing out blank cards;
@@ -330,7 +339,7 @@ All four characters together:
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, holding a big score tally (no numbers).
 Visual metaphor of the topic: a chalkboard covered with seven blank cards and small quiz buttons, with a ribbon marking halfway.
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
-  keep the bottom-left corner dark and simple; the light falls on the topic prop.
+  keep the bottom-left corner light and simple (plain white wall); let the bottom edge fade to near-white so the image melts into a white page; the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
@@ -343,9 +352,9 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 |---|---|
 | 키 · 판 | cover_08 · L (16:9, 1920 이상) |
 | 페이지 | `08_monte_carlo.html` |
-| 장소 | 밤의 연구실 창가 |
+| 장소 | 햇살 드는 연구실 창가 |
 | 주제 은유 | thousands of tiny glowing dots raining into a square frame with a quarter circle, and a few dice in the air |
-| 대체 글(alt) | 몬테카를로 시뮬레이션 — 복잡한 문제의 해법의 표지: 박사, 조수, 초파리 연구원, 주판봇이 밤의 연구실 창가에서 주제 소품을 바라보는 장면 |
+| 대체 글(alt) | 몬테카를로 시뮬레이션 — 복잡한 문제의 해법의 표지: 박사, 조수, 초파리 연구원, 주판봇이 햇살 드는 연구실 창가에서 주제 소품을 바라보는 장면 |
 
 **Genspark에 붙여 넣기 ↓**
 ```
@@ -353,13 +362,14 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 - 비율 16:9, 가로 1920px 이상
 - 첨부한 참고 이미지의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
-- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 어둡고 단순하게
+- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
+- 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
 Website top cover illustration, wide 16:9.
 Match the art style, proportions and colors of the attached reference images exactly
   (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2-3 tone shading, small highlights).
-Scene: a cozy night research lab in deep indigo (#1b1533 to #13141f), purple lighting, teal monitor glow, small accents of fluorescent pink (#d672d6) and green (#5ee39c).
+Scene: a bright, airy research lab in soft daylight, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), gentle shadows, pale blue monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
   chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, releasing the dots from his hands with purple sparks;
   girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, holding the frame;
@@ -367,7 +377,7 @@ All four characters together:
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, pouring more dots from a bucket.
 Visual metaphor of the topic: thousands of tiny glowing dots raining into a square frame with a quarter circle, and a few dice in the air.
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
-  keep the bottom-left corner dark and simple; the light falls on the topic prop.
+  keep the bottom-left corner light and simple (plain white wall); let the bottom edge fade to near-white so the image melts into a white page; the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
@@ -390,13 +400,14 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 - 비율 16:9, 가로 1920px 이상
 - 첨부한 참고 이미지의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
-- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 어둡고 단순하게
+- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
+- 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
 Website top cover illustration, wide 16:9.
 Match the art style, proportions and colors of the attached reference images exactly
   (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2-3 tone shading, small highlights).
-Scene: a cozy night research lab in deep indigo (#1b1533 to #13141f), purple lighting, teal monitor glow, small accents of fluorescent pink (#d672d6) and green (#5ee39c).
+Scene: a bright, airy research lab in soft daylight, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), gentle shadows, pale blue monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
   chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, drawing an arrow in the air;
   girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, holding the funnel;
@@ -404,7 +415,7 @@ All four characters together:
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, pulling one arrow.
 Visual metaphor of the topic: a floating network of glowing nodes connected by arrows, and a funnel narrowing toward the floor.
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
-  keep the bottom-left corner dark and simple; the light falls on the topic prop.
+  keep the bottom-left corner light and simple (plain white wall); let the bottom edge fade to near-white so the image melts into a white page; the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
@@ -427,13 +438,14 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 - 비율 16:9, 가로 1920px 이상
 - 첨부한 참고 이미지의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
-- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 어둡고 단순하게
+- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
+- 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
 Website top cover illustration, wide 16:9.
 Match the art style, proportions and colors of the attached reference images exactly
   (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2-3 tone shading, small highlights).
-Scene: a cozy night research lab in deep indigo (#1b1533 to #13141f), purple lighting, teal monitor glow, small accents of fluorescent pink (#d672d6) and green (#5ee39c).
+Scene: a bright, airy research lab in soft daylight, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), gentle shadows, pale blue monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
   chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, sorting chips into two piles;
   girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, reading a long scroll of blank lines;
@@ -441,7 +453,7 @@ All four characters together:
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, scooping all chips.
 Visual metaphor of the topic: floating speech bubbles filled with blank word chips that turn into small bar shapes.
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
-  keep the bottom-left corner dark and simple; the light falls on the topic prop.
+  keep the bottom-left corner light and simple (plain white wall); let the bottom edge fade to near-white so the image melts into a white page; the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
@@ -464,13 +476,14 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 - 비율 16:9, 가로 1920px 이상
 - 첨부한 참고 이미지의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
-- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 어둡고 단순하게
+- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
+- 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
 Website top cover illustration, wide 16:9.
 Match the art style, proportions and colors of the attached reference images exactly
   (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2-3 tone shading, small highlights).
-Scene: a cozy night research lab in deep indigo (#1b1533 to #13141f), purple lighting, teal monitor glow, small accents of fluorescent pink (#d672d6) and green (#5ee39c).
+Scene: a bright, airy research lab in soft daylight, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), gentle shadows, pale blue monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
   chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, looking at the lightbox;
   girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, adjusting the lens;
@@ -478,7 +491,7 @@ All four characters together:
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, pointing confidently at one copy.
 Visual metaphor of the topic: a lightbox with blurry silhouette images and a camera lens projecting many slightly different copies of one silhouette.
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
-  keep the bottom-left corner dark and simple; the light falls on the topic prop.
+  keep the bottom-left corner light and simple (plain white wall); let the bottom edge fade to near-white so the image melts into a white page; the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
@@ -501,13 +514,14 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 - 비율 16:9, 가로 1920px 이상
 - 첨부한 참고 이미지의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
-- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 어둡고 단순하게
+- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
+- 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
 Website top cover illustration, wide 16:9.
 Match the art style, proportions and colors of the attached reference images exactly
   (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2-3 tone shading, small highlights).
-Scene: a cozy night research lab in deep indigo (#1b1533 to #13141f), purple lighting, teal monitor glow, small accents of fluorescent pink (#d672d6) and green (#5ee39c).
+Scene: a bright, airy research lab in soft daylight, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), gentle shadows, pale blue monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
   chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, leaning over the table;
   girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, placing small boxes;
@@ -515,7 +529,7 @@ All four characters together:
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, lifting the big outer box.
 Visual metaphor of the topic: nested boxes (small boxes inside larger boxes) with glowing dots being pulled gently toward a central line.
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
-  keep the bottom-left corner dark and simple; the light falls on the topic prop.
+  keep the bottom-left corner light and simple (plain white wall); let the bottom edge fade to near-white so the image melts into a white page; the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
@@ -538,13 +552,14 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 - 비율 16:9, 가로 1920px 이상
 - 첨부한 참고 이미지의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
-- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 어둡고 단순하게
+- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
+- 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
 Website top cover illustration, wide 16:9.
 Match the art style, proportions and colors of the attached reference images exactly
   (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2-3 tone shading, small highlights).
-Scene: a cozy night research lab in deep indigo (#1b1533 to #13141f), purple lighting, teal monitor glow, small accents of fluorescent pink (#d672d6) and green (#5ee39c).
+Scene: a bright, airy research lab in soft daylight, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), gentle shadows, pale blue monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
   chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, presenting the board;
   girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, attaching notes;
@@ -552,7 +567,7 @@ All four characters together:
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, jumping to the top step.
 Visual metaphor of the topic: a project board with three blank panels (pie of groups, two curves, a staircase roadmap) and sticky notes without text.
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
-  keep the bottom-left corner dark and simple; the light falls on the topic prop.
+  keep the bottom-left corner light and simple (plain white wall); let the bottom edge fade to near-white so the image melts into a white page; the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
@@ -575,13 +590,14 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 - 비율 16:9, 가로 1920px 이상
 - 첨부한 참고 이미지의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
-- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 어둡고 단순하게
+- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
+- 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
 Website top cover illustration, wide 16:9.
 Match the art style, proportions and colors of the attached reference images exactly
   (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2-3 tone shading, small highlights).
-Scene: a cozy night research lab in deep indigo (#1b1533 to #13141f), purple lighting, teal monitor glow, small accents of fluorescent pink (#d672d6) and green (#5ee39c).
+Scene: a bright, airy research lab in soft daylight, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), gentle shadows, pale blue monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
   chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, opening the door;
   girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, placing the last book;
@@ -589,7 +605,7 @@ All four characters together:
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, holding a lamp.
 Visual metaphor of the topic: a shelf with six closed books and a small lamp, and a doorway glowing to the next room.
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
-  keep the bottom-left corner dark and simple; the light falls on the topic prop.
+  keep the bottom-left corner light and simple (plain white wall); let the bottom edge fade to near-white so the image melts into a white page; the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
