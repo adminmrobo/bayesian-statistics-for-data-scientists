@@ -1,0 +1,1424 @@
+{
+ "version": "1.0",
+ "date": "2026-11-10",
+ "ids": {
+  "lab:concept/dispersion": {
+   "ko": "흩어짐(분산·표준편차)",
+   "en": "dispersion (variance, standard deviation)",
+   "page": "07m_midterm_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/sampling-error": {
+   "ko": "표본오차와 오차범위",
+   "en": "sampling error and margin of error",
+   "page": "07m_midterm_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:theory/law-of-large-numbers": {
+   "ko": "대수의 법칙",
+   "en": "law of large numbers",
+   "page": "07m_midterm_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/01-duel-fly": {
+   "ko": "무작위 1,000명",
+   "en": "duel choice A 01",
+   "page": "01_what_is_statistics",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/01-duel-robo": {
+   "ko": "자발적 응답 20,000명",
+   "en": "duel choice B 01",
+   "page": "01_what_is_statistics",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/mean": {
+   "ko": "평균",
+   "en": "mean",
+   "page": "01_what_is_statistics",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/standard-deviation": {
+   "ko": "표준편차",
+   "en": "standard deviation",
+   "page": "01_what_is_statistics",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/variance": {
+   "ko": "분산",
+   "en": "variance",
+   "page": "01_what_is_statistics",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/coefficient-of-variation": {
+   "ko": "변동계수",
+   "en": "coefficient of variation",
+   "page": "01_what_is_statistics",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/skewness": {
+   "ko": "왜도",
+   "en": "skewness",
+   "page": "01_what_is_statistics",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/population": {
+   "ko": "모집단",
+   "en": "population",
+   "page": "01_what_is_statistics",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/sample": {
+   "ko": "표본",
+   "en": "sample",
+   "page": "01_what_is_statistics",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/margin-of-error": {
+   "ko": "오차범위",
+   "en": "margin of error",
+   "page": "01_what_is_statistics",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:theory/central-limit-theorem": {
+   "ko": "중심극한정리",
+   "en": "central limit theorem",
+   "page": "01_what_is_statistics",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:distribution/t": {
+   "ko": "t분포",
+   "en": "t-distribution",
+   "page": "01_what_is_statistics",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:term/systematic-risk": {
+   "ko": "체계적 위험",
+   "en": "systematic risk",
+   "page": "01_what_is_statistics",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:term/house-edge": {
+   "ko": "하우스 엣지",
+   "en": "house edge",
+   "page": "02_probability",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/bias": {
+   "ko": "편향",
+   "en": "bias",
+   "page": "01_what_is_statistics",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/conditional-probability": {
+   "ko": "조건부 확률",
+   "en": "conditional probability",
+   "page": "07m_midterm_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/independence": {
+   "ko": "독립 사건",
+   "en": "independent events",
+   "page": "07m_midterm_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:distribution/binomial": {
+   "ko": "이항분포와 반복 시행",
+   "en": "binomial distribution",
+   "page": "07m_midterm_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/02-duel-fly": {
+   "ko": "예측 48.6% (늘 같은 18/37)",
+   "en": "duel choice A 02",
+   "page": "02_probability",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/02-duel-robo": {
+   "ko": "예측 60% (\"이제 빨강 차례\")",
+   "en": "duel choice B 02",
+   "page": "02_probability",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/probability": {
+   "ko": "확률",
+   "en": "probability",
+   "page": "02_probability",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/frequentist-probability": {
+   "ko": "도수론적 관점",
+   "en": "frequentist view",
+   "page": "02_probability",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/subjective-probability": {
+   "ko": "주관적 관점",
+   "en": "subjective (Bayesian) view",
+   "page": "02_probability",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/prior-probability": {
+   "ko": "사전 확률",
+   "en": "prior probability",
+   "page": "06_financial_risk",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/posterior-probability": {
+   "ko": "사후 확률",
+   "en": "posterior probability",
+   "page": "03_bayesian_thinking",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/dependence": {
+   "ko": "종속",
+   "en": "dependence",
+   "page": "02_probability",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/mutually-exclusive": {
+   "ko": "배반",
+   "en": "mutually exclusive",
+   "page": "02_probability",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/correlation": {
+   "ko": "상관계수",
+   "en": "correlation coefficient",
+   "page": "06_financial_risk",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/gamblers-fallacy": {
+   "ko": "도박꾼의 오류",
+   "en": "gambler's fallacy",
+   "page": "02_probability",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:theory/bayes-theorem": {
+   "ko": "베이즈 정리",
+   "en": "Bayes' theorem",
+   "page": "07m_midterm_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/naive-bayes": {
+   "ko": "나이브 베이즈 분류기",
+   "en": "naive Bayes classifier",
+   "page": "07m_midterm_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/sequential-bayesian-update": {
+   "ko": "베이지안 순차 업데이트",
+   "en": "sequential Bayesian updating",
+   "page": "07m_midterm_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/03-duel-fly": {
+   "ko": "예측 0.9% (기저율 반영)",
+   "en": "duel choice A 03",
+   "page": "03_bayesian_thinking",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/03-duel-robo": {
+   "ko": "예측 90% (정확도 그대로)",
+   "en": "duel choice B 03",
+   "page": "03_bayesian_thinking",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/likelihood": {
+   "ko": "가능도",
+   "en": "likelihood",
+   "page": "03_bayesian_thinking",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/base-rate": {
+   "ko": "기저율",
+   "en": "base rate",
+   "page": "03_bayesian_thinking",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:term/confusion-matrix": {
+   "ko": "혼동행렬",
+   "en": "confusion matrix",
+   "page": "03_bayesian_thinking",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/sensitivity": {
+   "ko": "민감도",
+   "en": "sensitivity",
+   "page": "11_bayesian_vision",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:term/false-positive": {
+   "ko": "위양성",
+   "en": "false positive",
+   "page": "03_bayesian_thinking",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:assumption/conditional-independence": {
+   "ko": "독립성 가정",
+   "en": "conditional independence assumption",
+   "page": "03_bayesian_thinking",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/likelihood-ratio": {
+   "ko": "우도비",
+   "en": "likelihood ratio",
+   "page": "06_financial_risk",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/ab-test": {
+   "ko": "A/B 테스트",
+   "en": "A/B test",
+   "page": "07m_midterm_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/bayesian-average": {
+   "ko": "베이지안 평균(수축 추정)",
+   "en": "Bayesian average (shrinkage)",
+   "page": "07m_midterm_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:distribution/beta": {
+   "ko": "베타 분포",
+   "en": "beta distribution",
+   "page": "07m_midterm_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/04-duel-fly": {
+   "ko": "그룹당 10,000명 모은 뒤 결정",
+   "en": "duel choice A 04",
+   "page": "04_ab_test",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/04-duel-robo": {
+   "ko": "그룹당 500명에서 바로 결정",
+   "en": "duel choice B 04",
+   "page": "04_ab_test",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/randomization": {
+   "ko": "무작위 배정",
+   "en": "random assignment",
+   "page": "04_ab_test",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:metric/ctr": {
+   "ko": "클릭률",
+   "en": "click-through rate",
+   "page": "04_ab_test",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:metric/conversion-rate": {
+   "ko": "전환율",
+   "en": "conversion rate",
+   "page": "04_ab_test",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:term/cold-start": {
+   "ko": "콜드 스타트",
+   "en": "cold start",
+   "page": "05_recommender",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:concept/prior-distribution": {
+   "ko": "사전분포",
+   "en": "prior distribution",
+   "page": "04_ab_test",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/posterior-distribution": {
+   "ko": "사후분포",
+   "en": "posterior distribution",
+   "page": "04_ab_test",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/credible-interval": {
+   "ko": "신용구간",
+   "en": "credible interval",
+   "page": "11_bayesian_vision",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:concept/practical-significance": {
+   "ko": "실용적 유의성",
+   "en": "practical significance",
+   "page": "04_ab_test",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/mcmc": {
+   "ko": "MCMC(마르코프 체인 몬테카를로)",
+   "en": "Markov chain Monte Carlo",
+   "page": "13f_final_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/association-rules": {
+   "ko": "연관 규칙 분석",
+   "en": "association rule mining",
+   "page": "07m_midterm_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/recommendation-objective": {
+   "ko": "추천의 목표 지표",
+   "en": "recommendation objective",
+   "page": "07m_midterm_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/collaborative-filtering": {
+   "ko": "협업 필터링",
+   "en": "collaborative filtering",
+   "page": "07m_midterm_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/05-duel-fly": {
+   "ko": "인기순 상위 3개",
+   "en": "duel choice A 05",
+   "page": "05_recommender",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:method/05-duel-robo": {
+   "ko": "협업 필터링 상위 3개",
+   "en": "duel choice B 05",
+   "page": "05_recommender",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:metric/support": {
+   "ko": "지지도",
+   "en": "support",
+   "page": "05_recommender",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:metric/confidence": {
+   "ko": "신뢰도",
+   "en": "confidence",
+   "page": "05_recommender",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:metric/lift": {
+   "ko": "향상도",
+   "en": "lift",
+   "page": "05_recommender",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:term/filter-bubble": {
+   "ko": "필터 버블",
+   "en": "filter bubble",
+   "page": "05_recommender",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:metric/diversity": {
+   "ko": "다양성",
+   "en": "diversity",
+   "page": "05_recommender",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:method/content-based-filtering": {
+   "ko": "콘텐츠 기반",
+   "en": "content-based filtering",
+   "page": "05_recommender",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:metric/cosine-similarity": {
+   "ko": "코사인 유사도",
+   "en": "cosine similarity",
+   "page": "05_recommender",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:term/sparse-matrix": {
+   "ko": "희소행렬",
+   "en": "sparse matrix",
+   "page": "05_recommender",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:method/matrix-factorization": {
+   "ko": "행렬분해",
+   "en": "matrix factorization (SVD)",
+   "page": "05_recommender",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:method/bayesian-credit-scoring": {
+   "ko": "베이지안 신용평가",
+   "en": "Bayesian credit scoring",
+   "page": "07m_midterm_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/information-value-of-evidence": {
+   "ko": "증거의 판별력(우도비)",
+   "en": "diagnostic value of evidence",
+   "page": "07m_midterm_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/portfolio-diversification": {
+   "ko": "분산투자(포트폴리오)",
+   "en": "portfolio diversification",
+   "page": "07m_midterm_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/06-duel-fly": {
+   "ko": "두 자산 반반",
+   "en": "duel choice A 06",
+   "page": "06_financial_risk",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/06-duel-robo": {
+   "ko": "한 자산에 전부",
+   "en": "duel choice B 06",
+   "page": "06_financial_risk",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/odds": {
+   "ko": "승산",
+   "en": "odds",
+   "page": "06_financial_risk",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:term/credit-rating": {
+   "ko": "신용등급",
+   "en": "credit rating",
+   "page": "06_financial_risk",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:term/loan-loss-provision": {
+   "ko": "충당금",
+   "en": "loan loss provision",
+   "page": "06_financial_risk",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/confirmation-bias": {
+   "ko": "확증편향",
+   "en": "confirmation bias",
+   "page": "06_financial_risk",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:term/echo-chamber": {
+   "ko": "에코챔버",
+   "en": "echo chamber",
+   "page": "06_financial_risk",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:term/underlying-asset": {
+   "ko": "기초자산",
+   "en": "underlying asset",
+   "page": "06_financial_risk",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:metric/portfolio-risk": {
+   "ko": "포트폴리오 위험",
+   "en": "portfolio risk",
+   "page": "06_financial_risk",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:term/idiosyncratic-risk": {
+   "ko": "비체계적 위험",
+   "en": "idiosyncratic risk",
+   "page": "06_financial_risk",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:term/rebalancing": {
+   "ko": "리밸런싱",
+   "en": "rebalancing",
+   "page": "06_financial_risk",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/markov-chain": {
+   "ko": "마르코프 체인",
+   "en": "Markov chain",
+   "page": "07m_midterm_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/pagerank": {
+   "ko": "페이지랭크",
+   "en": "PageRank",
+   "page": "07m_midterm_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/customer-lifetime-value": {
+   "ko": "고객 생애가치(CLV)",
+   "en": "customer lifetime value",
+   "page": "07m_midterm_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/07-duel-fly": {
+   "ko": "고객 B (매출 5만, 유지율 85%)",
+   "en": "duel choice A 07",
+   "page": "07_markov_chain",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/07-duel-robo": {
+   "ko": "고객 A (매출 8만, 유지율 55%)",
+   "en": "duel choice B 07",
+   "page": "07_markov_chain",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/markov-property": {
+   "ko": "마르코프 성질",
+   "en": "Markov property",
+   "page": "07_markov_chain",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/transition-matrix": {
+   "ko": "전이 행렬",
+   "en": "transition matrix",
+   "page": "07_markov_chain",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/stationary-distribution": {
+   "ko": "정상분포",
+   "en": "stationary distribution",
+   "page": "07_markov_chain",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/markov-1st": {
+   "ko": "1차 모형",
+   "en": "first-order Markov model",
+   "page": "07_markov_chain",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:term/damping-factor": {
+   "ko": "감쇠 계수",
+   "en": "damping factor",
+   "page": "07_markov_chain",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:term/discount-rate": {
+   "ko": "할인율",
+   "en": "discount rate",
+   "page": "07_markov_chain",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/absorbing-state": {
+   "ko": "흡수 상태",
+   "en": "absorbing state",
+   "page": "07_markov_chain",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:term/segment": {
+   "ko": "세그먼트",
+   "en": "segment",
+   "page": "07_markov_chain",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/monte-carlo-simulation": {
+   "ko": "몬테카를로 시뮬레이션",
+   "en": "Monte Carlo simulation",
+   "page": "13f_final_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/compound-risk": {
+   "ko": "독립 위험의 누적",
+   "en": "compound (multiplicative) risk",
+   "page": "13f_final_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/08-duel-fly": {
+   "ko": "점 100개",
+   "en": "duel choice A 08",
+   "page": "08_monte_carlo",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/08-duel-robo": {
+   "ko": "점 10,000개",
+   "en": "duel choice B 08",
+   "page": "08_monte_carlo",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/percentile": {
+   "ko": "백분위수",
+   "en": "percentile",
+   "page": "08_monte_carlo",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/median": {
+   "ko": "중앙값",
+   "en": "median",
+   "page": "08_monte_carlo",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:distribution/triangular": {
+   "ko": "삼각분포",
+   "en": "triangular distribution",
+   "page": "08_monte_carlo",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/sensitivity-analysis": {
+   "ko": "민감도 분석",
+   "en": "sensitivity analysis",
+   "page": "08_monte_carlo",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:term/bottleneck": {
+   "ko": "병목",
+   "en": "bottleneck",
+   "page": "08_monte_carlo",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:term/safety-stock": {
+   "ko": "안전재고",
+   "en": "safety stock",
+   "page": "08_monte_carlo",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/metropolis-hastings": {
+   "ko": "메트로폴리스",
+   "en": "Metropolis-Hastings algorithm",
+   "page": "08_monte_carlo",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:term/burn-in": {
+   "ko": "번인",
+   "en": "burn-in",
+   "page": "08_monte_carlo",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:term/trace-plot": {
+   "ko": "궤적 그림",
+   "en": "trace plot",
+   "page": "08_monte_carlo",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/chain-rule-of-probability": {
+   "ko": "확률의 곱셈 법칙(사슬)",
+   "en": "chain rule of probability",
+   "page": "13f_final_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/positive-predictive-value": {
+   "ko": "양성 예측도(PPV)",
+   "en": "positive predictive value",
+   "page": "13f_final_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/bayesian-network": {
+   "ko": "베이지안 네트워크",
+   "en": "Bayesian network",
+   "page": "13f_final_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/09-duel-fly": {
+   "ko": "관심도별로 나눠 비교한 뒤 합침",
+   "en": "duel choice A 09",
+   "page": "09_bayesian_network",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/09-duel-robo": {
+   "ko": "광고 본 사람 vs 안 본 사람 단순 비교",
+   "en": "duel choice B 09",
+   "page": "09_bayesian_network",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:term/funnel": {
+   "ko": "퍼널",
+   "en": "funnel",
+   "page": "09_bayesian_network",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/specificity": {
+   "ko": "특이도",
+   "en": "specificity",
+   "page": "11_bayesian_vision",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:term/prevalence": {
+   "ko": "유병률",
+   "en": "prevalence",
+   "page": "09_bayesian_network",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:term/cpt": {
+   "ko": "조건부 확률표",
+   "en": "conditional probability table",
+   "page": "09_bayesian_network",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/confounder": {
+   "ko": "교란 요인",
+   "en": "confounder",
+   "page": "09_bayesian_network",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/causation": {
+   "ko": "인과",
+   "en": "causation",
+   "page": "09_bayesian_network",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/naive-bayes-sentiment": {
+   "ko": "나이브 베이즈 감성 분석",
+   "en": "naive Bayes sentiment analysis",
+   "page": "13f_final_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/proportion-credible-interval": {
+   "ko": "비율의 신용구간",
+   "en": "credible interval for a proportion",
+   "page": "13f_final_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/topic-model-lda": {
+   "ko": "토픽 모델(LDA)",
+   "en": "topic model (latent Dirichlet allocation)",
+   "page": "13f_final_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/10-duel-fly": {
+   "ko": "\"좋아요\"가 있으면 긍정",
+   "en": "duel choice A 10",
+   "page": "10_nlp_bayes",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:method/10-duel-robo": {
+   "ko": "모든 단어로 나이브 베이즈",
+   "en": "duel choice B 10",
+   "page": "10_nlp_bayes",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:concept/nlp": {
+   "ko": "자연어 처리",
+   "en": "natural language processing",
+   "page": "10_nlp_bayes",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:term/tokenization": {
+   "ko": "토큰화",
+   "en": "tokenization",
+   "page": "10_nlp_bayes",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:term/stop-words": {
+   "ko": "불용어",
+   "en": "stop words",
+   "page": "10_nlp_bayes",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:method/tf-idf": {
+   "ko": "TF-IDF",
+   "en": "TF-IDF",
+   "page": "10_nlp_bayes",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:method/sentiment-analysis": {
+   "ko": "감성 분석",
+   "en": "sentiment analysis",
+   "page": "10_nlp_bayes",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:method/laplace-smoothing": {
+   "ko": "라플라스 평활",
+   "en": "Laplace smoothing",
+   "page": "10_nlp_bayes",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:method/lda": {
+   "ko": "LDA",
+   "en": "latent Dirichlet allocation",
+   "page": "10_nlp_bayes",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:concept/topic": {
+   "ko": "토픽",
+   "en": "topic",
+   "page": "10_nlp_bayes",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:method/bayesian-tag-recommendation": {
+   "ko": "베이지안 해시태그 추천",
+   "en": "Bayesian hashtag recommendation",
+   "page": "13f_final_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/diagnostic-uncertainty": {
+   "ko": "진단 불확실성",
+   "en": "diagnostic uncertainty",
+   "page": "13f_final_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/mc-dropout": {
+   "ko": "MC 드롭아웃",
+   "en": "Monte Carlo dropout",
+   "page": "13f_final_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/11-duel-fly": {
+   "ko": "50번 예측, 흔들리면 보류",
+   "en": "duel choice A 11",
+   "page": "11_bayesian_vision",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:method/11-duel-robo": {
+   "ko": "한 번 예측, 50% 넘으면 보행자",
+   "en": "duel choice B 11",
+   "page": "11_bayesian_vision",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:method/cnn": {
+   "ko": "CNN",
+   "en": "convolutional neural network",
+   "page": "11_bayesian_vision",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:term/feature": {
+   "ko": "특징",
+   "en": "feature",
+   "page": "11_bayesian_vision",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:concept/confidence-interval": {
+   "ko": "신뢰구간",
+   "en": "confidence interval",
+   "page": "11_bayesian_vision",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:method/dropout": {
+   "ko": "드롭아웃",
+   "en": "dropout",
+   "page": "11_bayesian_vision",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:concept/aleatoric-uncertainty": {
+   "ko": "Aleatoric",
+   "en": "aleatoric uncertainty",
+   "page": "11_bayesian_vision",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:concept/epistemic-uncertainty": {
+   "ko": "Epistemic",
+   "en": "epistemic uncertainty",
+   "page": "11_bayesian_vision",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:method/active-learning": {
+   "ko": "능동 학습",
+   "en": "active learning",
+   "page": "11_bayesian_vision",
+   "domain": [
+    "stats",
+    "ai"
+   ]
+  },
+  "lab:distribution/poisson": {
+   "ko": "포아송 분포",
+   "en": "Poisson distribution",
+   "page": "13f_final_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/hierarchical-bayesian-model": {
+   "ko": "계층적 베이지안 모델",
+   "en": "hierarchical Bayesian model",
+   "page": "13f_final_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/rater-effect-adjustment": {
+   "ko": "평가자 효과 보정",
+   "en": "rater effect adjustment",
+   "page": "13f_final_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/12-duel-fly": {
+   "ko": "매장 평균 그대로(따로)",
+   "en": "duel choice A 12",
+   "page": "12_hierarchical_bayes",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/12-duel-robo": {
+   "ko": "계층 모델(부분 풀링)",
+   "en": "duel choice B 12",
+   "page": "12_hierarchical_bayes",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:term/noise": {
+   "ko": "노이즈",
+   "en": "noise",
+   "page": "12_hierarchical_bayes",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/shrinkage": {
+   "ko": "수축",
+   "en": "shrinkage",
+   "page": "12_hierarchical_bayes",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/partial-pooling": {
+   "ko": "부분 풀링",
+   "en": "partial pooling",
+   "page": "12_hierarchical_bayes",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/complete-pooling": {
+   "ko": "완전 풀링",
+   "en": "complete pooling",
+   "page": "12_hierarchical_bayes",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/rater-effect": {
+   "ko": "평가자 효과",
+   "en": "rater effect",
+   "page": "12_hierarchical_bayes",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/regression-to-the-mean": {
+   "ko": "평균으로의 회귀",
+   "en": "regression to the mean",
+   "page": "12_hierarchical_bayes",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:distribution/dirichlet": {
+   "ko": "디리클레 분포",
+   "en": "Dirichlet distribution",
+   "page": "13f_final_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/bayesian-ab-rollout": {
+   "ko": "베이지안 A/B와 단계적 적용",
+   "en": "Bayesian A/B testing with staged rollout",
+   "page": "13f_final_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/decision-report": {
+   "ko": "데이터 기반 의사결정 보고서",
+   "en": "data-driven decision report",
+   "page": "13f_final_review",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/13-duel-fly": {
+   "ko": "10% → 50% → 100%로 넓히기",
+   "en": "duel choice A 13",
+   "page": "13_capstone",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/13-duel-robo": {
+   "ko": "바로 100% 적용",
+   "en": "duel choice B 13",
+   "page": "13_capstone",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/customer-segmentation": {
+   "ko": "세분화",
+   "en": "customer segmentation",
+   "page": "13_capstone",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/rfm": {
+   "ko": "RFM",
+   "en": "RFM analysis",
+   "page": "13_capstone",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/conjugate-prior": {
+   "ko": "켤레 사전분포",
+   "en": "conjugate prior",
+   "page": "13_capstone",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/mde": {
+   "ko": "MDE",
+   "en": "minimum detectable effect",
+   "page": "13_capstone",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/power": {
+   "ko": "검정력",
+   "en": "statistical power",
+   "page": "13_capstone",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:concept/p-value": {
+   "ko": "p값",
+   "en": "p-value",
+   "page": "13_capstone",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/staged-rollout": {
+   "ko": "단계적 적용",
+   "en": "staged rollout",
+   "page": "13_capstone",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/risk-matrix": {
+   "ko": "리스크 매트릭스",
+   "en": "risk matrix",
+   "page": "13_capstone",
+   "domain": [
+    "stats"
+   ]
+  },
+  "lab:method/scenario-analysis": {
+   "ko": "시나리오",
+   "en": "scenario analysis",
+   "page": "13_capstone",
+   "domain": [
+    "stats"
+   ]
+  }
+ }
+}
