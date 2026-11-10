@@ -1023,7 +1023,7 @@ function won(v){return Math.abs(v)>=1e8?(v/1e8).toFixed(1)+'억':Math.abs(v)>=1e
 
 /* 1회차 — 표본 크기와 오차범위 */
 DASHES['01']={tag:'1회차',title:'여론조사 표본 크기 대시보드',sub:'몇 명에게 물어야 믿을 만한가 — 표본 크기와 오차범위',play:'n',playLog:true,playLabel:'표본을 100명→5,000명으로',random:true,
-  params:[['n','표본 크기 n',100,5000,50,1000,function(v){return nf(v)+'명'}],['p','실제 지지율',10,90,1,40,function(v){return v+'%'}]],
+  params:[['n','표본 크기 n',100,5000,50,1000,function(v){return nf(v)+'명'}],['p','실제 지지율',10,90,1,52,function(v){return v+'%'}]],
   f:function(q,r){var p=q.p/100,se=Math.sqrt(p*(1-p)/q.n),moe=1.96*se,vals=[];for(var i=0;i<400;i++){var s=p+se*gauss(r);vals.push(s*100)}var inside=vals.filter(function(v){return Math.abs(v/100-p)<=moe}).length/400,ns=logseq(100,5000,60);
     return {k:[['±'+(moe*100).toFixed(1)+'%p','95% 오차범위','i'],[nf(q.n)+'명','표본 크기','a'],[P0(inside),'400번 조사 중 오차범위 안','g'],[nf(Math.ceil(q.n*4))+'명','오차범위를 절반으로 줄이려면','r']],
       c:[{t:'hist',title:'같은 조사를 400번 했을 때 나온 지지율',vals:vals,lo:q.p-12,hi:q.p+12,bins:36,fx:function(v){return v+'%'},marks:[{x:q.p,l:'실제 '+q.p+'%',c:COL.g},{x:q.p-moe*100,l:'−오차',c:COL.r},{x:q.p+moe*100,l:'+오차',c:COL.r}]},
@@ -1041,7 +1041,7 @@ DASHES['02']={tag:'2회차',title:'두 자산 포트폴리오 대시보드',sub:
 
 /* 3회차 — 기저율과 사후확률 */
 DASHES['03']={tag:'3회차',title:'기저율 대시보드',sub:'검사에서 양성이 나왔을 때 정말 그럴 확률(사후확률)',play:'base',playLog:true,playLabel:'기저율을 0.1%→30%로',
-  params:[['base','기저율(원래 비율)',.1,30,.1,1,function(v){return v+'%'}],['sens','민감도(있을 때 양성)',50,99.9,.1,99,function(v){return v+'%'}],['spec','특이도(없을 때 음성)',50,99.9,.1,95,function(v){return v+'%'}]],
+  params:[['base','기저율(원래 비율)',.1,30,.1,.1,function(v){return v+'%'}],['sens','민감도(있을 때 양성)',50,99.9,.1,90,function(v){return v+'%'}],['spec','특이도(없을 때 음성)',50,99.9,.1,90,function(v){return v+'%'}]],
   f:function(q){var b=q.base/100,se=q.sens/100,sp=q.spec/100;function post(b,k){var o=b/(1-b)*Math.pow(se/(1-sp),k);return o/(1+o)}var pp=post(b,1),bs=logseq(.001,.5,60),tp=b*10000*se,fp=(1-b)*10000*(1-sp);
     return {k:[[P1(pp),'양성일 때 진짜일 확률','r'],[nf(Math.round(tp)),'1만 명 중 진짜 양성','g'],[nf(Math.round(fp)),'1만 명 중 가짜 양성','a'],[P1(post(b,2)),'두 번 연속 양성이면','i']],
       c:[{t:'line',title:'기저율에 따른 사후확률(양성 1번)',xs:bs.map(function(x){return x*100}),logx:true,ys:[{n:'사후확률',c:COL.s,d:bs.map(function(x){return post(x,1)*100})}],ymin:0,ymax:100,fy:function(v){return v+'%'},fx:function(v){return v<1?v.toFixed(1)+'%':v+'%'},mark:{x:q.base,y:pp*100,l:'지금'},xl:'기저율(로그 눈금)'},
@@ -1050,7 +1050,7 @@ DASHES['03']={tag:'3회차',title:'기저율 대시보드',sub:'검사에서 양
 
 /* 4회차 — A/B 테스트 P(B>A) */
 DASHES['04']={tag:'4회차',title:'A/B 테스트 대시보드',sub:'버튼 A·B 구매 전환율과 "B가 A보다 나을 확률"',play:'n',playLog:true,playLabel:'방문자를 200명→2만 명으로',
-  params:[['n','버튼별 방문자 수',200,20000,100,5000,function(v){return nf(v)+'명'}],['pa','A 전환율',1,10,.1,3,function(v){return v.toFixed(1)+'%'}],['pb','B 전환율',1,10,.1,3.6,function(v){return v.toFixed(1)+'%'}]],
+  params:[['n','버튼별 방문자 수',200,20000,100,10000,function(v){return nf(v)+'명'}],['pa','A 전환율',1,10,.1,3,function(v){return v.toFixed(1)+'%'}],['pb','B 전환율',1,10,.1,3.6,function(v){return v.toFixed(1)+'%'}]],
   f:function(q){var n=q.n,ka=Math.round(n*q.pa/100),kb=Math.round(n*q.pb/100);function pBA(n){var ka=n*q.pa/100,kb=n*q.pb/100,a1=ka+1,b1=n-ka+1,a2=kb+1,b2=n-kb+1,m1=a1/(a1+b1),m2=a2/(a2+b2),v1=a1*b1/((a1+b1)*(a1+b1)*(a1+b1+1)),v2=a2*b2/((a2+b2)*(a2+b2)*(a2+b2+1));return normCdf((m2-m1)/Math.sqrt(v1+v2))}
     var pr=pBA(n),lo=Math.max(0,Math.min(q.pa,q.pb)/100-.025),hi=Math.max(q.pa,q.pb)/100+.025,xs=seqv(lo,hi,160),ns=logseq(200,20000,50);
     return {k:[[P1(pr),'B가 A보다 나을 확률','g'],[ka+' / '+kb,'구매 수 A / B','i'],[(q.pa?((q.pb-q.pa)/q.pa*100):0).toFixed(0)+'%','상대 개선','a'],[pr>=.95?'B 적용':pr<=.05?'A 유지':'더 모으기','95% 기준 결정','r']],
@@ -1068,22 +1068,24 @@ DASHES['05']={tag:'5회차',title:'연관 규칙 대시보드',sub:'"A를 산 �
       note:[['g','신뢰도만 보면 속기 쉬워요. B가 원래 잘 팔리는 상품이면 신뢰도가 높아도 향상도는 1 근처입니다.'],['a','향상도가 1보다 크면 "A를 산 사람은 B를 평소보다 더 산다", 1보다 작으면 오히려 덜 산다는 뜻이에요.']]}}};
 
 /* 6회차 — 대출 심사 */
-DASHES['06']={tag:'6회차',title:'대출 심사 대시보드',sub:'사전 연체율에 신호(우도비)를 곱해 사후 연체 확률을 구하고 기준과 비교',play:'k',playLabel:'위험 신호를 0→5개로',
-  params:[['p0','사전 연체율',.5,10,.1,2,function(v){return v.toFixed(1)+'%'}],['lr','신호 하나의 우도비',1,5,.1,1.5,function(v){return v.toFixed(1)+'배'}],['k','관측된 위험 신호 수',0,5,1,1,function(v){return v+'개'}],['cut','추가 심사 기준',1,10,.5,2,function(v){return v.toFixed(1)+'%'}]],
+DASHES['06']={tag:'6회차',title:'대출 심사 대시보드',sub:'사전 연체율의 오즈에 증거(우도비)를 곱해 사후 연체 확률을 구하고 기준과 비교 — 처음 값은 본문 칸 ①(3%, 추가 소득 0.6 × 다른 대출 1.4 ≈ 0.84)',play:'k',playLabel:'증거 묶음을 0→5개로',
+  params:[['p0','사전 연체율',.5,10,.1,3,function(v){return v.toFixed(1)+'%'}],['lr','증거 묶음의 우도비',.2,5,.01,.84,function(v){return v.toFixed(2)+'배'}],['k','같은 증거 묶음 수',0,5,1,1,function(v){return v+'개'}],['cut','추가 심사 기준',1,10,.5,2,function(v){return v.toFixed(1)+'%'}]],
   f:function(q){function post(k){var o=q.p0/100/(1-q.p0/100)*Math.pow(q.lr,k);return o/(1+o)}var ps=post(q.k),ks=[0,1,2,3,4,5];
     return {k:[[P1(ps),'사후 연체 확률','r'],[P1(q.p0/100),'사전 연체율','i'],[Math.pow(q.lr,q.k).toFixed(2)+'배','오즈에 곱한 값','a'],[ps*100>q.cut?'추가 심사':'승인','기준 '+q.cut.toFixed(1)+'% 대비 판정',ps*100>q.cut?'r':'g']],
-      c:[{t:'bar',title:'위험 신호 수별 사후 연체 확률',labels:ks.map(function(k){return k+'개'}),vals:ks.map(function(k){return post(k)*100}),cols:ks.map(function(k){return k===q.k?COL.r:'rgba(63,95,168,.55)'}),hline:q.cut,hlabel:'기준',fy:function(v){return v.toFixed(1)+'%'}},
+      c:[{t:'bar',title:'증거 묶음 수별 사후 연체 확률',labels:ks.map(function(k){return k+'개'}),vals:ks.map(function(k){return post(k)*100}),cols:ks.map(function(k){return k===q.k?COL.r:'rgba(63,95,168,.55)'}),hline:q.cut,hlabel:'기준',fy:function(v){return v.toFixed(1)+'%'}},
         {t:'line',title:'사전 연체율에 따른 사후 연체 확률(지금 신호 수)',xs:seqv(.5,10,40),ys:[{n:'사후',c:COL.r,d:seqv(.5,10,40).map(function(p){var o=p/100/(1-p/100)*Math.pow(q.lr,q.k);return o/(1+o)*100})},{n:'사전',c:COL.muted,dash:[5,4],w:1.5,d:seqv(.5,10,40)}],ymin:0,hline:q.cut,hlabel:'기준',fy:function(v){return v.toFixed(0)+'%'},fx:function(v){return v+'%'},mark:{x:q.p0,y:ps*100,l:'지금'},xl:'사전 연체율'}],
-      note:[['g','우도비 1.5배짜리 신호 하나가 확률을 1.5배로 만들지는 않아요. 곱해지는 건 오즈(되다 ÷ 안 되다)입니다.'],['a','교육용 예시이며 실제 신용평가 기준이 아닙니다.']]}}};
+      note:[['g','처음 값이 본문 칸 ①과 같은 계산이에요(3% → 약 2.5%). 우도비가 확률에 바로 곱해지는 것이 아니라 오즈(되다 ÷ 안 되다)에 곱해집니다. 우도비를 1보다 크게 올려 위험 신호로 바꿔 보세요.'],['a','교육용 예시이며 실제 신용평가 기준이 아닙니다.']]}}};
 
-/* 7회차 — 고객 유지와 생애가치 */
-DASHES['07']={tag:'7회차',title:'고객 생애가치(CLV) 대시보드',sub:'활성 ↔ 휴면 두 상태 마르코프 체인 (분기 단위, 예시값)',play:'r',playLabel:'유지율을 50%→95%로',
-  params:[['r','활성 유지율(다음 분기도 활성)',50,95,1,80,function(v){return v+'%'}],['q','휴면 복귀율',0,50,1,10,function(v){return v+'%'}],['v','활성 고객 분기 매출',1,10,.5,5,function(v){return v.toFixed(1)+'만 원'}]],
-  f:function(q){var r=q.r/100,b=q.q/100,d=.97;function clv(r){var a=1,s=0;for(var t=0;t<40;t++){s+=a*q.v*1e4*Math.pow(d,t);a=a*r+(1-a)*b}return s}var st=b/(1-r+b||1),ts=seqv(0,20,21),a=1,path=[];ts.forEach(function(){path.push(a*100);a=a*r+(1-a)*b});var rs=seqv(.5,.95,46);
-    return {k:[[won(clv(r))+'원','고객 1명 생애가치(10년, 할인 3%)','g'],[P1(st),'장기적으로 활성인 비율(정상분포)','i'],[(1/(1-r)).toFixed(1)+'분기','평균 연속 활성 기간','a'],[won(clv(Math.min(.99,r+.05))-clv(r))+'원','유지율 5%p 올리면 더 버는 돈','r']],
-      c:[{t:'line',title:'신규 고객이 분기마다 활성일 확률',xs:ts,ys:[{n:'활성 확률',c:COL.s,fill:1,d:path},{n:'정상분포',c:COL.a,dash:[5,4],w:1.5,d:ts.map(function(){return st*100})}],ymin:0,ymax:100,fy:function(v){return v+'%'},fx:function(v){return v+'분기'},xl:'분기'},
-        {t:'line',title:'유지율에 따른 생애가치',xs:rs.map(function(x){return x*100}),ys:[{n:'CLV',c:COL.g,d:rs.map(function(x){return clv(x)/1e4})}],ymin:0,fy:function(v){return nf(v)+'만'},fx:function(v){return v+'%'},mark:{x:q.r,y:clv(r)/1e4,l:'지금'},xl:'활성 유지율'}],
-      note:[['g','유지율이 높을수록 CLV 곡선이 가파르게 올라가요. 지금 매출보다 유지율이 더 큰 돈이 되는 이유입니다(7회차 대결).'],['a','전이 확률이 바뀌지 않는다는 가정(정상성)이 깨지면 이 숫자도 바뀝니다.']]}}};
+/* 7회차 — 고객 생애가치 (본문 3칸 전이 표와 같은 모형) */
+DASHES['07']={tag:'7회차',title:'고객 생애가치(CLV) 대시보드',sub:'활성 · 휴면 · 이탈 세 상태 마르코프 체인 — 본문 칸 ③과 같은 전이 표(5기, 활성 매출 5만 원·휴면 1만 원)',play:'r',playLabel:'활성 유지율을 40%→95%로',
+  params:[['r','활성 유지율(활성→활성)',40,95,1,70,function(v){return v+'%'}],['q','휴면 복귀율(휴면→활성)',0,50,1,30,function(v){return v+'%'}],['disc','할인율',0,30,1,10,function(v){return v+'%'}]],
+  f:function(q){function M(rr,qq){var rest=1-rr;return [[rr,rest*2/3,rest/3],[qq,Math.max(0,.8-qq),.2],[0,0,1]]}var rev=[50000,10000,0],T=5,dr=q.disc/100;
+    function run(rr,qq,TT){var P=M(rr,qq),v=[1,0,0],tot=0,hist=[];for(var t=0;t<TT;t++){hist.push(v.slice());tot+=(v[0]*rev[0]+v[1]*rev[1])/Math.pow(1+dr,t);v=[v[0]*P[0][0]+v[1]*P[1][0],v[0]*P[0][1]+v[1]*P[1][1],v[0]*P[0][2]+v[1]*P[1][2]+v[2]]}hist.push(v);return {clv:tot,h:hist}}
+    var o=run(q.r/100,q.q/100,T),o10=run(q.r/100,q.q/100,12),ts=seqv(0,12,13),rs=seqv(.4,.95,56),last=o.h[T];
+    return {k:[[nf(Math.round(o.clv))+'원','고객 1명 생애가치(5기)','g'],[P1(last[0]),T+'기 뒤에도 활성일 확률','i'],[P1(last[2]),T+'기 안에 이탈할 확률','r'],['+'+nf(Math.round(run(Math.min(.95,q.r/100+.05),q.q/100,T).clv-o.clv))+'원','유지율 5%p 올리면','a']],
+      c:[{t:'line',title:'신규 고객의 상태 분포가 기마다 변하는 모습',xs:ts,ys:[{n:'활성',c:COL.g,d:o10.h.map(function(v){return v[0]*100})},{n:'휴면',c:COL.a,d:o10.h.map(function(v){return v[1]*100})},{n:'이탈',c:COL.r,d:o10.h.map(function(v){return v[2]*100})}],ymin:0,ymax:100,fy:function(v){return v+'%'},fx:function(v){return v+'기'},band:[0,T],xl:'기 (색칠한 구간이 CLV 계산 5기)'},
+        {t:'line',title:'활성 유지율에 따른 생애가치(5기)',xs:rs.map(function(x){return x*100}),ys:[{n:'CLV',c:COL.g,d:rs.map(function(x){return run(x,q.q/100,T).clv/1e4})}],ymin:0,fy:function(v){return v.toFixed(0)+'만'},fx:function(v){return v+'%'},mark:{x:q.r,y:o.clv/1e4,l:'지금'},xl:'활성 유지율'}],
+      note:[['g','처음 값(유지율 70%, 복귀율 30%, 할인율 10%)이 본문 칸 ③의 141,900원과 같은 계산이에요. 이탈은 빠져나올 수 없는 상태라 시간이 갈수록 쌓입니다.'],['a','활성 유지율 몇 %p가 생애가치를 크게 바꿔요. 지금 매출보다 유지율이 더 큰 돈이 되는 이유입니다(7회차 대결).']]}}};
 
 /* 8회차 — 몬테카를로 */
 DASHES['08']={tag:'8회차',title:'몬테카를로 사업 가치 대시보드',sub:'불확실한 수요·가격을 수천 번 뽑아 연 이익의 분포를 봅니다 (예시값)',play:'n',playLog:true,playLabel:'시뮬레이션을 100번→2만 번으로',random:true,
@@ -1125,20 +1127,20 @@ DASHES['11']={tag:'11회차',title:'예측 불확실성(MC 드롭아웃) 대시�
         {t:'line',title:'사진이 낯설수록 커지는 흔들림',xs:os.map(function(x){return x*100}),ys:[{n:'표준편차',c:COL.a,d:os.map(sdAt)}],ymin:0,hline:15,hlabel:'사람 확인 기준',fy:function(v){return v.toFixed(0)+'%p'},fx:function(v){return v+'%'},mark:{x:q.ood*100,y:sdAt(q.ood),l:'지금'},xl:'낯선 정도'}],
       note:[['g','한 번 예측하면 "고양이 80%"라는 숫자만 나오지만, 여러 번 흔들어 보면 그 숫자를 얼마나 믿을지도 함께 나옵니다.'],['a','흔들림이 큰 사진만 사람에게 넘기면, 사람의 일은 줄고 실수는 덜 놓칩니다(11회차 대결).']]}}};
 
-/* 12회차 — 계층 모형 수축 */
-DASHES['12']={tag:'12회차',title:'매장 매출 계층 모형 대시보드',sub:'기록이 적은 매장은 전체 평균 쪽으로 당겨 읽습니다 (단위: 일 매출 백만 원, 예시값)',play:'tau',playLabel:'매장 사이 차이 τ를 0.2→6으로',
-  params:[['tau','매장 사이 차이 τ',.2,6,.1,1.5,function(v){return v.toFixed(1)}],['sig','매장 안 하루 흔들림 σ',1,10,.5,5,function(v){return v.toFixed(1)}],['n1','신규 매장 영업일 수',1,60,1,5,function(v){return v+'일'}]],
-  f:function(q){var st=[{l:'신규',n:q.n1,m:16},{l:'A',n:30,m:12},{l:'B',n:90,m:9},{l:'C',n:200,m:10.5},{l:'D',n:365,m:11}],tot=0,nn=0;st.forEach(function(s){tot+=s.m*s.n;nn+=s.n});var mu=tot/nn;function w(n){return (n/(q.sig*q.sig))/(n/(q.sig*q.sig)+1/(q.tau*q.tau))}st.forEach(function(s){s.w=w(s.n);s.e=s.w*s.m+(1-s.w)*mu});var ns=seqv(1,120,60);
-    return {k:[[st[0].e.toFixed(1)+'백만','신규 매장 계층 추정','g'],[st[0].m.toFixed(1)+'백만','신규 매장 원래 평균','r'],[P0(st[0].w),'신규 매장 자기 평균의 무게','a'],[mu.toFixed(1)+'백만','전체 평균','i']],
+/* 12회차 — 지역별 마케팅 효과 계층 모형 (본문 칸 ②와 같은 숫자) */
+DASHES['12']={tag:'12회차',title:'지역별 마케팅 효과 계층 모형 대시보드',sub:'매장이 적은 지역의 효과는 전체 평균 쪽으로 당겨 읽습니다 — 본문 칸 ②와 같은 다섯 지역(효과 단위 %)',play:'tau',playLabel:'지역 사이 차이 τ를 1→20으로',
+  params:[['tau','지역 사이 차이 τ',1,20,.5,6,function(v){return v.toFixed(1)+'%p'}],['sig','매장 한 곳의 흔들림 σ',5,40,1,20,function(v){return v+'%p'}],['n1','제주 매장 수',1,60,1,3,function(v){return v+'곳'}]],
+  f:function(q){var st=[{l:'제주',n:q.n1,m:25},{l:'강원',n:6,m:2},{l:'경기',n:40,m:8},{l:'서울',n:55,m:12},{l:'영남',n:25,m:11}],tot=0,nn=0;st.forEach(function(s){tot+=s.m*s.n;nn+=s.n});var mu=tot/nn;function w(n){return (n/(q.sig*q.sig))/(n/(q.sig*q.sig)+1/(q.tau*q.tau))}st.forEach(function(s){s.w=w(s.n);s.e=s.w*s.m+(1-s.w)*mu});var ns=seqv(1,80,60);
+    return {k:[[st[0].e.toFixed(1)+'%','제주 계층 추정','g'],[st[0].m.toFixed(1)+'%','제주 원래 평균','r'],[P0(st[0].w),'제주 자기 평균의 무게 w','a'],[mu.toFixed(1)+'%','전체 평균(매장 수 가중)','i']],
       c:[{t:'bar',title:'원래 평균(옅은 색) vs 계층 추정(진한 색)',pair:1,labels:st.map(function(s){return s.l}).reduce(function(a,l){return a.concat([l,''])},[]),vals:st.reduce(function(a,s){return a.concat([s.m,s.e])},[]),cols:st.reduce(function(a){return a.concat(['rgba(210,63,44,.35)',COL.s])},[]),fy:function(v){return v.toFixed(1)}},
-        {t:'line',title:'영업일 수에 따른 자기 평균의 무게 w',xs:ns,ys:[{n:'w',c:COL.g,d:ns.map(function(n){return w(n)*100})}],ymin:0,ymax:100,fy:function(v){return v+'%'},fx:function(v){return v+'일'},mark:{x:q.n1,y:st[0].w*100,l:'신규 매장'},xl:'영업일 수'}],
-      note:[['g','기록이 적은 매장일수록 전체 평균 쪽으로 많이 당겨져요. 우연히 좋은 첫 주에 속지 않게 해 줍니다.'],['a','τ가 크면 "매장마다 원래 많이 다르다"고 보는 셈이라 덜 당겨지고, τ가 작으면 모두 전체 평균에 가까워집니다.']]}}};
+        {t:'line',title:'매장 수에 따른 자기 평균의 무게 w',xs:ns,ys:[{n:'w',c:COL.g,d:ns.map(function(n){return w(n)*100})}],ymin:0,ymax:100,fy:function(v){return v+'%'},fx:function(v){return v+'곳'},mark:{x:q.n1,y:st[0].w*100,l:'제주'},xl:'매장 수'}],
+      note:[['g','매장 3곳뿐인 제주의 +25%는 우연일 수 있어 약 13%로 크게 당겨요(본문 칸 ②와 같은 계산). 매장 55곳인 서울은 거의 그대로입니다.'],['a','τ가 크면 "지역마다 원래 많이 다르다"고 보는 셈이라 덜 당겨지고, τ가 작으면 모두 전체 평균에 가까워집니다.']]}}};
 
 /* 13회차 — 출시 의사결정 */
-DASHES['13']={tag:'13회차',title:'앱 개편 출시 의사결정 대시보드',sub:'개선폭의 사후분포로 P(B>A)와 기대 이익을 함께 봅니다 (예시값)',play:'n',playLog:true,playLabel:'실험 기간 사용자를 500→5만 명으로',
-  params:[['n','그룹별 실험 사용자',500,50000,500,8000,function(v){return nf(v)+'명'}],['base','기존 전환율',2,20,.5,10,function(v){return v.toFixed(1)+'%'}],['lift','관측된 개선폭',-1,3,.1,.8,function(v){return (v>=0?'+':'')+v.toFixed(1)+'%p'}],['users','연간 대상 사용자(만 명)',10,500,10,100,function(v){return v+'만'}]],
-  f:function(q){var p=q.base/100,se=function(n){return Math.sqrt(2*p*(1-p)/n)*100},s=se(q.n),pr=normCdf(q.lift/s),val=5000,eg=q.users*1e4*val*(q.lift/100),xs=seqv(q.lift-4*s,q.lift+4*s,120),ns=logseq(500,50000,50);
-    return {k:[[P1(pr),'B가 A보다 나을 확률','g'],[(q.lift-1.96*s).toFixed(2)+'~'+(q.lift+1.96*s).toFixed(2)+'%p','개선폭 95% 신용구간','i'],[won(eg)+'원','기대 연 추가 매출(전환 1건 5천 원)','a'],[pr>=.95?'전면 적용':pr>=.8?'단계적 적용':'보류','판정',pr>=.95?'g':pr>=.8?'a':'r']],
+DASHES['13']={tag:'13회차',title:'앱 개편 출시 의사결정 대시보드',sub:'개선폭의 사후분포로 P(B>A)와 기대 이익을 함께 봅니다 — 처음 값은 본문 칸 ②(그룹당 500명, 20% → 24%)',play:'n',playLog:true,playLabel:'실험 사용자를 100→2만 명으로',
+  params:[['n','그룹별 실험 사용자',100,20000,100,500,function(v){return nf(v)+'명'}],['base','기존 화면 가입률',2,40,.5,20,function(v){return v.toFixed(1)+'%'}],['lift','관측된 개선폭',-3,8,.5,4,function(v){return (v>=0?'+':'')+v.toFixed(1)+'%p'}],['users','연간 대상 사용자(만 명)',10,500,10,100,function(v){return v+'만'}]],
+  f:function(q){var p=q.base/100,pb_=Math.min(.99,Math.max(.01,p+q.lift/100)),se=function(n){return Math.sqrt((p*(1-p)+pb_*(1-pb_))/n)*100},s=se(q.n),pr=normCdf(q.lift/s),val=5000,eg=q.users*1e4*val*(q.lift/100),xs=seqv(q.lift-4*s,q.lift+4*s,120),ns=logseq(100,20000,50);
+    return {k:[[P1(pr),'B가 A보다 나을 확률','g'],[(q.lift-1.96*s).toFixed(2)+'~'+(q.lift+1.96*s).toFixed(2)+'%p','개선폭 95% 신용구간','i'],[won(eg)+'원','기대 연 추가 매출(가입 1건 5천 원, 예시)','a'],[pr>=.95?'전면 적용':pr>=.8?'단계적 적용':'보류','판정',pr>=.95?'g':pr>=.8?'a':'r']],
       c:[{t:'line',title:'개선폭의 사후분포 (0보다 큰 쪽이 B 우세)',xs:xs,ys:[{n:'사후분포',c:COL.s,fill:1,d:xs.map(function(x){return Math.exp(-.5*Math.pow((x-q.lift)/s,2))})}],ymin:0,band:[0,xs[xs.length-1]>0?xs[xs.length-1]:0],fy:function(){return ''},fx:function(v){return v.toFixed(1)+'%p'},mark:{x:0,l:'0 (차이 없음)'},xl:'개선폭(%p)'},
         {t:'line',title:'사용자가 쌓일수록 P(B>A)',xs:ns,logx:true,ys:[{n:'P(B>A)',c:COL.g,d:ns.map(function(n){return normCdf(q.lift/se(n))*100})}],ymin:0,ymax:100,hline:95,hlabel:'전면 적용 95%',fy:function(v){return v+'%'},fx:function(v){return nf(v)},mark:{x:q.n,y:pr*100,l:'지금'},xl:'그룹별 사용자(로그 눈금)'}],
       note:[['g','P(B>A) 하나만 보지 말고 개선폭의 범위와 돈으로 환산한 크기를 같이 보세요. 확실하지만 작은 개선도 있습니다.'],['a','80~95% 구간에서는 일부 사용자에게만 먼저 적용하는 단계적 출시가 안전해요(13회차 대결).']]}}};
