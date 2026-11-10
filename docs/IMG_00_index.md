@@ -6,7 +6,7 @@
 ## 2. 지금 쓰는 그림
 - 캐릭터 표정: 캐릭터 팩 1.3(fruitfly-lab-expressions @ 5269662) 96px를 페이지마다 필요한 키만 base64로 넣었습니다(페이지당 약 13~16장, 100 KB 안팎). 새로 그릴 표정은 없습니다.
 - 장면·컷: 모든 실험 그림은 Canvas로 그려 그림 파일이 필요 없습니다.
-- 표지: 16쪽 모두 대체 표지(그림 없이 완성 상태). 표지 지시문은 `COVER_PROMPTS_series.md`.
+- 표지: 16쪽 모두 받은 표지 그림(WebP 1600×900, 220 KB 이하)을 페이지 안에 넣었습니다(2026-11-10). 원본 `src/build/covers/`, 공유 미리보기 1200×630은 `assets/og/`.
 
 ## 3. 새로 그릴 그림 (우선순위)
 | 우선 | 키 | 판 | 내용 |
@@ -33,7 +33,7 @@
   "board": "L",
   "size": "1600x900",
   "page": "index.html",
-  "status": "needed",
+  "status": "done",
   "fallback": "CSS 그라데이션 + 캐릭터 팩 4명 나란히"
  },
  {
@@ -41,7 +41,7 @@
   "board": "L",
   "size": "1600x900",
   "page": "01_what_is_statistics.html",
-  "status": "needed",
+  "status": "done",
   "fallback": "CSS 그라데이션 + 캐릭터 팩 4명 나란히"
  },
  {
@@ -57,7 +57,7 @@
   "board": "L",
   "size": "1600x900",
   "page": "02_probability.html",
-  "status": "needed",
+  "status": "done",
   "fallback": "CSS 그라데이션 + 캐릭터 팩 4명 나란히"
  },
  {
@@ -73,7 +73,7 @@
   "board": "L",
   "size": "1600x900",
   "page": "03_bayesian_thinking.html",
-  "status": "needed",
+  "status": "done",
   "fallback": "CSS 그라데이션 + 캐릭터 팩 4명 나란히"
  },
  {
@@ -89,7 +89,7 @@
   "board": "L",
   "size": "1600x900",
   "page": "04_ab_test.html",
-  "status": "needed",
+  "status": "done",
   "fallback": "CSS 그라데이션 + 캐릭터 팩 4명 나란히"
  },
  {
@@ -105,7 +105,7 @@
   "board": "L",
   "size": "1600x900",
   "page": "05_recommender.html",
-  "status": "needed",
+  "status": "done",
   "fallback": "CSS 그라데이션 + 캐릭터 팩 4명 나란히"
  },
  {
@@ -121,7 +121,7 @@
   "board": "L",
   "size": "1600x900",
   "page": "06_financial_risk.html",
-  "status": "needed",
+  "status": "done",
   "fallback": "CSS 그라데이션 + 캐릭터 팩 4명 나란히"
  },
  {
@@ -137,7 +137,7 @@
   "board": "L",
   "size": "1600x900",
   "page": "07_markov_chain.html",
-  "status": "needed",
+  "status": "done",
   "fallback": "CSS 그라데이션 + 캐릭터 팩 4명 나란히"
  },
  {
@@ -153,7 +153,7 @@
   "board": "L",
   "size": "1600x900",
   "page": "07m_midterm_review.html",
-  "status": "needed",
+  "status": "done",
   "fallback": "CSS 그라데이션 + 캐릭터 팩 4명 나란히"
  },
  {
@@ -161,7 +161,7 @@
   "board": "L",
   "size": "1600x900",
   "page": "08_monte_carlo.html",
-  "status": "needed",
+  "status": "done",
   "fallback": "CSS 그라데이션 + 캐릭터 팩 4명 나란히"
  },
  {
@@ -177,7 +177,7 @@
   "board": "L",
   "size": "1600x900",
   "page": "09_bayesian_network.html",
-  "status": "needed",
+  "status": "done",
   "fallback": "CSS 그라데이션 + 캐릭터 팩 4명 나란히"
  },
  {
@@ -193,7 +193,7 @@
   "board": "L",
   "size": "1600x900",
   "page": "10_nlp_bayes.html",
-  "status": "needed",
+  "status": "done",
   "fallback": "CSS 그라데이션 + 캐릭터 팩 4명 나란히"
  },
  {
@@ -209,7 +209,7 @@
   "board": "L",
   "size": "1600x900",
   "page": "11_bayesian_vision.html",
-  "status": "needed",
+  "status": "done",
   "fallback": "CSS 그라데이션 + 캐릭터 팩 4명 나란히"
  },
  {
@@ -225,7 +225,7 @@
   "board": "L",
   "size": "1600x900",
   "page": "12_hierarchical_bayes.html",
-  "status": "needed",
+  "status": "done",
   "fallback": "CSS 그라데이션 + 캐릭터 팩 4명 나란히"
  },
  {
@@ -241,7 +241,7 @@
   "board": "L",
   "size": "1600x900",
   "page": "13_capstone.html",
-  "status": "needed",
+  "status": "done",
   "fallback": "CSS 그라데이션 + 캐릭터 팩 4명 나란히"
  },
  {
@@ -257,7 +257,7 @@
   "board": "L",
   "size": "1600x900",
   "page": "13f_final_review.html",
-  "status": "needed",
+  "status": "done",
   "fallback": "CSS 그라데이션 + 캐릭터 팩 4명 나란히"
  },
  {

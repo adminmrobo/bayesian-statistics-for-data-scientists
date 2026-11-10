@@ -1,6 +1,6 @@
 # 데이터 사이언티스트를 위한 베이지안 통계학 — 연구실 해설
 
-![박사, 조수, 초파리 연구원, 주판봇이 나란히 선 시리즈 표지](assets/og_series.jpg)
+![박사, 조수(하루), 초파리 연구원, 주판봇이 밝은 연구실에서 개념 지도를 가리키는 시리즈 표지](assets/og_series.jpg)
 
 > 처음 믿음에서 출발해, 증거가 올 때마다 고쳐 가는 법을 숫자로 배울 수 있을까?
 
@@ -70,7 +70,8 @@ index.html                      목차
 07m_midterm_review.html         중간 요약정리 및 퀴즈
 13f_final_review.html           기말 요약정리 및 퀴즈
 KG_00_registry.json             시리즈 지식 그래프 등록부 (개념 ID · 한영 이름)
-assets/og_series.jpg            공유 미리보기 그림(임시)
+assets/og_series.jpg            시리즈 공유 미리보기(목차 표지 1200×630)
+assets/og/cover_*.jpg           페이지별 공유 미리보기 16장
 docs/IMG_PROMPTS_all.md         그림 지시문 전체 70장 (시리즈 대표 표지 · 개별 표지 16 · 칸 그림 39 · 대결 그림 13, Genspark용)
 docs/COVER_PROMPTS_series.md    표지 16장만 따로 모은 지시문
 docs/IMG_00_index.md            이미지 제작 명세서와 매니페스트

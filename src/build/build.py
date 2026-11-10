@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """연구실 해설(비전공자판) 빌드: pages/*.py 의 P 딕셔너리 → 단일 HTML (CSS·JS·캐릭터 그림 내장)."""
-import json, re, sys, html, importlib.util, os, datetime
+import json, re, sys, html, importlib.util, os, datetime, base64
 B = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(B)
 OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, 'out')
@@ -45,6 +45,14 @@ def sprites(M):
 
 def cover(P, M, key):
     chip = f'{SERIES_SHORT} · {P["num"]}'
+    f = os.path.join(B, 'covers', ('cover_00' if key == 'cover_index' else key) + '.webp')
+    if os.path.exists(f):
+        b64 = base64.b64encode(open(f, 'rb').read()).decode()
+        t = re.sub('<[^>]+>', '', P['title'])
+        alt = f'{t} 표지 그림: 박사, 조수(하루), 초파리 연구원, 주판봇이 밝은 연구실에서 이 회차의 주제 소품을 둘러싼 장면'
+        return (f'<header class="cover hasimg" id="cover" data-img="{key}">'
+                f'<img src="data:image/webp;base64,{b64}" width="1600" height="900" alt="{e(alt)}" decoding="async">'
+                f'<span class="cover-chip">{e(chip)}</span></header>\n')
     return (f'<header class="cover fallback" id="cover" data-img="{key}" role="img" aria-label="표지 그림 자리: 박사, 조수, 초파리 연구원, 주판봇이 나란히 선 대체 표지">'
             f'<div class="glow"></div><div class="line">{img("fly","point",M,"fly")}{img("doc","front",M,"")}{img("asst","smile",M,"")}{img("robo","coin",M,"")}</div>'
             f'<span class="cover-chip">{e(chip)}</span></header>')
@@ -60,7 +68,7 @@ def head(P, title, desc, fname):
 <meta property="og:type" content="article">
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
-<meta property="og:image" content="{SITE}assets/og_series.jpg">
+<meta property="og:image" content="{SITE}assets/og/cover_{P["num"].lower()}.jpg">
 <meta property="og:url" content="{url}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 0l7 4v8l-7 4-7-4V4z' fill='%239ab0d0'/%3E%3C/svg%3E">
