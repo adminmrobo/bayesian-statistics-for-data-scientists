@@ -12,8 +12,8 @@ TODAY = '2026-11-10'; VER = '1.0'
 SP = json.load(open(os.path.join(B, 'sprites.json'), encoding='utf-8'))
 CSS = open(os.path.join(B, 'base.css'), encoding='utf-8').read() + '\n' + open(os.path.join(B, 'plain.css'), encoding='utf-8').read()
 JS = open(os.path.join(B, 'lab.js'), encoding='utf-8').read() + '\n' + open(os.path.join(B, 'sims.js'), encoding='utf-8').read() + '\n' + open(os.path.join(B, 'dash.js'), encoding='utf-8').read()
-NAMES = {'doc': '박사', 'asst': '조수(하루)', 'fly': '초파리 연구원', 'robo': '주판봇'}
-DEFM = {'doc': 'front', 'asst': 'smile', 'fly': 'clip', 'robo': 'smile'}
+NAMES = {'doc': '박사', 'asst': '조수(하루)', 'fly': '초파리 연구원', 'robo': '주판봇', 'sia': '시아(인턴)', 'moa': '모아(인턴)', 'x1': 'X1', 'x2': 'X2', 'x3': 'X3'}
+DEFM = {'doc': 'front', 'asst': 'smile', 'fly': 'clip', 'robo': 'smile', 'sia': 'start', 'moa': 'judge', 'x1': 'watch', 'x2': 'watch', 'x3': 'watch'}
 e = html.escape
 
 sys.path.insert(0, os.path.join(ROOT, 'pages'))
@@ -40,7 +40,7 @@ def sprites(M):
         alias[k] = a; imgs[a] = SP['img'][a]
         if a in SP['facing']: facing[a] = SP['facing'][a]
     kb = sum(len(v) for v in imgs.values()) * 3 // 4 // 1024
-    return (f'<script>/* 캐릭터 팩 https://github.com/adminmrobo/fruitfly-lab-expressions @ 5269662, 96px, {len(imgs)}장, 약 {kb} KB */\n'
+    return (f'<script>/* 캐릭터 팩 https://github.com/adminmrobo/fruitfly-lab-expressions @ 5269662 + 인턴·방청객 @ 86d04ac, 96px, {len(imgs)}장, 약 {kb} KB */\n'
             f'var SPRITE={json.dumps(imgs)};\nvar SPRITE_ALIAS={json.dumps(alias, ensure_ascii=False)};\nvar SPRITE_FACING={json.dumps(facing)};</script>')
 
 def cover(P, M, key):
@@ -260,18 +260,24 @@ def level_html(l, i, M, P):
 def duel_html(P, M):
     D = P['duel']
     M.add('fly', 'point'); M.add('robo', 'coin')
+    for w_ in ('x1', 'x2', 'x3'):
+        for m_ in ('watch', 'wow', 'joy', 'think'): M.add(w_, m_)
+    for m_ in ('judge', 'proud', 'think'): M.add('moa', m_)
     res = D['expect']; mm = {'F': [('fly', 'arms'), ('robo', 'sigh'), ('doc', 'judge'), ('asst', 'spark')], 'R': [('fly', 'coffee'), ('fly', 'cry'), ('robo', 'happy'), ('doc', 'judge'), ('asst', 'spark')], 'C': [('fly', 'coffee'), ('robo', 'calc'), ('doc', 'think'), ('asst', 'report')], 'D': [('fly', 'coffee'), ('robo', 'meh'), ('doc', 'think'), ('asst', 'smile')]}[res]
     for w_, m_ in mm: M.add(w_, m_)
     fin = '<p class="notice">이 대결은 교육용 장난감 모형이며 투자 자문이 아닙니다.</p>' if P.get('finance') else ''
     return f'''<section class="level" id="duel"><div class="wrap stack">
 <div class="lvhead"><h2>대결 — {D["question"]}</h2><p class="lead">{D["setup"]}</p></div>
 <div class="duel" id="duelBox">
+<div class="referee">{say("sia","start",f"심판 시아예요. 판정 기준은 <b>{D['metric']}</b>({'높을수록' if D['hib'] else '낮을수록'} 좋음). 승부는 숫자로만 정해요. 시작!",M)}</div>
 <div class="vs"><div class="side fly">{img("fly","point",M)}<b style="color:var(--c-fly)">초파리 연구원</b><p>{D["fly_line"]}</p><span class="lvtag">{D["fly_choice"]}</span></div><div class="mid">VS</div><div class="side robo">{img("robo","coin",M)}<b style="color:var(--c-robo)">주판봇</b><p>{D["robo_line"]}</p><span class="lvtag">{D["robo_choice"]}</span></div></div>
+<div class="audience" aria-label="방청석">{img("x1","watch",M,"aud")}{img("x2","watch",M,"aud")}{img("x3","watch",M,"aud")}<span class="muted">방청석 · 아직 공개되지 않은 식구 X1·X2·X3</span></div>
 <p class="muted" style="text-align:center">먼저 맞혀 보기 (기록만 하고 저장하지 않아요)</p>
 <div class="guess"><button class="bt" type="button" data-g="fly" aria-pressed="false">초파리가 이길 것 같다</button><button class="bt" type="button" data-g="robo" aria-pressed="false">주판봇이 이길 것 같다</button></div>
 <div class="ctrl" style="justify-content:center"><button class="bt primary reveal" type="button">결과 보기</button></div>
 <div class="result"><p class="muted">판정 기준: {D["metric"]} ({"높을수록" if D["hib"] else "낮을수록"} 좋음)</p><div class="bars"></div><p class="guessres muted"></p>
 {say("asst","firm","",M)}
+{say("moa","judge","",M)}
 {say("doc","think","",M)}
 </div></div>{fin}
 </div></section>'''
@@ -316,9 +322,9 @@ def page(P):
     o.append(f'''<header class="hero" id="hero"><div class="wrap hero-grid"><div class="hero-text"><span class="eyebrow">{e(P["eyebrow"])}</span><h1>{P["title"]}</h1><p class="q">{P["question"]}</p><p>{P["intro"]}</p><section class="kpis k4">{kp}</section></div><div class="dialog">{hero_talk}</div></div></header>''')
     T = P['three']; ab = ''.join(f'<dt>{e(a)}</dt><dd>{b}</dd>' for a, b in P.get('abbr', []))
     o.append(f'''<section class="level" id="three"><div class="wrap"><div class="three"><h2>처음 오신 분께 — 이 페이지를 3줄로</h2><ol><li><b>무엇을</b><span>{T["what"]}</span></li><li><b>왜 중요한가</b><span>{T["why"]}</span></li><li><b>업무에서는</b><span>{T["work"]}</span></li></ol><div class="route"><p><b>처음이라면 이렇게 읽으세요.</b> 칸마다 ① <b>가져갈 한 가지</b> → ② <b>일상으로 치면</b> → ③ <b>실험</b>만 봐도 충분해요. 수식, 자세한 풀이, 업무 팁, 코드는 접어 두었어요(몰라도 됩니다).</p><button class="bt" type="button" id="openAll" aria-pressed="false">접어 둔 내용 모두 펼치기</button></div>{"<details class='abbr'><summary>영어 약어 풀이</summary><dl>"+ab+"</dl></details>" if ab else ""}</div></div></section>''')
-    cast = ''.join(f'<div>{img(w_, DEFM[w_], M, "")}<b style="color:var(--c-{w_})">{NAMES[w_]}</b><p class="muted" style="font-size:14px">{t}</p></div>' for w_, t in [('doc', '해설과 판정. 판단은 데이터대로 해요.'), ('asst', '실험 진행과 숫자 발표. 수식을 대신 물어봐요.'), ('fly', '의심하는 쪽. "그 숫자, 진짜야?"를 달고 살아요.'), ('robo', '확신하는 쪽. 크고 높은 숫자를 좋아해요.')])
+    cast = ''.join(f'<div>{img(w_, DEFM[w_], M, "")}<b style="color:var(--c-{w_})">{NAMES[w_]}</b><p class="muted" style="font-size:14px">{t}</p></div>' for w_, t in [('doc', '해설과 판정. 판단은 데이터대로 해요.'), ('asst', '실험 진행과 숫자 발표. 수식을 대신 물어봐요.'), ('fly', '의심하는 쪽. "그 숫자, 진짜야?"를 달고 살아요.'), ('robo', '확신하는 쪽. 크고 높은 숫자를 좋아해요.'), ('sia', '대결 심판. 시작과 판정 기준을 알려요.'), ('moa', '대결 심판. 숫자를 보고 승패를 발표해요.')])
     prevtxt = f'앞 회차: <a href="{P["prev"][0]}">{e(P["prev"][1])}</a>' if P.get('prev') else '시리즈의 첫 회차입니다.'
-    o.append(f'''<section class="level" id="cast"><div class="wrap stack"><div class="lvhead"><h2>등장인물과 이 페이지 사용법</h2></div><div class="cast">{cast}</div><p class="muted">노란 점선 밑줄을 누르거나 손가락으로 대면 뜻이 나옵니다. 오른쪽 아래 도우미에서 밑줄을 핵심 → 전체 → 끄기로 바꿀 수 있어요. 모든 실험은 시드를 고정한 설명용 모형입니다. {prevtxt}</p></div></section>''')
+    o.append(f'''<section class="level" id="cast"><div class="wrap stack"><div class="lvhead"><h2>등장인물과 이 페이지 사용법</h2></div><div class="cast">{cast}</div><p class="muted">노란 점선 밑줄을 누르거나 손가락으로 대면 뜻이 나옵니다. 오른쪽 아래 도우미에서 밑줄을 핵심 → 전체 → 끄기로 바꿀 수 있어요. 대결의 방청석에는 아직 공개되지 않은 식구 X1·X2·X3가 앉아 있어요. 모든 실험은 시드를 고정한 설명용 모형입니다. {prevtxt}</p></div></section>''')
     W = P['why_steps']; Bg = P['big']
     o.append('<section class="level" id="why"><div class="wrap stack"><div class="lvhead"><h2>왜 이 주제인가</h2></div><div class="steps">' + ''.join(f'<div><b>{a}</b><p>{b}</p></div>' for a, b in W) + '</div>'
              + '<details class="more"><summary>큰 그림 — 이 회차가 흘러가는 4단계 (펼쳐 보기)</summary>' + (f'<p class="lead">{P["big_lead"]}</p>' if P.get('big_lead') else '') + '<div class="steps four">' + ''.join(f'<div><b>{a}</b><p>{b}</p></div>' for a, b in Bg) + '</div></details></div></section>')

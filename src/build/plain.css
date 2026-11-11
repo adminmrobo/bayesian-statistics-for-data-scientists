@@ -149,3 +149,11 @@ details.mathmore .mathbox{border:0;padding:4px 0 0;background:transparent}
 .kcard ol{margin:8px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:15px;line-height:1.6}
 @media (max-width:900px){.ihero-grid{grid-template-columns:1fr}.mosaic{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.mosaic .mt span{font-size:10px;padding:3px 4px}}
 @media (max-width:420px){.mosaic{grid-template-columns:repeat(3,minmax(0,1fr))}.kgrid{grid-template-columns:1fr}}
+
+/* 인턴 심판·방청석 */
+.say[data-who=sia] img.who,.say[data-who=sia]>div{border-color:var(--c-sia)}.say[data-who=sia] .name{color:var(--c-sia)}
+.say[data-who=moa] img.who,.say[data-who=moa]>div{border-color:var(--c-moa)}.say[data-who=moa] .name{color:var(--c-moa)}
+.duel .referee{max-width:720px;margin:0 auto 6px;width:100%}
+.duel .audience{display:flex;align-items:flex-end;justify-content:center;gap:10px;flex-wrap:wrap;padding:8px 12px;border-top:1px dashed var(--rule);border-bottom:1px dashed var(--rule)}
+.duel .audience img.aud{width:52px;height:52px;object-fit:contain;filter:saturate(.9)}
+.duel .audience span{font-size:13px;flex-basis:100%;text-align:center}

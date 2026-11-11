@@ -90,10 +90,12 @@ function Duel(o){var root=$(o.el);if(!root)return;var shown=false,guess=null,fly
     $('.bars',root).innerHTML=html;
     $('.result .say[data-who=asst] p',root).innerHTML=r.say||(o.metric+'은(는) 초파리 쪽 '+fm(f)+', 주판봇 쪽 '+fm(b)+'이에요.');
     var who={F:'초파리 승.',R:'주판봇 승.',D:'이번 판은 나눠 갖는다.',X:'규칙을 어겼다. 점수와 상관없이 주판봇 실격.',C:'가정에 따라 갈린다. 이 판은 판정하지 않는다.'}[res];
-    $('.result .say[data-who=doc] p',root).textContent=(res==='C'?o.condLesson:o.lesson)+'. '+who;
+    var mo=$('.result .say[data-who=moa] p',root);if(mo){mo.textContent='판정 발표! '+who;Cast.set($('.result .say[data-who=moa] img',root),'moa',res==='C'||res==='D'?'think':'proud')}
+    $('.result .say[data-who=doc] p',root).textContent=(res==='C'?o.condLesson:o.lesson)+'.'+(mo?'':' '+who);
+    $$('.audience img',root).forEach(function(im,i){Cast.set(im,im.dataset.who,res==='C'||res==='D'?'think':(i===1?'joy':'wow'))});
     var gp=$('.guessres',root);if(gp)gp.textContent=guess?('먼저 맞혀 본 답: '+(guess===({F:'fly',R:'robo'})[res]?'맞혔어요.':(res==='D'||res==='C'?'이번 판은 한쪽 승리가 아니에요.':'빗나갔어요. 숫자를 다시 보세요.'))):'';
     root.classList.add('open');shown=true;btn.textContent='다시 닫기'});
-  function reset(){Cast.set(flyImg,'fly','point');Cast.set(roboImg,'robo','coin');root.classList.remove('open');shown=false;btn.textContent='결과 보기'}
+  function reset(){Cast.set(flyImg,'fly','point');Cast.set(roboImg,'robo','coin');$$('.audience img',root).forEach(function(im){Cast.set(im,im.dataset.who,'watch')});root.classList.remove('open');shown=false;btn.textContent='결과 보기'}
 }
 
 /* 시뮬레이션 등록부 (sims.js가 채움) */
