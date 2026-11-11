@@ -9,6 +9,8 @@ SERIES = '데이터 사이언티스트를 위한 베이지안 통계학 — 연�
 SERIES_SHORT = '베이지안 통계 연구실'
 AUTHOR = '안상선'; AFFIL = '(주)M-Robo 대표'; WHO = 'https://www.ahnboat.xyz'; WHO_OLD = 'https://adminmrobo.github.io/who_am_i/who_am_i.html'
 TODAY = '2026-11-11'; VER = '1.1'
+sys.path.insert(0, B)
+import tower  # 3D 본사 타워 첫 화면 (tower.py · tower.js · tower.css)
 SP = json.load(open(os.path.join(B, 'sprites.json'), encoding='utf-8'))
 CSS = open(os.path.join(B, 'base.css'), encoding='utf-8').read() + '\n' + open(os.path.join(B, 'plain.css'), encoding='utf-8').read()
 JS = open(os.path.join(B, 'lab.js'), encoding='utf-8').read() + '\n' + open(os.path.join(B, 'sims.js'), encoding='utf-8').read() + '\n' + open(os.path.join(B, 'dash.js'), encoding='utf-8').read()
@@ -105,7 +107,7 @@ def head(P, title, desc, fname):
 '''
 
 def nav(links, label):
-    a = ''.join(f'<a href="#{i}">{e(t)}</a>' for i, t in links)
+    a = '<a href="#tower">건물 안내</a>' + ''.join(f'<a href="#{i}">{e(t)}</a>' for i, t in links)
     return f'<nav class="top" aria-label="섹션 바로가기"><div class="wrap"><a class="logo" href="index.html"><i></i>{e(label)}</a><div class="links">{a}</div></div></nav>\n'
 
 def footer(P, extra=''):
@@ -333,7 +335,7 @@ def page(P):
     P['flow'] = []
     for l in L: P['flow'] += [[l['node'][2], 0], [l['limit_short'], 1]]
     links = [('three', '3줄 요약'), ('cast', '연구실 식구')] + [(l['id'], f'{i+1} {l["short"]}') for i, l in enumerate(L)] + [('dash', '대시보드'), ('duel', '대결'), ('sum', '정리'), ('kg', '색인'), ('export', '꾸러미')]
-    o = [head(P, P['title'], P['desc'], P['file']), nav(links, f'{SERIES_SHORT} {num}'), cover(P, M, f'cover_{num}')]
+    o = [head(P, P['title'], P['desc'], P['file']), nav(links, f'{SERIES_SHORT} {num}'), tower.tower_html(num), cover(P, M, f'cover_{num}')]
     kp = ''.join(f'<div class="kpi {c}"><b>{v}</b><span>{t}</span></div>' for v, t, c in P['kpis'])
     hero_talk = ''.join(say(*t, M) for t in P['hero_talk'])
     o.append(f'''<header class="hero" id="hero"><div class="wrap hero-grid"><div class="hero-text"><span class="eyebrow">{e(P["eyebrow"])}</span><h1>{P["title"]}</h1><p class="q">{P["question"]}</p><p>{P["intro"]}</p><section class="kpis k4">{kp}</section></div><div class="dialog">{hero_talk}</div></div></header>''')
