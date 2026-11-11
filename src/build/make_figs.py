@@ -8,7 +8,14 @@ STYLE = ('Match the art style, proportions and colors of the attached reference 
 WHITE_SPOT = ('Background: plain pure white (#ffffff) with only a soft light-gray floor shadow, no room walls, no frame, no vignette, '
               'so the picture sits directly on a white web page. Small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9).')
 BAN = 'No text, no letters, no numbers, no logos, no speech bubbles, no weapons, no cigarettes, no alcohol, no blood, no real brands or real people.'
-NAME = {'doc': '박사', 'asst': '조수(하루)', 'fly': '초파리 연구원', 'robo': '주판봇'}
+NAME = {'doc': '박사', 'asst': '조수(하루)', 'fly': '초파리 연구원', 'robo': '주판봇', 'sia': '시아', 'moa': '모아', 'xs': 'X1·X2·X3'}
+C = dict(C)
+C['sia'] = 'chibi girl maid intern Sia, long straight jet-black hair to the waist with side-swept bangs, calm gray eyes, small silver drop earrings, charcoal-black long-sleeved maid dress with white lace cuffs, white high collar with a large soft gray bow, long white frilled apron, no headdress, no glasses'
+C['moa'] = 'chibi girl maid intern Moa, long ash-beige wavy hair to the waist with neat bangs, white frilled maid headband with a thin white ribbon over the left ear, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron'
+C['xs'] = ('three small cute chibi silhouette spectators, solid deep navy-black bodies (#1B1A2E) with a thin purple rim light, round white dot eyes, two pink cheek pixels, no mouth; '
+           'X1 with a long side ponytail and a big pink ribbon, X2 with a round beret and round glasses with two teal reflections, X3 tiny with a cat-ear hood and a yellow pom-pom, not scary')
+REFEREE = {'sia': 'referee on one side of the duel line holding up a small round start flag (blank)', 'moa': 'referee on the other side holding a blank scorecard, ready to announce'}
+AUD = {'xs': 'sitting together in a small audience row at the bottom edge, reacting with surprise'}
 
 # 키: (등장 캐릭터와 동작, 장면 은유(영어), 대체 글 요지(한국어))
 F = {
@@ -105,7 +112,7 @@ def block(kind, ratio, size, d, scene, alt):
     return ko + '\n\n' + en
 
 L = ['# 그림 지시문 — 시리즈 표지 · 개별 표지 · 회차별 본문 그림', '',
-     '흰 배경 페이지용(2026-11-10). 모든 그림은 글자 없음, 네 캐릭터 외형은 `adminmrobo/fruitfly-lab-expressions` 기본 그림을 참고 이미지로 함께 올립니다.', '',
+     '흰 배경 페이지용(2026-11-11 개정: 대결 그림 13장과 시리즈 대표 표지에 인턴 시아·모아(심판)와 미공개 식구 X1~X3(방청객) 추가). 모든 그림은 글자 없음, 캐릭터 외형은 `adminmrobo/fruitfly-lab-expressions` 기본 그림을 참고 이미지로 함께 올립니다(인턴은 `images/_sheets/lab6_lineup.png`, 실루엣은 `images/x1`~`x3`). 개별 표지 16장은 네 캐릭터판으로 이미 받았으므로 다시 받지 않아도 됩니다.', '',
      '| 묶음 | 키 | 장수 | 비율 · 크기 | 넣을 자리 |', '|---|---|---|---|---|',
      '| ① 시리즈 대표 표지 | series_key, og_series | 2 | 21:9 2400×1030 / 1200×630 | README 맨 위, 목차 공유 미리보기 |',
      '| ② 개별 표지 | cover_00 ~ cover_13, cover_07m, cover_13f | 16 | 16:9 1600×900 | 각 페이지 맨 위 — 지시문은 `COVER_PROMPTS_series.md` |',
@@ -117,17 +124,17 @@ L = ['# 그림 지시문 — 시리즈 표지 · 개별 표지 · 회차별 본�
 # ① 시리즈 대표 표지
 L += ['## ① 시리즈 대표 표지', '', '### series_key — 데이터 사이언티스트를 위한 베이지안 통계학 (대표 그림)', '',
       '| 항목 | 내용 |', '|---|---|', '| 키 · 크기 | series_key · 21:9, 2400×1030 이상 |', '| 넣을 자리 | README 맨 위, 목차 표지 대체 후보 |',
-      '| 대체 글(alt) | 박사, 조수, 초파리 연구원, 주판봇이 밝은 연구실에서 증거를 하나씩 더해 믿음을 고쳐 가는 커다란 저울을 둘러싼 장면 |', '',
+      '| 대체 글(alt) | 연구실 식구 여섯과 방청석의 실루엣 셋이 밝은 연구실에서 증거를 하나씩 더해 믿음을 고쳐 가는 커다란 저울을 둘러싼 장면 |', '',
       '**Genspark에 붙여 넣기 ↓**', '```',
-      '시리즈 전체를 대표하는 가로로 긴 표지 그림 1장을 만들어 줘.\n- 비율 21:9, 가로 2400px 이상\n- 첨부한 참고 이미지의 네 캐릭터를 같은 그림체·같은 외형으로, 넷 모두 등장\n- 밝은 낮의 흰 연구실, 아래 가장자리는 흰색으로 자연스럽게 사라지게\n- 그림 안에 글자·숫자·로고 없음\n아래 영어 프롬프트를 그대로 써 줘.\n\n'
+      '시리즈 전체를 대표하는 가로로 긴 표지 그림 1장을 만들어 줘.\n- 비율 21:9, 가로 2400px 이상\n- 첨부한 참고 이미지의 연구실 식구 여섯(박사·조수·초파리 연구원·주판봇·시아·모아)과 미공개 실루엣 X1·X2·X3를 같은 그림체·같은 외형으로 모두 등장\n- 밝은 낮의 흰 연구실, 아래 가장자리는 흰색으로 자연스럽게 사라지게\n- 그림 안에 글자·숫자·로고 없음\n아래 영어 프롬프트를 그대로 써 줘.\n\n'
       'Series key visual, ultra-wide 21:9.\n' + STYLE + '\n'
       'Scene: a bright, airy research lab in soft daylight, clean white walls (#ffffff to #f6f7fb), pale blue monitor glow, accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key, no dark background.\n'
       'Center: a large brass balance scale; on one pan a soft glowing cloud (the prior belief), on the other a growing stack of small glowing evidence cubes; above it the cloud is reshaping into a sharper cloud (the updated belief).\n'
       'Around it, a gentle path of thirteen small stepping stones curving from left to right, each stone holding a tiny icon of a lesson prop (coin, dice, button pair, shopping basket, umbrella and sunglasses, chain, board game square, rice grains, pipe, review strip, X-ray frame, nested boxes, staircase).\n'
-      'All four characters:\n' + chars({'doc': 'center-back, adding one evidence cube to the scale', 'asst': 'beside the scale, holding a blank clipboard', 'fly': 'on the left facing right, squinting skeptically at the cloud', 'robo': 'on the right facing left, cheerfully sliding abacus beads'}) + '\n'
+      'All four characters:\n' + chars({'doc': 'center-back, adding one evidence cube to the scale', 'asst': 'beside the scale, holding a blank clipboard', 'fly': 'on the left facing right, squinting skeptically at the cloud', 'robo': 'on the right facing left, cheerfully sliding abacus beads', 'sia': 'standing at the far left edge as a referee with a small blank flag', 'moa': 'standing at the far right edge as a referee with a blank scorecard', 'xs': 'peeking from a small audience bench in the lower middle background'}) + '\n'
       'Composition: faces and hands inside the central safe area (15% margin left and right, 10% top, 20% bottom); the bottom edge fades to near-white.\n'
       'Mood: curious, friendly rivalry, learning step by step.\n' + BAN, '```', '',
-      '### og_series — 공유 미리보기', '', 'series_key를 받은 뒤 가운데를 1200×630(1.91:1)으로 잘라 `assets/og_series.jpg`를 바꿉니다. 새로 그릴 필요 없음. 자를 때 네 캐릭터 얼굴이 모두 들어가게 합니다.', '',
+      '### og_series — 공유 미리보기', '', 'series_key를 받은 뒤 가운데를 1200×630(1.91:1)으로 잘라 `assets/og_series.jpg`를 바꿉니다. 새로 그릴 필요 없음. 자를 때 가운데 네 캐릭터 얼굴이 모두 들어가게 합니다.', '',
       '## ② 개별 표지 16장', '', '각 페이지 맨 위 16:9 표지입니다(`COVER_PROMPTS_series.md`와 같은 내용, 흰 배경판).', '']
 cov = open(os.path.join(os.path.dirname(__file__), '..', 'out', 'docs', 'COVER_PROMPTS_series.md'), encoding='utf-8').read().split('\n## ', 1)[1]
 L += [('### ' + cov).replace('\n## ', '\n### '), '']
@@ -148,6 +155,8 @@ for n in sorted(F):
             key = f'duel_{n}'; dd = P['duel']
             head = f'#### {key} — 대결: {dd["question"]}'
             info = f'| 넣을 자리 | `{P["file"]}#duel` 맨 위 · 초파리 쪽 "{dd["fly_choice"]}" vs 주판봇 쪽 "{dd["robo_choice"]}" |'
+            d = dict(d); d.update(REFEREE); d.update(AUD)
+            if 'doc' in d: d['doc'] = d['doc'].replace('referee', 'commentator at the back')
             body = block('Wide duel scene illustration for a web article', '16:9', '가로 1600px 이상', d, scene, alt); size = '1600x900'
         L += [head, '', '| 항목 | 내용 |', '|---|---|', info, f'| 대체 글(alt) | {alt} |', '', '```', body, '```', '']
         man.append({'key': key, 'size': size, 'place': P['file'], 'status': 'needed'})

@@ -1,6 +1,6 @@
 # 그림 지시문 — 시리즈 표지 · 개별 표지 · 회차별 본문 그림
 
-흰 배경 페이지용(2026-11-10). 모든 그림은 글자 없음, 네 캐릭터 외형은 `adminmrobo/fruitfly-lab-expressions` 기본 그림을 참고 이미지로 함께 올립니다.
+흰 배경 페이지용(2026-11-11 개정: 대결 그림 13장과 시리즈 대표 표지에 인턴 시아·모아(심판)와 미공개 식구 X1~X3(방청객) 추가). 모든 그림은 글자 없음, 캐릭터 외형은 `adminmrobo/fruitfly-lab-expressions` 기본 그림을 참고 이미지로 함께 올립니다(인턴은 `images/_sheets/lab6_lineup.png`, 실루엣은 `images/x1`~`x3`). 개별 표지 16장은 네 캐릭터판으로 이미 받았으므로 다시 받지 않아도 됩니다.
 
 | 묶음 | 키 | 장수 | 비율 · 크기 | 넣을 자리 |
 |---|---|---|---|---|
@@ -21,13 +21,13 @@
 |---|---|
 | 키 · 크기 | series_key · 21:9, 2400×1030 이상 |
 | 넣을 자리 | README 맨 위, 목차 표지 대체 후보 |
-| 대체 글(alt) | 박사, 조수, 초파리 연구원, 주판봇이 밝은 연구실에서 증거를 하나씩 더해 믿음을 고쳐 가는 커다란 저울을 둘러싼 장면 |
+| 대체 글(alt) | 연구실 식구 여섯과 방청석의 실루엣 셋이 밝은 연구실에서 증거를 하나씩 더해 믿음을 고쳐 가는 커다란 저울을 둘러싼 장면 |
 
 **Genspark에 붙여 넣기 ↓**
 ```
 시리즈 전체를 대표하는 가로로 긴 표지 그림 1장을 만들어 줘.
 - 비율 21:9, 가로 2400px 이상
-- 첨부한 참고 이미지의 네 캐릭터를 같은 그림체·같은 외형으로, 넷 모두 등장
+- 첨부한 참고 이미지의 연구실 식구 여섯(박사·조수·초파리 연구원·주판봇·시아·모아)과 미공개 실루엣 X1·X2·X3를 같은 그림체·같은 외형으로 모두 등장
 - 밝은 낮의 흰 연구실, 아래 가장자리는 흰색으로 자연스럽게 사라지게
 - 그림 안에 글자·숫자·로고 없음
 아래 영어 프롬프트를 그대로 써 줘.
@@ -43,6 +43,9 @@ All four characters:
   girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, beside the scale, holding a blank clipboard;
   anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, squinting skeptically at the cloud;
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, cheerfully sliding abacus beads;
+  chibi girl maid intern Sia, long straight jet-black hair to the waist with side-swept bangs, calm gray eyes, small silver drop earrings, charcoal-black long-sleeved maid dress with white lace cuffs, white high collar with a large soft gray bow, long white frilled apron, no headdress, no glasses, standing at the far left edge as a referee with a small blank flag;
+  chibi girl maid intern Moa, long ash-beige wavy hair to the waist with neat bangs, white frilled maid headband with a thin white ribbon over the left ear, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron, standing at the far right edge as a referee with a blank scorecard;
+  three small cute chibi silhouette spectators, solid deep navy-black bodies (#1B1A2E) with a thin purple rim light, round white dot eyes, two pink cheek pixels, no mouth; X1 with a long side ponytail and a big pink ribbon, X2 with a round beret and round glasses with two teal reflections, X3 tiny with a cat-ear hood and a yellow pom-pom, not scary, peeking from a small audience bench in the lower middle background;
 Composition: faces and hands inside the central safe area (15% margin left and right, 10% top, 20% bottom); the bottom edge fades to near-white.
 Mood: curious, friendly rivalry, learning step by step.
 No text, no letters, no numbers, no logos, no speech bubbles, no weapons, no cigarettes, no alcohol, no blood, no real brands or real people.
@@ -50,7 +53,7 @@ No text, no letters, no numbers, no logos, no speech bubbles, no weapons, no cig
 
 ### og_series — 공유 미리보기
 
-series_key를 받은 뒤 가운데를 1200×630(1.91:1)으로 잘라 `assets/og_series.jpg`를 바꿉니다. 새로 그릴 필요 없음. 자를 때 네 캐릭터 얼굴이 모두 들어가게 합니다.
+series_key를 받은 뒤 가운데를 1200×630(1.91:1)으로 잘라 `assets/og_series.jpg`를 바꿉니다. 새로 그릴 필요 없음. 자를 때 가운데 네 캐릭터 얼굴이 모두 들어가게 합니다.
 
 ## ② 개별 표지 16장
 
@@ -763,7 +766,7 @@ No text, no letters, no numbers, no logos, no speech bubbles, no weapons, no cig
 ```
 웹페이지 본문에 넣을 그림 1장을 만들어 줘.
 - 비율 16:9, 가로 1600px 이상
-- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사)를 같은 그림체·같은 외형으로
+- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사, 시아, 모아, X1·X2·X3)를 같은 그림체·같은 외형으로
 - 배경은 순수한 흰색(#ffffff), 방·벽·테두리 없이 흰 웹페이지 위에 바로 놓이게
 - 그림 안에 글자·숫자·로고·말풍선을 넣지 말 것
 아래 영어 프롬프트를 그대로 써 줘.
@@ -775,7 +778,10 @@ Background: plain pure white (#ffffff) with only a soft light-gray floor shadow,
 Characters:
   anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, holding a small, neatly shuffled card box with 1,000 cards;
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, pushing a gigantic but tilted pile of cards that leans to one side;
-  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, referee at the center holding a balance scale;
+  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, commentator at the back at the center holding a balance scale;
+  chibi girl maid intern Sia, long straight jet-black hair to the waist with side-swept bangs, calm gray eyes, small silver drop earrings, charcoal-black long-sleeved maid dress with white lace cuffs, white high collar with a large soft gray bow, long white frilled apron, no headdress, no glasses, referee on one side of the duel line holding up a small round start flag (blank);
+  chibi girl maid intern Moa, long ash-beige wavy hair to the waist with neat bangs, white frilled maid headband with a thin white ribbon over the left ear, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron, referee on the other side holding a blank scorecard, ready to announce;
+  three small cute chibi silhouette spectators, solid deep navy-black bodies (#1B1A2E) with a thin purple rim light, round white dot eyes, two pink cheek pixels, no mouth; X1 with a long side ponytail and a big pink ribbon, X2 with a round beret and round glasses with two teal reflections, X3 tiny with a cat-ear hood and a yellow pom-pom, not scary, sitting together in a small audience row at the bottom edge, reacting with surprise;
 Scene: a small well-mixed sample versus a huge lopsided sample; the balance scale tips toward the small mixed box.
 Composition: characters and the main prop fill the middle 80%, generous white margin around, readable at 600px wide.
 Mood: friendly, curious, clear at a glance.
@@ -875,7 +881,7 @@ No text, no letters, no numbers, no logos, no speech bubbles, no weapons, no cig
 ```
 웹페이지 본문에 넣을 그림 1장을 만들어 줘.
 - 비율 16:9, 가로 1600px 이상
-- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사)를 같은 그림체·같은 외형으로
+- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사, 시아, 모아, X1·X2·X3)를 같은 그림체·같은 외형으로
 - 배경은 순수한 흰색(#ffffff), 방·벽·테두리 없이 흰 웹페이지 위에 바로 놓이게
 - 그림 안에 글자·숫자·로고·말풍선을 넣지 말 것
 아래 영어 프롬프트를 그대로 써 줘.
@@ -887,7 +893,10 @@ Background: plain pure white (#ffffff) with only a soft light-gray floor shadow,
 Characters:
   anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, calm, pointing at a wheel that has the same mix of red and black slots every spin;
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, excited, betting a stack of abacus beads on red after five black pockets in a row;
-  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, referee holding a stopwatch;
+  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, commentator at the back holding a stopwatch;
+  chibi girl maid intern Sia, long straight jet-black hair to the waist with side-swept bangs, calm gray eyes, small silver drop earrings, charcoal-black long-sleeved maid dress with white lace cuffs, white high collar with a large soft gray bow, long white frilled apron, no headdress, no glasses, referee on one side of the duel line holding up a small round start flag (blank);
+  chibi girl maid intern Moa, long ash-beige wavy hair to the waist with neat bangs, white frilled maid headband with a thin white ribbon over the left ear, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron, referee on the other side holding a blank scorecard, ready to announce;
+  three small cute chibi silhouette spectators, solid deep navy-black bodies (#1B1A2E) with a thin purple rim light, round white dot eyes, two pink cheek pixels, no mouth; X1 with a long side ponytail and a big pink ribbon, X2 with a round beret and round glasses with two teal reflections, X3 tiny with a cat-ear hood and a yellow pom-pom, not scary, sitting together in a small audience row at the bottom edge, reacting with surprise;
 Scene: a toy roulette wheel with red and black pockets, five black marbles lined up in a tray beside it.
 Composition: characters and the main prop fill the middle 80%, generous white margin around, readable at 600px wide.
 Mood: friendly, curious, clear at a glance.
@@ -988,7 +997,7 @@ No text, no letters, no numbers, no logos, no speech bubbles, no weapons, no cig
 ```
 웹페이지 본문에 넣을 그림 1장을 만들어 줘.
 - 비율 16:9, 가로 1600px 이상
-- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사)를 같은 그림체·같은 외형으로
+- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사, 시아, 모아, X1·X2·X3)를 같은 그림체·같은 외형으로
 - 배경은 순수한 흰색(#ffffff), 방·벽·테두리 없이 흰 웹페이지 위에 바로 놓이게
 - 그림 안에 글자·숫자·로고·말풍선을 넣지 말 것
 아래 영어 프롬프트를 그대로 써 줘.
@@ -1000,7 +1009,10 @@ Background: plain pure white (#ffffff) with only a soft light-gray floor shadow,
 Characters:
   anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, pointing at a 10-by-10 grid of dots where only one dot is red;
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, proudly holding a large shiny 90% style meter (no numbers, just a big filled gauge);
-  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, referee;
+  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, commentator at the back;
+  chibi girl maid intern Sia, long straight jet-black hair to the waist with side-swept bangs, calm gray eyes, small silver drop earrings, charcoal-black long-sleeved maid dress with white lace cuffs, white high collar with a large soft gray bow, long white frilled apron, no headdress, no glasses, referee on one side of the duel line holding up a small round start flag (blank);
+  chibi girl maid intern Moa, long ash-beige wavy hair to the waist with neat bangs, white frilled maid headband with a thin white ribbon over the left ear, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron, referee on the other side holding a blank scorecard, ready to announce;
+  three small cute chibi silhouette spectators, solid deep navy-black bodies (#1B1A2E) with a thin purple rim light, round white dot eyes, two pink cheek pixels, no mouth; X1 with a long side ponytail and a big pink ribbon, X2 with a round beret and round glasses with two teal reflections, X3 tiny with a cat-ear hood and a yellow pom-pom, not scary, sitting together in a small audience row at the bottom edge, reacting with surprise;
 Scene: a positive test strip in the middle; the dot grid shows that true cases are rare.
 Composition: characters and the main prop fill the middle 80%, generous white margin around, readable at 600px wide.
 Mood: friendly, curious, clear at a glance.
@@ -1101,7 +1113,7 @@ No text, no letters, no numbers, no logos, no speech bubbles, no weapons, no cig
 ```
 웹페이지 본문에 넣을 그림 1장을 만들어 줘.
 - 비율 16:9, 가로 1600px 이상
-- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사)를 같은 그림체·같은 외형으로
+- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사, 시아, 모아, X1·X2·X3)를 같은 그림체·같은 외형으로
 - 배경은 순수한 흰색(#ffffff), 방·벽·테두리 없이 흰 웹페이지 위에 바로 놓이게
 - 그림 안에 글자·숫자·로고·말풍선을 넣지 말 것
 아래 영어 프롬프트를 그대로 써 줘.
@@ -1113,7 +1125,10 @@ Background: plain pure white (#ffffff) with only a soft light-gray floor shadow,
 Characters:
   anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, patiently waiting beside a tall stack of visitor tickets;
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, rushing to press a big blue button after only a tiny stack of tickets;
-  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, referee with an hourglass;
+  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, commentator at the back with an hourglass;
+  chibi girl maid intern Sia, long straight jet-black hair to the waist with side-swept bangs, calm gray eyes, small silver drop earrings, charcoal-black long-sleeved maid dress with white lace cuffs, white high collar with a large soft gray bow, long white frilled apron, no headdress, no glasses, referee on one side of the duel line holding up a small round start flag (blank);
+  chibi girl maid intern Moa, long ash-beige wavy hair to the waist with neat bangs, white frilled maid headband with a thin white ribbon over the left ear, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron, referee on the other side holding a blank scorecard, ready to announce;
+  three small cute chibi silhouette spectators, solid deep navy-black bodies (#1B1A2E) with a thin purple rim light, round white dot eyes, two pink cheek pixels, no mouth; X1 with a long side ponytail and a big pink ribbon, X2 with a round beret and round glasses with two teal reflections, X3 tiny with a cat-ear hood and a yellow pom-pom, not scary, sitting together in a small audience row at the bottom edge, reacting with surprise;
 Scene: a calendar page with the first day circled and an hourglass.
 Composition: characters and the main prop fill the middle 80%, generous white margin around, readable at 600px wide.
 Mood: friendly, curious, clear at a glance.
@@ -1214,7 +1229,7 @@ No text, no letters, no numbers, no logos, no speech bubbles, no weapons, no cig
 ```
 웹페이지 본문에 넣을 그림 1장을 만들어 줘.
 - 비율 16:9, 가로 1600px 이상
-- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사)를 같은 그림체·같은 외형으로
+- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사, 시아, 모아, X1·X2·X3)를 같은 그림체·같은 외형으로
 - 배경은 순수한 흰색(#ffffff), 방·벽·테두리 없이 흰 웹페이지 위에 바로 놓이게
 - 그림 안에 글자·숫자·로고·말풍선을 넣지 말 것
 아래 영어 프롬프트를 그대로 써 줘.
@@ -1226,7 +1241,10 @@ Background: plain pure white (#ffffff) with only a soft light-gray floor shadow,
 Characters:
   anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, holding three personalized gift boxes, each different;
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, holding three identical best-seller boxes;
-  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, referee;
+  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, commentator at the back;
+  chibi girl maid intern Sia, long straight jet-black hair to the waist with side-swept bangs, calm gray eyes, small silver drop earrings, charcoal-black long-sleeved maid dress with white lace cuffs, white high collar with a large soft gray bow, long white frilled apron, no headdress, no glasses, referee on one side of the duel line holding up a small round start flag (blank);
+  chibi girl maid intern Moa, long ash-beige wavy hair to the waist with neat bangs, white frilled maid headband with a thin white ribbon over the left ear, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron, referee on the other side holding a blank scorecard, ready to announce;
+  three small cute chibi silhouette spectators, solid deep navy-black bodies (#1B1A2E) with a thin purple rim light, round white dot eyes, two pink cheek pixels, no mouth; X1 with a long side ponytail and a big pink ribbon, X2 with a round beret and round glasses with two teal reflections, X3 tiny with a cat-ear hood and a yellow pom-pom, not scary, sitting together in a small audience row at the bottom edge, reacting with surprise;
 Scene: a row of small customer silhouettes each with a different favorite color.
 Composition: characters and the main prop fill the middle 80%, generous white margin around, readable at 600px wide.
 Mood: friendly, curious, clear at a glance.
@@ -1326,7 +1344,7 @@ No text, no letters, no numbers, no logos, no speech bubbles, no weapons, no cig
 ```
 웹페이지 본문에 넣을 그림 1장을 만들어 줘.
 - 비율 16:9, 가로 1600px 이상
-- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사)를 같은 그림체·같은 외형으로
+- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사, 시아, 모아, X1·X2·X3)를 같은 그림체·같은 외형으로
 - 배경은 순수한 흰색(#ffffff), 방·벽·테두리 없이 흰 웹페이지 위에 바로 놓이게
 - 그림 안에 글자·숫자·로고·말풍선을 넣지 말 것
 아래 영어 프롬프트를 그대로 써 줘.
@@ -1338,7 +1356,10 @@ Background: plain pure white (#ffffff) with only a soft light-gray floor shadow,
 Characters:
   anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, holding two half-full baskets steadily;
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, carrying one overflowing basket on a slippery path;
-  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, referee under a storm cloud;
+  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, commentator at the back under a storm cloud;
+  chibi girl maid intern Sia, long straight jet-black hair to the waist with side-swept bangs, calm gray eyes, small silver drop earrings, charcoal-black long-sleeved maid dress with white lace cuffs, white high collar with a large soft gray bow, long white frilled apron, no headdress, no glasses, referee on one side of the duel line holding up a small round start flag (blank);
+  chibi girl maid intern Moa, long ash-beige wavy hair to the waist with neat bangs, white frilled maid headband with a thin white ribbon over the left ear, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron, referee on the other side holding a blank scorecard, ready to announce;
+  three small cute chibi silhouette spectators, solid deep navy-black bodies (#1B1A2E) with a thin purple rim light, round white dot eyes, two pink cheek pixels, no mouth; X1 with a long side ponytail and a big pink ribbon, X2 with a round beret and round glasses with two teal reflections, X3 tiny with a cat-ear hood and a yellow pom-pom, not scary, sitting together in a small audience row at the bottom edge, reacting with surprise;
 Scene: a stormy "bad year" cloud overhead; the single basket loses more eggs.
 Composition: characters and the main prop fill the middle 80%, generous white margin around, readable at 600px wide.
 Mood: friendly, curious, clear at a glance.
@@ -1438,7 +1459,7 @@ No text, no letters, no numbers, no logos, no speech bubbles, no weapons, no cig
 ```
 웹페이지 본문에 넣을 그림 1장을 만들어 줘.
 - 비율 16:9, 가로 1600px 이상
-- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사)를 같은 그림체·같은 외형으로
+- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사, 시아, 모아, X1·X2·X3)를 같은 그림체·같은 외형으로
 - 배경은 순수한 흰색(#ffffff), 방·벽·테두리 없이 흰 웹페이지 위에 바로 놓이게
 - 그림 안에 글자·숫자·로고·말풍선을 넣지 말 것
 아래 영어 프롬프트를 그대로 써 줘.
@@ -1450,7 +1471,10 @@ Background: plain pure white (#ffffff) with only a soft light-gray floor shadow,
 Characters:
   anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, tending a slow-growing sturdy tree with many rings;
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, holding a big shiny fruit picked from a small sapling;
-  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, referee holding a five-step calendar;
+  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, commentator at the back holding a five-step calendar;
+  chibi girl maid intern Sia, long straight jet-black hair to the waist with side-swept bangs, calm gray eyes, small silver drop earrings, charcoal-black long-sleeved maid dress with white lace cuffs, white high collar with a large soft gray bow, long white frilled apron, no headdress, no glasses, referee on one side of the duel line holding up a small round start flag (blank);
+  chibi girl maid intern Moa, long ash-beige wavy hair to the waist with neat bangs, white frilled maid headband with a thin white ribbon over the left ear, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron, referee on the other side holding a blank scorecard, ready to announce;
+  three small cute chibi silhouette spectators, solid deep navy-black bodies (#1B1A2E) with a thin purple rim light, round white dot eyes, two pink cheek pixels, no mouth; X1 with a long side ponytail and a big pink ribbon, X2 with a round beret and round glasses with two teal reflections, X3 tiny with a cat-ear hood and a yellow pom-pom, not scary, sitting together in a small audience row at the bottom edge, reacting with surprise;
 Scene: two paths stretching into the future, one with more coins collecting far away.
 Composition: characters and the main prop fill the middle 80%, generous white margin around, readable at 600px wide.
 Mood: friendly, curious, clear at a glance.
@@ -1551,7 +1575,7 @@ No text, no letters, no numbers, no logos, no speech bubbles, no weapons, no cig
 ```
 웹페이지 본문에 넣을 그림 1장을 만들어 줘.
 - 비율 16:9, 가로 1600px 이상
-- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사)를 같은 그림체·같은 외형으로
+- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사, 시아, 모아, X1·X2·X3)를 같은 그림체·같은 외형으로
 - 배경은 순수한 흰색(#ffffff), 방·벽·테두리 없이 흰 웹페이지 위에 바로 놓이게
 - 그림 안에 글자·숫자·로고·말풍선을 넣지 말 것
 아래 영어 프롬프트를 그대로 써 줘.
@@ -1563,7 +1587,10 @@ Background: plain pure white (#ffffff) with only a soft light-gray floor shadow,
 Characters:
   anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, calmly with a large sack of 10,000 grains;
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, confidently with a tiny handful of 100 grains;
-  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, referee with the square board;
+  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, commentator at the back with the square board;
+  chibi girl maid intern Sia, long straight jet-black hair to the waist with side-swept bangs, calm gray eyes, small silver drop earrings, charcoal-black long-sleeved maid dress with white lace cuffs, white high collar with a large soft gray bow, long white frilled apron, no headdress, no glasses, referee on one side of the duel line holding up a small round start flag (blank);
+  chibi girl maid intern Moa, long ash-beige wavy hair to the waist with neat bangs, white frilled maid headband with a thin white ribbon over the left ear, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron, referee on the other side holding a blank scorecard, ready to announce;
+  three small cute chibi silhouette spectators, solid deep navy-black bodies (#1B1A2E) with a thin purple rim light, round white dot eyes, two pink cheek pixels, no mouth; X1 with a long side ponytail and a big pink ribbon, X2 with a round beret and round glasses with two teal reflections, X3 tiny with a cat-ear hood and a yellow pom-pom, not scary, sitting together in a small audience row at the bottom edge, reacting with surprise;
 Scene: two square boards: one sparsely dotted, one densely and smoothly dotted.
 Composition: characters and the main prop fill the middle 80%, generous white margin around, readable at 600px wide.
 Mood: friendly, curious, clear at a glance.
@@ -1663,7 +1690,7 @@ No text, no letters, no numbers, no logos, no speech bubbles, no weapons, no cig
 ```
 웹페이지 본문에 넣을 그림 1장을 만들어 줘.
 - 비율 16:9, 가로 1600px 이상
-- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사)를 같은 그림체·같은 외형으로
+- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사, 시아, 모아, X1·X2·X3)를 같은 그림체·같은 외형으로
 - 배경은 순수한 흰색(#ffffff), 방·벽·테두리 없이 흰 웹페이지 위에 바로 놓이게
 - 그림 안에 글자·숫자·로고·말풍선을 넣지 말 것
 아래 영어 프롬프트를 그대로 써 줘.
@@ -1675,7 +1702,10 @@ Background: plain pure white (#ffffff) with only a soft light-gray floor shadow,
 Characters:
   anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, sorting people into groups by interest level before comparing;
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, simply comparing a crowd that saw an ad against one that did not;
-  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, referee pointing at a hidden third figure behind both crowds;
+  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, commentator at the back pointing at a hidden third figure behind both crowds;
+  chibi girl maid intern Sia, long straight jet-black hair to the waist with side-swept bangs, calm gray eyes, small silver drop earrings, charcoal-black long-sleeved maid dress with white lace cuffs, white high collar with a large soft gray bow, long white frilled apron, no headdress, no glasses, referee on one side of the duel line holding up a small round start flag (blank);
+  chibi girl maid intern Moa, long ash-beige wavy hair to the waist with neat bangs, white frilled maid headband with a thin white ribbon over the left ear, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron, referee on the other side holding a blank scorecard, ready to announce;
+  three small cute chibi silhouette spectators, solid deep navy-black bodies (#1B1A2E) with a thin purple rim light, round white dot eyes, two pink cheek pixels, no mouth; X1 with a long side ponytail and a big pink ribbon, X2 with a round beret and round glasses with two teal reflections, X3 tiny with a cat-ear hood and a yellow pom-pom, not scary, sitting together in a small audience row at the bottom edge, reacting with surprise;
 Scene: a hidden "season" sun figure secretly influencing both the ad poster and the sales basket.
 Composition: characters and the main prop fill the middle 80%, generous white margin around, readable at 600px wide.
 Mood: friendly, curious, clear at a glance.
@@ -1775,7 +1805,7 @@ No text, no letters, no numbers, no logos, no speech bubbles, no weapons, no cig
 ```
 웹페이지 본문에 넣을 그림 1장을 만들어 줘.
 - 비율 16:9, 가로 1600px 이상
-- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사)를 같은 그림체·같은 외형으로
+- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사, 시아, 모아, X1·X2·X3)를 같은 그림체·같은 외형으로
 - 배경은 순수한 흰색(#ffffff), 방·벽·테두리 없이 흰 웹페이지 위에 바로 놓이게
 - 그림 안에 글자·숫자·로고·말풍선을 넣지 말 것
 아래 영어 프롬프트를 그대로 써 줘.
@@ -1787,7 +1817,10 @@ Background: plain pure white (#ffffff) with only a soft light-gray floor shadow,
 Characters:
   anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, reading every word token on a strip one by one;
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, holding a single big "thumbs up" sticker;
-  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, referee;
+  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, commentator at the back;
+  chibi girl maid intern Sia, long straight jet-black hair to the waist with side-swept bangs, calm gray eyes, small silver drop earrings, charcoal-black long-sleeved maid dress with white lace cuffs, white high collar with a large soft gray bow, long white frilled apron, no headdress, no glasses, referee on one side of the duel line holding up a small round start flag (blank);
+  chibi girl maid intern Moa, long ash-beige wavy hair to the waist with neat bangs, white frilled maid headband with a thin white ribbon over the left ear, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron, referee on the other side holding a blank scorecard, ready to announce;
+  three small cute chibi silhouette spectators, solid deep navy-black bodies (#1B1A2E) with a thin purple rim light, round white dot eyes, two pink cheek pixels, no mouth; X1 with a long side ponytail and a big pink ribbon, X2 with a round beret and round glasses with two teal reflections, X3 tiny with a cat-ear hood and a yellow pom-pom, not scary, sitting together in a small audience row at the bottom edge, reacting with surprise;
 Scene: a review strip with a thumbs-up token next to a frowning token.
 Composition: characters and the main prop fill the middle 80%, generous white margin around, readable at 600px wide.
 Mood: friendly, curious, clear at a glance.
@@ -1887,7 +1920,7 @@ No text, no letters, no numbers, no logos, no speech bubbles, no weapons, no cig
 ```
 웹페이지 본문에 넣을 그림 1장을 만들어 줘.
 - 비율 16:9, 가로 1600px 이상
-- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사)를 같은 그림체·같은 외형으로
+- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사, 시아, 모아, X1·X2·X3)를 같은 그림체·같은 외형으로
 - 배경은 순수한 흰색(#ffffff), 방·벽·테두리 없이 흰 웹페이지 위에 바로 놓이게
 - 그림 안에 글자·숫자·로고·말풍선을 넣지 말 것
 아래 영어 프롬프트를 그대로 써 줘.
@@ -1899,7 +1932,10 @@ Background: plain pure white (#ffffff) with only a soft light-gray floor shadow,
 Characters:
   anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, holding a pause flag before a strange foggy silhouette;
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, confidently stamping a single label on the foggy silhouette;
-  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, referee in a crossing guard vest;
+  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, commentator at the back in a crossing guard vest;
+  chibi girl maid intern Sia, long straight jet-black hair to the waist with side-swept bangs, calm gray eyes, small silver drop earrings, charcoal-black long-sleeved maid dress with white lace cuffs, white high collar with a large soft gray bow, long white frilled apron, no headdress, no glasses, referee on one side of the duel line holding up a small round start flag (blank);
+  chibi girl maid intern Moa, long ash-beige wavy hair to the waist with neat bangs, white frilled maid headband with a thin white ribbon over the left ear, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron, referee on the other side holding a blank scorecard, ready to announce;
+  three small cute chibi silhouette spectators, solid deep navy-black bodies (#1B1A2E) with a thin purple rim light, round white dot eyes, two pink cheek pixels, no mouth; X1 with a long side ponytail and a big pink ribbon, X2 with a round beret and round glasses with two teal reflections, X3 tiny with a cat-ear hood and a yellow pom-pom, not scary, sitting together in a small audience row at the bottom edge, reacting with surprise;
 Scene: a street crossing in daylight with a never-seen-before oddly shaped object in fog.
 Composition: characters and the main prop fill the middle 80%, generous white margin around, readable at 600px wide.
 Mood: friendly, curious, clear at a glance.
@@ -1999,7 +2035,7 @@ No text, no letters, no numbers, no logos, no speech bubbles, no weapons, no cig
 ```
 웹페이지 본문에 넣을 그림 1장을 만들어 줘.
 - 비율 16:9, 가로 1600px 이상
-- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사)를 같은 그림체·같은 외형으로
+- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사, 시아, 모아, X1·X2·X3)를 같은 그림체·같은 외형으로
 - 배경은 순수한 흰색(#ffffff), 방·벽·테두리 없이 흰 웹페이지 위에 바로 놓이게
 - 그림 안에 글자·숫자·로고·말풍선을 넣지 말 것
 아래 영어 프롬프트를 그대로 써 줘.
@@ -2011,7 +2047,10 @@ Background: plain pure white (#ffffff) with only a soft light-gray floor shadow,
 Characters:
   anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, looking at each tiny store alone with a magnifier;
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, tying all the stores together with a gentle rope to a central post;
-  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, referee;
+  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, commentator at the back;
+  chibi girl maid intern Sia, long straight jet-black hair to the waist with side-swept bangs, calm gray eyes, small silver drop earrings, charcoal-black long-sleeved maid dress with white lace cuffs, white high collar with a large soft gray bow, long white frilled apron, no headdress, no glasses, referee on one side of the duel line holding up a small round start flag (blank);
+  chibi girl maid intern Moa, long ash-beige wavy hair to the waist with neat bangs, white frilled maid headband with a thin white ribbon over the left ear, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron, referee on the other side holding a blank scorecard, ready to announce;
+  three small cute chibi silhouette spectators, solid deep navy-black bodies (#1B1A2E) with a thin purple rim light, round white dot eyes, two pink cheek pixels, no mouth; X1 with a long side ponytail and a big pink ribbon, X2 with a round beret and round glasses with two teal reflections, X3 tiny with a cat-ear hood and a yellow pom-pom, not scary, sitting together in a small audience row at the bottom edge, reacting with surprise;
 Scene: a map table with five miniature stores, one brand-new with very few visitors.
 Composition: characters and the main prop fill the middle 80%, generous white margin around, readable at 600px wide.
 Mood: friendly, curious, clear at a glance.
@@ -2111,7 +2150,7 @@ No text, no letters, no numbers, no logos, no speech bubbles, no weapons, no cig
 ```
 웹페이지 본문에 넣을 그림 1장을 만들어 줘.
 - 비율 16:9, 가로 1600px 이상
-- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사)를 같은 그림체·같은 외형으로
+- 첨부한 참고 이미지의 캐릭터(초파리 연구원, 주판봇, 박사, 시아, 모아, X1·X2·X3)를 같은 그림체·같은 외형으로
 - 배경은 순수한 흰색(#ffffff), 방·벽·테두리 없이 흰 웹페이지 위에 바로 놓이게
 - 그림 안에 글자·숫자·로고·말풍선을 넣지 말 것
 아래 영어 프롬프트를 그대로 써 줘.
@@ -2123,7 +2162,10 @@ Background: plain pure white (#ffffff) with only a soft light-gray floor shadow,
 Characters:
   anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, climbing a staircase step by step: 10%, 50%, full (shown as growing lights, no numbers);
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, jumping straight to the top floor with a big leap;
-  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, referee holding two weather cards, sun and storm;
+  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, commentator at the back holding two weather cards, sun and storm;
+  chibi girl maid intern Sia, long straight jet-black hair to the waist with side-swept bangs, calm gray eyes, small silver drop earrings, charcoal-black long-sleeved maid dress with white lace cuffs, white high collar with a large soft gray bow, long white frilled apron, no headdress, no glasses, referee on one side of the duel line holding up a small round start flag (blank);
+  chibi girl maid intern Moa, long ash-beige wavy hair to the waist with neat bangs, white frilled maid headband with a thin white ribbon over the left ear, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron, referee on the other side holding a blank scorecard, ready to announce;
+  three small cute chibi silhouette spectators, solid deep navy-black bodies (#1B1A2E) with a thin purple rim light, round white dot eyes, two pink cheek pixels, no mouth; X1 with a long side ponytail and a big pink ribbon, X2 with a round beret and round glasses with two teal reflections, X3 tiny with a cat-ear hood and a yellow pom-pom, not scary, sitting together in a small audience row at the bottom edge, reacting with surprise;
 Scene: a building with a staircase and an elevator shaft; uncertain weather overhead.
 Composition: characters and the main prop fill the middle 80%, generous white margin around, readable at 600px wide.
 Mood: friendly, curious, clear at a glance.

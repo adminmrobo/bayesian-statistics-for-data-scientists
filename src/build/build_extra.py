@@ -38,13 +38,14 @@ def review(P, B):
     M = B.Moods(); L = lessons(B)
     for k, v in B.DEFM.items(): M.add(k, v)
     nums = P['weeks']
-    links = [('three', '3줄 요약'), ('summary', '1부 요약'), ('orig', '2부 교안 문제'), ('calc', '3부 업무 계산'), ('score', '점수'), ('kg', '색인'), ('export', '꾸러미')]
+    links = [('three', '3줄 요약'), ('cast', '식구'), ('summary', '1부 요약'), ('orig', '2부 교안 문제'), ('calc', '3부 업무 계산'), ('score', '점수'), ('kg', '색인'), ('export', '꾸러미')]
     o = [B.head(P, P['title'], P['desc'], P['file']), B.nav(links, f'{B.SERIES_SHORT} {P["num"]}'), B.cover(P, M, f'cover_{P["key"]}')]
     hero_talk = ''.join(B.say(*t, M) for t in P['hero_talk'])
     kp = ''.join(f'<div class="kpi {c}"><b>{v}</b><span>{t}</span></div>' for v, t, c in P['kpis'])
     o.append(f'<header class="hero" id="hero"><div class="wrap hero-grid"><div class="hero-text"><span class="eyebrow">{e(P["eyebrow"])}</span><h1>{P["title"]}</h1><p class="q">{P["question"]}</p><p>{P["intro"]}</p><section class="kpis k4">{kp}</section></div><div class="dialog">{hero_talk}</div></div></header>')
     T = P['three']
     o.append(f'<section class="level" id="three"><div class="wrap"><div class="three"><h2>처음 오신 분께 — 이 페이지를 3줄로</h2><ol><li><b>무엇을</b><span>{T["what"]}</span></li><li><b>왜 중요한가</b><span>{T["why"]}</span></li><li><b>업무에서는</b><span>{T["work"]}</span></li></ol><p class="ok">점수는 이 화면에서만 세고 저장하지 않아요. 70% 미만인 회차는 해설 페이지로 안내합니다.</p></div></div></section>')
+    o.append(f'<section class="level" id="cast"><div class="wrap stack"><div class="lvhead"><h2>연구실 식구</h2></div>{B.crew_html(M)}</div></section>')
     # 1부 요약
     cards = []
     for n in nums:
@@ -108,7 +109,7 @@ def review(P, B):
 def index(P, B):
     M = B.Moods(); L = lessons(B)
     for k, v in B.DEFM.items(): M.add(k, v)
-    links = [('three', '3줄 요약'), ('map', '회차 지도'), ('keys', '한 줄 핵심'), ('dash', '종합 대시보드'), ('path', '개념 사다리'), ('how', '사용법'), ('about', '자료와 원칙')]
+    links = [('three', '3줄 요약'), ('map', '회차 지도'), ('keys', '한 줄 핵심'), ('dash', '종합 대시보드'), ('path', '개념 사다리'), ('how', '식구·사용법'), ('about', '자료와 원칙')]
     o = [B.head(P, P['title'], P['desc'], P['file']), B.nav(links, B.SERIES_SHORT), B.cover(P, M, 'cover_index')]
     kp = ''.join(f'<div class="kpi {c}"><b>{v}</b><span>{t}</span></div>' for v, t, c in P['kpis'])
     o.append(thumbs_css(B))
@@ -134,9 +135,9 @@ def index(P, B):
     o.append(f'<section class="level" id="dash"><div class="wrap stack"><div class="lvhead"><h2>종합 대시보드 — 13회차를 한 화면에서</h2><p class="lead">회차 버튼을 누르면 그 회차의 핵심 모형이 열립니다. 슬라이더를 움직이거나 ▶ 재생을 눌러 보세요. 같은 대시보드가 각 회차 페이지에도 들어 있어요.</p></div><div class="dtabs" role="group" aria-label="회차 고르기">{tabs}</div><div class="dash panel" id="dashbox"></div><p><a id="dashlink" href="01_what_is_statistics.html#dash">1회차 해설 페이지에서 자세히 보기 →</a></p></div></section>')
     chips = ' <i>→</i> '.join(f'<span>{e(x)}</span>' for x in P['ladder'])
     o.append(f'<section class="level" id="path"><div class="wrap stack"><div class="lvhead"><h2>개념 사다리</h2><p class="lead">앞 회차의 한계가 다음 회차의 이유가 되도록 이어 두었어요.</p></div><div class="flowchips">{chips}</div><div class="tw"><table class="tb"><tr><th>회차</th><th>핵심 질문</th><th>이 회차가 남긴 한계 → 다음 회차</th></tr>' + ''.join(f'<tr><td>{n}</td><td>{e(strip(L[n]["question"]))}</td><td>{e(strip(L[n]["next_q"]))}</td></tr>' for n in sorted(L)) + '</table></div></div></section>')
-    cast = ''.join(f'<div>{B.img(w_, B.DEFM[w_], M, "")}<b style="color:var(--c-{w_})">{B.NAMES[w_]}</b><p class="muted" style="font-size:14px">{t}</p></div>' for w_, t in [('doc', '해설과 판정. 판단은 데이터대로.'), ('asst', '실험과 숫자 발표, 수식을 대신 물어봄.'), ('fly', '의심하는 쪽. 기준선·검증·반칙 찾기.'), ('robo', '확신하는 쪽. 크고 높은 숫자를 좋아함.'), ('sia', '대결 심판. 시작과 기준을 알림.'), ('moa', '대결 심판. 승패를 발표함.')])
+    cast = B.crew_html(M)
     how = ''.join(f'<div><b>{a}</b><p>{b}</p></div>' for a, b in P['how'])
-    o.append(f'<section class="level" id="how"><div class="wrap stack"><div class="lvhead"><h2>등장인물과 사용법</h2></div><div class="cast">{cast}</div><div class="steps four">{how}</div></div></section>')
+    o.append(f'<section class="level" id="how"><div class="wrap stack"><div class="lvhead"><h2>연구실 식구와 사용법</h2></div>{cast}<div class="steps four">{how}</div></div></section>')
     ab = ''.join(f'<li>{x}</li>' for x in P['about'])
     o.append(f'<section class="level" id="about"><div class="wrap stack"><div class="lvhead"><h2>자료와 원칙</h2></div><ul style="margin:0;padding-left:20px">{ab}</ul>{B.say("doc","front","좋은 연구실에는 의심하는 쪽과 확신하는 쪽이 둘 다 필요해요. 판정은 늘 숫자가 내립니다.",M)}</div></section>')
     o.append(B.footer(P, '<p><a href="KG_00_registry.json">시리즈 지식 그래프 등록부(JSON) 내려받기</a> · <a href="https://github.com/adminmrobo/bayesian-statistics-for-data-scientists" target="_blank" rel="noopener">GitHub 저장소</a></p>'))
