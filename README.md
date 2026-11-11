@@ -95,6 +95,6 @@ node src/build/check.js out/*.html    # 390·1280px 가로 넘침·콘솔 오류
 
 ---
 
-글 · 안상선 ([소개 페이지](https://adminmrobo.github.io/who_am_i/who_am_i.html)) · (주)M-Robo 대표
+글 · 안상선 ([www.ahnboat.xyz](https://www.ahnboat.xyz)) · (주)M-Robo 대표
 
 캐릭터(박사 · 조수(하루) · 초파리 연구원 · 주판봇)의 이름·설정·그림의 저작권은 안상선(개인)에게 있으며 허락 없이 쓸 수 없습니다. 그림: 캐릭터 팩 1.3 (fruitfly-lab-expressions @ 5269662), 인턴 시아·모아와 방청객 X1~X3 (@ 86d04ac).

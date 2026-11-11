@@ -7,8 +7,8 @@ OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, 'out')
 SITE = 'https://adminmrobo.github.io/bayesian-statistics-for-data-scientists/'
 SERIES = '데이터 사이언티스트를 위한 베이지안 통계학 — 연구실 해설'
 SERIES_SHORT = '베이지안 통계 연구실'
-AUTHOR = '안상선'; AFFIL = '(주)M-Robo 대표'; WHO = 'https://adminmrobo.github.io/who_am_i/who_am_i.html'
-TODAY = '2026-11-10'; VER = '1.0'
+AUTHOR = '안상선'; AFFIL = '(주)M-Robo 대표'; WHO = 'https://www.ahnboat.xyz'; WHO_OLD = 'https://adminmrobo.github.io/who_am_i/who_am_i.html'
+TODAY = '2026-11-11'; VER = '1.1'
 SP = json.load(open(os.path.join(B, 'sprites.json'), encoding='utf-8'))
 CSS = open(os.path.join(B, 'base.css'), encoding='utf-8').read() + '\n' + open(os.path.join(B, 'plain.css'), encoding='utf-8').read()
 JS = open(os.path.join(B, 'lab.js'), encoding='utf-8').read() + '\n' + open(os.path.join(B, 'sims.js'), encoding='utf-8').read() + '\n' + open(os.path.join(B, 'dash.js'), encoding='utf-8').read()
@@ -45,7 +45,7 @@ def crew_html(M):
         for w_, t in ms:
             cards.append(f'<div class="crewcard"><span class="ctag">{head}</span>{img(w_, DEFM[w_], M, "")}<b style="color:var(--c-{w_})">{NAMES[w_]}</b><p class="muted">{t}</p></div>')
     for w_, no, hint in SPARE:
-        cards.append(f'<div class="crewcard locked"><span class="ctag">미공개 · 방청석</span><div class="lkimg"><span class="q" aria-hidden="true">?</span><div class="lk" id="lk-{w_}" hidden>{img(w_, "watch", M, "")}</div></div><b style="color:var(--c-x)">{NAMES[w_]} · {no}</b><p class="muted"><span class="lkhint">아직 공개되지 않은 식구예요.</span><span class="lkmore" hidden> 대결 방청석에 앉아 있어요. 힌트: {hint}</span></p><button class="bt lockbtn" type="button" aria-expanded="false" aria-controls="lk-{w_}">🔒 눌러서 보기</button></div>')
+        cards.append(f'<div class="crewcard locked"><span class="ctag">미공개 · 방청석</span>{img(w_, "watch", M, "")}<b style="color:var(--c-x)">{NAMES[w_]} <span class="lkno">· No.???</span><span class="lkmore" hidden>· {no}</span></b><p class="muted">아직 공개되지 않은 식구. 대결 방청석에 앉아 있어요.<span class="lkmore" hidden> 힌트: {hint}</span></p><button class="bt lockbtn" type="button" aria-expanded="false">🔒 번호·힌트 보기</button></div>')
     return '<div class="crew">' + ''.join(cards) + '</div>'
 
 def sprites(M):
@@ -121,7 +121,7 @@ def footer(P, extra=''):
 <div><h3>출처</h3><ol style="margin:0;padding-left:20px;list-style:none">{src}</ol></div>
 <div><h3>예시값·설명용 모형인 것</h3><ul style="margin:0;padding-left:20px">{ex}</ul></div>
 {ch}{extra}{fin}
-<p>글 · {AUTHOR} (<a href="{WHO}" target="_blank" rel="noopener">소개 페이지</a>) · {AFFIL}<br>{e(SERIES)} {e(P["num"])} · v{VER} · {TODAY}<br>캐릭터: 박사 · 조수(하루) · 초파리 연구원 · 주판봇 — 캐릭터 이름·설정·그림의 저작권은 {AUTHOR}(개인)에게 있으며 허락 없이 쓸 수 없습니다. 그림: 캐릭터 팩 1.3 (fruitfly-lab-expressions @ 5269662).</p>
+<p>글 · {AUTHOR} (<a href="{WHO}" target="_blank" rel="noopener">www.ahnboat.xyz</a>) · {AFFIL}<br>{e(SERIES)} {e(P["num"])} · v{VER} · {TODAY}<br>캐릭터: 박사 · 조수(하루) · 초파리 연구원 · 주판봇 · 시아 · 모아 · 미공개 X1~X3 — 캐릭터 이름·설정·그림의 저작권은 {AUTHOR}(개인)에게 있으며 허락 없이 쓸 수 없습니다. 그림: 캐릭터 팩 1.3 (fruitfly-lab-expressions @ 5269662), 인턴·미공개 식구 (@ 86d04ac).</p>
 </div></footer>
 <div id="study" aria-live="polite"><span id="stRead">읽은 곳 0%</span><span id="stQuiz">퀴즈 0/0</span><button class="bt" type="button" id="stGloss">밑줄: 핵심</button></div>
 '''
@@ -201,7 +201,7 @@ def jdump(o):
     return json.dumps(o, ensure_ascii=False).replace('</', '<\\/')
 
 def tail(P, G, extra_pd=None):
-    meta = {'title': P['title'], 'series': SERIES, 'number': P['num'], 'creator': [{'name': AUTHOR, 'role': 'author', 'affiliation': AFFIL}], 'contributor': [{'name': 'AI 보조 제작', 'role': 'assistant'}],
+    meta = {'title': P['title'], 'series': SERIES, 'number': P['num'], 'creator': [{'name': AUTHOR, 'role': 'author', 'affiliation': AFFIL, 'url': WHO, 'sameAs': [WHO_OLD]}], 'contributor': [{'name': 'AI 보조 제작', 'role': 'assistant'}],
             'date': TODAY, 'version': VER, 'language': ['ko'], 'license': '', 'url': SITE + P['file'], 'about': [l['node'][0] for l in P['levels']] if P.get('levels') else [],
             'educationalLevel': '입문', 'learningResourceType': 'interactive explainer', 'basedOn': [r['id'] for r in P['refs'] if r['lab'].get('role') == 'primary'],
             'suggestedCitation': f'{AUTHOR} ({TODAY[:4]}). {P["title"]}. {SERIES} {P["num"]}, v{VER}. {SITE}{P["file"]}'}
