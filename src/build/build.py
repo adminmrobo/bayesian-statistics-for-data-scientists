@@ -227,6 +227,8 @@ def level_html(l, i, M, P):
     w = l.get('why'); m = l.get('math'); o = []
     tags = ''.join(f'<span class="lvtag{" g" if k == 0 else ""}">{t}</span>' for k, t in enumerate(l['tags']))
     o.append(f'<section class="level" id="{l["id"]}"><div class="wrap stack">\n<div class="lvhead"><div class="hexrow"><div class="hexno">{i+1}<small>{e(l["short"])}</small></div><h2>{l["title"]}</h2></div><p class="sub">{tags}</p><p class="lead">{l["lead"]}</p></div>')
+    if l.get('key'):
+        o.append(f'<div class="keyline"><span class="kl-tag">이 칸에서 가져갈 한 가지</span><p>{l["key"]}</p></div>')
     if w or m:
         o.append('<div class="whymath">')
         if w:
@@ -234,7 +236,7 @@ def level_html(l, i, M, P):
         if m:
             parts = ''.join(f'<tr><td>{a}</td><td>{b}</td></tr>' for a, b in m['parts'])
             tr = ''.join(f'<span>{x}</span>' for x in m['try'])
-            o.append(f'<div class="mathbox"><h4>수학 수식을 어려워하는 조수가 대신 물어봅니다</h4><div class="who">{img("asst","shock",M)}<p>{m["q"]}</p></div><p class="school"><b>학교 수학으로 보면</b> {m["school"]}</p><div class="fx">{m["fx"]}</div><table>{parts}</table><div class="try"><b>숫자로 한 번 해 보기</b>{tr}</div><div class="who">{img("asst","spark",M)}<p>{m["comment"]}</p></div></div>')
+            o.append(f'<details class="more mathmore"><summary>수식이 궁금하면 펼쳐 보기 — 수학 수식을 어려워하는 조수가 대신 물어봅니다</summary><div class="mathbox"><div class="who">{img("asst","shock",M)}<p>{m["q"]}</p></div><p class="school"><b>학교 수학으로 보면</b> {m["school"]}</p><div class="fx">{m["fx"]}</div><table>{parts}</table><div class="try"><b>숫자로 한 번 해 보기</b>{tr}</div><div class="who">{img("asst","spark",M)}<p>{m["comment"]}</p></div></div></details>')
         o.append('</div>')
     pr = l['pair']
     o.append(f'<div class="pair"><div><div class="tag fly">일상으로 치면</div><p>{pr["left"]}</p></div><div><div class="tag nn">통계로는</div><p>{pr["right"]}</p></div></div>')
@@ -243,9 +245,9 @@ def level_html(l, i, M, P):
     if l.get('sim2'):
         o.append(f'<section class="panel" aria-label="{e(l["sim2_title"])}"><h3>실험 2 — {l["sim2_title"]}</h3><div class="sim" data-sim="{l["sim2"][0]}" data-cfg="{e(json.dumps(l["sim2"][1], ensure_ascii=False))}"></div></section>')
     ex = l['explain']; steps = ''.join(f'<li>{s}</li>' for s in ex['steps'])
-    o.append(f'<div class="explain"><h4>{ex["title"]}</h4><ol>{steps}</ol><p class="limit"><b>이 칸의 한계</b> · {ex["limit"]}</p></div>')
+    o.append(f'<div class="explain"><details class="more"><summary>자세한 {ex["title"]} (펼쳐 보기)</summary><ol>{steps}</ol></details><p class="limit"><b>이 칸의 한계</b> · {ex["limit"]}</p></div>')
     if l.get('bridge'):
-        b = l['bridge']; o.append('<div class="bridges">' + (f'<div class="bridge gen"><h4>데이터 분석으로 치면</h4><p>{b["gen"]}</p><p class="lim">{b.get("gen_lim","")}</p></div>' if b.get('gen') else '') + (f'<div class="bridge field"><h4>현장에 옮기면</h4><p>{b["field"]}</p><p class="lim">{b.get("field_lim","")}</p></div>' if b.get('field') else '') + '</div>')
+        b = l['bridge']; o.append('<details class="more"><summary>업무에 쓸 때 알아 둘 것 (펼쳐 보기)</summary><div class="bridges">' + (f'<div class="bridge gen"><h4>데이터 분석으로 치면</h4><p>{b["gen"]}</p><p class="lim">{b.get("gen_lim","")}</p></div>' if b.get('gen') else '') + (f'<div class="bridge field"><h4>현장에 옮기면</h4><p>{b["field"]}</p><p class="lim">{b.get("field_lim","")}</p></div>' if b.get('field') else '') + '</div></details>')
     if l.get('code'):
         rows = ''.join(f'<tr><td><code>{e(c)}</code></td><td>{t}</td></tr>' for c, t in l['code'])
         ct = {'orig': '교안의 파이썬 코드로 보면 (몰라도 됩니다)', 'example': '같은 방법을 보여 주는 예시 코드 — 교안 코드 아님 (몰라도 됩니다)', 'mixed': '교안의 파이썬 코드와 예시 코드 (몰라도 됩니다)'}[l.get('code_src', 'orig')]
@@ -274,26 +276,48 @@ def duel_html(P, M):
 </div></div>{fin}
 </div></section>'''
 
+def apply_plainer(P):
+    """초보자 읽기 개정 데이터(pages/_plainer.py)를 페이지 데이터에 반영."""
+    try:
+        import _plainer as PL
+    except ImportError:
+        return
+    n = P['num']
+    for (k, i), v in PL.KPI.items():
+        if k == n: P['kpis'][i] = v
+    lv = {l['id']: l for l in P['levels']}
+    for l in P['levels']:
+        if (n, l['id']) in PL.KEY: l['key'] = PL.KEY[(n, l['id'])]
+    for (k, path), v in PL.TEXT.items():
+        if k != n: continue
+        ks = path.split('.')
+        d = lv[ks[0]] if ks[0] in lv else P
+        ks = ks[1:] if ks[0] in lv else ks
+        for x in ks[:-1]: d = d[x]
+        assert ks[-1] in d, (n, path)
+        d[ks[-1]] = v
+
 def page(P):
+    apply_plainer(P)
     M = Moods(); L = P['levels']; num = P['num']
     for k, v in DEFM.items(): M.add(k, v)
     P['duels_js'] = [{'el': '#duelBox', 'fn': P['duel']['fn'], 'cfg': P['duel'].get('cfg', {}), 'metric': P['duel']['metric'], 'lesson': P['duel']['lesson'], 'condLesson': P['duel'].get('cond_lesson', ''), 'higherIsBetter': P['duel']['hib'], 'drawMargin': P['duel'].get('margin', 0), 'fmt': P['duel'].get('fmt', ''), 'unit': P['duel'].get('unit', ''), 'dec': P['duel'].get('dec', 1)}]
     P['flow'] = []
     for l in L: P['flow'] += [[l['node'][2], 0], [l['limit_short'], 1]]
-    links = [('three', '3줄 요약'), ('cast', '등장인물'), ('dash', '대시보드')] + [(l['id'], f'{i+1} {l["short"]}') for i, l in enumerate(L)] + [('duel', '대결'), ('sum', '정리'), ('kg', '색인'), ('export', '꾸러미')]
+    links = [('three', '3줄 요약'), ('cast', '등장인물')] + [(l['id'], f'{i+1} {l["short"]}') for i, l in enumerate(L)] + [('dash', '대시보드'), ('duel', '대결'), ('sum', '정리'), ('kg', '색인'), ('export', '꾸러미')]
     o = [head(P, P['title'], P['desc'], P['file']), nav(links, f'{SERIES_SHORT} {num}'), cover(P, M, f'cover_{num}')]
     kp = ''.join(f'<div class="kpi {c}"><b>{v}</b><span>{t}</span></div>' for v, t, c in P['kpis'])
     hero_talk = ''.join(say(*t, M) for t in P['hero_talk'])
     o.append(f'''<header class="hero" id="hero"><div class="wrap hero-grid"><div class="hero-text"><span class="eyebrow">{e(P["eyebrow"])}</span><h1>{P["title"]}</h1><p class="q">{P["question"]}</p><p>{P["intro"]}</p><section class="kpis k4">{kp}</section></div><div class="dialog">{hero_talk}</div></div></header>''')
     T = P['three']; ab = ''.join(f'<dt>{e(a)}</dt><dd>{b}</dd>' for a, b in P.get('abbr', []))
-    o.append(f'''<section class="level" id="three"><div class="wrap"><div class="three"><h2>처음 오신 분께 — 이 페이지를 3줄로</h2><ol><li><b>무엇을</b><span>{T["what"]}</span></li><li><b>왜 중요한가</b><span>{T["why"]}</span></li><li><b>업무에서는</b><span>{T["work"]}</span></li></ol><p class="ok">코드·수식을 몰라도 됩니다. 수식은 조수가 대신 묻고, 코드는 접어 두었어요.</p>{"<details class='abbr'><summary>영어 약어 풀이</summary><dl>"+ab+"</dl></details>" if ab else ""}</div></div></section>''')
+    o.append(f'''<section class="level" id="three"><div class="wrap"><div class="three"><h2>처음 오신 분께 — 이 페이지를 3줄로</h2><ol><li><b>무엇을</b><span>{T["what"]}</span></li><li><b>왜 중요한가</b><span>{T["why"]}</span></li><li><b>업무에서는</b><span>{T["work"]}</span></li></ol><div class="route"><p><b>처음이라면 이렇게 읽으세요.</b> 칸마다 ① <b>가져갈 한 가지</b> → ② <b>일상으로 치면</b> → ③ <b>실험</b>만 봐도 충분해요. 수식, 자세한 풀이, 업무 팁, 코드는 접어 두었어요(몰라도 됩니다).</p><button class="bt" type="button" id="openAll" aria-pressed="false">접어 둔 내용 모두 펼치기</button></div>{"<details class='abbr'><summary>영어 약어 풀이</summary><dl>"+ab+"</dl></details>" if ab else ""}</div></div></section>''')
     cast = ''.join(f'<div>{img(w_, DEFM[w_], M, "")}<b style="color:var(--c-{w_})">{NAMES[w_]}</b><p class="muted" style="font-size:14px">{t}</p></div>' for w_, t in [('doc', '해설과 판정. 판단은 데이터대로 해요.'), ('asst', '실험 진행과 숫자 발표. 수식을 대신 물어봐요.'), ('fly', '의심하는 쪽. "그 숫자, 진짜야?"를 달고 살아요.'), ('robo', '확신하는 쪽. 크고 높은 숫자를 좋아해요.')])
     prevtxt = f'앞 회차: <a href="{P["prev"][0]}">{e(P["prev"][1])}</a>' if P.get('prev') else '시리즈의 첫 회차입니다.'
     o.append(f'''<section class="level" id="cast"><div class="wrap stack"><div class="lvhead"><h2>등장인물과 이 페이지 사용법</h2></div><div class="cast">{cast}</div><p class="muted">노란 점선 밑줄을 누르거나 손가락으로 대면 뜻이 나옵니다. 오른쪽 아래 도우미에서 밑줄을 핵심 → 전체 → 끄기로 바꿀 수 있어요. 모든 실험은 시드를 고정한 설명용 모형입니다. {prevtxt}</p></div></section>''')
     W = P['why_steps']; o.append('<section class="level" id="why"><div class="wrap stack"><div class="lvhead"><h2>왜 이 주제인가</h2></div><div class="steps">' + ''.join(f'<div><b>{a}</b><p>{b}</p></div>' for a, b in W) + '</div></div></section>')
     Bg = P['big']; o.append('<section class="level" id="big"><div class="wrap stack"><div class="lvhead"><h2>큰 그림</h2><p class="lead">' + P.get('big_lead', '') + '</p></div><div class="steps four">' + ''.join(f'<div><b>{a}</b><p>{b}</p></div>' for a, b in Bg) + '</div></div></section>')
-    o.append(f'<section class="level" id="dash"><div class="wrap stack"><div class="lvhead"><h2>한눈에 보는 대시보드</h2><p class="lead">이 회차의 핵심 모형을 한 화면에 모았어요. 슬라이더를 움직이거나 ▶ 재생을 눌러 숫자 카드와 그림이 함께 바뀌는 것을 보세요. 아래 칸 ①②③에서 하나씩 풀어 설명합니다.</p></div><div class="dash panel" data-dash="{num}"></div></div></section>')
     for i, l in enumerate(L): o.append(level_html(l, i, M, P))
+    o.append(f'<section class="level" id="dash"><div class="wrap stack"><div class="lvhead"><h2>한눈에 보는 대시보드</h2><p class="lead">칸 ①②③에서 본 것을 한 화면에 모았어요. ▶ 재생을 누르면 숫자 카드와 그림이 함께 바뀝니다. 처음 값은 본문 예시와 같아요.</p></div><div class="dash panel" data-dash="{num}"></div></div></section>')
     o.append(duel_html(P, M))
     S = P['summary']
     rows = ''.join(f'<tr><td>{a}</td><td>{b}</td><td>{c}</td></tr>' for a, b, c in S['table'])
