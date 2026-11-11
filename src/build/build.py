@@ -288,6 +288,7 @@ def apply_plainer(P):
     lv = {l['id']: l for l in P['levels']}
     for l in P['levels']:
         if (n, l['id']) in PL.KEY: l['key'] = PL.KEY[(n, l['id'])]
+        if (n, l['id']) in getattr(PL, 'TAG', {}): l['tags'] = [PL.TAG[(n, l['id'])]] + l['tags'][1:]
     for (k, path), v in PL.TEXT.items():
         if k != n: continue
         ks = path.split('.')

@@ -15,6 +15,10 @@ def strip(s): return re.sub('<[^>]+>', '', s)
 
 # ---------- 요약·퀴즈 페이지 ----------
 def review(P, B):
+    try:
+        import _plainer; PLK = _plainer.KEY
+    except ImportError:
+        PLK = {}
     M = B.Moods(); L = lessons(B)
     for k, v in B.DEFM.items(): M.add(k, v)
     nums = P['weeks']
@@ -31,7 +35,8 @@ def review(P, B):
         Q = L[n]
         rows = ''.join(f'<li><b>{e(strip(a))}</b> — {e(strip(b))} <span class="muted">(남은 한계: {e(strip(c))})</span></li>' for a, b, c in Q['summary']['table'])
         kp2 = ' · '.join(f'{strip(v)} {strip(t)}' for v, t, c in Q['kpis'][:2])
-        cards.append(f'<div class="sumcard"><span class="eyebrow">{n}회차</span><h3><a href="{Q["file"]}">{strip(Q["title"])}</a></h3><p class="muted" style="font-size:14px">{strip(Q["question"])}</p><ul>{rows}</ul><p style="font-size:14px"><b>숫자 두 개:</b> {e(kp2)}</p><p style="font-size:14px"><b>박사의 한 줄:</b> {e(strip(Q["summary"]["doc_line"]))}</p></div>')
+        keys = ''.join(f'<li>{e(PLK[(n, l["id"])])}</li>' for l in Q['levels'] if (n, l['id']) in PLK)
+        cards.append(f'<div class="sumcard"><span class="eyebrow">{n}회차</span><h3><a href="{Q["file"]}">{strip(Q["title"])}</a></h3><p class="muted" style="font-size:14px">{strip(Q["question"])}</p><div class="keyline small"><span class="kl-tag">가져갈 세 가지</span><ol>{keys}</ol></div><p style="font-size:14px"><b>박사의 한 줄:</b> {e(strip(Q["summary"]["doc_line"]))}</p><details class="more"><summary>칸별 요약과 숫자 (펼쳐 보기)</summary><ul>{rows}</ul><p style="font-size:14px"><b>숫자 두 개:</b> {e(kp2)}</p></details></div>')
     flow = ' <i>→</i> '.join(f'<span>{n} {e(L[n]["short_title"])}</span>' for n in nums)
     o.append(f'<section class="level" id="summary"><div class="wrap stack"><div class="lvhead"><div class="hexrow"><div class="hexno">1<small>요약</small></div><h2>1부 · 회차별 요약정리</h2></div><p class="lead">{P["summary_lead"]}</p></div><div class="flowchips">{flow}</div><div class="sumgrid">{"".join(cards)}</div>{B.say(*P["summary_say"], M)}</div></section>')
     # 2부 교안 문제
