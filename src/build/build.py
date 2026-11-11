@@ -39,14 +39,14 @@ CREW = [
 SPARE = [('x1', 'No.007', '분홍 리본'), ('x2', 'No.008', '청록 안경 반사'), ('x3', 'No.009', '노란 방울')]
 
 def crew_html(M):
-    """연구실 식구 소개 — 여섯 식구 + 미공개 식구 X1~X3(🔒 버튼을 눌러야 보임)."""
-    o = []
+    """연구실 식구 소개 — 아홉 칸을 같은 크기 카드로 한 격자에. 미공개 X1~X3는 🔒 버튼을 눌러야 보임."""
+    cards = []
     for head, ms in CREW:
-        cards = ''.join(f'<div>{img(w_, DEFM[w_], M, "")}<b style="color:var(--c-{w_})">{NAMES[w_]}</b><p class="muted" style="font-size:14px">{t}</p></div>' for w_, t in ms)
-        o.append(f'<div class="crewgrp"><h3>{head}</h3><div class="cast c2">{cards}</div></div>')
-    sp = ''.join(f'<div class="locked"><button class="bt lockbtn" type="button" aria-expanded="false" aria-controls="lk-{w_}">🔒 미공개 {NAMES[w_]} 보기</button><div class="lk" id="lk-{w_}" hidden>{img(w_, "watch", M, "")}<b style="color:var(--c-x)">{NAMES[w_]} · {no}</b><p class="muted" style="font-size:14px">아직 공개되지 않은 식구. 대결 방청석에 앉아 있어요. 힌트: {hint}</p></div></div>' for w_, no, hint in SPARE)
-    o.append(f'<div class="crewgrp"><h3>미공개 식구 · 방청석</h3><div class="cast c3">{sp}</div></div>')
-    return '<div class="crew">' + ''.join(o) + '</div>'
+        for w_, t in ms:
+            cards.append(f'<div class="crewcard"><span class="ctag">{head}</span>{img(w_, DEFM[w_], M, "")}<b style="color:var(--c-{w_})">{NAMES[w_]}</b><p class="muted">{t}</p></div>')
+    for w_, no, hint in SPARE:
+        cards.append(f'<div class="crewcard locked"><span class="ctag">미공개 · 방청석</span><div class="lkimg"><span class="q" aria-hidden="true">?</span><div class="lk" id="lk-{w_}" hidden>{img(w_, "watch", M, "")}</div></div><b style="color:var(--c-x)">{NAMES[w_]} · {no}</b><p class="muted"><span class="lkhint">아직 공개되지 않은 식구예요.</span><span class="lkmore" hidden> 대결 방청석에 앉아 있어요. 힌트: {hint}</span></p><button class="bt lockbtn" type="button" aria-expanded="false" aria-controls="lk-{w_}">🔒 눌러서 보기</button></div>')
+    return '<div class="crew">' + ''.join(cards) + '</div>'
 
 def sprites(M):
     alias = {}; imgs = {}; facing = {}
