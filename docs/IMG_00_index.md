@@ -17,6 +17,7 @@
 | P2 | thumb_01 ~ thumb_13 | I | 목차 카드 썸네일(표지를 3:2로 자르기) |
 | P1 | series_key | K | 시리즈 대표 그림 21:9 (README 맨 위) |
 | P3 | og_series | K | series_key를 1200×630으로 잘라 교체 |
+| 완료 | thumb_01 ~ thumb_13, thumb_07m, thumb_13f | — | 표지에서 384×216으로 잘라 목차 머리 모자이크와 회차 카드에 사용(빌드 때 자동, src/build/thumbs) |
 | P2 | fig_01_lv1 ~ fig_13_lv3 | M | 칸 그림 39장, 4:3, 흰 배경 |
 | P2 | duel_01 ~ duel_13 | L | 대결 그림 13장, 16:9, 흰 배경 |
 

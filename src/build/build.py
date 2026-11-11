@@ -289,6 +289,10 @@ def apply_plainer(P):
     for l in P['levels']:
         if (n, l['id']) in PL.KEY: l['key'] = PL.KEY[(n, l['id'])]
         if (n, l['id']) in getattr(PL, 'TAG', {}): l['tags'] = [PL.TAG[(n, l['id'])]] + l['tags'][1:]
+    for (k, lvid, i), v in getattr(PL, 'QUIZ', {}).items():
+        if k == n:
+            assert lvid in P['quiz'] and i < len(P['quiz'][lvid]), (n, lvid, i)
+            P['quiz'][lvid][i].update(v)
     for (k, path), v in PL.TEXT.items():
         if k != n: continue
         ks = path.split('.')
@@ -315,8 +319,9 @@ def page(P):
     cast = ''.join(f'<div>{img(w_, DEFM[w_], M, "")}<b style="color:var(--c-{w_})">{NAMES[w_]}</b><p class="muted" style="font-size:14px">{t}</p></div>' for w_, t in [('doc', '해설과 판정. 판단은 데이터대로 해요.'), ('asst', '실험 진행과 숫자 발표. 수식을 대신 물어봐요.'), ('fly', '의심하는 쪽. "그 숫자, 진짜야?"를 달고 살아요.'), ('robo', '확신하는 쪽. 크고 높은 숫자를 좋아해요.')])
     prevtxt = f'앞 회차: <a href="{P["prev"][0]}">{e(P["prev"][1])}</a>' if P.get('prev') else '시리즈의 첫 회차입니다.'
     o.append(f'''<section class="level" id="cast"><div class="wrap stack"><div class="lvhead"><h2>등장인물과 이 페이지 사용법</h2></div><div class="cast">{cast}</div><p class="muted">노란 점선 밑줄을 누르거나 손가락으로 대면 뜻이 나옵니다. 오른쪽 아래 도우미에서 밑줄을 핵심 → 전체 → 끄기로 바꿀 수 있어요. 모든 실험은 시드를 고정한 설명용 모형입니다. {prevtxt}</p></div></section>''')
-    W = P['why_steps']; o.append('<section class="level" id="why"><div class="wrap stack"><div class="lvhead"><h2>왜 이 주제인가</h2></div><div class="steps">' + ''.join(f'<div><b>{a}</b><p>{b}</p></div>' for a, b in W) + '</div></div></section>')
-    Bg = P['big']; o.append('<section class="level" id="big"><div class="wrap stack"><div class="lvhead"><h2>큰 그림</h2><p class="lead">' + P.get('big_lead', '') + '</p></div><div class="steps four">' + ''.join(f'<div><b>{a}</b><p>{b}</p></div>' for a, b in Bg) + '</div></div></section>')
+    W = P['why_steps']; Bg = P['big']
+    o.append('<section class="level" id="why"><div class="wrap stack"><div class="lvhead"><h2>왜 이 주제인가</h2></div><div class="steps">' + ''.join(f'<div><b>{a}</b><p>{b}</p></div>' for a, b in W) + '</div>'
+             + '<details class="more"><summary>큰 그림 — 이 회차가 흘러가는 4단계 (펼쳐 보기)</summary>' + (f'<p class="lead">{P["big_lead"]}</p>' if P.get('big_lead') else '') + '<div class="steps four">' + ''.join(f'<div><b>{a}</b><p>{b}</p></div>' for a, b in Bg) + '</div></details></div></section>')
     for i, l in enumerate(L): o.append(level_html(l, i, M, P))
     o.append(f'<section class="level" id="dash"><div class="wrap stack"><div class="lvhead"><h2>한눈에 보는 대시보드</h2><p class="lead">칸 ①②③에서 본 것을 한 화면에 모았어요. ▶ 재생을 누르면 숫자 카드와 그림이 함께 바뀝니다. 처음 값은 본문 예시와 같아요.</p></div><div class="dash panel" data-dash="{num}"></div></div></section>')
     o.append(duel_html(P, M))
