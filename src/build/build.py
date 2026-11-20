@@ -374,6 +374,9 @@ if __name__ == '__main__':
             import build_extra
             htm, G = build_extra.render(P, sys.modules[__name__])
         open(os.path.join(OUT, P['file']), 'w', encoding='utf-8').write(htm)
+        if kind == 'index':  # 건물 보기 쪽: 목차에서는 썸네일로만 연결
+            import home
+            open(os.path.join(OUT, 'tower.html'), 'w', encoding='utf-8').write(home.tower_page(CSS, SITE))
         if G:
             for n in G['nodes']:
                 if n['type'] in ('Concept', 'Method', 'Term', 'Distribution', 'Theory'): reg[n['id']] = {'ko': n['label']['ko'], 'en': n['label']['en'], 'page': n['page'], 'domain': n['domain']}

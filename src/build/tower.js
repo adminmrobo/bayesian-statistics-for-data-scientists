@@ -249,7 +249,7 @@ async function build() {
     if (!IDX && mode === 'p') return;
     cardKey = key; card.style.setProperty('--c', f.color);
     const here = key === TD.cur;
-    const go = here ? (IDX ? `<a class="go" href="#map">층별 회차 지도 보기 ↓</a>` : `<a class="go" href="#" data-plan>이 층 평면 보기</a>`)
+    const go = here ? (IDX ? `<a class="go" href="${esc(TD.home || '')}#map">회차 목록 보기 ${TD.home ? '→' : '↓'}</a>` : `<a class="go" href="#" data-plan>이 층 평면 보기</a>`)
       : `<a class="go" href="${esc(f.file)}">${esc(f.label)} ${key === '00' ? '로비(목차)' : '이 층으로 올라가기'} →</a>`;
     card.innerHTML = `<button class="x" type="button" aria-label="닫기">×</button><span class="k">${esc(f.label)} · ${esc(f.en)} · ${esc(f.branch)}</span><h4>${esc(f.dept)}</h4><p><b>${esc(f.ep)}</b> ${esc(f.title)}</p><p>${esc(f.biz)}</p>${here && !IDX ? '<p class="k">지금 계신 층입니다.</p>' : ''}${go}`;
     card.hidden = false;

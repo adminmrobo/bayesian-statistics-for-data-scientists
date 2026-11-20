@@ -109,32 +109,28 @@ def review(P, B):
 def index(P, B):
     M = B.Moods(); L = lessons(B)
     for k, v in B.DEFM.items(): M.add(k, v)
-    links = [('three', '3줄 요약'), ('map', '회차 지도'), ('keys', '한 줄 핵심'), ('dash', '종합 대시보드'), ('path', '개념 사다리'), ('how', '식구·사용법'), ('about', '자료와 원칙')]
-    o = [B.head(P, P['title'], P['desc'], P['file']), B.nav(links, B.SERIES_SHORT), B.tower.tower_html('00'), B.cover(P, M, 'cover_index')]
+    import home
+    o = [B.head(P, P['title'], P['desc'], P['file']), home.nav_html(B.SERIES_SHORT), B.cover(P, M, 'cover_index')]
     kp = ''.join(f'<div class="kpi {c}"><b>{v}</b><span>{t}</span></div>' for v, t, c in P['kpis'])
-    o.append(thumbs_css(B))
+    o.append(thumbs_css(B)); o.append(home.css())
     tk = [(f'{i:02d}', L[f'{i:02d}']['file'], f'{i}회차 · ' + strip(L[f'{i:02d}']['short_title'] if L[f'{i:02d}'].get('short_title') else L[f'{i:02d}']['title'])) for i in range(1, 8)] + [('07m', '07m_midterm_review.html', '중간 요약·퀴즈')] + [(f'{i:02d}', L[f'{i:02d}']['file'], f'{i}회차 · ' + strip(L[f'{i:02d}'].get('short_title') or L[f'{i:02d}']['title'])) for i in range(8, 14)] + [('13f', '13f_final_review.html', '기말 요약·퀴즈')]
-    mosaic = ''.join(f'<a class="mt th-{k}" href="{f}" title="{e(t)}"><span>{"중간" if k == "07m" else "기말" if k == "13f" else int(k)}</span><i class="sr">{e(t)}</i></a>' for k, f, t in tk)
-    o.append(f'<header class="hero ihero" id="hero"><div class="wrap ihero-grid"><div class="hero-text"><span class="eyebrow">{e(P["eyebrow"])}</span><h1>{P["title"]}</h1><p class="q">{P["question"]}</p><p>{P["intro"]}</p><section class="kpis k4">{kp}</section></div><nav class="mosaic" aria-label="표지로 고르는 전체 15쪽">{mosaic}</nav></div><div class="wrap"><div class="dialog">{"".join(B.say(*t, M) for t in P["hero_talk"])}</div></div></header>')
+    mosaic = ''.join(f'<a class="mt th-{k}" href="{f}" title="{e(t)}"><span>{"중간" if k == "07m" else "기말" if k == "13f" else int(k)}</span><i class="sr">{e(t)}</i></a>' for k, f, t in tk) + home.mosaic_tile()
+    o.append(f'<header class="hero ihero" id="hero"><div class="wrap ihero-grid"><div class="hero-text"><span class="eyebrow">{e(P["eyebrow"])}</span><h1>{P["title"]}</h1><p class="q">{P["question"]}</p><p class="lead2">{home.LEAD}</p>{home.byline()}<section class="kpis k4">{kp}</section></div><nav class="mosaic" aria-label="표지로 고르는 전체 15쪽과 건물 보기">{mosaic}</nav></div><div class="wrap"><div class="dialog">{"".join(B.say(*t, M) for t in P["hero_talk"])}</div></div></header>')
+    o.append(home.bayes_section(lambda w, m, t: B.say(w, m, t, M)))
     T = P['three']
-    o.append(f'<section class="level" id="three"><div class="wrap"><div class="three"><h2>처음 오신 분께 — 이 과정을 3줄로</h2><ol><li><b>무엇을</b><span>{T["what"]}</span></li><li><b>왜 중요한가</b><span>{T["why"]}</span></li><li><b>업무에서는</b><span>{T["work"]}</span></li></ol><p class="ok">코드·수식을 몰라도 됩니다. 처음이라면 아래 <a href="#keys">한 줄 핵심 모음</a>부터 보고, 각 회차에서는 칸마다 한 가지 핵심 → 일상 비유 → 실험만 봐도 충분해요. 수식·풀이·코드는 접어 두었어요.</p></div></div></section>')
-    def card(n):
-        Q = L[n]
-        return f'<a href="{Q["file"]}"><span class="ct th-{n}" aria-hidden="true"></span><b>{n}회차 · {e(Q["eyebrow"].split("·",1)[1].strip())}</b><span style="font-weight:700">{e(strip(Q["title"]))}</span><small>{e(strip(Q["question"]))}</small></a>'
-    def rv(f, t, s): return f'<a class="review" href="{f}"><span class="ct th-{f[:3]}" aria-hidden="true"></span><b>요약 · 퀴즈</b><span style="font-weight:700">{t}</span><small>{s}</small></a>'
-    part1 = ''.join(card(f'{i:02d}') for i in range(1, 8)) + rv('07m_midterm_review.html', '중간 요약정리 및 퀴즈', '1~7회차 요약, 교안 연습문제, 업무 계산 문제 7개')
-    part2 = ''.join(card(f'{i:02d}') for i in range(8, 14)) + rv('13f_final_review.html', '기말 요약정리 및 퀴즈', '8~13회차 요약, 교안 연습문제, 업무 계산 문제 6개')
-    o.append(f'<section class="level" id="map"><div class="wrap stack"><div class="lvhead"><h2>회차 지도</h2><p class="lead">13회차와 요약·퀴즈 두 쪽, 모두 열다섯 쪽입니다. 1부는 확률과 베이지안의 기초, 2부는 시뮬레이션과 실전 응용이에요.</p></div><h3>1부 · 확률에서 상태 변화까지 (1~7회차)</h3><div class="series">{part1}</div><h3>2부 · 시뮬레이션에서 종합 프로젝트까지 (8~13회차)</h3><div class="series">{part2}</div></div></section>')
+    o.append(f'<section class="level" id="three"><div class="wrap"><div class="three"><h2>처음 오신 분께 — 이 과정을 3줄로</h2><ol><li><b>무엇을</b><span>{T["what"]}</span></li><li><b>왜 중요한가</b><span>{T["why"]}</span></li><li><b>업무에서는</b><span>{T["work"]}</span></li></ol><p class="ok">코드·수식을 몰라도 됩니다. 처음이라면 아래 <a href="#keys">한 줄 핵심 모음</a>부터 보고, 각 회차에서는 주제마다 한 가지 핵심 → 일상 비유 → 실험만 봐도 충분해요. 수식·풀이·코드는 접어 두었어요.</p></div></div></section>')
+    o.append(home.toc_section(L))
+    o.append(home.building_section())
     try:
         import _plainer; PLK = _plainer.KEY
     except ImportError:
         PLK = {}
     kcards = ''.join(f'<div class="kcard"><a href="{L[f"{i:02d}"]["file"]}"><b>{i}회차</b> {e(strip(L[f"{i:02d}"].get("short_title") or L[f"{i:02d}"]["title"]))}</a><ol>' + ''.join(f'<li>{e(PLK[(f"{i:02d}", l["id"])])}</li>' for l in L[f"{i:02d}"]['levels'] if (f"{i:02d}", l['id']) in PLK) + '</ol></div>' for i in range(1, 14))
-    o.append(f'<section class="level" id="keys"><div class="wrap stack"><div class="lvhead"><h2>한 줄 핵심 모음 — 13회차 39가지</h2><p class="lead">각 회차 칸 맨 위의 "이 칸에서 가져갈 한 가지"를 모았어요. 복습하거나 수업·팀 교육에서 한 장으로 띄울 때 쓰세요.</p></div><div class="kgrid">{kcards}</div></div></section>')
+    o.append(f'<section class="level" id="keys"><div class="wrap stack"><div class="lvhead"><h2>한 줄 핵심 모음 — 13회차 39가지</h2><p class="lead">각 회차 주제마다 맨 위에 둔 "가져갈 한 가지"를 모았어요. 복습하거나 수업·팀 교육에서 한 장으로 띄울 때 쓰세요.</p></div><div class="kgrid">{kcards}</div></div></section>')
     tabs = ''.join(f'<button class="bt" type="button" aria-pressed="false" data-k="{n:02d}" data-f="{L[f"{n:02d}"]["file"]}">{n}회차</button>' for n in range(1, 14))
     o.append(f'<section class="level" id="dash"><div class="wrap stack"><div class="lvhead"><h2>종합 대시보드 — 13회차를 한 화면에서</h2><p class="lead">회차 버튼을 누르면 그 회차의 핵심 모형이 열립니다. 슬라이더를 움직이거나 ▶ 재생을 눌러 보세요. 같은 대시보드가 각 회차 페이지에도 들어 있어요.</p></div><div class="dtabs" role="group" aria-label="회차 고르기">{tabs}</div><div class="dash panel" id="dashbox"></div><p><a id="dashlink" href="01_what_is_statistics.html#dash">1회차 해설 페이지에서 자세히 보기 →</a></p></div></section>')
     chips = ' <i>→</i> '.join(f'<span>{e(x)}</span>' for x in P['ladder'])
-    o.append(f'<section class="level" id="path"><div class="wrap stack"><div class="lvhead"><h2>개념 사다리</h2><p class="lead">앞 회차의 한계가 다음 회차의 이유가 되도록 이어 두었어요.</p></div><div class="flowchips">{chips}</div><div class="tw"><table class="tb"><tr><th>회차</th><th>핵심 질문</th><th>이 회차가 남긴 한계 → 다음 회차</th></tr>' + ''.join(f'<tr><td>{n}</td><td>{e(strip(L[n]["question"]))}</td><td>{e(strip(L[n]["next_q"]))}</td></tr>' for n in sorted(L)) + '</table></div></div></section>')
+    o.append(f'<section class="level" id="path"><div class="wrap stack"><div class="lvhead"><h2>개념 흐름</h2><p class="lead">앞 회차의 한계가 다음 회차의 이유가 되도록 이어 두었어요.</p></div><div class="flowchips">{chips}</div><div class="tw"><table class="tb"><tr><th>회차</th><th>핵심 질문</th><th>이 회차가 남긴 한계 → 다음 회차</th></tr>' + ''.join(f'<tr><td>{n}</td><td>{e(strip(L[n]["question"]))}</td><td>{e(strip(L[n]["next_q"]))}</td></tr>' for n in sorted(L)) + '</table></div></div></section>')
     cast = B.crew_html(M)
     how = ''.join(f'<div><b>{a}</b><p>{b}</p></div>' for a, b in P['how'])
     o.append(f'<section class="level" id="how"><div class="wrap stack"><div class="lvhead"><h2>연구실 식구와 사용법</h2></div>{cast}<div class="steps four">{how}</div></div></section>')

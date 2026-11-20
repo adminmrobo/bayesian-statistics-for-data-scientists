@@ -6,6 +6,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import tower
 ROOT = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 for f in tower.FLOORS:
+    if f['key'] == '00':
+        continue  # 목차(index)는 건물을 넣지 않고 썸네일로 tower.html 에 연결한다 → patch_home.py
     p = os.path.join(ROOT, f['file'])
     if not os.path.exists(p): print('없음', p); continue
     s = open(p, encoding='utf-8').read()
