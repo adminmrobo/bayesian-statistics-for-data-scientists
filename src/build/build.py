@@ -382,3 +382,15 @@ if __name__ == '__main__':
                 if n['type'] in ('Concept', 'Method', 'Term', 'Distribution', 'Theory'): reg[n['id']] = {'ko': n['label']['ko'], 'en': n['label']['en'], 'page': n['page'], 'domain': n['domain']}
         print(f, len(htm.encode()) // 1024, 'KB')
     json.dump({'version': VER, 'date': TODAY, 'ids': reg}, open(os.path.join(OUT, 'KG_00_registry.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+
+
+# ── 분야 뼈대 다시 걸기 (kg/rehang.json, ai-lab-retrofit 15장) ──
+# 빌드가 페이지를 다시 쓴 뒤, 덧씌우기를 kg-raw·kg-ld에 다시 적용한다. 파일이 없으면 아무것도 하지 않는다.
+if __name__ == "__main__":
+    import os as _os, sys as _sys, subprocess as _sp
+    _r = _os.path.dirname(_os.path.abspath(__file__))
+    for _i in range(3):
+        if _os.path.exists(_os.path.join(_r, "kg", "rehang.json")): break
+        _r = _os.path.dirname(_r)
+    if _os.path.exists(_os.path.join(_r, "kg", "rehang.json")):
+        _sp.run([_sys.executable, _os.path.join(_r, "kg", "rehang.py"), "apply", _r])

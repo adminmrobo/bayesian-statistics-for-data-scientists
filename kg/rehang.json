@@ -1,0 +1,540 @@
+{
+ "version": "1.0",
+ "made": "2026-11-24",
+ "via": "rehang-2026-11-24",
+ "domains": [
+  "stats"
+ ],
+ "note": "분야 뼈대 주제에 다시 걸기(ai-lab-retrofit 15장). links는 자동 후보이며 틀린 줄은 지우면 된다. 빌드 스크립트가 있는 저장소는 빌드 끝에 rehang.apply_overlay()가 이 파일을 적용한다.",
+ "topics": {
+  "lab:topic/ab-testing": {
+   "ko": "A/B 테스트",
+   "en": "A/B testing",
+   "domain": [
+    "stats"
+   ],
+   "level": 2
+  },
+  "lab:topic/bayes-theorem": {
+   "ko": "베이즈 정리",
+   "en": "Bayes' theorem",
+   "domain": [
+    "stats"
+   ],
+   "level": 1
+  },
+  "lab:topic/central-limit-theorem": {
+   "ko": "중심극한정리",
+   "en": "Central limit theorem",
+   "domain": [
+    "stats"
+   ],
+   "level": 2
+  },
+  "lab:topic/central-tendency": {
+   "ko": "대표값",
+   "en": "Measures of central tendency",
+   "domain": [
+    "stats"
+   ],
+   "level": 1
+  },
+  "lab:topic/conditional-probability": {
+   "ko": "조건부확률",
+   "en": "Conditional probability",
+   "domain": [
+    "stats"
+   ],
+   "level": 1
+  },
+  "lab:topic/confidence-interval": {
+   "ko": "신뢰구간",
+   "en": "Confidence interval",
+   "domain": [
+    "stats"
+   ],
+   "level": 2
+  },
+  "lab:topic/confusion-matrix": {
+   "ko": "혼동 행렬",
+   "en": "Confusion matrix",
+   "domain": [
+    "ai",
+    "ml"
+   ],
+   "level": 2
+  },
+  "lab:topic/conjugate-prior": {
+   "ko": "켤레 사전분포",
+   "en": "Conjugate priors",
+   "domain": [
+    "stats"
+   ],
+   "level": 3
+  },
+  "lab:topic/correlation": {
+   "ko": "상관",
+   "en": "Correlation",
+   "domain": [
+    "stats"
+   ],
+   "level": 1
+  },
+  "lab:topic/credible-interval": {
+   "ko": "신용구간",
+   "en": "Credible interval",
+   "domain": [
+    "stats"
+   ],
+   "level": 3
+  },
+  "lab:topic/discrete-distributions": {
+   "ko": "이산분포",
+   "en": "Discrete distributions",
+   "domain": [
+    "stats"
+   ],
+   "level": 1
+  },
+  "lab:topic/dispersion": {
+   "ko": "퍼짐",
+   "en": "Measures of dispersion",
+   "domain": [
+    "stats"
+   ],
+   "level": 1
+  },
+  "lab:topic/hierarchical-models": {
+   "ko": "계층 모형",
+   "en": "Hierarchical models",
+   "domain": [
+    "stats"
+   ],
+   "level": 3
+  },
+  "lab:topic/independence": {
+   "ko": "독립",
+   "en": "Independence",
+   "domain": [
+    "stats"
+   ],
+   "level": 1
+  },
+  "lab:topic/law-of-large-numbers": {
+   "ko": "대수의 법칙",
+   "en": "Law of large numbers",
+   "domain": [
+    "stats"
+   ],
+   "level": 2
+  },
+  "lab:topic/maximum-likelihood": {
+   "ko": "최대우도",
+   "en": "Maximum likelihood",
+   "domain": [
+    "stats"
+   ],
+   "level": 2
+  },
+  "lab:topic/mcmc": {
+   "ko": "계산(MCMC)",
+   "en": "Computation (MCMC)",
+   "domain": [
+    "stats"
+   ],
+   "level": 3
+  },
+  "lab:topic/naive-bayes": {
+   "ko": "나이브 베이즈",
+   "en": "Naive Bayes",
+   "domain": [
+    "ai",
+    "ml"
+   ],
+   "level": 2
+  },
+  "lab:topic/p-value": {
+   "ko": "p값",
+   "en": "p-value",
+   "domain": [
+    "stats"
+   ],
+   "level": 2
+  },
+  "lab:topic/precision-recall": {
+   "ko": "정밀도·재현율",
+   "en": "Precision and recall",
+   "domain": [
+    "ai",
+    "ml"
+   ],
+   "level": 2
+  },
+  "lab:topic/prior-posterior": {
+   "ko": "사전·사후분포",
+   "en": "Prior and posterior distributions",
+   "domain": [
+    "stats"
+   ],
+   "level": 3
+  },
+  "lab:topic/probability-rules": {
+   "ko": "확률 규칙",
+   "en": "Rules of probability",
+   "domain": [
+    "stats"
+   ],
+   "level": 1
+  },
+  "lab:topic/randomization": {
+   "ko": "무작위화",
+   "en": "Randomization",
+   "domain": [
+    "stats"
+   ],
+   "level": 2
+  },
+  "lab:topic/statistical-power": {
+   "ko": "검정력",
+   "en": "Statistical power",
+   "domain": [
+    "stats"
+   ],
+   "level": 2
+  },
+  "lab:topic/systematic-idiosyncratic": {
+   "ko": "체계적·고유 위험",
+   "en": "Systematic and idiosyncratic risk",
+   "domain": [
+    "fin"
+   ],
+   "level": 3
+  },
+  "lab:topic/t-chi2-f": {
+   "ko": "t·카이제곱·F 분포",
+   "en": "t, chi-square and F distributions",
+   "domain": [
+    "stats"
+   ],
+   "level": 2
+  },
+  "lab:topic/type-i-ii-errors": {
+   "ko": "오류 두 종류",
+   "en": "Type I and type II errors",
+   "domain": [
+    "stats"
+   ],
+   "level": 2
+  },
+  "lab:topic/unbiasedness": {
+   "ko": "불편성",
+   "en": "Unbiasedness",
+   "domain": [
+    "stats"
+   ],
+   "level": 2
+  }
+ },
+ "links": {
+  "lab:assumption/conditional-independence": {
+   "topic": "lab:topic/independence",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "독립성 가정"
+  },
+  "lab:concept/base-rate": {
+   "topic": "lab:topic/bayes-theorem",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "기저율"
+  },
+  "lab:concept/bayesian-average": {
+   "topic": "lab:topic/hierarchical-models",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "베이지안 평균(수축 추정)"
+  },
+  "lab:concept/bias": {
+   "topic": "lab:topic/unbiasedness",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "편향"
+  },
+  "lab:concept/coefficient-of-variation": {
+   "topic": "lab:topic/dispersion",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "변동계수"
+  },
+  "lab:concept/conditional-probability": {
+   "topic": "lab:topic/conditional-probability",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "조건부 확률"
+  },
+  "lab:concept/confidence-interval": {
+   "topic": "lab:topic/confidence-interval",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "신뢰구간"
+  },
+  "lab:concept/conjugate-prior": {
+   "topic": "lab:topic/conjugate-prior",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "켤레 사전분포"
+  },
+  "lab:concept/correlation": {
+   "topic": "lab:topic/correlation",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "상관계수"
+  },
+  "lab:concept/credible-interval": {
+   "topic": "lab:topic/credible-interval",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "신용구간"
+  },
+  "lab:concept/dependence": {
+   "topic": "lab:topic/independence",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "종속"
+  },
+  "lab:concept/dispersion": {
+   "topic": "lab:topic/dispersion",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "흩어짐(분산·표준편차)"
+  },
+  "lab:concept/frequentist-probability": {
+   "topic": "lab:topic/probability-rules",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "도수론적 관점"
+  },
+  "lab:concept/gamblers-fallacy": {
+   "topic": "lab:topic/independence",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "도박꾼의 오류"
+  },
+  "lab:concept/independence": {
+   "topic": "lab:topic/independence",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "독립 사건"
+  },
+  "lab:concept/likelihood": {
+   "topic": "lab:topic/maximum-likelihood",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "가능도"
+  },
+  "lab:concept/likelihood-ratio": {
+   "topic": "lab:topic/bayes-theorem",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "우도비"
+  },
+  "lab:concept/margin-of-error": {
+   "topic": "lab:topic/confidence-interval",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "오차범위"
+  },
+  "lab:concept/mean": {
+   "topic": "lab:topic/central-tendency",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "평균"
+  },
+  "lab:concept/mutually-exclusive": {
+   "topic": "lab:topic/probability-rules",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "배반"
+  },
+  "lab:concept/p-value": {
+   "topic": "lab:topic/p-value",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "p값"
+  },
+  "lab:concept/posterior-distribution": {
+   "topic": "lab:topic/prior-posterior",
+   "score": 2,
+   "why": "개념 이름이 주제 이름에 들어 있음",
+   "ko": "사후분포"
+  },
+  "lab:concept/posterior-probability": {
+   "topic": "lab:topic/prior-posterior",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "사후 확률"
+  },
+  "lab:concept/power": {
+   "topic": "lab:topic/statistical-power",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "검정력"
+  },
+  "lab:concept/practical-significance": {
+   "topic": "lab:topic/p-value",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "실용적 유의성"
+  },
+  "lab:concept/prior-distribution": {
+   "topic": "lab:topic/prior-posterior",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "사전분포"
+  },
+  "lab:concept/prior-probability": {
+   "topic": "lab:topic/prior-posterior",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "사전 확률"
+  },
+  "lab:concept/probability": {
+   "topic": "lab:topic/probability-rules",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "확률"
+  },
+  "lab:concept/proportion-credible-interval": {
+   "topic": "lab:topic/credible-interval",
+   "score": 2,
+   "why": "주제 이름이 개념 이름에 들어 있음",
+   "ko": "비율의 신용구간"
+  },
+  "lab:concept/sampling-error": {
+   "topic": "lab:topic/confidence-interval",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "표본오차와 오차범위"
+  },
+  "lab:concept/sensitivity": {
+   "topic": "lab:topic/precision-recall",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "민감도"
+  },
+  "lab:concept/skewness": {
+   "topic": "lab:topic/dispersion",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "왜도"
+  },
+  "lab:concept/standard-deviation": {
+   "topic": "lab:topic/dispersion",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "표준편차"
+  },
+  "lab:concept/subjective-probability": {
+   "topic": "lab:topic/prior-posterior",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "주관적 관점"
+  },
+  "lab:concept/variance": {
+   "topic": "lab:topic/dispersion",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "분산"
+  },
+  "lab:distribution/beta": {
+   "topic": "lab:topic/conjugate-prior",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "베타 분포"
+  },
+  "lab:distribution/binomial": {
+   "topic": "lab:topic/discrete-distributions",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "이항분포와 반복 시행"
+  },
+  "lab:distribution/t": {
+   "topic": "lab:topic/t-chi2-f",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "t분포"
+  },
+  "lab:method/ab-test": {
+   "topic": "lab:topic/ab-testing",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "A/B 테스트"
+  },
+  "lab:method/mcmc": {
+   "topic": "lab:topic/mcmc",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "MCMC(마르코프 체인 몬테카를로)"
+  },
+  "lab:method/naive-bayes": {
+   "topic": "lab:topic/naive-bayes",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "나이브 베이즈 분류기"
+  },
+  "lab:method/randomization": {
+   "topic": "lab:topic/randomization",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "무작위 배정"
+  },
+  "lab:method/sequential-bayesian-update": {
+   "topic": "lab:topic/prior-posterior",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "베이지안 순차 업데이트"
+  },
+  "lab:term/confusion-matrix": {
+   "topic": "lab:topic/confusion-matrix",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "혼동행렬"
+  },
+  "lab:term/cpt": {
+   "topic": "lab:topic/conditional-probability",
+   "score": 2,
+   "why": "주제 이름이 개념 이름에 들어 있음",
+   "ko": "조건부 확률표"
+  },
+  "lab:term/false-positive": {
+   "topic": "lab:topic/type-i-ii-errors",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "위양성"
+  },
+  "lab:term/systematic-risk": {
+   "topic": "lab:topic/systematic-idiosyncratic",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "체계적 위험"
+  },
+  "lab:theory/bayes-theorem": {
+   "topic": "lab:topic/bayes-theorem",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "베이즈 정리"
+  },
+  "lab:theory/central-limit-theorem": {
+   "topic": "lab:topic/central-limit-theorem",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "중심극한정리"
+  },
+  "lab:theory/law-of-large-numbers": {
+   "topic": "lab:topic/law-of-large-numbers",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "대수의 법칙"
+  }
+ }
+}
